@@ -49,7 +49,7 @@ from pathlib import Path
 if hasattr(sys.stdout, "buffer"):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "original_documents"
 KIT = ROOT / "trial_kit"
 FORMS = KIT / "forms"

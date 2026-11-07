@@ -7,7 +7,7 @@ import io, json, sys
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 J = ROOT / "artifacts/extraction/Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.json"
 p = json.loads(J.read_text(encoding="utf-8"))
 ws = p["worksheets"][0]

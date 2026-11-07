@@ -33,7 +33,7 @@
 
 收卷
 ----
-    python D:\GAMING_NRE_AGENT\tools\collect_trial_feedback.py
+    python tools\collect_trial_feedback.py
 
 报告写在 `artifacts\validation\trial_feedback_report.md`。
 回收端会独立重算姓名、日期、是否真的跑过、规则包版本、必答题、

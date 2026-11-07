@@ -6,7 +6,7 @@
 
 ## 30 秒版
 
-1. 双击 `D:\GAMING_NRE_AGENT\web\index.html` → 点「**参加团队试用**」。
+1. 双击 `web\index.html` → 点「**参加团队试用**」。
 2. 在 C1–C5 里选**一个**案例，点「载入并运行」。
    项目名、Key Factors、Wave 会自动填好并**锁定**——不用你输，也改不了。
 3. 看结果。想看更细就点「打开完整结果页」。
@@ -16,7 +16,7 @@
    并且**必须写理由**——选了却不写理由，导出按钮不会亮。
 5. 填**姓名**和**日期**（这两项不填，导出按钮不会亮）。
 6. 点「导出试用提交件」，得到一个文件：`trial-submission-<案例项目名>-<时间>.json`。
-7. 把**这一个文件**拖进 `D:\GAMING_NRE_AGENT\feedback_inbox\`（见 `DROP_FILES_HERE.txt`）。
+7. 把**这一个文件**拖进 `feedback_inbox\`（见 `DROP_FILES_HERE.txt`）。
 8. 收卷的人跑：`python tools\collect_trial_feedback.py`
 
 不需要装任何东西、不需要网络、不需要登录，数据不出你这台机器。

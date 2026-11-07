@@ -31,7 +31,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "artifacts" / "model" / "baseline_v1.json"
 OUT_JSON = ROOT / "artifacts" / "model" / "quantity_model_v2.json"
 OUT_MD = ROOT / "artifacts" / "model" / "quantity_model_v2.md"

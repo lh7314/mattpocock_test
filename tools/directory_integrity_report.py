@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "original_documents"
 EXPECTED_SHA = ("48a360ff2ffd086e41d6b90a916f64fe52d9bc13efba07b8377b2945c846ab5a")
 

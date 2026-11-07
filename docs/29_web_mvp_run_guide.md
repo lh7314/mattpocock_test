@@ -9,13 +9,13 @@
 ## 1. 运行方式（零依赖、零构建、零服务器）
 
 ```
-双击  D:\GAMING_NRE_AGENT\web\index.html
+双击  web\index.html
 ```
 
 或用本地静态服务器（可选，仅为便于分享）：
 
 ```
-cd D:\GAMING_NRE_AGENT\web
+cd web
 python -m http.server 8765
 浏览器打开 http://127.0.0.1:8765/index.html
 ```

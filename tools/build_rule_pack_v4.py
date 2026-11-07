@@ -31,7 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "original_documents"
 BASE = json.loads((ROOT / "artifacts/model/baseline_v1.json").read_text(encoding="utf-8"))
 QM = json.loads((ROOT / "artifacts/model/quantity_model_v4.json").read_text(encoding="utf-8"))

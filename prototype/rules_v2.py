@@ -34,7 +34,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 BASELINE = json.loads((ROOT / "artifacts/model/baseline_v1.json").read_text(encoding="utf-8"))
 QMODEL = json.loads((ROOT / "artifacts/model/quantity_model_v2.json").read_text(encoding="utf-8"))
 QCELL = {(c["function_id"], c["phase"]): c for c in QMODEL["cells"]}

@@ -1,6 +1,6 @@
 # CHANGES
 
-项目：`D:\GAMING_NRE_AGENT` · 样机需求分析与推荐 Agent
+项目：`本文件所在目录` · 样机需求分析与推荐 Agent
 原始证据：`original_documents\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx`
 SHA-256 `48A360FF2FFD086E41D6B90A916F64FE52D9BC13EFBA07B8377B2945C846AB5A` —— 三个阶段均未改动（每次任务首尾各校验一次）。
 

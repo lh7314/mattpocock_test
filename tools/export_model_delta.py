@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 
 def _refuse_superseded_write() -> None:
     """This exporter writes files the current pipeline also owns.

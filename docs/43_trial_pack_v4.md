@@ -55,7 +55,7 @@ python tools\issue_trial_forms.py
 ## 2A. 操作（推荐：网页内置试用模式，四步）
 
 ```
-1) 双击  D:\GAMING_NRE_AGENT\web\index.html  → 点「参加团队试用」
+1) 双击  web\index.html  → 点「参加团队试用」
 2) 选一个案例（C1…C5）→「载入并运行」：项目名、Key Factors、Wave 自动填好并锁定
 3) 看结果 → 只回答这个案例实际涉及的问题（6–11 条）→ 填姓名与日期
 4) 点「导出试用提交件」→ 得到一个 trial-submission-<项目>-<时间>.json
@@ -69,7 +69,7 @@ python tools\issue_trial_forms.py
 ## 2B. 操作（备用：不用网页的五步，标准完全一样）
 
 ```
-1) 双击  D:\GAMING_NRE_AGENT\web\index.html          （或整个 web\ 目录拷给同事）
+1) 双击  web\index.html          （或整个 web\ 目录拷给同事）
 2) 新建分析：Project Name + 五个 Key Factor（CPU / GPU / Panel / SSD / Memory 数量）
              逐 Spec 波次按需标记 LATER_WAVE；高级选项可留空
 3) 运行分析 → 结果页（SKU 档位或 4–5 范围、Current Wave、Full Project、Function 明细）

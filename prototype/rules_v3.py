@@ -54,7 +54,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 BASELINE = json.loads((ROOT / "artifacts/model/baseline_v1.json").read_text(encoding="utf-8"))
 QMODEL = json.loads((ROOT / "artifacts/model/quantity_model_v4.json").read_text(encoding="utf-8"))
 CERTV = json.loads((ROOT / "artifacts/model/certification_verification.json")

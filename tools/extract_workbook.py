@@ -17,7 +17,7 @@ from pathlib import Path
 import openpyxl
 from openpyxl.utils import get_column_letter, range_boundaries
 
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "original_documents"
 OUT = ROOT / "artifacts" / "extraction"
 INV = ROOT / "artifacts" / "inventory"

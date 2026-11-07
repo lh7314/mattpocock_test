@@ -51,7 +51,7 @@ from pathlib import Path
 
 if hasattr(sys.stdout, "buffer"):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 CURRENT_PACK = ROOT / "artifacts/model/rule_pack_v4.json"
 CERT_VERIFY = ROOT / "artifacts/model/certification_verification.json"
 GEN_JSON = ROOT / "artifacts/validation/trial_feedback_report.json"

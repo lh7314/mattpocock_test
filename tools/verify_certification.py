@@ -33,7 +33,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 TOL = 1e-9
 SKU_RANGE = (2, 3, 4, 5, 6)
 PHASES = ("FVT", "SIT")

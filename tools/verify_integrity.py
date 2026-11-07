@@ -27,7 +27,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "original_documents"
 TOL = 1e-9
 EXPECTED = {

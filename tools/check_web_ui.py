@@ -20,7 +20,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 # check_python_web_parity already re-wraps sys.stdout for UTF-8 output; re-wrapping it here
 # would close the first wrapper's buffer and break printing.

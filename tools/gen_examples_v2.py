@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-ROOT = Path(r"D:\GAMING_NRE_AGENT")
+ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "prototype"))
 import rules_v2 as R                                          # noqa: E402
 
