@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Python vs Web parity harness</title>
+<style>body{font:13px/1.5 Consolas,monospace;margin:16px}td{padding:2px 10px;border-bottom:1px solid #ddd}
+.ok{color:#0a7d38}.bad{color:#b00020}#summary{font-weight:700;margin:10px 0}</style>
+</head>
+<body>
+<h2>Python vs Web parity harness</h2>
+<p>Run headless by <code>tools/check_python_web_parity.py</code>. Loads the golden cases the
+Python core produced, runs the JavaScript port on the same input documents and writes the
+result into <code>&lt;pre id="out"&gt;</code> for the harness to read back.</p>
+<div id="summary">running鈥?/div>
+<div id="out">pending</div>
+<script src="assets/rulepack.js"></script>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  var cases = window.__PARITY_CASES__ || [];
+  var out = [];
+  for (var i = 0; i < cases.length; i++) {
+    var c = cases[i];
+    try {
+      var inp = NRE.fromDocument(c.document);
+      var res = NRE.analyse(inp);
+      out.push({ id: c.id, note: c.note || "", payload: NRE.serialise(res, c.id, 2),
+                 input_snapshot: NRE.inputSnapshot(inp) });
+    } catch (e) {
+      out.push({ id: c.id, note: c.note || "", error: String(e && e.message || e) });
+    }
+  }
+  var payload = { engine: NRE.ENGINE_NAME + "/" + NRE.ENGINE_VERSION,
+                  pack: window.RULEPACK.pack_version, cases: out };
+  document.getElementById("summary").textContent =
+    "engine " + payload.engine + " | pack " + payload.pack + " | cases " + out.length;
+  // JSON.parse(JSON.stringify(...)) drops undefined, exactly what the comparator expects
+  document.getElementById("out").textContent = "@@PARITY@@" + JSON.stringify(payload);
+})();
+</script>
+</body>
+</html>

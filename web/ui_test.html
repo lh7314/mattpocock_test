@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>UI end-to-end probe</title>
+<style>body{font:13px/1.5 Consolas,monospace;margin:14px}pre{white-space:pre-wrap}</style>
+</head>
+<body data-page="uitest">
+<h3>Web MVP end-to-end probe (driven headless by tools/check_web_ui.py)</h3>
+<pre id="out">pending</pre>
+<iframe id="frame" style="width:1100px;height:760px;border:1px solid #ccc"></iframe>
+<script src="assets/rulepack.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/store.js"></script>
+<script>
+/* This page loads the REAL index.html / new.html / result.html in an iframe and drives them
+ * the way a user would: type values, press 运行分析, wait for the page to navigate, then read
+ * what the user would actually see. Nothing here re-implements a business rule - it only
+ * asserts what the pages render. */
+(function () {
+  var frame = document.getElementById("frame");
+  var results = [];
+  function ok(id, cond, detail) {
+    results.push({ id: id, pass: !!cond, detail: detail === undefined ? "" : String(detail).slice(0, 300) });
+  }
+  function load(url) {
+    return new Promise(function (res) {
+      frame.onload = function () {
+        setTimeout(function () {
+          try {
+            frame.contentWindow.__err = frame.contentWindow.__err || "";
+            frame.contentWindow.onerror = function (m, s, l) {
+              frame.contentWindow.__err = (frame.contentWindow.__err || "") + " | " + m + "@" + l;
+            };
+          } catch (e) { /* cross-origin guard */ }
+          res(frame);
+        }, 60);
+      };
+      frame.src = url;
+    });
+  }
+  function text() { try { return frame.contentDocument.body.textContent || ""; } catch (e) { return ""; } }
+  function vis() { try { return frame.contentDocument.body.innerText || ""; } catch (e) { return ""; } }
+  function html() { try { return frame.contentDocument.documentElement.innerHTML || ""; } catch (e) { return ""; } }
+  function doc() { return frame.contentDocument; }
+  function set(sel, v) {
+    var e = doc().getElementById(sel);
+    if (!e) { return false; }
+    e.value = v;
+    e.dispatchEvent(new frame.contentWindow.Event("input", { bubbles: true }));
+    return true;
+  }
+  function click(sel) {
+    var e = doc().getElementById(sel);
+    if (!e) { return false; }
+    e.click(); return true;
+  }
+  function fireQ(e, type) {
+    var Ev = frame.contentWindow.Event;      // new frame.contentWindow.Event(...) would
+    e.dispatchEvent(new Ev(type, { bubbles: true }));     // call the constructor as a function
+  }
+  // A dropdown only accepts a value it actually offers. Answering one with a word that is
+  // not on the list is exactly what a reviewer cannot do, so the probe may not do it either:
+  // this refuses instead of leaving a blank behind that looks like an unanswered question.
+  function setQ(qid, k, v) {
+    var e = doc().querySelector('[data-q="' + qid + '"][data-k="' + k + '"]');
+    if (!e) { return "NO_ELEMENT"; }
+    if (e.tagName === "SELECT") { return "NOT_A_TEXT_CONTROL"; }
+    e.value = v;
+    fireQ(e, "input"); fireQ(e, "change");
+    return "ok";
+  }
+  function pickQ(qid, value) {
+    var sel = doc().querySelector('select[data-q="' + qid + '"]');
+    if (!sel) { return "NO_SELECT"; }
+    var offered = Array.prototype.some.call(sel.options, function (o) {
+      return o.value === value && o.value !== ""; });
+    if (!offered) { return "OPTION_NOT_OFFERED"; }
+    sel.value = value;
+    fireQ(sel, "input"); fireQ(sel, "change");
+    return "ok";
+  }
+  function selectValue(qid) {
+    var sel = doc().querySelector('select[data-q="' + qid + '"]');
+    return sel ? sel.value : "(no dropdown rendered)";
+  }
+  function gLast(id) {
+    var W = frame.contentWindow;
+    var lc = ((W.Trial || {}).lastChecks || { gates: [] });
+    for (var i = 0; i < lc.gates.length; i++) {
+      if (lc.gates[i].id === id) { return lc.gates[i]; }
+    }
+    return { id: id, pass: null, label: "(gate not run)", detail: "" };
+  }
+  function gateSummary() {
+    var W = frame.contentWindow;
+    var lc = ((W.Trial || {}).lastChecks || { gates: [] });
+    var bad = (lc.gates || []).filter(function (g) { return !g.pass; })
+      .map(function (g) { return g.id + ": " + (g.detail || g.label || "").slice(0, 46); });
+    return bad.length ? bad.join(" ; ") : "all gates pass";
+  }
+  // what a reviewer does: choose one of the four options, then justify it
+  function answerCase(c, option) {
+    var res = {};
+    (c.questions_required || []).forEach(function (q) {
+      if ((q.options || []).length) {
+        res[q.id] = pickQ(q.id, option || q.options[0]);
+      } else {
+        res[q.id] = setQ(q.id, "answer", "同意");
+      }
+      setQ(q.id, "comment", "演练理由：与真实项目、源文件单元格一致");
+    });
+    return res;
+  }
+  function allRequiredTextanswers(c) {
+    // v4.1: mismatch cells are four-way choices; everything else stays free text.
+    var ans = {};
+    (c.questions_required || []).forEach(function (q) {
+      var opts = q.options || [];
+      ans[q.id] = { answer: opts.length ? opts[0] : "同意",
+                    comment: "演练理由：与真实项目、源文件单元格一致" };
+    });
+    Array.prototype.forEach.call(
+      doc().querySelectorAll("#fb-questions [data-q]"), function (e) {
+        var a = ans[e.getAttribute("data-q")];
+        if (!a) { return; }
+        if (e.tagName === "SELECT") { pickQ(e.getAttribute("data-q"), a.answer); }
+        else { setQ(e.getAttribute("data-q"), e.getAttribute("data-k"),
+                    e.getAttribute("data-k") === "answer" ? a.answer : a.comment); }
+      });
+    return ans;
+  }
+  function settle(ms) {
+    return new Promise(function (res) { setTimeout(res, ms || 250); });
+  }
+
+  function waitPage(prefix, tries) {
+    return new Promise(function (res) {
+      var n = 0;
+      (function poll() {
+        var u = "";
+        try { u = frame.contentWindow.location.href; } catch (e) { u = ""; }
+        if (u.indexOf(prefix) >= 0) { return res(true); }
+        if (++n > (tries || 60)) { return res(false); }
+        setTimeout(poll, 50);
+      })();
+    });
+  }
+
+  var DOC = {
+    schema_version: "4.0", project_name: "UITIE", project_type: "CLEAN_SHEET", odm: null,
+    phase_scope: ["FVT", "SIT"],
+    key_factors: { cpu: { name: "cpu", user_value: 3, user_edited: true },
+                   gpu: { name: "gpu", user_value: 3, user_edited: true },
+                   panel: { name: "panel", user_value: 2, user_edited: true },
+                   ssd: { name: "ssd", user_value: 2, user_edited: true },
+                   mem: { name: "mem", user_value: 2, user_edited: true } },
+    wave_assignment: { declared_by: "NOT_PROVIDED", specs: [] },
+    certification_input: { mode: "SYSTEM_APPENDIX_ADOPTED", overrides: [] },
+    reuse_items: [], additional_demand: [], risk_reserve: { percent: 0 }
+  };
+  var DOC2 = JSON.parse(JSON.stringify(DOC)); DOC2.project_name = "UISINGLE";
+  DOC2.key_factors.cpu.user_value = 1; DOC2.key_factors.gpu.user_value = 1;
+  DOC2.key_factors.panel.user_value = 1; DOC2.key_factors.ssd.user_value = 1;
+  DOC2.key_factors.mem.user_value = 1;
+  var DOC3 = JSON.parse(JSON.stringify(DOC)); DOC3.project_name = "UIOOD";
+  DOC3.key_factors.cpu.user_value = 9;
+  var DOC4 = JSON.parse(JSON.stringify(DOC)); DOC4.project_name = "UIWAVE";
+  DOC4.key_factors = { cpu: { name: "cpu", user_value: 2, user_edited: true },
+                       gpu: { name: "gpu", user_value: 2, user_edited: true },
+                       panel: { name: "panel", user_value: 1, user_edited: true },
+                       ssd: { name: "ssd", user_value: 2, user_edited: true },
+                       mem: { name: "mem", user_value: 2, user_edited: true } };
+  DOC4.wave_assignment = { declared_by: "USER_SELECTED", specs: [
+    { factor: "ssd", spec_index: 2, wave: "LATER_WAVE", wave_source: "USER_SELECTED" },
+    { factor: "mem", spec_index: 2, wave: "LATER_WAVE", wave_source: "USER_SELECTED" }] };
+
+  function mkrec(d) {
+    var id = Store.newId() + d.project_name;
+    var inp = NRE.fromDocument(d); inp.normalise();
+    var res = NRE.analyse(inp);
+    var payload = NRE.serialise(res, id, 2);
+    payload.generated_at_utc = new Date().toISOString();
+    payload.certification_grid = RULEPACK.certification_verification.grid;
+    var m = res.scenarios[0].match;
+    return Store.save({ id: id, document: d, payload: payload,
+      certification_grid: RULEPACK.certification_verification.grid,
+      project_name: d.project_name, saved_at: new Date().toISOString(), draft: false,
+      summary: { sku: m.state === "RANGE" ? (m.sku_range[0] + "–" + m.sku_range[1] + " SKU")
+                                          : (m.recommended_sku + " SKU"),
+                 demand: "", review: res.owner_review_items.length } });
+  }
+
+  var recRange, recSingle, recOOD, recWave;
+
+  // deterministic run: start from an empty local store every time
+  try { Store.all().forEach(function (r) { Store.remove(r.id); }); } catch (e) { /* ignore */ }
+
+  Promise.resolve()
+  .then(function () {
+    ok("UI-18 localStorage available", Store.available());
+    recRange = mkrec(DOC); recSingle = mkrec(DOC2); recOOD = mkrec(DOC3); recWave = mkrec(DOC4);
+    ok("UI-18 history saved", Store.get(recRange.id) && Store.get(recSingle.id));
+    ok("UI-18 recent lists saved records", Store.recent(10).length >= 4,
+       Store.recent(10).map(function (r) { return r.project_name; }).join(","));
+    var dup = Store.duplicate(recRange.id);
+    ok("UI-20 history copy creates a new independent record",
+       dup && dup.id !== recRange.id && /副本/.test(dup.project_name)
+       && Store.get(dup.id) && dup.document.key_factors.cpu.user_value === 3, dup && dup.project_name);
+    Store.remove(dup.id);
+    ok("UI-18 history delete", !Store.get(dup.id));
+  })
+  .then(function () { return load("index.html"); })
+  .then(function () {
+    var t = text();
+    ok("UI-19 home lists recent analyses with project names",
+       /UITIE/.test(t) && /UISINGLE/.test(t) && /UIWAVE/.test(t));
+    ok("UI-19 home shows SKU result and demand", /SKU/.test(t));
+    return load("result.html?id=" + recRange.id);
+  })
+  .then(function () {
+    var t = text();
+    ok("UI-02 range page says 4–5 SKU", /4–5 SKU/.test(t), t.slice(0, 0));
+    ok("UI-02 page states the range is not a gap and no candidate was chosen",
+       /这是一个范围，不是漏填/.test(t) && /没有、也不会默认替你选一档/.test(t));
+    ok("UI-10 range reason is SKU_NOT_ESTABLISHED, not competing certification models",
+       /SKU_NOT_ESTABLISHED/.test(t) && !/COMPETING_CERTIFICATION_MODELS/.test(t));
+    ok("UI-04 result page shows both 4 SKU and 5 SKU priced",
+       /4 SKU/.test(t) && /5 SKU/.test(t));
+    ok("UI-08 certification states the adopted source and the once-only count",
+       /采用附表中本次 SKU 档位/.test(t) && /FVT 采用/.test(t));
+    ok("UI-09 the adopted value is counted once and the Main Table derivation zero times",
+       /采用值计入项目总量 1 次/.test(t) && /主表派生值（主表单 SKU 数量 × SKU 数）计入 0 次/.test(t)
+       && !/附表.*加进总量/.test(t));
+    // UI-25: the adopted (Appendix) values are on the default surface, not hidden
+    var headDefault = Array.prototype.slice.call(doc().querySelectorAll("th"))
+      .filter(function (th) { return !th.closest("details"); })
+      .map(function (th) { return th.textContent.trim(); });
+    var headDetails = Array.prototype.slice.call(doc().querySelectorAll("details th"))
+      .map(function (th) { return th.textContent.trim(); });
+    ok("UI-25 adopted Appendix values are visible without expanding anything",
+       headDefault.indexOf("采用值（附表）") >= 0 && headDefault.indexOf("状态") >= 0,
+       headDefault.join("|"));
+    ok("UI-26 Main Table value and delta are only in the expandable details",
+       headDetails.indexOf("主表 /SKU") >= 0 && headDetails.indexOf("主表 × SKU（审计）") >= 0
+       && headDefault.indexOf("主表 /SKU") < 0 && headDefault.indexOf("差值") < 0,
+       headDetails.join("|"));
+    ok("UI-12 J33 shown as non-additive evidence",
+       /BREAKDOWN_EVIDENCE/.test(t) && /未叠加到结果上/.test(t));
+    ok("UI-21 open review items are collected and counted",
+       /项需要 Owner 确认/.test(t)
+       && parseInt((doc().getElementById("r-open-count") || {}).textContent || "0", 10) > 0
+       && /CERTIFICATION|SKU 档位|波次/.test(t),
+       "open=" + ((doc().getElementById("r-open-count") || {}).textContent || "?"));
+    ok("UI-22 review items do not block the result page",
+       /Function 明细/.test(t) && /FVT/.test(t) && /SIT/.test(t));
+    ok("UI-16 no hidden single value: a range keeps both endpoints",
+       (t.match(/4–5 SKU/g) || []).length >= 1);
+    (function () {
+      var rec = Store.get(recRange.id);
+      var csv = Export.csv(rec);
+      var fb = Export.feedbackCsv(rec);
+      var jd = Export.jsonDocument(rec);
+      var sec4 = csv.indexOf("4. Certification cells - adopted (Appendix) vs audit (Main table)");
+      ok("UI-29 review CSV publishes adopted and audit columns with the counted-times flags",
+         sec4 >= 0 && /Adopted \(Appendix\),Main \/SKU,Main derived \(audit\)/.test(csv)
+         && /,1,0(\u000d\u000a|$)/.test(csv), sec4 >= 0 ? "section 4 present" : "section 4 missing");
+      var cells = jd.certification_adopted_and_audit_values || [];
+      ok("UI-30 JSON export keeps the adopted value, the audit value and the difference",
+         cells.length > 0
+         && cells.every(function (c) { return c.main_derived_counted_in_project_total === false; })
+         && cells.every(function (c) {
+              return c.adopted_value_source !== "APPENDIX_TABLE_TOTAL"
+                     || c.adopted_total === c.appendix_total; }),
+         "cells=" + cells.length);
+      ok("UI-28 trial feedback export lists the mismatched cells and the open ORIs",
+         /团队试用反馈表/.test(fb)
+         && fb.indexOf("Green") >= 0 && fb.indexOf("RF Certification") >= 0
+         && (fb.match(/\u000d\u000aORI-/g) || []).length === RULEPACK.owner_review_item_count,
+         "ori rows=" + (fb.match(/\u000d\u000aORI-/g) || []).length);
+    })();
+    var json = (function () {
+      // export content is exercised without triggering a download
+      var rec = Store.get(recRange.id);
+      var m = rec.payload.scenarios[0].match;
+      return m.state === "RANGE" && m.recommended_sku === null
+             && m.preferred_sku === "NOT_ESTABLISHED";
+    })();
+    ok("UI-21 export payload keeps RANGE with null recommended sku", json);
+    return load("result.html?id=" + recSingle.id);
+  })
+  .then(function () {
+    var t = text();
+    ok("UI-01 single SKU page", /2 SKU/.test(t) && /单一值/.test(t));
+    ok("UI-13 MEPA and HW PA shown as temporary", /临时采用/.test(t));
+    ok("UI-06 with no LATER_WAVE the page says Current Wave equals Full Project",
+       /当前没有明确安排到后续波次的 Spec，因此 Current Wave 与 Full Project 使用相同配置范围/.test(t));
+    ok("UI-06 both scopes are still shown side by side",
+       /Current Wave 当前波次/.test(t) && /Full Project 全项目/.test(t));
+    return load("result.html?id=" + recWave.id);
+  })
+  .then(function () {
+    var t = text();
+    ok("UI-07 current wave differs from full project and the reason is explained",
+       /已从 Current Wave 排除的 Spec/.test(t) && /ssd2/.test(t) && /mem2/.test(t));
+    ok("UI-15 wave does not change base_demand at the same SKU band",
+       /base_demand 不因波次改变/.test(t));
+    return load("result.html?id=" + recOOD.id);
+  })
+  .then(function () {
+    var t = text();
+    ok("UI-24 out-of-domain stops the affected scenario with an explanation",
+       /本情景已停止计算/.test(t) && !/FVT\s*SIT\s*Certification/.test(t.split("超出规则库覆盖")[1] || ""));
+    ok("UI-24 other scenario is still produced",
+       /Full Project/.test(t));
+    return load("new.html");
+  })
+  .then(function () {
+    var t = text();
+    (function () {
+      var pickers = Array.prototype.slice.call(doc().querySelectorAll("select, input"))
+        .filter(function (e) {
+          var k = ((e.name || "") + " " + (e.id || "")).toLowerCase();
+          return k.indexOf("cert") >= 0 || k.indexOf("source") >= 0; });
+      var t2 = text();
+      ok("UI-27 the user is never asked to choose between Main Table and Appendix",
+         pickers.length === 0 && /采用附表中本次 SKU 档位对应的总量/.test(t2)
+         && /只用于审计和差异分析，不进入总量/.test(t2),
+         "pickers=" + pickers.length);
+      ok("UI-11a per-cell override stays analysis-only and is optional",
+         doc().querySelectorAll("[data-ovr]").length > 0
+         && /本次覆盖（可选）/.test(t2) && /不会写回规则库/.test(t2),
+         "override inputs=" + doc().querySelectorAll("[data-ovr]").length);
+    })();
+    ok("UI-12b new page does not ask for a SKU count", !/SKU\s*数量\s*[:：]/.test(t)
+        && /SKU 数量由这些配置推导/.test(t));
+    ok("UI-12c wave options are the three Chinese labels, not UNKNOWN",
+       /未特别指定/.test(doc().documentElement.innerHTML) && !/UNKNOWN<\/option>/.test(doc().documentElement.innerHTML));
+    set("cpu", "3"); set("gpu", "3"); set("panel", "2"); set("ssd-count", "2"); set("mem-count", "2");
+    return new Promise(function (r) { setTimeout(r, 120); });
+  })
+  .then(function () {
+    ok("UI-02 live preview reports the 4-5 SKU range before running",
+       /4–5 SKU|4-5 SKU/.test(text()), text().slice(0, 0));
+    var beforeRun = Store.all().length;
+    window.__beforeRun = beforeRun;
+    click("run");
+    return waitPage("result.html");
+  })
+  .then(function (nav) {
+    var err = "";
+    try { err = frame.contentWindow.__err || ""; } catch (e) { err = "?" + e.name; }
+    ok("UI-18 pressing 运行分析 saves the analysis and opens the result",
+       nav && Store.all().length === window.__beforeRun + 1,
+       "nav=" + nav + " storeBefore=" + window.__beforeRun + " storeAfter=" + Store.all().length
+       + " href=" + (function () { try { return frame.contentWindow.location.href.split("/").pop(); }
+                                catch (e) { return "?" + e.name; } })() + " err=" + err);
+    ok("UI-02 run-through reproduces the range", /4–5 SKU/.test(text()));
+    var t = text();
+    // DEC-10 moved the 4-SKU total from 443.8 to 438.8; the invariant is the same:
+    // a decimal total must never be shown as a rounded-up integer.
+    ok("UI-16 display precision never invents an integer",
+       !/\b439\b/.test(t) && /438\.8/.test(t), (t.match(/\b43\d(\.\d)?\b/g) || []).join(","));
+    return load("result.html?id=" + recRange.id);
+  })
+  .then(function () {
+    var rec = Store.get(recRange.id);
+    var j = (function () {
+      // exercise the export builder directly
+      var out = JSON.parse(JSON.stringify(rec.payload));
+      return out;
+    })();
+    ok("UI-17 JSON export carries full precision, not the display value",
+       JSON.stringify(j).indexOf("438.8") >= 0);
+    ok("UI-17 export declares display precision does not modify values",
+       j.policy.display_precision_modifies_values === false);
+    ok("UI-17 export refuses to collapse a range",
+       j.export.range_collapsed_to_single_value_on_export === false);
+    // UI-23: a BLOCKS_FORMALIZATION issue must not stop the manual MVP
+    var hasFormalBlock = (j.owner_review_items || []).some(function (o) {
+      return o.blocking_level === "BLOCKS_FORMALIZATION"; });
+    ok("UI-23 BLOCKS_FORMALIZATION items exist and the run still produced totals",
+       hasFormalBlock && j.scenarios.length >= 2 && j.scenarios[0].results.length >= 1);
+    ok("UI-22 no item claims it blocks the manual MVP",
+       !(j.owner_review_items || []).some(function (o) { return o.blocks_manual_mvp; }));
+  })
+  /* ---------------- trial mode: web/trial.html ---------------- */
+  .then(function () { return load("trial.html"); })
+  .then(function () {
+    var W = frame.contentWindow, T = W.Trial, K = W.TRIALKIT, t = vis();
+    ok("UI-40 trial mode offers exactly the five issued controlled cases",
+       !!T && T.cases().length === 5 && /TRIAL-C1-SKU2/.test(t) && /TRIAL-C4-RANGE45/.test(t)
+       && /TRIAL-C5-SKU6-WAVE/.test(t), T ? T.cases().length : "no Trial object");
+    ok("UI-40 each case states on screen what it exists to prove",
+       /Green \/ SIT @ SKU3/.test(t) && /Safety \/ FVT @ SKU6/.test(t)
+       && /唯一能看到/.test(t));
+    ok("UI-41 the page takes its cases from the generated roster, not its own copy",
+       !!K && K.rule_pack === RULEPACK.pack_version && K.cases.length === 5
+       && K.cells_covered_by_roster.length === 7 && K.all_mismatch_cells.length === 7,
+       K ? (K.rule_pack + " " + (K.cells_covered_by_roster || []).length) : "no TRIALKIT");
+    var union = {};
+    (K.cases || []).forEach(function (c) {
+      (c.covers_cells || []).forEach(function (x) { union[x] = 1; }); });
+    ok("UI-41 C1-C5 together still cover 7/7 disagreeing cells",
+       Object.keys(union).length === 7, Object.keys(union).join(","));
+    var W = frame.contentWindow;
+    try { W.localStorage.removeItem(T.sessionKey); } catch (e) { /* ignore */ }
+    return load("index.html");
+  })
+  .then(function () {
+    ok("UI-42 the home page has a 参加团队试用 entry", /参加团队试用/.test(vis()));
+    return load("trial.html?case=C5");
+  })
+  .then(function () {
+    var t = vis(), d = doc();
+    ok("UI-43 picking a case auto-fills the project name", /TRIAL-C5-SKU6-WAVE/.test(t));
+    ok("UI-43 the case config is locked, not editable",
+       /案例配置不可修改/.test(t) && !d.getElementById("cpu"),
+       "no free input for key factors on the trial page");
+    ok("UI-43 C5's LATER_WAVE preset is shown, not left to the reviewer",
+       /后续波次/.test(t) && /cpu #5/.test(t) && /panel #3/.test(t));
+    var W = frame.contentWindow;
+    W.__dl = null;                                    // capture the export instead of downloading
+    W.Export.download = function (name, txt) { W.__dl = { name: name, text: txt }; };
+    W.document.getElementById("run-btn").click();
+    return settle(400);
+  })
+  .then(function () {
+    var d = doc(), t = vis();
+    ok("UI-44 running the case produced a result on the same page",
+       !d.getElementById("result-box").hidden && /Full Project/.test(t) && /Certification/.test(t));
+    ok("UI-44 C5 result really reaches 6 SKU and the Safety / FVT cell",
+       /6 SKU/.test(t) && /Safety \/ FVT @ SKU6/.test(t));
+    var fb = d.getElementById("feedback").innerText || "";
+    ok("UI-44 the feedback panel asks only about what this case produced",
+       /Safety \/ FVT @ SKU6/.test(fb) && /RF Certification \/ SIT @ SKU6/.test(fb)
+       && !/Green \/ SIT @ SKU3/.test(fb) && !/RF Certification \/ SIT @ SKU2/.test(fb)
+       && d.querySelectorAll("#fb-questions [data-k=\"answer\"]").length === 11
+       && d.querySelectorAll("#fb-questions select[data-k=\"answer\"]").length === 4,
+       "asked: " + (fb.match(/@ SKU\d/g) || []).join(","));
+    ok("UI-44 C5 is not asked to answer all 19 Owner questions as mandatory",
+       d.querySelectorAll("#fb-questions [data-k=\"answer\"]").length === 11
+       && d.querySelectorAll("#fb-optional-list [data-k=\"answer\"]").length === 10,
+       d.querySelectorAll("#fb-questions [data-k=\"answer\"]").length + " required / "
+       + d.querySelectorAll("#fb-optional-list [data-k=\"answer\"]").length + " optional");
+    ok("UI-45 export is blocked before anything is filled",
+       d.getElementById("submit-btn").disabled === true);
+    setQ("UI-USE", "answer", "");
+    var W = frame.contentWindow;
+    W.document.getElementById("fb-name").value = "演练员";
+    W.document.getElementById("fb-name").dispatchEvent(new W.Event("input", { bubbles: true }));
+    W.document.getElementById("fb-date").value = "2026-11-05";
+    W.document.getElementById("fb-date").dispatchEvent(new W.Event("input", { bubbles: true }));
+    return settle(120);
+  })
+  .then(function () {
+    var d = doc(), t = vis();
+    ok("UI-45 name + date alone still does not unlock the export",
+       d.getElementById("submit-btn").disabled === true
+       && /必答问题已全部作答/.test(t) && /0\/11/.test(t),
+       (t.match(/\u5fc5\u7b54\u95ee\u9898\u5df2\u5168\u90e8\u4f5c\u7b54\uff08[^）]*）/) || [""])[0]);
+    var c5 = frame.contentWindow.Trial.byId("C5");
+    (c5.questions_required || []).forEach(function (q) {
+      // v4.1: a mismatch cell is a dropdown, so typing here answers the free-text
+      // questions only and deliberately leaves the four cell questions blank.
+      if (!(q.options || []).length) { setQ(q.id, "answer", "同意"); }
+    });
+    return settle(120);
+  })
+  .then(function () {
+    var W = frame.contentWindow, d = doc();
+    var cells = (W.Trial.byId("C5").questions_required || [])
+      .filter(function (q) { return (q.options || []).length; });
+    var gA = gLast("REQUIRED_ANSWERED"), gR = gLast("ANSWER_REASON");
+    ok("UI-51 typing an answer everywhere else does not answer a v4.1 cell question",
+       cells.length === 4 && gA.pass === false && gR.pass === false
+       && cells.every(function (q) { return gA.detail.indexOf(q.cell) >= 0; })
+       && d.getElementById("submit-btn").disabled === true,
+       gA.label + " | " + gA.detail.slice(0, 54));
+    var rejected = setQ(cells[0].id, "answer", "同意");
+    ok("UI-51 a value the dropdown does not offer is refused, never half-stored",
+       rejected === "NOT_A_TEXT_CONTROL" && selectValue(cells[0].id) === "",
+       rejected + " value=[" + selectValue(cells[0].id) + "]");
+    return settle(80);
+  })
+  .then(function () {
+    var W = frame.contentWindow;
+    (W.Trial.byId("C5").questions_required || []).forEach(function (q) {
+      if ((q.options || []).length) { pickQ(q.id, "主表正确"); }
+    });
+    return settle(160);
+  })
+  .then(function () {
+    var W = frame.contentWindow, d = doc();
+    var why = (W.Trial.byId("C5").questions_required || [])
+      .filter(function (q) { return q.reason_required; });
+    var gA = gLast("REQUIRED_ANSWERED"), gR = gLast("ANSWER_REASON");
+    ok("UI-51 choosing an option without writing the reason keeps the export locked",
+       gA.pass === true && gR.pass === false
+       && why.every(function (q) { return gR.detail.indexOf(q.cell) >= 0; })
+       && d.getElementById("submit-btn").disabled === true,
+       gA.label + " | " + gR.detail.slice(0, 54));
+    why.forEach(function (q) {
+      setQ(q.id, "comment", "演练理由：主表推算与真实项目一致");
+    });
+    return settle(160);
+  })
+  .then(function () {
+    var d = doc(), W = frame.contentWindow;
+    ok("UI-45 every gate passes once the required answers are in",
+       d.getElementById("submit-btn").disabled === false
+       && !/❌/.test(d.getElementById("checks").textContent),
+       d.getElementById("checks").textContent.replace(/\s+/g, " ").slice(0, 200));
+    d.getElementById("submit-btn").click();
+    return settle(200);
+  })
+  .then(function () {
+    var W = frame.contentWindow, sub = null, err = "";
+    try { sub = JSON.parse((W.__dl || {}).text || "null"); } catch (e) { err = String(e); }
+    ok("UI-46 one submission file, named as the collector expects",
+       !!W.__dl && /^trial-submission-TRIAL-C5-SKU6-WAVE-\d{8}-\d{4}\.json$/.test(W.__dl.name || ""),
+       (W.__dl && W.__dl.name)
+         || ("nothing was captured - the page never produced a file. " + gateSummary()));
+    ok("UI-46 submission carries case, project, reviewer and the rule pack it was run on",
+       sub && sub.export_kind === "SAMPLE_REQUIREMENT_TRIAL_SUBMISSION"
+       && sub.case_id === "C5" && sub.project_name === "TRIAL-C5-SKU6-WAVE"
+       && sub.rule_package_version === RULEPACK.pack_version
+       && sub.reviewer.name === "演练员" && sub.reviewer.date === "2026-11-05"
+       && !!sub.generated_at_utc, sub ? sub.rule_package_version : err);
+    ok("UI-46 submission carries both the locked input and the full analysis",
+       sub && sub.analysis_input && sub.analysis_input.project_name === "TRIAL-C5-SKU6-WAVE"
+       && sub.analysis_input.key_factors.cpu.file_value === 5
+       && sub.analysis && sub.analysis.export_kind === "SAMPLE_REQUIREMENT_ANALYSIS"
+       && (sub.analysis.scenarios || sub.analysis.sku_result || []).length >= 1);
+    ok("UI-46 submission names the cells this case covered and proves it exercised them",
+       sub && sub.covered_mismatch_cells.length === 4
+       && sub.exercised_skus.join(",") === "4,5,6"
+       && sub.covered_mismatch_cells.every(function (c) { return c.exercised; }),
+       sub ? JSON.stringify(sub.covered_mismatch_cells.map(function (c) { return c.cell; })) : "");
+    ok("UI-46 every answer the page asked for is in the file, plus the optional ORIs",
+       sub && sub.feedback.required.length === 11
+       && sub.feedback.required.every(function (q) { return !!q.answer; })
+       && sub.feedback.required.filter(function (q) { return q.kind === "cell"; })
+            .every(function (q) { return ["附表正确", "主表正确",
+                                        "按条件区分", "无法判断"]
+                              .indexOf(q.answer) >= 0 && !!q.comment; })
+       && sub.feedback.optional_oris.length === 10
+       && sub.submit_checks.length === 7 && sub.submit_checks.every(function (g) { return g.pass; }),
+       sub ? sub.feedback.required.length + "/" + sub.feedback.optional_oris.length
+           + " checks=" + sub.submit_checks.length : "");
+    var cellQ = (W.Trial.byId("C5").questions_required || []).filter(function (q) {
+      return q.kind === "cell"; });
+    ok("UI-50 v4.1: every mismatch cell is a four-way choice with a mandatory reason",
+       cellQ.length === 4 && cellQ.every(function (q) {
+         return q.reason_required === true && q.form_version === "4.1"
+             && (q.options || []).join("|")
+                  === "附表正确|主表正确|按条件区分|无法判断"
+             && q.question.indexOf("附表") >= 0
+             && q.question.indexOf("主表推算") >= 0; }),
+       cellQ.length + " cell question(s)");
+    ok("UI-50 the returned submission says which form version it answers",
+       !!sub && sub.trial_form_version === "4.1"
+       && sub.feedback.required.filter(function (q) { return q.kind === "cell"; })
+            .every(function (q) { return !!q.comment; }),
+       (sub || {}).trial_form_version);
+    ok("UI-50 the submission records the form version and the reason gate passed",
+       !!sub && sub.trial_form_version === "4.1"
+       && sub.submit_checks.some(function (g) {
+            return g.id === "ANSWER_REASON" && g.pass; }),
+       (sub || {}).trial_form_version);
+    var T = W.Trial, c5 = T.byId("C5"), c2 = T.byId("C2"), ans = allRequiredTextanswers(c5);
+    var rev = { name: "演练员", date: "2026-11-05" };
+    var r2 = T.run(c2);
+    var stale = JSON.parse(JSON.stringify(r2.payload)); stale.rule_pack_version = "RP-V3.0";
+    var gOf = function (g, id) {
+      for (var i = 0; i < g.length; i++) { if (g[i].id === id) { return g[i]; } }
+      return { pass: null, detail: "gate missing" };
+    };
+    ok("UI-47 a stale rule pack fails the re-check even with everything else filled",
+       gOf(T.gates(c2, { id: "x", payload: stale }, allRequiredTextanswers(c2), rev),
+           "RULE_PACK").pass === false);
+    ok("UI-47 a case that never reached its target cells fails the re-check",
+       gOf(T.gates(c5, r2, ans, rev), "TARGET_CELLS_EXERCISED").pass === false,
+       gOf(T.gates(c5, r2, ans, rev), "TARGET_CELLS_EXERCISED").detail);
+    ok("UI-47 a blank required answer is not treated as agreement",
+       gOf(T.gates(c2, r2, {}, rev), "REQUIRED_ANSWERED").pass === false);
+    ok("UI-47 a missing name or date blocks the submission",
+       gOf(T.gates(c2, r2, allRequiredTextanswers(c2), { name: "", date: "2026-11-05" }),
+           "REVIEWER_NAME").pass === false
+       && gOf(T.gates(c2, r2, allRequiredTextanswers(c2), { name: "张三", date: "" }),
+              "REVIEW_DATE").pass === false);
+    ok("UI-47 a case that was never run cannot produce evidence",
+       gOf(T.gates(c2, null, allRequiredTextanswers(c2), rev), "CASE_RUN").pass === false);
+    ok("UI-48 a properly run case with its own cells passes all six checks",
+       T.canSubmit(T.gates(c2, r2, allRequiredTextanswers(c2), rev)),
+       JSON.stringify(T.gates(c2, r2, allRequiredTextanswers(c2), rev).filter(function (g) {
+         return !g.pass; }).map(function (g) { return g.id + ":" + g.detail; })));
+    var s2 = T.buildSubmission(c2, r2, allRequiredTextanswers(c2), rev, "真实项目：演练",
+                               T.gates(c2, r2, allRequiredTextanswers(c2), rev));
+    ok("UI-48 the locked config records that no override was used",
+       s2.certification_override_used === false && s2.config_locked.project_name === true);
+  })
+  /* every case must be loadable and runnable in one click, not just C5 */
+  .then(function () {
+    var ids = ["C1", "C2", "C3", "C4", "C5"], i = 0;
+    function next() {
+      if (i >= ids.length) { return Promise.resolve(); }
+      var id = ids[i++];
+      return load("trial.html?case=" + id)
+        .then(function () {
+          var W = frame.contentWindow, d = doc();
+          W.__dl = null;
+          W.Export.download = function (name, txt) { W.__dl = { name: name, text: txt }; };
+          var btn = d.getElementById("run-btn");
+          if (!btn) { ok("UI-49 " + id + " one-click load", false, "no run button after load");
+                      return next(); }
+          btn.click();
+          return settle(300);
+        })
+        .then(function () {
+          var W = frame.contentWindow, d = doc(), T = W.Trial;
+          var c = T.byId(id), t = d.getElementById("feedback").innerText || "";
+          var mine = c.covers_cells || [];
+          var foreign = [];
+          T.cases().forEach(function (o) {
+            if (o.case === id) { return; }
+            (o.covers_cells || []).forEach(function (x) {
+              if (mine.indexOf(x) < 0 && t.indexOf(x) >= 0 && foreign.indexOf(x) < 0) {
+                foreign.push(x); }
+            });
+          });
+          var absent = mine.filter(function (x) { return t.indexOf(x) < 0; });
+          ok("UI-49 " + id + " loads and runs in one click, and asks about exactly its own cells",
+             !d.getElementById("result-box").hidden && mine.length > 0
+             && absent.length === 0 && foreign.length === 0,
+             "missing " + absent.join(",") + " | foreign " + foreign.join(","));
+          var g = T.gates(c, T.run(c), allRequiredTextanswers(c),
+                          { name: "演练员", date: "2026-11-05" });
+          ok("UI-49 " + id + " can pass all six checks when its own case is run",
+             T.canSubmit(g), JSON.stringify(g.filter(function (x) { return !x.pass; })
+                            .map(function (x) { return x.id + ":" + x.detail; })));
+          return next();
+        });
+    }
+    return next();
+  })
+  /* ------- #34: the reason gate stays live, the session survives, v4.0 cannot leak ------- */
+  .then(function () {
+    // the page is sitting on a case with a complete answer set: empty one reason and the
+    // export must lock again, and say which cell it is complaining about
+    var W = frame.contentWindow, d = doc();
+    var why = (W.Trial.byId("C5").questions_required || [])
+      .filter(function (q) { return q.reason_required; });
+    setQ(why[0].id, "comment", "");
+    return settle(180).then(function () {
+      var gR = gLast("ANSWER_REASON");
+      var locked = doc().getElementById("submit-btn").disabled === true;
+      setQ(why[0].id, "comment", "\u6f14\u7ec3\u7406\u7531\uff1a\u4e0e\u771f\u5b9e\u9879\u76ee\u3001\u6e90\u6587\u4ef6\u5355\u5143\u683c\u4e00\u81f4");
+      return settle(180).then(function () {
+        ok("UI-51 the reason stays mandatory: emptying one locks the export and names it",
+           gR.pass === false && locked && gR.detail.indexOf(why[0].cell) >= 0
+           && gLast("ANSWER_REASON").pass === true
+           && doc().getElementById("submit-btn").disabled === false,
+           gR.detail.slice(0, 60));
+      });
+    });
+  })
+  .then(function () {
+    // the three cases nobody has handed in yet, submitted the way a reviewer does it
+    var ids = ["C3", "C4", "C5"], i = 0, done = [];
+    function one() {
+      if (i >= ids.length) { return Promise.resolve(done); }
+      var id = ids[i++];
+      return load("trial.html?case=" + id).then(function () {
+        var W = frame.contentWindow, d = doc();
+        W.__dl = null;
+        W.Export.download = function (name, txt) { W.__dl = { name: name, text: txt }; };
+        d.getElementById("run-btn").click();
+        return settle(420);
+      }).then(function () {
+        var W = frame.contentWindow, d = doc(), T = W.Trial;
+        var c = T.byId(id);
+        d.getElementById("fb-name").value = "\u6f14\u7ec3\u5458";
+        d.getElementById("fb-name").dispatchEvent(new W.Event("input", { bubbles: true }));
+        d.getElementById("fb-date").value = "2026-11-05";
+        d.getElementById("fb-date").dispatchEvent(new W.Event("input", { bubbles: true }));
+        var picks = answerCase(c, "\u4e3b\u8868\u6b63\u786e");
+        return settle(220).then(function () {
+          d.getElementById("submit-btn").click();
+          return settle(280).then(function () {
+            var r = { id: id, picks: picks };
+            if (W.__dl) {
+              r.name = W.__dl.name;
+              try {
+                var sj = JSON.parse(W.__dl.text);
+                var opts = ["\u9644\u8868\u6b63\u786e", "\u4e3b\u8868\u6b63\u786e",
+                            "\u6309\u6761\u4ef6\u533a\u5206", "\u65e0\u6cd5\u5224\u65ad"];
+                var rows = (sj.feedback.required || []).filter(function (q) {
+                  return q.kind === "cell"; });
+                r.case_id = sj.case_id;
+                r.form = sj.trial_form_version;
+                r.kind_ok = sj.export_kind === "SAMPLE_REQUIREMENT_TRIAL_SUBMISSION";
+                r.analysis_ok = !!sj.analysis && !!sj.analysis_input && !!sj.analysis_id;
+                r.checks = (sj.submit_checks || []).length;
+                r.all_pass = (sj.submit_checks || []).every(function (g) { return g.pass; });
+                r.options_ok = rows.length === (c.covers_cells || []).length
+                  && rows.every(function (q) {
+                       return opts.indexOf(q.answer) >= 0 && !!q.comment; });
+                r.cells_ok = (sj.covered_mismatch_cells || []).length
+                       === (c.covers_cells || []).length
+                   && (sj.covered_mismatch_cells || []).every(function (x) {
+                        return x.exercised; });
+              } catch (e) { r.parse_error = String(e); }
+            }
+            done.push(r);
+            return one();
+          });
+        });
+      });
+    }
+    return one();
+  })
+  .then(function (done) {
+    done = done || [];
+    ok("UI-54 C3, C4 and C5 each hand back one submission with all seven checks green",
+       done.length === 3 && done.every(function (r) {
+         return !!r.name && r.case_id === r.id && r.form === "4.1" && r.kind_ok
+             && r.analysis_ok && r.checks === 7 && r.all_pass && r.options_ok && r.cells_ok; }),
+       JSON.stringify(done.map(function (r) {
+         return r.id + "=" + (r.name || "NO FILE") + " checks" + r.checks
+              + (r.parse_error ? " " + r.parse_error : ""); })));
+    var W = frame.contentWindow, sj = W.Trial.session(W.Trial.byId("C5"));
+    ok("UI-55 the draft a v4.1 review leaves behind says which form it was written on",
+       !!sj && sj.form_version === "4.1" && !!sj.analysis_id && !!sj.submitted_at
+       && (sj.needs_reanswer || []).length === 0 && !!sj.name && !!sj.date,
+       JSON.stringify({ v: sj && sj.form_version, ran: !!(sj && sj.analysis_id),
+                        sent: !!(sj && sj.submitted_at) }));
+    return load("trial.html?case=C5");
+  })
+  .then(function () {
+    doc().getElementById("run-btn").click();
+    return settle(420);
+  })
+  .then(function () {
+    // a refresh has to bring the choices back, not a blank form
+    var W = frame.contentWindow, T = W.Trial, d = doc(), c = T.byId("C5");
+    var sj = T.session(c), back = 0, total = 0, bad = [];
+    (c.questions_required || []).forEach(function (q) {
+      var want = (sj.answers || {})[q.id] || {};
+      var ans = d.querySelector('[data-q="' + q.id + '"][data-k="answer"]');
+      var com = d.querySelector('[data-q="' + q.id + '"][data-k="comment"]');
+      total++;
+      if (ans && ans.value === (want.answer || "") && com && com.value === (want.comment || "")) {
+        back++;
+      } else { bad.push(q.id); }
+    });
+    ok("UI-56 a refresh restores the chosen option and its reason, not a blank form",
+       total === 11 && back === total && W.Trial.lastChecks.can_submit === true,
+       back + "/" + total + (bad.length ? " lost " + bad.join(",") : ""));
+    // now pretend this browser last saw the form when it was still v4.0
+    var all = {};
+    try { all = JSON.parse(W.localStorage.getItem(T.sessionKey) || "{}"); } catch (e) { all = {}; }
+    var legacy = {};
+    (c.questions_required || []).forEach(function (q) {
+      legacy[q.id] = { answer: "\u540c\u610f", comment: "v4.0 free text" }; });
+    all.C5 = { name: "\u65e7\u7248\u8bd5\u7528\u8005", date: "2026-11-01", answers: legacy };
+    W.localStorage.setItem(T.sessionKey, JSON.stringify(all));
+    return load("trial.html?case=C5");
+  })
+  .then(function () {
+    doc().getElementById("run-btn").click();
+    return settle(420);
+  })
+  .then(function () {
+    var W = frame.contentWindow, T = W.Trial, d = doc(), c = T.byId("C5");
+    var sj = T.session(c);
+    var cells = (c.questions_required || []).filter(function (q) { return q.options; });
+    var blank = cells.filter(function (q) { return selectValue(q.id) === ""; }).length;
+    var gA = gLast("REQUIRED_ANSWERED"), gR = gLast("ANSWER_REASON");
+    ok("UI-57 a v4.0 draft is never read as a v4.1 choice: the dropdown comes up empty",
+       blank === cells.length && gA.pass === false
+       && cells.every(function (q) { return gA.detail.indexOf(q.cell) >= 0; }),
+       blank + "/" + cells.length + " blank | " + gA.detail.slice(0, 44));
+    ok("UI-57 and the reason it left behind no longer satisfies the reason gate",
+       gR.pass === false && d.getElementById("submit-btn").disabled === true,
+       gR.detail.slice(0, 54));
+    ok("UI-57 the reviewer is told, and the old wording is kept rather than dropped",
+       !!d.querySelector("#fb-questions .note.bad") && !!d.querySelector(".small.bad")
+       && (sj.needs_reanswer || []).length === cells.length
+       && Object.keys(sj.legacy_v40 || {}).length === cells.length
+       && JSON.stringify(sj.legacy_v40 || {}).indexOf("v4.0 free text") >= 0
+       && sj.form_version === "4.1",
+       JSON.stringify({ needs: (sj.needs_reanswer || []).length,
+                        kept: Object.keys(sj.legacy_v40 || {}).length }));
+    // an answer recorded against a question nobody asked must not answer one someone did
+    var all2 = {};
+    try { all2 = JSON.parse(W.localStorage.getItem(T.sessionKey) || "{}"); } catch (e) { all2 = {}; }
+    all2.C5 = { name: "\u6f14\u7ec3\u5458", date: "2026-11-05", form_version: "4.1",
+                answers: { "CELL:NOT-A-QUESTION": { answer: "\u9644\u8868\u6b63\u786e",
+                                                    comment: "x" } } };
+    W.localStorage.setItem(T.sessionKey, JSON.stringify(all2));
+    return load("trial.html?case=C5");
+  })
+  .then(function () {
+    doc().getElementById("run-btn").click();
+    return settle(420);
+  })
+  .then(function () {
+    var W = frame.contentWindow, T = W.Trial;
+    var gA = gLast("REQUIRED_ANSWERED"), gR = gLast("ANSWER_REASON");
+    ok("UI-58 a case that does not exist is reported as missing, not as empty",
+       T.byId("C9") === null && T.byId("") === null,
+       "byId(C9)=" + String(T.byId("C9")));
+    ok("UI-58 an answer filed under a question this case never asked is not an answer",
+       gA.pass === false && gR.pass === false
+       && (T.byId("C5").questions_required || []).filter(function (q) {
+             return q.reason_required; }).every(function (q) {
+               return gR.detail.indexOf(q.cell) >= 0; }),
+       gA.label + " | " + gR.detail.slice(0, 44));
+  })
+  .then(function () { return load("trial.html?case=C5"); })
+  .then(function () {
+    return settle(300);
+  })
+  .then(function () {
+    var d = doc(), box = d.getElementById("case-input");
+    var n = box ? box.querySelector(".small.bad") : null;
+    ok("UI-59 C5 states under its wave table that the wave is an assumption, not a fact",
+       !!n && n.textContent.indexOf("Owner") >= 0
+       && box.textContent.indexOf("\u540e\u7eed\u6ce2\u6b21") >= 0
+       && box.textContent.indexOf("ORI-03") >= 0,
+       n ? n.textContent.slice(0, 70) : "no assumption note under the wave table");
+    return load("trial.html?case=C3");
+  })
+  .then(function () {
+    return settle(300);
+  })
+  .then(function () {
+    var d = doc(), box = d.getElementById("case-input");
+    ok("UI-59 a case that presets no wave shows no wave table and no such warning",
+       !!box && box.querySelector(".small.bad") === null
+       && box.textContent.indexOf("Wave Assignment") < 0,
+       box ? ("C3 case box mentions wave="
+              + (box.textContent.indexOf("Wave Assignment") >= 0)) : "no case box");
+  })
+  .then(function () { finish(); })
+  .catch(function (e) { results.push({ id: "FATAL", pass: false, detail: String(e) }); finish(); });
+
+  function finish() {
+    var pass = results.filter(function (r) { return r.pass; }).length;
+    document.getElementById("out").textContent = "@@UI@@" + JSON.stringify({
+      total: results.length, pass: pass,
+      status: pass === results.length ? "CLEAN" : "NOT CLEAN", results: results });
+  }
+})();
+</script>
+</body>
+</html>

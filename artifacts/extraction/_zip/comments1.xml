@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<comments xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="xr" xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision"><authors><author>tc={11C4ADE9-1437-4968-8E2A-5233375956B4}</author><author>tc={E291CEA6-6807-414B-8DDE-194C4EF2A099}</author><author>tc={8280463B-BC13-4312-92E7-0F684143A21D}</author><author>tc={7BF0A399-F750-4670-8504-16BA022C7922}</author><author>tc={E7434569-6282-4AFE-99FB-FFA850B44547}</author></authors><commentList><comment ref="D2" authorId="0" shapeId="0" xr:uid="{11C4ADE9-1437-4968-8E2A-5233375956B4}"><text><t>[线程批注]
+
+你的Excel版本可读取此线程批注; 但如果在更新版本的Excel中打开文件，则对批注所作的任何改动都将被删除。了解详细信息: https://go.microsoft.com/fwlink/?linkid=870924
+
+注释:
+    2*panel+1*CPU+1*GPU</t></text></comment><comment ref="E2" authorId="1" shapeId="0" xr:uid="{E291CEA6-6807-414B-8DDE-194C4EF2A099}"><text><t>[线程批注]
+
+你的Excel版本可读取此线程批注; 但如果在更新版本的Excel中打开文件，则对批注所作的任何改动都将被删除。了解详细信息: https://go.microsoft.com/fwlink/?linkid=870924
+
+注释:
+    3*panel+2*CPU+2*GPU</t></text></comment><comment ref="F2" authorId="2" shapeId="0" xr:uid="{8280463B-BC13-4312-92E7-0F684143A21D}"><text><t>[线程批注]
+
+你的Excel版本可读取此线程批注; 但如果在更新版本的Excel中打开文件，则对批注所作的任何改动都将被删除。了解详细信息: https://go.microsoft.com/fwlink/?linkid=870924
+
+注释:
+    4*panel+2*CPU+2*GPU</t></text></comment><comment ref="G2" authorId="3" shapeId="0" xr:uid="{7BF0A399-F750-4670-8504-16BA022C7922}"><text><t>[线程批注]
+
+你的Excel版本可读取此线程批注; 但如果在更新版本的Excel中打开文件，则对批注所作的任何改动都将被删除。了解详细信息: https://go.microsoft.com/fwlink/?linkid=870924
+
+注释:
+    5*panel+3*CPU+3*GPU</t></text></comment><comment ref="H2" authorId="4" shapeId="0" xr:uid="{E7434569-6282-4AFE-99FB-FFA850B44547}"><text><t>[线程批注]
+
+你的Excel版本可读取此线程批注; 但如果在更新版本的Excel中打开文件，则对批注所作的任何改动都将被删除。了解详细信息: https://go.microsoft.com/fwlink/?linkid=870924
+
+注释:
+    6*panel+3*CPU+3*GPU</t></text></comment></commentList></comments>

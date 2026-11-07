@@ -1,0 +1,4759 @@
+{
+ "pack_id": "RP-V3.0",
+ "pack_version": "RP-V3.0",
+ "schema_version": "3.0",
+ "engine_contract": "prototype/rules_v3.py is the behaviour reference; web/assets/core.js is a port of it and is checked against it by tools/check_python_web_parity.py",
+ "generated_at_utc": "2026-11-04T09:19:51+00:00",
+ "generator": "tools/build_rule_pack_v3.py",
+ "source_file": {
+  "file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+  "sha256": "48a360ff2ffd086e41d6b90a916f64fe52d9bc13efba07b8377b2945c846ab5a",
+  "sheet": "CS ODM sample ",
+  "sheet_dimensions": "A1:L95",
+  "workbook_creator": "William HC",
+  "workbook_last_modified_by": "Lingyu LY3 Rong",
+  "workbook_modified": "2026-10-30T08:51:32+00:00",
+  "extraction_sha_source_json": "see artifacts/extraction"
+ },
+ "baseline_id": "BASELINE-CS-ODM-001",
+ "quantity_model_version": "QMODEL-V3/3.0",
+ "status": "DRAFT_PENDING_OWNER",
+ "sku_definition": {
+  "SKU2": {
+   "row": 79,
+   "raw_text": "2SKU: 1-2*CPU +1*GPU+ 1-2*Panel +SSD SPEC*1 +Mem spec *1     VRAM match MB1 1-2 Source/X9/X11.                                                  N1x/Y9 source少，Volume 少",
+   "cpu": [
+    1,
+    2
+   ],
+   "gpu": [
+    1,
+    1
+   ],
+   "panel": [
+    1,
+    2
+   ],
+   "ssd": [
+    1,
+    1
+   ],
+   "mem": [
+    1,
+    1
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "VRAM match MB1 1-2 Source/X9/X11. | N1x/Y9 source少，Volume 少"
+  },
+  "SKU3": {
+   "row": 80,
+   "raw_text": "3SKU:2-3*CPU +2*GPU+ 1*Panel spec  +SSD SPEC*1 +Mem spec *1(or SSD/Mem spec *2, arrange  2nd wave)                                             Y7  DIS",
+   "cpu": [
+    2,
+    3
+   ],
+   "gpu": [
+    2,
+    2
+   ],
+   "panel": [
+    1,
+    1
+   ],
+   "ssd": [
+    1,
+    1
+   ],
+   "mem": [
+    1,
+    1
+   ],
+   "second_wave_clause": "em spec *1(or SSD/Mem spec *2, arrange  2nd wave)",
+   "has_second_wave_option": true,
+   "context_note": "(or SSD/Mem spec *2, arrange | 2nd wave) | Y7 | DIS"
+  },
+  "SKU4": {
+   "row": 81,
+   "raw_text": "4SKU:2-4*CPU +2-3*GPU+ 2*Panel spec  +SSD SPEC*2 +Mem spec *2                                                                                                                Pro/LOQ /Y5",
+   "cpu": [
+    2,
+    4
+   ],
+   "gpu": [
+    2,
+    3
+   ],
+   "panel": [
+    2,
+    2
+   ],
+   "ssd": [
+    2,
+    2
+   ],
+   "mem": [
+    2,
+    2
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "Pro/LOQ /Y5"
+  },
+  "SKU5": {
+   "row": 82,
+   "raw_text": "5SKU :3-4*CPU +3*GPU+ 2*Panel spec  +SSD SPEC*2 +Mem spec *2                                                                                                                   Pro/LOQ /Y5",
+   "cpu": [
+    3,
+    4
+   ],
+   "gpu": [
+    3,
+    3
+   ],
+   "panel": [
+    2,
+    2
+   ],
+   "ssd": [
+    2,
+    2
+   ],
+   "mem": [
+    2,
+    2
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "Pro/LOQ /Y5"
+  },
+  "SKU6": {
+   "row": 83,
+   "raw_text": "6SKU::4-5*CPU +3*GPU+ 2-3*Panel spec  +SSD SPEC*2 +Mem spec *2-3                                                                                                            ID./ME*2 ，Pro上",
+   "cpu": [
+    4,
+    5
+   ],
+   "gpu": [
+    3,
+    3
+   ],
+   "panel": [
+    2,
+    3
+   ],
+   "ssd": [
+    2,
+    2
+   ],
+   "mem": [
+    2,
+    3
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "ID./ME*2 ，Pro上"
+  }
+ },
+ "sku_definition_header_comments": {
+  "2": {
+   "cell": "D2",
+   "panel": 2,
+   "cpu": 1,
+   "gpu": 1,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "2*panel+1*CPU+1*GPU"
+  },
+  "3": {
+   "cell": "E2",
+   "panel": 3,
+   "cpu": 2,
+   "gpu": 2,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "3*panel+2*CPU+2*GPU"
+  },
+  "4": {
+   "cell": "F2",
+   "panel": 4,
+   "cpu": 2,
+   "gpu": 2,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "4*panel+2*CPU+2*GPU"
+  },
+  "5": {
+   "cell": "G2",
+   "panel": 5,
+   "cpu": 3,
+   "gpu": 3,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "5*panel+3*CPU+3*GPU"
+  },
+  "6": {
+   "cell": "H2",
+   "panel": 6,
+   "cpu": 3,
+   "gpu": 3,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "6*panel+3*CPU+3*GPU"
+  }
+ },
+ "functions": [
+  {
+   "function_id": "F_HW",
+   "name": "HW",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 3,
+    "sit": 4
+   },
+   "purpose_text": "Power测试*1/phase; (HQ:EE noise 是Power RD 自己测试，1unit/sku,)\nEE breakdown+issue debug*1by sku, 最高配sku*2unit,\nHDMI认证*3/phase (FVT 开始送测，如果FVT PASS(一般都能pass),SIT 无需再送测, base QS GPU）（HQ 是放在认证RD）\nTBT*2/Phase，FVT 测EV +SIT 测试FV.(HQ FV 是在sw team 做)\nBattery life  1 unit/ sku, Compal 是 3 units/phase.\nOption:\nBattery team 1*vendor*sku*phase for Q test for new source；\nFor old source，Compal/HQ不需要样机。(LCFC SIT 1source *1units)\nCPU OC *2 &GPU OC ：\n    LCFC:   CPU OC *2 &GPU OC *2  /phase .\nCompal:  CPU OC *2 &GPU OC *2  /phase .\n        HQ: Leverage EE unit.",
+   "status_text": "OK"
+  },
+  {
+   "function_id": "F_ME",
+   "name": "ME",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 5,
+    "sit": 6
+   },
+   "purpose_text": "for debug*1 or 0台 to common with ME PA.",
+   "status_text": null
+  },
+  {
+   "function_id": "F_THM",
+   "name": "THM",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 7,
+    "sit": 8
+   },
+   "purpose_text": "LCFC:component  *1；skin*1；Acountic 1unit,thm capacity test*1\nthm module vendor debug*1.Fan vendor*1\nDust shipment*1（L/T 1wk,can leverage vendor unit）\nCompal total 6unit for 1unit test in Acoustic team.\nHQ: total 6unit.",
+   "status_text": "ok"
+  },
+  {
+   "function_id": "F_AUDIO",
+   "name": "Audio",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 9,
+    "sit": 10
+   },
+   "purpose_text": "MIC effect tuning*  1 \n Audio Nahimic *1\nScenic tuning* 1 \nResonance Test  /Sound Quality Test * 1-->2\nfianl : LCFC/HQ/Compal 都可按照4-5unit/phase.\nOption：\nSmart AMP: add 1 unit",
+   "status_text": null
+  },
+  {
+   "function_id": "F_RF_TEST",
+   "name": "RF Test",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 11,
+    "sit": 12
+   },
+   "purpose_text": "天线调试+RD 自测+TDMS issue*1\nnoise测试，conductive*1（RD 和3nd 实验室common）\nnoise测试，air tput*1（RD 和3nd 实验室common）\nPre-SAR/RSE(x1)*1\nfianl : LCFC/HQ/Compal 都可按照4-5unit/phase.",
+   "status_text": null
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "name": "EMC Test",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 13,
+    "sit": 14
+   },
+   "purpose_text": "Compal ：EMI/ESD/EMS測試機台6台，for 6 sku, 1unit/sku.\nHQ: 1 unit/sku;\nshengfei suggest: 1unit/sku, Add 2 additional backup units,and for leading,2-3 unit/sku.",
+   "status_text": "待LCFC update"
+  },
+  {
+   "function_id": "F_SED",
+   "name": "SED",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 15,
+    "sit": 16
+   },
+   "purpose_text": "base sku 搭配不同的panel.\nx-rite FVT *source,normal 1 /sku\nHDR cer.SIT*source,normal 1 /sku, \nPanel debug*2/phase （common with camera debug）\nOption:\nCamera win Hello cer. unit(for IR feature)\nOEM exception: 需要送测MS,  source *2-3 /FVT phase。(normal only FVT) vendor*1/FVT.此范畴适用于leading的项目，第一个送测的.\nPQL:大部分属于此范畴，只需要提供报告，无需送样机给MS, vendor*1 units/FVT phase.\nDolby vision FVT *Cable 线，follow design（一般OLED 和IPS Cable不同，SDC和EDO OLED cable不同）,remove from G12.\nPanel related  new feature tuning: case by case.\nESI test: LCFC need for source leading project need 2 unit.\nTP FW Tuning*3/ FVT. SIT no need.(for new source,MP source no need);\nX-rite-HDR 校色to 印度： source *1 unit/FVT Phase.sit no need.",
+   "status_text": null
+  },
+  {
+   "function_id": "F_SS",
+   "name": "SS",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 17,
+    "sit": 18
+   },
+   "purpose_text": "BIOS*4/phase\nEC*1-- 2/Phase\nSA HLK*1/SKU\nSA *5/phase \ndebug*2(compal 无此team和需求,but MS*4 &jump start*2 in SIT PHASE)\nPreload*1/SKU\nOS*1/phase",
+   "status_text": "LCFC BIOS and SA 建议根据复杂度，4-6unit /phase.\nHQ 数量偏少"
+  },
+  {
+   "function_id": "F_PD",
+   "name": "PD",
+   "category": "RD",
+   "source_rows": {
+    "fvt": 19,
+    "sit": 20
+   },
+   "purpose_text": "1unit for debug",
+   "status_text": null
+  },
+  {
+   "function_id": "F_SWPA",
+   "name": "SWPA",
+   "category": "PA",
+   "source_rows": {
+    "fvt": 21,
+    "sit": 22
+   },
+   "purpose_text": "follow PPA sample standard 1.0.\nSW PA 样机数量包含了HLK*1/sku +EE noise test*1/sku.\n比如HQ EE noise是pwr RD 测试,Compal HLK是pre-load 测试，需要对应的function做相应的扣除和添加。",
+   "status_text": null
+  },
+  {
+   "function_id": "F_MEPA",
+   "name": "MEPA",
+   "category": "PA",
+   "source_rows": {
+    "fvt": 23,
+    "sit": 24
+   },
+   "purpose_text": null,
+   "status_text": "LCFC:Confirmed ok as left data. \nHQ /Compal :to be clarify."
+  },
+  {
+   "function_id": "F_HW_PA",
+   "name": "HW PA",
+   "category": "PA",
+   "source_rows": {
+    "fvt": 25,
+    "sit": 26
+   },
+   "purpose_text": null,
+   "status_text": "HQ gap比较大"
+  },
+  {
+   "function_id": "F_EMC",
+   "name": "EMC",
+   "category": "CERT",
+   "source_rows": {
+    "fvt": 27,
+    "sit": 28
+   },
+   "purpose_text": "认证*1/sku+全套的KP(只要SIT)",
+   "status_text": null
+  },
+  {
+   "function_id": "F_GREEN",
+   "name": "Green",
+   "category": "CERT",
+   "source_rows": {
+    "fvt": 29,
+    "sit": 30
+   },
+   "purpose_text": "越南DN1 + 韩国DN 1台+ CEL*CPU value(EEcofirm)*2 + BCS 2台\nOption:\nEPEAT: 5unit. （主要做跌落测试，L/T2-3WK,HQ LOQ 是share 其他function 样机）\n Gaming pro系列项目不符合EPEAT2025的要求,还未做过。\nE-Star9.0 *1；\nUL golden*1 (Gaming performance and comfort)跟GPU5080以上\neyesafe/LBL/HGPD Golden* N台 ,如果Panel数量为N，则样机数量为N",
+   "status_text": null
+  },
+  {
+   "function_id": "F_SAFETY",
+   "name": "Safety",
+   "category": "CERT",
+   "source_rows": {
+    "fvt": 31,
+    "sit": 32
+   },
+   "purpose_text": "FVT:CB 5台(battery source +1 自测)，UL4200A（纽扣电池） 1台-->0 (现在基本内置Batt)， BIS 1 台.\nCommon charge 2 台，\nSIT:CCC 2 (1+CPU 核心数*1pcs)+ 韩国 1 + 内测 1\nNOM 1  + EAC 1(哈萨克斯坦1pcs maybe)",
+   "status_text": null
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "name": "RF Certification",
+   "category": "CERT",
+   "source_rows": {
+    "fvt": 33,
+    "sit": 34
+   },
+   "purpose_text": "this data for 2 antenna source +2 wlan source refrence:\n1.SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；\n2.CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；\n3.FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;\n4.印尼* 2  .\n5.Mexico *1.\n6.资安*2（欧盟网络安全）",
+   "status_text": null
+  },
+  {
+   "function_id": "F_BIOS",
+   "name": "BIOS",
+   "category": "VENDOR",
+   "source_rows": {
+    "fvt": 35,
+    "sit": 36
+   },
+   "purpose_text": null,
+   "status_text": null
+  },
+  {
+   "function_id": "F_ITE",
+   "name": "ITE",
+   "category": "VENDOR",
+   "source_rows": {
+    "fvt": 37,
+    "sit": 38
+   },
+   "purpose_text": "Total one phase on unit",
+   "status_text": null
+  },
+  {
+   "function_id": "F_NV",
+   "name": "NV",
+   "category": "VENDOR",
+   "source_rows": {
+    "fvt": 39,
+    "sit": 40
+   },
+   "purpose_text": "台北，印度，美国各2台  TTL 6pcs",
+   "status_text": null
+  },
+  {
+   "function_id": "F_INTEL",
+   "name": "INTEL",
+   "category": "VENDOR",
+   "source_rows": {
+    "fvt": 41,
+    "sit": 42
+   },
+   "purpose_text": "6PCS",
+   "status_text": null
+  },
+  {
+   "function_id": "F_MFG",
+   "name": "MFG",
+   "category": "MFG",
+   "source_rows": {
+    "fvt": 43,
+    "sit": 44
+   },
+   "purpose_text": "红丹test",
+   "status_text": null
+  }
+ ],
+ "sku_range": [
+  2,
+  3,
+  4,
+  5,
+  6
+ ],
+ "phases": [
+  "FVT",
+  "SIT"
+ ],
+ "dims": [
+  "cpu",
+  "gpu",
+  "panel",
+  "ssd",
+  "mem"
+ ],
+ "dim_weight": {
+  "cpu": 1.0,
+  "gpu": 1.6,
+  "panel": 1.0,
+  "ssd": 1.4,
+  "mem": 1.4
+ },
+ "verdict_weight": {
+  "MATCH": 1.0,
+  "PARTIAL_MATCH": 0.4,
+  "MISMATCH": 0.0,
+  "UNKNOWN": 0.0
+ },
+ "weights_note": "ORI-08: agent-set, not Owner-confirmed. Ranking only - DEC-01 forbids using them to force a single answer out of a tie.",
+ "quantity_model_enum": [
+  "PER_SKU_RATE",
+  "PER_PHASE_FIXED",
+  "PER_PROJECT_FIXED",
+  "FORMULA_DRIVEN",
+  "UNRESOLVED"
+ ],
+ "evidence_role_enum": [
+  "PRIMARY_QUANTITY_MODEL",
+  "DERIVED_TOTAL_VALIDATION",
+  "BREAKDOWN_EVIDENCE",
+  "ABSOLUTE_RESTATEMENT",
+  "UNRESOLVED_COMMENT"
+ ],
+ "cells": [
+  {
+   "function_id": "F_HW",
+   "function_name": "HW",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 6.0,
+    "SKU3": 4.3,
+    "SKU4": 3.5,
+    "SKU5": 3.0,
+    "SKU6": 2.7
+   },
+   "main_table_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_HW:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 3,
+    "secondary_row": null,
+    "status_text": "OK",
+    "remark_text": "HDMI 样机是根据connector source定的.\n一般是3家source. Compal 样机是2unit/phase.\nremark option 的部分，还没加到样机data里面。\nPCIE*1 PCBA\nUSB3/2*1 PCBA\nCrystal*1 PCBA\naudio*1 PCBA\nHW EE debug *4 PCBA\nHW EA team test *1 PCBA\nITE KB debug *1 PCBA\nVRAM tuning*7"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_HW",
+   "function_name": "HW",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 6.0,
+    "SKU3": 4.3,
+    "SKU4": 3.5,
+    "SKU5": 3.0,
+    "SKU6": 2.7
+   },
+   "main_table_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_HW:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 4,
+    "secondary_row": null,
+    "status_text": "OK",
+    "remark_text": "HDMI 样机是根据connector source定的.\n一般是3家source. Compal 样机是2unit/phase.\nremark option 的部分，还没加到样机data里面。\nPCIE*1 PCBA\nUSB3/2*1 PCBA\nCrystal*1 PCBA\naudio*1 PCBA\nHW EE debug *4 PCBA\nHW EA team test *1 PCBA\nITE KB debug *1 PCBA\nVRAM tuning*7"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_ME",
+   "function_name": "ME",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_ME:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 5,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_ME",
+   "function_name": "ME",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_ME:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 6,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_THM",
+   "function_name": "THM",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.5,
+    "SKU3": 2.3,
+    "SKU4": 1.8,
+    "SKU5": 1.4,
+    "SKU6": 1.2
+   },
+   "main_table_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_THM:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 7,
+    "secondary_row": null,
+    "status_text": "ok",
+    "remark_text": "其他配置给PCBA"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_THM",
+   "function_name": "THM",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.5,
+    "SKU3": 2.3,
+    "SKU4": 1.8,
+    "SKU5": 1.4,
+    "SKU6": 1.2
+   },
+   "main_table_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_THM:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 8,
+    "secondary_row": null,
+    "status_text": "ok",
+    "remark_text": "其他配置给PCBA"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_AUDIO",
+   "function_name": "Audio",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.6
+   },
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_AUDIO:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 9,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "跟着platform 走，leading的样机相对多，\n其后项目适当减少,common driver."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_AUDIO",
+   "function_name": "Audio",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.6
+   },
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_AUDIO:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 10,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "跟着platform 走，leading的样机相对多，\n其后项目适当减少,common driver."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_RF_TEST",
+   "function_name": "RF Test",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.5,
+    "SKU3": 1.7,
+    "SKU4": 1.3,
+    "SKU5": 1.0,
+    "SKU6": 0.8
+   },
+   "main_table_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_RF_TEST:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 11,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_RF_TEST",
+   "function_name": "RF Test",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.5,
+    "SKU3": 1.7,
+    "SKU4": 1.3,
+    "SKU5": 1.0,
+    "SKU6": 0.8
+   },
+   "main_table_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_RF_TEST:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 12,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_EMC_TEST:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 13,
+    "secondary_row": null,
+    "status_text": "待LCFC update",
+    "remark_text": "一台EMI,一台EMS.一台backup. 加PCBA*SKU*1PCS？"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_EMC_TEST:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 14,
+    "secondary_row": null,
+    "status_text": "待LCFC update",
+    "remark_text": "一台EMI,一台EMS.一台backup. 加PCBA*SKU*1PCS？"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SED",
+   "function_name": "SED",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.7,
+    "SKU4": 1.5,
+    "SKU5": 1.4,
+    "SKU6": 1.3
+   },
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_SED:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 15,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "具体到Win Hello cer.跟着camera走，如果已经有其他项目送样了，可以不用再次送样。\n现在都是Panel HDR的.Dolby vision 是否一定需要了?跟team 去check? If no, 那么Dolby FVT 可以减少。--PM confirm delete it from G12."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SED",
+   "function_name": "SED",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.7,
+    "SKU4": 1.5,
+    "SKU5": 1.4,
+    "SKU6": 1.3
+   },
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_SED:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 16,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "具体到Win Hello cer.跟着camera走，如果已经有其他项目送样了，可以不用再次送样。\n现在都是Panel HDR的.Dolby vision 是否一定需要了?跟team 去check? If no, 那么Dolby FVT 可以减少。--PM confirm delete it from G12."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SS",
+   "function_name": "SS",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 9.0,
+    "SKU3": 7.0,
+    "SKU4": 5.5,
+    "SKU5": 5.0,
+    "SKU6": 4.4
+   },
+   "main_table_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_SS:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 17,
+    "secondary_row": null,
+    "status_text": "LCFC BIOS and SA 建议根据复杂度，4-6unit /phase.\nHQ 数量偏少",
+    "remark_text": "各家ODM 数据gap挺大的，跟TPM gap也有，需要重点沟通。\nPre-load  BIOS Driver \n都跟KP 强相关，理论上会要求sku*1.\n可以根据平台成熟度协商.或者是否可以rework方式节省样机?\nODM BIOS *10 \n           driver *10\n        OS*2\n         EC*5"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SS",
+   "function_name": "SS",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 9.0,
+    "SKU3": 7.0,
+    "SKU4": 5.5,
+    "SKU5": 5.0,
+    "SKU6": 4.4
+   },
+   "main_table_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_SS:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 18,
+    "secondary_row": null,
+    "status_text": "LCFC BIOS and SA 建议根据复杂度，4-6unit /phase.\nHQ 数量偏少",
+    "remark_text": "各家ODM 数据gap挺大的，跟TPM gap也有，需要重点沟通。\nPre-load  BIOS Driver \n都跟KP 强相关，理论上会要求sku*1.\n可以根据平台成熟度协商.或者是否可以rework方式节省样机?\nODM BIOS *10 \n           driver *10\n        OS*2\n         EC*5"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_PD",
+   "function_name": "PD",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_PD:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 19,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "LNV+ODM PD total 1 unit"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_PD",
+   "function_name": "PD",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_PD:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 20,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "LNV+ODM PD total 1 unit"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SWPA",
+   "function_name": "SWPA",
+   "category": "PA",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 28.0,
+    "SKU3": 24.0,
+    "SKU4": 20.0,
+    "SKU5": 18.0,
+    "SKU6": 17.0
+   },
+   "main_table_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_SWPA:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 21,
+    "secondary_row": 68,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SWPA",
+   "function_name": "SWPA",
+   "category": "PA",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 28.0,
+    "SKU3": 24.0,
+    "SKU4": 20.0,
+    "SKU5": 18.0,
+    "SKU6": 17.0
+   },
+   "main_table_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_SWPA:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 22,
+    "secondary_row": 69,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_MEPA",
+   "function_name": "MEPA",
+   "category": "PA",
+   "phase": "FVT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 36.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 16.0,
+    "SKU3": 12.0,
+    "SKU4": 9.0,
+    "SKU5": 7.2,
+    "SKU6": 6.0
+   },
+   "main_table_absolute": {
+    "SKU2": 32.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "owner_review_required": true,
+   "is_temporary_model": true,
+   "status": "DRAFT_PENDING_OWNER",
+   "rule_id": "QM3:F_MEPA:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 23,
+    "secondary_row": 70,
+    "status_text": "LCFC:Confirmed ok as left data. \nHQ /Compal :to be clarify.",
+    "remark_text": "CS: 1 phase 36 units\nPCB refresh: 1 phase 12-16units."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_MEPA",
+   "function_name": "MEPA",
+   "category": "PA",
+   "phase": "SIT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 36.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 16.0,
+    "SKU3": 12.0,
+    "SKU4": 9.0,
+    "SKU5": 7.2,
+    "SKU6": 6.0
+   },
+   "main_table_absolute": {
+    "SKU2": 32.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "owner_review_required": true,
+   "is_temporary_model": true,
+   "status": "DRAFT_PENDING_OWNER",
+   "rule_id": "QM3:F_MEPA:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 24,
+    "secondary_row": 71,
+    "status_text": "LCFC:Confirmed ok as left data. \nHQ /Compal :to be clarify.",
+    "remark_text": "CS: 1 phase 36 units\nPCB refresh: 1 phase 12-16units."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_HW_PA",
+   "function_name": "HW PA",
+   "category": "PA",
+   "phase": "FVT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 1.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.7
+   },
+   "main_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.2
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "owner_review_required": true,
+   "is_temporary_model": true,
+   "status": "DRAFT_PENDING_OWNER",
+   "rule_id": "QM3:F_HW_PA:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 25,
+    "secondary_row": 72,
+    "status_text": "HQ gap比较大",
+    "remark_text": "TTL3- 4unit one phase\ntest EE/THM"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_HW_PA",
+   "function_name": "HW PA",
+   "category": "PA",
+   "phase": "SIT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 1.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.7
+   },
+   "main_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.2
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "owner_review_required": true,
+   "is_temporary_model": true,
+   "status": "DRAFT_PENDING_OWNER",
+   "rule_id": "QM3:F_HW_PA:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 26,
+    "secondary_row": 73,
+    "status_text": "HQ gap比较大",
+    "remark_text": "TTL3- 4unit one phase\ntest EE/THM"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "rule_id": "QM3:F_EMC:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 27,
+    "secondary_row": 53,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 53,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 5.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 1.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 5.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "rule_id": "QM3:F_EMC:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 28,
+    "secondary_row": 54,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 54,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 2.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 2.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 3.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 3.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 4.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 4.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 5.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 5.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 6.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "rule_id": "QM3:F_GREEN:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 29,
+    "secondary_row": 55,
+    "status_text": null,
+    "remark_text": "FVT for RD 内测,leverage safety."
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 55,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 9.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 3.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 9.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": true,
+   "is_temporary_model": false,
+   "status": "DRAFT_PENDING_OWNER",
+   "rule_id": "QM3:F_GREEN:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 30,
+    "secondary_row": 56,
+    "status_text": null,
+    "remark_text": "FVT for RD 内测,leverage safety."
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 56,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 9.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": -3.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 1.5,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 1.2,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     }
+    },
+    "statuses": [
+     "MISMATCH",
+     "VERIFIED"
+    ],
+    "fully_verified": false,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 10.0,
+    "SKU3": 9.0,
+    "SKU4": 10.0,
+    "SKU5": 10.0,
+    "SKU6": 9.6
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 5.0,
+    "SKU3": 3.0,
+    "SKU4": 2.5,
+    "SKU5": 2.0,
+    "SKU6": 1.6
+   },
+   "main_table_absolute": {
+    "SKU2": 10.0,
+    "SKU3": 9.0,
+    "SKU4": 10.0,
+    "SKU5": 10.0,
+    "SKU6": 9.6
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": true,
+   "is_temporary_model": false,
+   "status": "DRAFT_PENDING_OWNER",
+   "rule_id": "QM3:F_SAFETY:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 31,
+    "secondary_row": 57,
+    "status_text": null,
+    "remark_text": "BIS: India catelog name *1pcs/SIT PHASE/BATTERY SPEC/ADP SPEC.\nadapter rating label* battery rating label."
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 57,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 5.0,
+      "derived_total": 10.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 9.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 9.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 2.5,
+      "derived_total": 10.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 2.0,
+      "derived_total": 10.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.6,
+      "derived_total": 9.6,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.4,
+      "verification_status": "MISMATCH",
+      "appendix_row": 57,
+      "main_table_row": 31
+     }
+    },
+    "statuses": [
+     "MISMATCH",
+     "VERIFIED"
+    ],
+    "fully_verified": false,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "rule_id": "QM3:F_SAFETY:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 32,
+    "secondary_row": 58,
+    "status_text": null,
+    "remark_text": "BIS: India catelog name *1pcs/SIT PHASE/BATTERY SPEC/ADP SPEC.\nadapter rating label* battery rating label."
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 58,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 2.0,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 1.5,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 1.2,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "rule_id": "QM3:F_RF_CERTIFICATION:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 33,
+    "secondary_row": 59,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 59,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": {
+    "evidence_role": "BREAKDOWN_EVIDENCE",
+    "source_cell": "J33",
+    "disposition": "DECLARED_NOT_GENERALIZED",
+    "additive_to_main_table_result": false,
+    "explains_main_table_quantity": false,
+    "explains_appendix_total": false,
+    "declared_reference_scenario": {
+     "antenna_source_count": 2,
+     "wlan_card_count": 2
+    },
+    "bracket": {
+     "min_no_whole_machine_fcc": 11.0,
+     "max_full_fcc": 27.0,
+     "main_table_derived_15_inside_bracket": true,
+     "appendix_totals_8_to_10_inside_bracket": false,
+     "appendix_sits_below_the_no_fcc_floor": true,
+     "reading": "15 is inside the bracket: consistent with a mix where some WLAN cards take the C1PC/module route (no whole machine) and others do not. The Appendix 8-10 sits BELOW the floor of a 2-antenna / 2-WLAN-card project, so the Appendix cannot be the same reference scenario as J33. Neither value is reproducible from J33 alone."
+    },
+    "antenna_wlan_are": "BUSINESS_COMPOSITION_DESCRIPTION - the note explains why RF certification consumes machines (antenna source x WLAN card matrix). It is not an executable calculation variable in the workbook: no cell formula consumes it.",
+    "already_inside_main_table_rate": "CANNOT_BE_PROVEN_FROM_THE_WORKBOOK",
+    "double_count_risk_if_added": "HIGH - the Main Table per-SKU rate for RF certification is already the whole-machine count for that SKU; adding the J33 line items on top would count the same machines twice",
+    "mvp_requires_antenna_wlan_input_now": false,
+    "reference_total_under_readings": {
+     "CERTIFICATION_SUBSET": {
+      "total": 11.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 0.0
+      },
+      "assumption": "FCC whole machines not required where the C1PC/module route applies, per the wording inside J33 itself"
+     },
+     "FULL": {
+      "total": 27.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 16.0
+      },
+      "assumption": "every numbered line item needs its own whole machines, FCC = intel_wlan x antenna x 4"
+     }
+    }
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 15.0,
+    "SKU3": 15.0,
+    "SKU4": 15.0,
+    "SKU5": 15.0,
+    "SKU6": 15.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 7.5,
+    "SKU3": 5.0,
+    "SKU4": 3.75,
+    "SKU5": 3.0,
+    "SKU6": 2.5
+   },
+   "main_table_absolute": {
+    "SKU2": 15.0,
+    "SKU3": 15.0,
+    "SKU4": 15.0,
+    "SKU5": 15.0,
+    "SKU6": 15.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "owner_review_required": true,
+   "is_temporary_model": false,
+   "status": "DRAFT_PENDING_OWNER",
+   "rule_id": "QM3:F_RF_CERTIFICATION:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 34,
+    "secondary_row": 60,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 60,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 7.5,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 8.0,
+      "delta": -7.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 5.0,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 9.0,
+      "delta": -6.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 3.75,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 10.0,
+      "delta": -5.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 10.0,
+      "delta": -5.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 2.5,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 10.0,
+      "delta": -5.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     }
+    },
+    "statuses": [
+     "MISMATCH"
+    ],
+    "fully_verified": false,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": {
+    "evidence_role": "BREAKDOWN_EVIDENCE",
+    "source_cell": "J33",
+    "disposition": "DECLARED_NOT_GENERALIZED",
+    "additive_to_main_table_result": false,
+    "explains_main_table_quantity": false,
+    "explains_appendix_total": false,
+    "declared_reference_scenario": {
+     "antenna_source_count": 2,
+     "wlan_card_count": 2
+    },
+    "bracket": {
+     "min_no_whole_machine_fcc": 11.0,
+     "max_full_fcc": 27.0,
+     "main_table_derived_15_inside_bracket": true,
+     "appendix_totals_8_to_10_inside_bracket": false,
+     "appendix_sits_below_the_no_fcc_floor": true,
+     "reading": "15 is inside the bracket: consistent with a mix where some WLAN cards take the C1PC/module route (no whole machine) and others do not. The Appendix 8-10 sits BELOW the floor of a 2-antenna / 2-WLAN-card project, so the Appendix cannot be the same reference scenario as J33. Neither value is reproducible from J33 alone."
+    },
+    "antenna_wlan_are": "BUSINESS_COMPOSITION_DESCRIPTION - the note explains why RF certification consumes machines (antenna source x WLAN card matrix). It is not an executable calculation variable in the workbook: no cell formula consumes it.",
+    "already_inside_main_table_rate": "CANNOT_BE_PROVEN_FROM_THE_WORKBOOK",
+    "double_count_risk_if_added": "HIGH - the Main Table per-SKU rate for RF certification is already the whole-machine count for that SKU; adding the J33 line items on top would count the same machines twice",
+    "mvp_requires_antenna_wlan_input_now": false,
+    "reference_total_under_readings": {
+     "CERTIFICATION_SUBSET": {
+      "total": 11.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 0.0
+      },
+      "assumption": "FCC whole machines not required where the C1PC/module route applies, per the wording inside J33 itself"
+     },
+     "FULL": {
+      "total": 27.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 16.0
+      },
+      "assumption": "every numbered line item needs its own whole machines, FCC = intel_wlan x antenna x 4"
+     }
+    }
+   }
+  },
+  {
+   "function_id": "F_BIOS",
+   "function_name": "BIOS",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_BIOS:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 35,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_BIOS",
+   "function_name": "BIOS",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_BIOS:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 36,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_ITE",
+   "function_name": "ITE",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_ITE:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 37,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "if no lighting feature,no need"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_ITE",
+   "function_name": "ITE",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_ITE:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 38,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "if no lighting feature,no need"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_NV:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 39,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_NV:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 40,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_INTEL:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 41,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_INTEL:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 42,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_MFG",
+   "function_name": "MFG",
+   "category": "MFG",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_MFG:FVT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 43,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "Total one phase on unit"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  },
+  {
+   "function_id": "F_MFG",
+   "function_name": "MFG",
+   "category": "MFG",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   },
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "owner_review_required": false,
+   "is_temporary_model": false,
+   "status": "DERIVED_CONSISTENT",
+   "rule_id": "QM3:F_MFG:SIT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 44,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "Total one phase on unit"
+   },
+   "validation": null,
+   "breakdown_evidence": null
+  }
+ ],
+ "certification_verification": {
+  "grid": [
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "FVT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "EMC FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 27,
+     "appendix_row": 53,
+     "main_table_cells": "C327:H327",
+     "appendix_cells": "C353:H353"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "FVT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "EMC FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 27,
+     "appendix_row": 53,
+     "main_table_cells": "C427:H427",
+     "appendix_cells": "C453:H453"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "FVT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "EMC FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 27,
+     "appendix_row": 53,
+     "main_table_cells": "C527:H527",
+     "appendix_cells": "C553:H553"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "FVT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "EMC FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 27,
+     "appendix_row": 53,
+     "main_table_cells": "C627:H627",
+     "appendix_cells": "C653:H653"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "FVT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "EMC FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 27,
+     "appendix_row": 53,
+     "main_table_cells": "C727:H727",
+     "appendix_cells": "C753:H753"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "SIT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 1.0,
+    "derived_total": 2.0,
+    "appendix_label": "EMC SIT",
+    "appendix_total": 2.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 28,
+     "appendix_row": 54,
+     "main_table_cells": "C328:H328",
+     "appendix_cells": "C354:H354"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "SIT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 1.0,
+    "derived_total": 3.0,
+    "appendix_label": "EMC SIT",
+    "appendix_total": 3.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 28,
+     "appendix_row": 54,
+     "main_table_cells": "C428:H428",
+     "appendix_cells": "C454:H454"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "SIT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 1.0,
+    "derived_total": 4.0,
+    "appendix_label": "EMC SIT",
+    "appendix_total": 4.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 28,
+     "appendix_row": 54,
+     "main_table_cells": "C528:H528",
+     "appendix_cells": "C554:H554"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "SIT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 1.0,
+    "derived_total": 5.0,
+    "appendix_label": "EMC SIT",
+    "appendix_total": 5.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 28,
+     "appendix_row": 54,
+     "main_table_cells": "C628:H628",
+     "appendix_cells": "C654:H654"
+    }
+   },
+   {
+    "function_id": "F_EMC",
+    "function_name": "EMC",
+    "phase": "SIT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 1.0,
+    "derived_total": 6.0,
+    "appendix_label": "EMC SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 28,
+     "appendix_row": 54,
+     "main_table_cells": "C728:H728",
+     "appendix_cells": "C754:H754"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "FVT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "Green FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 29,
+     "appendix_row": 55,
+     "main_table_cells": "C329:H329",
+     "appendix_cells": "C355:H355"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "FVT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "Green FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 29,
+     "appendix_row": 55,
+     "main_table_cells": "C429:H429",
+     "appendix_cells": "C455:H455"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "FVT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "Green FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 29,
+     "appendix_row": 55,
+     "main_table_cells": "C529:H529",
+     "appendix_cells": "C555:H555"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "FVT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "Green FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 29,
+     "appendix_row": 55,
+     "main_table_cells": "C629:H629",
+     "appendix_cells": "C655:H655"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "FVT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "Green FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 29,
+     "appendix_row": 55,
+     "main_table_cells": "C729:H729",
+     "appendix_cells": "C755:H755"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "SIT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 3.0,
+    "derived_total": 6.0,
+    "appendix_label": "Green SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 30,
+     "appendix_row": 56,
+     "main_table_cells": "C330:H330",
+     "appendix_cells": "C356:H356"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "SIT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 3.0,
+    "derived_total": 9.0,
+    "appendix_label": "Green SIT",
+    "appendix_total": 6.0,
+    "delta": -3.0,
+    "delta_direction": "APPENDIX_LOWER",
+    "verification_status": "MISMATCH",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 30,
+     "appendix_row": 56,
+     "main_table_cells": "C430:H430",
+     "appendix_cells": "C456:H456"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "SIT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 1.5,
+    "derived_total": 6.0,
+    "appendix_label": "Green SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 30,
+     "appendix_row": 56,
+     "main_table_cells": "C530:H530",
+     "appendix_cells": "C556:H556"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "SIT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 1.2,
+    "derived_total": 6.0,
+    "appendix_label": "Green SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 30,
+     "appendix_row": 56,
+     "main_table_cells": "C630:H630",
+     "appendix_cells": "C656:H656"
+    }
+   },
+   {
+    "function_id": "F_GREEN",
+    "function_name": "Green",
+    "phase": "SIT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 1.0,
+    "derived_total": 6.0,
+    "appendix_label": "Green SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 30,
+     "appendix_row": 56,
+     "main_table_cells": "C730:H730",
+     "appendix_cells": "C756:H756"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "FVT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 5.0,
+    "derived_total": 10.0,
+    "appendix_label": "Safety FVT",
+    "appendix_total": 10.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 31,
+     "appendix_row": 57,
+     "main_table_cells": "C331:H331",
+     "appendix_cells": "C357:H357"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "FVT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 3.0,
+    "derived_total": 9.0,
+    "appendix_label": "Safety FVT",
+    "appendix_total": 9.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 31,
+     "appendix_row": 57,
+     "main_table_cells": "C431:H431",
+     "appendix_cells": "C457:H457"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "FVT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 2.5,
+    "derived_total": 10.0,
+    "appendix_label": "Safety FVT",
+    "appendix_total": 10.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 31,
+     "appendix_row": 57,
+     "main_table_cells": "C531:H531",
+     "appendix_cells": "C557:H557"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "FVT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 2.0,
+    "derived_total": 10.0,
+    "appendix_label": "Safety FVT",
+    "appendix_total": 10.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 31,
+     "appendix_row": 57,
+     "main_table_cells": "C631:H631",
+     "appendix_cells": "C657:H657"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "FVT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 1.6,
+    "derived_total": 9.6,
+    "appendix_label": "Safety FVT",
+    "appendix_total": 10.0,
+    "delta": 0.4,
+    "delta_direction": "APPENDIX_HIGHER",
+    "verification_status": "MISMATCH",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 31,
+     "appendix_row": 57,
+     "main_table_cells": "C731:H731",
+     "appendix_cells": "C757:H757"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "SIT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 3.0,
+    "derived_total": 6.0,
+    "appendix_label": "Safety SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 32,
+     "appendix_row": 58,
+     "main_table_cells": "C332:H332",
+     "appendix_cells": "C358:H358"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "SIT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 2.0,
+    "derived_total": 6.0,
+    "appendix_label": "Safety SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 32,
+     "appendix_row": 58,
+     "main_table_cells": "C432:H432",
+     "appendix_cells": "C458:H458"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "SIT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 1.5,
+    "derived_total": 6.0,
+    "appendix_label": "Safety SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 32,
+     "appendix_row": 58,
+     "main_table_cells": "C532:H532",
+     "appendix_cells": "C558:H558"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "SIT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 1.2,
+    "derived_total": 6.0,
+    "appendix_label": "Safety SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 32,
+     "appendix_row": 58,
+     "main_table_cells": "C632:H632",
+     "appendix_cells": "C658:H658"
+    }
+   },
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "SIT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 1.0,
+    "derived_total": 6.0,
+    "appendix_label": "Safety SIT",
+    "appendix_total": 6.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 32,
+     "appendix_row": 58,
+     "main_table_cells": "C732:H732",
+     "appendix_cells": "C758:H758"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "FVT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "RF Cert FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 33,
+     "appendix_row": 59,
+     "main_table_cells": "C333:H333",
+     "appendix_cells": "C359:H359"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "FVT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "RF Cert FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 33,
+     "appendix_row": 59,
+     "main_table_cells": "C433:H433",
+     "appendix_cells": "C459:H459"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "FVT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "RF Cert FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 33,
+     "appendix_row": 59,
+     "main_table_cells": "C533:H533",
+     "appendix_cells": "C559:H559"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "FVT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "RF Cert FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 33,
+     "appendix_row": 59,
+     "main_table_cells": "C633:H633",
+     "appendix_cells": "C659:H659"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "FVT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 0.0,
+    "derived_total": 0.0,
+    "appendix_label": "RF Cert FVT",
+    "appendix_total": 0.0,
+    "delta": 0.0,
+    "delta_direction": null,
+    "verification_status": "VERIFIED",
+    "main_table_rate_is_constant_across_sku": true,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 33,
+     "appendix_row": 59,
+     "main_table_cells": "C733:H733",
+     "appendix_cells": "C759:H759"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "SIT",
+    "sku_count": 2,
+    "main_table_per_sku_quantity": 7.5,
+    "derived_total": 15.0,
+    "appendix_label": "RF Cert SIT",
+    "appendix_total": 8.0,
+    "delta": -7.0,
+    "delta_direction": "APPENDIX_LOWER",
+    "verification_status": "MISMATCH",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 34,
+     "appendix_row": 60,
+     "main_table_cells": "C334:H334",
+     "appendix_cells": "C360:H360"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "SIT",
+    "sku_count": 3,
+    "main_table_per_sku_quantity": 5.0,
+    "derived_total": 15.0,
+    "appendix_label": "RF Cert SIT",
+    "appendix_total": 9.0,
+    "delta": -6.0,
+    "delta_direction": "APPENDIX_LOWER",
+    "verification_status": "MISMATCH",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 34,
+     "appendix_row": 60,
+     "main_table_cells": "C434:H434",
+     "appendix_cells": "C460:H460"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "SIT",
+    "sku_count": 4,
+    "main_table_per_sku_quantity": 3.75,
+    "derived_total": 15.0,
+    "appendix_label": "RF Cert SIT",
+    "appendix_total": 10.0,
+    "delta": -5.0,
+    "delta_direction": "APPENDIX_LOWER",
+    "verification_status": "MISMATCH",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 34,
+     "appendix_row": 60,
+     "main_table_cells": "C534:H534",
+     "appendix_cells": "C560:H560"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "SIT",
+    "sku_count": 5,
+    "main_table_per_sku_quantity": 3.0,
+    "derived_total": 15.0,
+    "appendix_label": "RF Cert SIT",
+    "appendix_total": 10.0,
+    "delta": -5.0,
+    "delta_direction": "APPENDIX_LOWER",
+    "verification_status": "MISMATCH",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 34,
+     "appendix_row": 60,
+     "main_table_cells": "C634:H634",
+     "appendix_cells": "C660:H660"
+    }
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "SIT",
+    "sku_count": 6,
+    "main_table_per_sku_quantity": 2.5,
+    "derived_total": 15.0,
+    "appendix_label": "RF Cert SIT",
+    "appendix_total": 10.0,
+    "delta": -5.0,
+    "delta_direction": "APPENDIX_LOWER",
+    "verification_status": "MISMATCH",
+    "main_table_rate_is_constant_across_sku": false,
+    "source_reference": {
+     "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+     "sheet": "CS ODM sample ",
+     "main_table_row": 34,
+     "appendix_row": 60,
+     "main_table_cells": "C734:H734",
+     "appendix_cells": "C760:H760"
+    }
+   }
+  ],
+  "summary": {
+   "cells_total": 40,
+   "verified": 33,
+   "mismatch": 7,
+   "not_evaluable": 0,
+   "mismatch_by_function": {
+    "Green": 1,
+    "Safety": 1,
+    "RF Certification": 5
+   },
+   "functions_fully_verified": [
+    "EMC"
+   ],
+   "functions_with_mismatch": [
+    "Green",
+    "RF Certification",
+    "Safety"
+   ],
+   "max_abs_delta": 7.0,
+   "total_abs_delta_at_each_sku": {
+    "SKU2": 7.0,
+    "SKU3": 9.0,
+    "SKU4": 5.0,
+    "SKU5": 5.0,
+    "SKU6": 5.4
+   }
+  },
+  "ori_02_status": "PARTIALLY_RESOLVED",
+  "appendix_internally_consistent": true,
+  "owner_semantics": {
+   "decision": "DEC-10 (Owner, team-trial phase) - the Appendix total at the applied SKU count is the adopted Certification quantity",
+   "main_table": "sample quantity required for ONE SKU -> retained as the rule of record and as audit evidence (ADOPTED_ABSOLUTE_TOTAL's audit pair)",
+   "main_derived_total": "main_table_per_sku_quantity x sku_count -> retained for audit and difference analysis, NOT counted in the project total (evidence_role DERIVED_MAIN_TABLE_AUDIT)",
+   "appendix": "resulting project total for that SKU count -> evidence_role ADOPTED_ABSOLUTE_TOTAL, read per Function x Phase x SKU (FVT and SIT each from their own row, never a global phase ratio)",
+   "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+   "relationship_holds_for": "33 of 40 cells - see summary",
+   "comparison_tolerance": 1e-09,
+   "appendix_counted_in_project_total_times": 1,
+   "main_derived_counted_in_project_total_times": 0,
+   "appendix_may_be_added_to_project_total": false,
+   "appendix_may_be_added_to_the_main_derived_total": false,
+   "appendix_may_form_a_band": false,
+   "appendix_may_override_the_main_table_rate_rule": false,
+   "superseded_interpretations": [
+    "Main Table and Appendix are competing models",
+    "Certification has two mutually exclusive rules",
+    "Appendix 8-10 is an independent capping model",
+    "the Certification range comes from Main vs Appendix competition",
+    "adopted_absolute must stay null because of model competition",
+    "the Main Table derived total is the adopted project number (superseded by DEC-10; it stays as audit evidence only)"
+   ]
+  }
+ },
+ "j33_investigation": {
+  "candidate_role": "CERTIFICATION_BREAKDOWN_EVIDENCE",
+  "cell": "J33",
+  "attached_to": {
+   "function_id": "F_RF_CERTIFICATION",
+   "phase": "FVT+SIT (merged J33:J34)",
+   "merged_range": "J33:J34"
+  },
+  "raw_text": "this data for 2 antenna source +2 wlan source refrence:\n1.SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；\n2.CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；\n3.FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;\n4.印尼* 2  .\n5.Mexico *1.\n6.资安*2（欧盟网络安全）",
+  "declared_reference_scenario": {
+   "antenna_source_count": 2,
+   "wlan_card_count": 2
+  },
+  "declared_scope_words": "this data for 2 antenna source +2 wlan source refrence",
+  "parsed_line_items": [
+   {
+    "item_no": 1,
+    "raw": "SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；",
+    "stated_unit_count": 2.0
+   },
+   {
+    "item_no": 2,
+    "raw": "CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；",
+    "stated_unit_count": 4.0
+   },
+   {
+    "item_no": 3,
+    "raw": "FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;",
+    "stated_unit_count": 4.0
+   },
+   {
+    "item_no": 4,
+    "raw": "印尼* 2 .",
+    "stated_unit_count": 2.0
+   },
+   {
+    "item_no": 5,
+    "raw": "Mexico *1.",
+    "stated_unit_count": 1.0
+   },
+   {
+    "item_no": 6,
+    "raw": "资安*2（欧盟网络安全）",
+    "stated_unit_count": 2.0
+   }
+  ],
+  "reference_total_under_readings": {
+   "CERTIFICATION_SUBSET": {
+    "total": 11.0,
+    "parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    },
+    "assumption": "FCC whole machines not required where the C1PC/module route applies, per the wording inside J33 itself"
+   },
+   "FULL": {
+    "total": 27.0,
+    "parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    },
+    "assumption": "every numbered line item needs its own whole machines, FCC = intel_wlan x antenna x 4"
+   }
+  },
+  "quantitative_reconciliation": [
+   {
+    "sku_count": 2,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 8.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 2,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 8.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 3,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 9.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 3,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 9.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 4,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 4,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 5,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 5,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 6,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 6,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   }
+  ],
+  "bracket": {
+   "min_no_whole_machine_fcc": 11.0,
+   "max_full_fcc": 27.0,
+   "main_table_derived_15_inside_bracket": true,
+   "appendix_totals_8_to_10_inside_bracket": false,
+   "appendix_sits_below_the_no_fcc_floor": true,
+   "reading": "15 is inside the bracket: consistent with a mix where some WLAN cards take the C1PC/module route (no whole machine) and others do not. The Appendix 8-10 sits BELOW the floor of a 2-antenna / 2-WLAN-card project, so the Appendix cannot be the same reference scenario as J33. Neither value is reproducible from J33 alone."
+  },
+  "findings": {
+   "explains_main_table_quantity": false,
+   "explains_appendix_total": false,
+   "applies_to": [
+    "F_RF_CERTIFICATION only"
+   ],
+   "applies_to_specific_source_combination": true,
+   "antenna_and_wlan_are": "BUSINESS_COMPOSITION_DESCRIPTION - the note explains why RF certification consumes machines (antenna source x WLAN card matrix). It is not an executable calculation variable in the workbook: no cell formula consumes it.",
+   "already_inside_main_table_rate": "CANNOT_BE_PROVEN_FROM_THE_WORKBOOK",
+   "double_count_risk_if_added": "HIGH - the Main Table per-SKU rate for RF certification is already the whole-machine count for that SKU; adding the J33 line items on top would count the same machines twice"
+  },
+  "disposition": "DECLARED_NOT_GENERALIZED",
+  "additive_to_main_table_result": false,
+  "mvp_requires_antenna_wlan_input_now": false,
+  "rule_package_role": "EXPLANATORY_EVIDENCE_NOT_A_RULE"
+ },
+ "baseline_embedded_sharing": {
+  "F_HW": {
+   "function_name": "HW",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 4.2,
+     "growth": 4.2
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 4.2,
+     "growth": 4.2
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_ME": {
+   "function_name": "ME",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_THM": {
+   "function_name": "THM",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_AUDIO": {
+   "function_name": "Audio",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 1.0,
+     "growth": -0.4
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 1.0,
+     "growth": -0.4
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_RF_TEST": {
+   "function_name": "RF Test",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.4,
+     "growth": -0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.4,
+     "growth": -0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_EMC_TEST": {
+   "function_name": "EMC Test",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_SED": {
+   "function_name": "SED",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 3.8,
+     "growth": 3.8
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 3.8,
+     "growth": 3.8
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_SS": {
+   "function_name": "SS",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 8.4,
+     "growth": 8.4
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 8.4,
+     "growth": 8.4
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_PD": {
+   "function_name": "PD",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_SWPA": {
+   "function_name": "SWPA",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 46.0,
+     "growth": 46.0
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 46.0,
+     "growth": 46.0
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_MEPA": {
+   "function_name": "MEPA",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 4.0,
+     "growth": 4.0
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 4.0,
+     "growth": 4.0
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_HW_PA": {
+   "function_name": "HW PA",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 2.2,
+     "growth": 2.2
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 2.2,
+     "growth": 2.2
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_EMC": {
+   "function_name": "EMC",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 4.0,
+     "growth": 4.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_GREEN": {
+   "function_name": "Green",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 3.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_SAFETY": {
+   "function_name": "Safety",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 1.0,
+     "growth": -0.4
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_RF_CERTIFICATION": {
+   "function_name": "RF Certification",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_BIOS": {
+   "function_name": "BIOS",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_ITE": {
+   "function_name": "ITE",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_NV": {
+   "function_name": "NV",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_INTEL": {
+   "function_name": "INTEL",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_MFG": {
+   "function_name": "MFG",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  }
+ },
+ "model_questions": [
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "phase": "FVT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "phase": "SIT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "phase": "FVT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "phase": "SIT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "phase": "FVT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "phase": "SIT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  }
+ ],
+ "policy": {
+  "rounding": "NONE (D-01) - every underlying value keeps its original decimal",
+  "comparison_tolerance": 1e-09,
+  "display_precision_never_modifies_values": true,
+  "pseudo_rate_models": "PROHIBITED (no divide-by-SKU-then-multiply-back)",
+  "flat_shape_alone_is_not_evidence_for_PER_PHASE_FIXED": true,
+  "certification_model": "PER_SKU_RATE from the Main Table",
+  "certification_relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+  "certification_appendix_role": "DERIVED_TOTAL_VALIDATION - validation only",
+  "certification_appendix_may_be_added_to_total": false,
+  "certification_appendix_may_form_a_band": false,
+  "certification_appendix_may_override_main_table": false,
+  "certification_appendix_is_a_capping_model": false,
+  "certification_j33_role": "BREAKDOWN_EVIDENCE - explanatory, never additive",
+  "certification_global_phase_ratio": "PROHIBITED - FVT and SIT read their own row",
+  "certification_band_origin_after_correction": "SKU_NOT_ESTABLISHED only",
+  "superseded_certification_interpretations": [
+   "Main Table and Appendix are competing models",
+   "Certification has two mutually exclusive rules",
+   "Appendix 8-10 is an independent capping model",
+   "the Certification range comes from Main vs Appendix competition",
+   "adopted_absolute must stay null because of model competition",
+   "the Main Table derived total is the adopted project number (superseded by DEC-10; it stays as audit evidence only)"
+  ],
+  "panel_annotation_d2_h2": "UNRESOLVED_COMMENT - excluded from calculation (DEC-02)",
+  "wave": "explicit per-spec assignment only; never a fixed quantity or ratio (DEC-04)",
+  "reuse": "only a proven ADDITIONAL_CONFIRMED_REUSE deducts (DEC-06)",
+  "mepa_hw_pa": "PER_PHASE_FIXED candidate model retained from Phase 2, shown as temporary pending business confirmation (ORI-10)"
+ },
+ "tolerance": 1e-09,
+ "open_owner_review_items": [
+  {
+   "id": "ORI-01",
+   "blocking_level": "AFFECTS_ACCURACY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-02",
+   "blocking_level": "BLOCKS_FORMALIZATION",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-03",
+   "blocking_level": "AFFECTS_ACCURACY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-04",
+   "blocking_level": "BLOCKS_FORMALIZATION",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-07",
+   "blocking_level": "AFFECTS_ACCURACY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-09",
+   "blocking_level": "ADVISORY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-10",
+   "blocking_level": "BLOCKS_FORMALIZATION",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-11",
+   "blocking_level": "ADVISORY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-12",
+   "blocking_level": "ADVISORY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-13",
+   "blocking_level": "AFFECTS_ACCURACY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  },
+  {
+   "id": "ORI-14",
+   "blocking_level": "ADVISORY",
+   "blocks_manual_mvp": false,
+   "note": "shown in the UI; never stops a manual analysis (task section 22)"
+  }
+ ],
+ "blocking_rule": "only OUT_OF_DOMAIN input stops a calculation, and it stops that scenario alone with an explanation"
+}

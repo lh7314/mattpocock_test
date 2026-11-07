@@ -1,0 +1,1839 @@
+{
+ "generated_at_utc": "2026-11-06T08:36:38+00:00",
+ "rule_pack": "RP-V4.0",
+ "join_key": "project_name",
+ "cases": [
+  {
+   "case": "C1",
+   "project_name": "TRIAL-C1-SKU2",
+   "profile": "简单配置（低配项目）",
+   "key_factors": {
+    "cpu": 2,
+    "gpu": 1,
+    "panel": 1,
+    "ssd": 1,
+    "mem": 1
+   },
+   "wave_assignment": null,
+   "source": "C79 (2SKU: 1-2*CPU +1*GPU +1-2*Panel +SSD*1 +Mem*1)",
+   "goal": "最低门槛项目：检查 SKU 判定、总量、界面字段是否够用",
+   "rule_pack": "RP-V4.0",
+   "form_file": "trial_kit/forms/trial-feedback-TRIAL-C1-SKU2.csv",
+   "form_version": "4.1",
+   "issue_status": "RETURNED",
+   "returned_submission": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "covers_cells": [
+    "RF Certification / SIT @ SKU2"
+   ],
+   "covers_groups": [
+    "RF Certification / SIT"
+   ],
+   "priced_skus": [
+    2
+   ],
+   "scenarios": [
+    {
+     "scope": "FULL_PROJECT",
+     "state": "SINGLE",
+     "recommended_sku": 2,
+     "sku_range": "2-2",
+     "totals": {
+      "2": 366.0
+     },
+     "certification": {
+      "2": 32.0
+     }
+    },
+    {
+     "scope": "CURRENT_WAVE",
+     "state": "SINGLE",
+     "recommended_sku": 2,
+     "sku_range": "2-2",
+     "totals": {
+      "2": 366.0
+     },
+     "certification": {
+      "2": 32.0
+     }
+    }
+   ],
+   "registered_items": [
+    "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+    "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED",
+    "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+    "WAVE_ASSIGNMENT_NOT_PROVIDED"
+   ],
+   "locked": {
+    "project_name": true,
+    "key_factors": true,
+    "wave_assignment": true,
+    "risk_reserve": true
+   },
+   "questions_required": [
+    {
+     "id": "CELL:RF Certification / SIT @ SKU2",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU2：本工具采用附表 8.0，主表推算为 15.0（差 -7.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU2",
+     "group": "RF Certification / SIT",
+     "sku": 2,
+     "adopted": 8.0,
+     "main_derived": 15.0,
+     "delta": -7.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "WAVE",
+     "kind": "group",
+     "question": "你们项目里「当前波次 / 后续波次」实际按什么条件划分？（本工具只认「Spec 被明确标为后续波次」这一条判据）",
+     "why": "本案例登记了波次相关待确认项",
+     "oris": [
+      "ORI-03"
+     ],
+     "kinds": [
+      "WAVE_ASSIGNMENT_NOT_PROVIDED"
+     ]
+    },
+    {
+     "id": "CERTVALID",
+     "kind": "group",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "why": "本案例实际触发了这些认证校验提示",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "kinds": [
+      "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+      "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+      "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED"
+     ]
+    },
+    {
+     "id": "ORI-10",
+     "kind": "universal",
+     "question": "结果里的 MEPA 每 Phase 恒为 36、HW PA 恒为 4：在你的真实项目里成立吗？",
+     "why": "本案例的 Function 明细里就有这两行",
+     "oris": [
+      "ORI-10"
+     ]
+    },
+    {
+     "id": "ORI-07",
+     "kind": "universal",
+     "question": "本工具默认 Risk Reserve = 0%（源表没有已确认比例）。你的项目实际会另加预留吗？比例按什么算？",
+     "why": "本案例的合计就是按 0% 算出来的",
+     "oris": [
+      "ORI-07"
+     ]
+    },
+    {
+     "id": "UI-USE",
+     "kind": "ui",
+     "question": "这次的输出看得懂吗？字段够你判断吗？（缺什么直接写在下面 Comment）",
+     "why": "界面与流程反馈，不影响业务数值",
+     "oris": []
+    }
+   ],
+   "questions_optional": [
+    {
+     "id": "ORI-01",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-01"
+     ],
+     "question": "Panel 批注 N*panel 的正式业务含义",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-02a",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-02a"
+     ],
+     "question": "「源费率已验证」的口径（DEC-10 后已不再是阻塞项）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-04",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-04"
+     ],
+     "question": "4 SKU 与 5 SKU 的真实分界条件",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-05",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-05"
+     ],
+     "question": "ODM 无结构化规则 + 3 处 Status 未关闭",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-06",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-06"
+     ],
+     "question": "Option 项是否启用 / PCBA 单位口径",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-08",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-08"
+     ],
+     "question": "匹配权重 / 阈值属 Agent 设定",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-09",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-09"
+     ],
+     "question": "自动读取需求表所需的真实样本（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-11",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-11"
+     ],
+     "question": "Build Plan 与 PPA sample standard 1.0（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-12",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-12"
+     ],
+     "question": "6 条 model questions（EMC Test / NV / INTEL 平坦费率）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-13",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-13"
+     ],
+     "question": "定义域空洞：超出 2–6 SKU 无规则（BLOCKS_EXECUTION 只停该情景）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-14",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-14"
+     ],
+     "question": "缩写与 Green FVT 自相矛盾",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-15",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-15"
+     ],
+     "question": "Green/SIT/SKU3 主表值与 1/N 规律不符",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-16",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-16"
+     ],
+     "question": "Safety/FVT/SKU6 = 1.6 与附表 10 不一致（DEC-10 后已采用 10）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-17",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-17"
+     ],
+     "question": "主表「每 SKU」列实为总量的 1/N 回推",
+     "impact_tag": "AFFECTS_ACCURACY"
+    }
+   ],
+   "oris_required": [
+    "ORI-02",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-07",
+    "ORI-10"
+   ],
+   "oris_reachable": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02a",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-04",
+    "ORI-05",
+    "ORI-06",
+    "ORI-07",
+    "ORI-08",
+    "ORI-09",
+    "ORI-10",
+    "ORI-11",
+    "ORI-12",
+    "ORI-13",
+    "ORI-14",
+    "ORI-15",
+    "ORI-16",
+    "ORI-17"
+   ]
+  },
+  {
+   "case": "C2",
+   "project_name": "TRIAL-C2-SKU3",
+   "profile": "Green / SIT 差异取证（必须 3 SKU）",
+   "key_factors": {
+    "cpu": 3,
+    "gpu": 2,
+    "panel": 1,
+    "ssd": 1,
+    "mem": 1
+   },
+   "wave_assignment": null,
+   "source": "C80 (3SKU: 2-3*CPU +2*GPU +1*Panel +SSD*1 +Mem*1)",
+   "goal": "唯一能看到 Green / SIT 的 SKU 数（附表 6.0 vs 主表推算 9.0）",
+   "rule_pack": "RP-V4.0",
+   "form_file": "trial_kit/forms/trial-feedback-TRIAL-C2-SKU3.csv",
+   "form_version": "4.1",
+   "issue_status": "RETURNED",
+   "returned_submission": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "covers_cells": [
+    "Green / SIT @ SKU3",
+    "RF Certification / SIT @ SKU3"
+   ],
+   "covers_groups": [
+    "Green / SIT",
+    "RF Certification / SIT"
+   ],
+   "priced_skus": [
+    3
+   ],
+   "scenarios": [
+    {
+     "scope": "FULL_PROJECT",
+     "state": "SINGLE",
+     "recommended_sku": 3,
+     "sku_range": "3-3",
+     "totals": {
+      "3": 408.0
+     },
+     "certification": {
+      "3": 33.0
+     }
+    },
+    {
+     "scope": "CURRENT_WAVE",
+     "state": "SINGLE",
+     "recommended_sku": 3,
+     "sku_range": "3-3",
+     "totals": {
+      "3": 408.0
+     },
+     "certification": {
+      "3": 33.0
+     }
+    }
+   ],
+   "registered_items": [
+    "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+    "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED",
+    "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+    "WAVE_ASSIGNMENT_NOT_PROVIDED"
+   ],
+   "locked": {
+    "project_name": true,
+    "key_factors": true,
+    "wave_assignment": true,
+    "risk_reserve": true
+   },
+   "questions_required": [
+    {
+     "id": "CELL:Green / SIT @ SKU3",
+     "kind": "cell",
+     "question": "Green / SIT @ SKU3：本工具采用附表 6.0，主表推算为 9.0（差 -3.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-15"
+     ],
+     "cell": "Green / SIT @ SKU3",
+     "group": "Green / SIT",
+     "sku": 3,
+     "adopted": 6.0,
+     "main_derived": 9.0,
+     "delta": -3.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "CELL:RF Certification / SIT @ SKU3",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU3：本工具采用附表 9.0，主表推算为 15.0（差 -6.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU3",
+     "group": "RF Certification / SIT",
+     "sku": 3,
+     "adopted": 9.0,
+     "main_derived": 15.0,
+     "delta": -6.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "WAVE",
+     "kind": "group",
+     "question": "你们项目里「当前波次 / 后续波次」实际按什么条件划分？（本工具只认「Spec 被明确标为后续波次」这一条判据）",
+     "why": "本案例登记了波次相关待确认项",
+     "oris": [
+      "ORI-03"
+     ],
+     "kinds": [
+      "WAVE_ASSIGNMENT_NOT_PROVIDED"
+     ]
+    },
+    {
+     "id": "CERTVALID",
+     "kind": "group",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "why": "本案例实际触发了这些认证校验提示",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "kinds": [
+      "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+      "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+      "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED"
+     ]
+    },
+    {
+     "id": "ORI-10",
+     "kind": "universal",
+     "question": "结果里的 MEPA 每 Phase 恒为 36、HW PA 恒为 4：在你的真实项目里成立吗？",
+     "why": "本案例的 Function 明细里就有这两行",
+     "oris": [
+      "ORI-10"
+     ]
+    },
+    {
+     "id": "ORI-07",
+     "kind": "universal",
+     "question": "本工具默认 Risk Reserve = 0%（源表没有已确认比例）。你的项目实际会另加预留吗？比例按什么算？",
+     "why": "本案例的合计就是按 0% 算出来的",
+     "oris": [
+      "ORI-07"
+     ]
+    },
+    {
+     "id": "UI-USE",
+     "kind": "ui",
+     "question": "这次的输出看得懂吗？字段够你判断吗？（缺什么直接写在下面 Comment）",
+     "why": "界面与流程反馈，不影响业务数值",
+     "oris": []
+    }
+   ],
+   "questions_optional": [
+    {
+     "id": "ORI-01",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-01"
+     ],
+     "question": "Panel 批注 N*panel 的正式业务含义",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-02a",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-02a"
+     ],
+     "question": "「源费率已验证」的口径（DEC-10 后已不再是阻塞项）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-04",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-04"
+     ],
+     "question": "4 SKU 与 5 SKU 的真实分界条件",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-05",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-05"
+     ],
+     "question": "ODM 无结构化规则 + 3 处 Status 未关闭",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-06",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-06"
+     ],
+     "question": "Option 项是否启用 / PCBA 单位口径",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-08",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-08"
+     ],
+     "question": "匹配权重 / 阈值属 Agent 设定",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-09",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-09"
+     ],
+     "question": "自动读取需求表所需的真实样本（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-11",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-11"
+     ],
+     "question": "Build Plan 与 PPA sample standard 1.0（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-12",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-12"
+     ],
+     "question": "6 条 model questions（EMC Test / NV / INTEL 平坦费率）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-13",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-13"
+     ],
+     "question": "定义域空洞：超出 2–6 SKU 无规则（BLOCKS_EXECUTION 只停该情景）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-14",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-14"
+     ],
+     "question": "缩写与 Green FVT 自相矛盾",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-16",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-16"
+     ],
+     "question": "Safety/FVT/SKU6 = 1.6 与附表 10 不一致（DEC-10 后已采用 10）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-17",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-17"
+     ],
+     "question": "主表「每 SKU」列实为总量的 1/N 回推",
+     "impact_tag": "AFFECTS_ACCURACY"
+    }
+   ],
+   "oris_required": [
+    "ORI-02",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-07",
+    "ORI-10",
+    "ORI-15"
+   ],
+   "oris_reachable": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02a",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-04",
+    "ORI-05",
+    "ORI-06",
+    "ORI-07",
+    "ORI-08",
+    "ORI-09",
+    "ORI-10",
+    "ORI-11",
+    "ORI-12",
+    "ORI-13",
+    "ORI-14",
+    "ORI-15",
+    "ORI-16",
+    "ORI-17"
+   ]
+  },
+  {
+   "case": "C3",
+   "project_name": "TRIAL-C3-SKU4",
+   "profile": "中等配置（4 SKU 单值）",
+   "key_factors": {
+    "cpu": 2,
+    "gpu": 2,
+    "panel": 2,
+    "ssd": 2,
+    "mem": 2
+   },
+   "wave_assignment": null,
+   "source": "C81 (4SKU: 2-4*CPU +2-3*GPU +2*Panel +SSD*2 +Mem*2)",
+   "goal": "落在 4 SKU 定义内的项目，检查是否给出单值而不是范围",
+   "rule_pack": "RP-V4.0",
+   "form_file": "trial_kit/forms/trial-feedback-TRIAL-C3-SKU4.csv",
+   "form_version": "4.1",
+   "issue_status": "OPEN",
+   "returned_submission": "",
+   "covers_cells": [
+    "RF Certification / SIT @ SKU4"
+   ],
+   "covers_groups": [
+    "RF Certification / SIT"
+   ],
+   "priced_skus": [
+    4
+   ],
+   "scenarios": [
+    {
+     "scope": "FULL_PROJECT",
+     "state": "SINGLE",
+     "recommended_sku": 4,
+     "sku_range": "4-4",
+     "totals": {
+      "4": 438.8
+     },
+     "certification": {
+      "4": 36.0
+     }
+    },
+    {
+     "scope": "CURRENT_WAVE",
+     "state": "SINGLE",
+     "recommended_sku": 4,
+     "sku_range": "4-4",
+     "totals": {
+      "4": 438.8
+     },
+     "certification": {
+      "4": 36.0
+     }
+    }
+   ],
+   "registered_items": [
+    "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+    "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED",
+    "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+    "WAVE_ASSIGNMENT_NOT_PROVIDED"
+   ],
+   "locked": {
+    "project_name": true,
+    "key_factors": true,
+    "wave_assignment": true,
+    "risk_reserve": true
+   },
+   "questions_required": [
+    {
+     "id": "CELL:RF Certification / SIT @ SKU4",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU4：本工具采用附表 10.0，主表推算为 15.0（差 -5.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU4",
+     "group": "RF Certification / SIT",
+     "sku": 4,
+     "adopted": 10.0,
+     "main_derived": 15.0,
+     "delta": -5.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "WAVE",
+     "kind": "group",
+     "question": "你们项目里「当前波次 / 后续波次」实际按什么条件划分？（本工具只认「Spec 被明确标为后续波次」这一条判据）",
+     "why": "本案例登记了波次相关待确认项",
+     "oris": [
+      "ORI-03"
+     ],
+     "kinds": [
+      "WAVE_ASSIGNMENT_NOT_PROVIDED"
+     ]
+    },
+    {
+     "id": "CERTVALID",
+     "kind": "group",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "why": "本案例实际触发了这些认证校验提示",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "kinds": [
+      "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+      "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+      "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED"
+     ]
+    },
+    {
+     "id": "PANEL",
+     "kind": "group",
+     "question": "本项目有多个 Panel Spec。源表 D2:H2 上的「N*panel」批注，在你的业务里到底指什么？（本工具不猜，只做记录）",
+     "why": "本案例 Panel Spec 数量为 2，批注才会被记录进证据",
+     "oris": [
+      "ORI-01"
+     ]
+    },
+    {
+     "id": "ORI-10",
+     "kind": "universal",
+     "question": "结果里的 MEPA 每 Phase 恒为 36、HW PA 恒为 4：在你的真实项目里成立吗？",
+     "why": "本案例的 Function 明细里就有这两行",
+     "oris": [
+      "ORI-10"
+     ]
+    },
+    {
+     "id": "ORI-07",
+     "kind": "universal",
+     "question": "本工具默认 Risk Reserve = 0%（源表没有已确认比例）。你的项目实际会另加预留吗？比例按什么算？",
+     "why": "本案例的合计就是按 0% 算出来的",
+     "oris": [
+      "ORI-07"
+     ]
+    },
+    {
+     "id": "UI-USE",
+     "kind": "ui",
+     "question": "这次的输出看得懂吗？字段够你判断吗？（缺什么直接写在下面 Comment）",
+     "why": "界面与流程反馈，不影响业务数值",
+     "oris": []
+    }
+   ],
+   "questions_optional": [
+    {
+     "id": "ORI-02a",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-02a"
+     ],
+     "question": "「源费率已验证」的口径（DEC-10 后已不再是阻塞项）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-04",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-04"
+     ],
+     "question": "4 SKU 与 5 SKU 的真实分界条件",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-05",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-05"
+     ],
+     "question": "ODM 无结构化规则 + 3 处 Status 未关闭",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-06",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-06"
+     ],
+     "question": "Option 项是否启用 / PCBA 单位口径",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-08",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-08"
+     ],
+     "question": "匹配权重 / 阈值属 Agent 设定",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-09",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-09"
+     ],
+     "question": "自动读取需求表所需的真实样本（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-11",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-11"
+     ],
+     "question": "Build Plan 与 PPA sample standard 1.0（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-12",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-12"
+     ],
+     "question": "6 条 model questions（EMC Test / NV / INTEL 平坦费率）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-13",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-13"
+     ],
+     "question": "定义域空洞：超出 2–6 SKU 无规则（BLOCKS_EXECUTION 只停该情景）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-14",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-14"
+     ],
+     "question": "缩写与 Green FVT 自相矛盾",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-15",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-15"
+     ],
+     "question": "Green/SIT/SKU3 主表值与 1/N 规律不符",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-16",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-16"
+     ],
+     "question": "Safety/FVT/SKU6 = 1.6 与附表 10 不一致（DEC-10 后已采用 10）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-17",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-17"
+     ],
+     "question": "主表「每 SKU」列实为总量的 1/N 回推",
+     "impact_tag": "AFFECTS_ACCURACY"
+    }
+   ],
+   "oris_required": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-07",
+    "ORI-10"
+   ],
+   "oris_reachable": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02a",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-04",
+    "ORI-05",
+    "ORI-06",
+    "ORI-07",
+    "ORI-08",
+    "ORI-09",
+    "ORI-10",
+    "ORI-11",
+    "ORI-12",
+    "ORI-13",
+    "ORI-14",
+    "ORI-15",
+    "ORI-16",
+    "ORI-17"
+   ]
+  },
+  {
+   "case": "C4",
+   "project_name": "TRIAL-C4-RANGE45",
+   "profile": "4-5 SKU 范围项目（SR-09 现场）",
+   "key_factors": {
+    "cpu": 3,
+    "gpu": 3,
+    "panel": 2,
+    "ssd": 2,
+    "mem": 2
+   },
+   "wave_assignment": null,
+   "source": "C81 与 C82 的交集（同时满足 4SKU 与 5SKU 定义）",
+   "goal": "工具会给出 RANGE 4-5 并登记 SKU_TIE_NOT_RESOLVABLE；试用者要回答「这个范围在真实项目里能不能接受」，这是 Q-02 / SR-09 的直接证据",
+   "rule_pack": "RP-V4.0",
+   "form_file": "trial_kit/forms/trial-feedback-TRIAL-C4-RANGE45.csv",
+   "form_version": "4.1",
+   "issue_status": "OPEN",
+   "returned_submission": "",
+   "covers_cells": [
+    "RF Certification / SIT @ SKU4",
+    "RF Certification / SIT @ SKU5"
+   ],
+   "covers_groups": [
+    "RF Certification / SIT"
+   ],
+   "priced_skus": [
+    4,
+    5
+   ],
+   "scenarios": [
+    {
+     "scope": "FULL_PROJECT",
+     "state": "RANGE",
+     "recommended_sku": null,
+     "sku_range": "4-5",
+     "totals": {
+      "4": 438.8,
+      "5": 469.0
+     },
+     "certification": {
+      "4": 36.0,
+      "5": 37.0
+     }
+    },
+    {
+     "scope": "CURRENT_WAVE",
+     "state": "RANGE",
+     "recommended_sku": null,
+     "sku_range": "4-5",
+     "totals": {
+      "4": 438.8,
+      "5": 469.0
+     },
+     "certification": {
+      "4": 36.0,
+      "5": 37.0
+     }
+    }
+   ],
+   "registered_items": [
+    "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+    "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED",
+    "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+    "SKU_TIE_NOT_RESOLVABLE",
+    "WAVE_ASSIGNMENT_NOT_PROVIDED"
+   ],
+   "locked": {
+    "project_name": true,
+    "key_factors": true,
+    "wave_assignment": true,
+    "risk_reserve": true
+   },
+   "questions_required": [
+    {
+     "id": "CELL:RF Certification / SIT @ SKU4",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU4：本工具采用附表 10.0，主表推算为 15.0（差 -5.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU4",
+     "group": "RF Certification / SIT",
+     "sku": 4,
+     "adopted": 10.0,
+     "main_derived": 15.0,
+     "delta": -5.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "CELL:RF Certification / SIT @ SKU5",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU5：本工具采用附表 10.0，主表推算为 15.0（差 -5.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU5",
+     "group": "RF Certification / SIT",
+     "sku": 5,
+     "adopted": 10.0,
+     "main_derived": 15.0,
+     "delta": -5.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "RANGE",
+     "kind": "group",
+     "question": "工具给出了 4-5 SKU 的范围、没有替你选一档。这个范围在你的真实项目里能接受吗？如果不能，你实际靠什么条件判定它是 4 还是 5？",
+     "why": "本次结果里确实出现了 RANGE（4 SKU 与 5 SKU 同时成立）",
+     "oris": [
+      "ORI-04",
+      "ORI-08"
+     ],
+     "kinds": [
+      "SKU_TIE_NOT_RESOLVABLE"
+     ]
+    },
+    {
+     "id": "WAVE",
+     "kind": "group",
+     "question": "你们项目里「当前波次 / 后续波次」实际按什么条件划分？（本工具只认「Spec 被明确标为后续波次」这一条判据）",
+     "why": "本案例登记了波次相关待确认项",
+     "oris": [
+      "ORI-03"
+     ],
+     "kinds": [
+      "WAVE_ASSIGNMENT_NOT_PROVIDED"
+     ]
+    },
+    {
+     "id": "CERTVALID",
+     "kind": "group",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "why": "本案例实际触发了这些认证校验提示",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "kinds": [
+      "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+      "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+      "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED"
+     ]
+    },
+    {
+     "id": "PANEL",
+     "kind": "group",
+     "question": "本项目有多个 Panel Spec。源表 D2:H2 上的「N*panel」批注，在你的业务里到底指什么？（本工具不猜，只做记录）",
+     "why": "本案例 Panel Spec 数量为 2，批注才会被记录进证据",
+     "oris": [
+      "ORI-01"
+     ]
+    },
+    {
+     "id": "ORI-10",
+     "kind": "universal",
+     "question": "结果里的 MEPA 每 Phase 恒为 36、HW PA 恒为 4：在你的真实项目里成立吗？",
+     "why": "本案例的 Function 明细里就有这两行",
+     "oris": [
+      "ORI-10"
+     ]
+    },
+    {
+     "id": "ORI-07",
+     "kind": "universal",
+     "question": "本工具默认 Risk Reserve = 0%（源表没有已确认比例）。你的项目实际会另加预留吗？比例按什么算？",
+     "why": "本案例的合计就是按 0% 算出来的",
+     "oris": [
+      "ORI-07"
+     ]
+    },
+    {
+     "id": "UI-USE",
+     "kind": "ui",
+     "question": "这次的输出看得懂吗？字段够你判断吗？（缺什么直接写在下面 Comment）",
+     "why": "界面与流程反馈，不影响业务数值",
+     "oris": []
+    }
+   ],
+   "questions_optional": [
+    {
+     "id": "ORI-02a",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-02a"
+     ],
+     "question": "「源费率已验证」的口径（DEC-10 后已不再是阻塞项）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-05",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-05"
+     ],
+     "question": "ODM 无结构化规则 + 3 处 Status 未关闭",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-06",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-06"
+     ],
+     "question": "Option 项是否启用 / PCBA 单位口径",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-09",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-09"
+     ],
+     "question": "自动读取需求表所需的真实样本（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-11",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-11"
+     ],
+     "question": "Build Plan 与 PPA sample standard 1.0（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-12",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-12"
+     ],
+     "question": "6 条 model questions（EMC Test / NV / INTEL 平坦费率）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-13",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-13"
+     ],
+     "question": "定义域空洞：超出 2–6 SKU 无规则（BLOCKS_EXECUTION 只停该情景）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-14",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-14"
+     ],
+     "question": "缩写与 Green FVT 自相矛盾",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-15",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-15"
+     ],
+     "question": "Green/SIT/SKU3 主表值与 1/N 规律不符",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-16",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-16"
+     ],
+     "question": "Safety/FVT/SKU6 = 1.6 与附表 10 不一致（DEC-10 后已采用 10）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-17",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-17"
+     ],
+     "question": "主表「每 SKU」列实为总量的 1/N 回推",
+     "impact_tag": "AFFECTS_ACCURACY"
+    }
+   ],
+   "oris_required": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-04",
+    "ORI-07",
+    "ORI-08",
+    "ORI-10"
+   ],
+   "oris_reachable": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02a",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-04",
+    "ORI-05",
+    "ORI-06",
+    "ORI-07",
+    "ORI-08",
+    "ORI-09",
+    "ORI-10",
+    "ORI-11",
+    "ORI-12",
+    "ORI-13",
+    "ORI-14",
+    "ORI-15",
+    "ORI-16",
+    "ORI-17"
+   ]
+  },
+  {
+   "case": "C5",
+   "project_name": "TRIAL-C5-SKU6-WAVE",
+   "profile": "复杂配置 + LATER_WAVE（必须 6 SKU）",
+   "key_factors": {
+    "cpu": 5,
+    "gpu": 3,
+    "panel": 3,
+    "ssd": 2,
+    "mem": 2
+   },
+   "wave_assignment": {
+    "declared_by": "USER_SELECTED",
+    "assumption": true,
+    "assumption_note": "波次为案例预设的试用假设，未经 Owner 确认；需求表没有波次列（ORI-03），本案不据此下业务结论",
+    "specs": [
+     {
+      "factor": "cpu",
+      "spec_index": 5,
+      "wave": "LATER_WAVE",
+      "wave_source": "USER_SELECTED",
+      "spec_label": "cpu5"
+     },
+     {
+      "factor": "panel",
+      "spec_index": 3,
+      "wave": "LATER_WAVE",
+      "wave_source": "USER_SELECTED",
+      "spec_label": "panel3"
+     }
+    ]
+   },
+   "source": "C83 (6SKU: 4-5*CPU +3*GPU +2-3*Panel +SSD*2 +Mem*2-3)；全表唯一的波次提法是 C80 括号里的「(or SSD/Mem spec *2, arrange 2nd wave)」，它只提到 SSD / Memory，没有判据，也没有提到 CPU / Panel（ORI-03）",
+   "goal": "唯一能看到 Safety / FVT 的 SKU 数（附表 10.0 vs 主表推算 9.6）；同时把 cpu 第 5 条与 panel 第 3 条标为后续波次，检查 Current Wave 与 Full Project 是否真的分开。该波次声明只是本案例的试用假设：波次到底按什么条件分，正是 ORI-03 要问试用者的问题",
+   "rule_pack": "RP-V4.0",
+   "form_file": "trial_kit/forms/trial-feedback-TRIAL-C5-SKU6-WAVE.csv",
+   "form_version": "4.1",
+   "issue_status": "OPEN",
+   "returned_submission": "",
+   "covers_cells": [
+    "RF Certification / SIT @ SKU4",
+    "RF Certification / SIT @ SKU5",
+    "RF Certification / SIT @ SKU6",
+    "Safety / FVT @ SKU6"
+   ],
+   "covers_groups": [
+    "RF Certification / SIT",
+    "Safety / FVT"
+   ],
+   "priced_skus": [
+    4,
+    5,
+    6
+   ],
+   "scenarios": [
+    {
+     "scope": "FULL_PROJECT",
+     "state": "SINGLE",
+     "recommended_sku": 6,
+     "sku_range": "6-6",
+     "totals": {
+      "6": 502.0
+     },
+     "certification": {
+      "6": 38.0
+     }
+    },
+    {
+     "scope": "CURRENT_WAVE",
+     "state": "RANGE",
+     "recommended_sku": null,
+     "sku_range": "4-6",
+     "totals": {
+      "4": 438.8,
+      "5": 469.0,
+      "6": 502.0
+     },
+     "certification": {
+      "4": 36.0,
+      "5": 37.0,
+      "6": 38.0
+     }
+    }
+   ],
+   "registered_items": [
+    "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+    "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED",
+    "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+    "SKU_TIE_NOT_RESOLVABLE",
+    "WAVE_ASSIGNMENT_NOT_PROVIDED"
+   ],
+   "locked": {
+    "project_name": true,
+    "key_factors": true,
+    "wave_assignment": true,
+    "risk_reserve": true
+   },
+   "questions_required": [
+    {
+     "id": "CELL:RF Certification / SIT @ SKU4",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU4：本工具采用附表 10.0，主表推算为 15.0（差 -5.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU4",
+     "group": "RF Certification / SIT",
+     "sku": 4,
+     "adopted": 10.0,
+     "main_derived": 15.0,
+     "delta": -5.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "CELL:RF Certification / SIT @ SKU5",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU5：本工具采用附表 10.0，主表推算为 15.0（差 -5.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU5",
+     "group": "RF Certification / SIT",
+     "sku": 5,
+     "adopted": 10.0,
+     "main_derived": 15.0,
+     "delta": -5.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "CELL:RF Certification / SIT @ SKU6",
+     "kind": "cell",
+     "question": "RF Certification / SIT @ SKU6：本工具采用附表 10.0，主表推算为 15.0（差 -5.0）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "cell": "RF Certification / SIT @ SKU6",
+     "group": "RF Certification / SIT",
+     "sku": 6,
+     "adopted": 10.0,
+     "main_derived": 15.0,
+     "delta": -5.0,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "CELL:Safety / FVT @ SKU6",
+     "kind": "cell",
+     "question": "Safety / FVT @ SKU6：本工具采用附表 10.0，主表推算为 9.6（差 0.4）。在你的项目里哪一个才是业务上正确的数量？只能选：附表正确 / 主表正确 / 按条件区分 / 无法判断。",
+     "why": "本案例实际跑到了这个 SKU 数，这一格才会出现",
+     "oris": [
+      "ORI-02",
+      "ORI-16"
+     ],
+     "cell": "Safety / FVT @ SKU6",
+     "group": "Safety / FVT",
+     "sku": 6,
+     "adopted": 10.0,
+     "main_derived": 9.6,
+     "delta": 0.4,
+     "options": [
+      "附表正确",
+      "主表正确",
+      "按条件区分",
+      "无法判断"
+     ],
+     "option_help": {
+      "附表正确": "附表总量就是业务上正确的数量（维持 DEC-10 的采用值）",
+      "主表正确": "主表推算才是正确的，附表需要更正",
+      "按条件区分": "要看条件，请把条件写在理由里",
+      "无法判断": "现在判断不了（不算同意，也不取消差异）"
+     },
+     "reason_required": true,
+     "form_version": "4.1"
+    },
+    {
+     "id": "RANGE",
+     "kind": "group",
+     "question": "工具给出了 4-5 SKU 的范围、没有替你选一档。这个范围在你的真实项目里能接受吗？如果不能，你实际靠什么条件判定它是 4 还是 5？",
+     "why": "本次结果里确实出现了 RANGE（4 SKU 与 5 SKU 同时成立）",
+     "oris": [
+      "ORI-04",
+      "ORI-08"
+     ],
+     "kinds": [
+      "SKU_TIE_NOT_RESOLVABLE"
+     ]
+    },
+    {
+     "id": "WAVE",
+     "kind": "group",
+     "question": "你们项目里「当前波次 / 后续波次」实际按什么条件划分？（本工具只认「Spec 被明确标为后续波次」这一条判据）",
+     "why": "本案例登记了波次相关待确认项",
+     "oris": [
+      "ORI-03"
+     ],
+     "kinds": [
+      "WAVE_ASSIGNMENT_NOT_PROVIDED"
+     ]
+    },
+    {
+     "id": "CERTVALID",
+     "kind": "group",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "why": "本案例实际触发了这些认证校验提示",
+     "oris": [
+      "ORI-02",
+      "ORI-02b"
+     ],
+     "kinds": [
+      "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+      "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+      "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED"
+     ]
+    },
+    {
+     "id": "PANEL",
+     "kind": "group",
+     "question": "本项目有多个 Panel Spec。源表 D2:H2 上的「N*panel」批注，在你的业务里到底指什么？（本工具不猜，只做记录）",
+     "why": "本案例 Panel Spec 数量为 3，批注才会被记录进证据",
+     "oris": [
+      "ORI-01"
+     ]
+    },
+    {
+     "id": "ORI-10",
+     "kind": "universal",
+     "question": "结果里的 MEPA 每 Phase 恒为 36、HW PA 恒为 4：在你的真实项目里成立吗？",
+     "why": "本案例的 Function 明细里就有这两行",
+     "oris": [
+      "ORI-10"
+     ]
+    },
+    {
+     "id": "ORI-07",
+     "kind": "universal",
+     "question": "本工具默认 Risk Reserve = 0%（源表没有已确认比例）。你的项目实际会另加预留吗？比例按什么算？",
+     "why": "本案例的合计就是按 0% 算出来的",
+     "oris": [
+      "ORI-07"
+     ]
+    },
+    {
+     "id": "UI-USE",
+     "kind": "ui",
+     "question": "这次的输出看得懂吗？字段够你判断吗？（缺什么直接写在下面 Comment）",
+     "why": "界面与流程反馈，不影响业务数值",
+     "oris": []
+    }
+   ],
+   "questions_optional": [
+    {
+     "id": "ORI-02a",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-02a"
+     ],
+     "question": "「源费率已验证」的口径（DEC-10 后已不再是阻塞项）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-05",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-05"
+     ],
+     "question": "ODM 无结构化规则 + 3 处 Status 未关闭",
+     "impact_tag": "BLOCKS_FORMALIZATION"
+    },
+    {
+     "id": "ORI-06",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-06"
+     ],
+     "question": "Option 项是否启用 / PCBA 单位口径",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-09",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-09"
+     ],
+     "question": "自动读取需求表所需的真实样本（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-11",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-11"
+     ],
+     "question": "Build Plan 与 PPA sample standard 1.0（已与 MVP 解耦）",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-12",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-12"
+     ],
+     "question": "6 条 model questions（EMC Test / NV / INTEL 平坦费率）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-13",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-13"
+     ],
+     "question": "定义域空洞：超出 2–6 SKU 无规则（BLOCKS_EXECUTION 只停该情景）",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-14",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-14"
+     ],
+     "question": "缩写与 Green FVT 自相矛盾",
+     "impact_tag": "ADVISORY"
+    },
+    {
+     "id": "ORI-15",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-15"
+     ],
+     "question": "Green/SIT/SKU3 主表值与 1/N 规律不符",
+     "impact_tag": "AFFECTS_ACCURACY"
+    },
+    {
+     "id": "ORI-17",
+     "kind": "optional",
+     "required": false,
+     "oris": [
+      "ORI-17"
+     ],
+     "question": "主表「每 SKU」列实为总量的 1/N 回推",
+     "impact_tag": "AFFECTS_ACCURACY"
+    }
+   ],
+   "oris_required": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-04",
+    "ORI-07",
+    "ORI-08",
+    "ORI-10",
+    "ORI-16"
+   ],
+   "oris_reachable": [
+    "ORI-01",
+    "ORI-02",
+    "ORI-02a",
+    "ORI-02b",
+    "ORI-03",
+    "ORI-04",
+    "ORI-05",
+    "ORI-06",
+    "ORI-07",
+    "ORI-08",
+    "ORI-09",
+    "ORI-10",
+    "ORI-11",
+    "ORI-12",
+    "ORI-13",
+    "ORI-14",
+    "ORI-15",
+    "ORI-16",
+    "ORI-17"
+   ]
+  }
+ ],
+ "all_mismatch_cells": [
+  "Green / SIT @ SKU3",
+  "RF Certification / SIT @ SKU2",
+  "RF Certification / SIT @ SKU3",
+  "RF Certification / SIT @ SKU4",
+  "RF Certification / SIT @ SKU5",
+  "RF Certification / SIT @ SKU6",
+  "Safety / FVT @ SKU6"
+ ],
+ "cells_covered_by_roster": [
+  "Green / SIT @ SKU3",
+  "RF Certification / SIT @ SKU2",
+  "RF Certification / SIT @ SKU3",
+  "RF Certification / SIT @ SKU4",
+  "RF Certification / SIT @ SKU5",
+  "RF Certification / SIT @ SKU6",
+  "Safety / FVT @ SKU6"
+ ],
+ "cells_not_covered_by_roster": [],
+ "form_version": "4.1",
+ "cell_options": [
+  "附表正确",
+  "主表正确",
+  "按条件区分",
+  "无法判断"
+ ],
+ "returned_cases": [
+  "C1",
+  "C2"
+ ],
+ "ori_total": 19,
+ "ori_required_by_some_case": [
+  "ORI-01",
+  "ORI-02",
+  "ORI-02b",
+  "ORI-03",
+  "ORI-04",
+  "ORI-07",
+  "ORI-08",
+  "ORI-10",
+  "ORI-15",
+  "ORI-16"
+ ],
+ "ori_reachable_by_some_case": [
+  "ORI-01",
+  "ORI-02",
+  "ORI-02a",
+  "ORI-02b",
+  "ORI-03",
+  "ORI-04",
+  "ORI-05",
+  "ORI-06",
+  "ORI-07",
+  "ORI-08",
+  "ORI-09",
+  "ORI-10",
+  "ORI-11",
+  "ORI-12",
+  "ORI-13",
+  "ORI-14",
+  "ORI-15",
+  "ORI-16",
+  "ORI-17"
+ ],
+ "ori_not_reachable_in_trial": []
+}

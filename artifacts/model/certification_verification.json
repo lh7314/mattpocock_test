@@ -1,0 +1,1591 @@
+{
+ "artifact": "certification_verification",
+ "artifact_version": "1.1",
+ "derived_from_baseline": "BASELINE-CS-ODM-001",
+ "derived_from": {
+  "file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+  "sha256": "48a360ff2ffd086e41d6b90a916f64fe52d9bc13efba07b8377b2945c846ab5a",
+  "sheet": "CS ODM sample ",
+  "sheet_dimensions": "A1:L95",
+  "workbook_creator": "William HC",
+  "workbook_last_modified_by": "Lingyu LY3 Rong",
+  "workbook_modified": "2026-10-30T08:51:32+00:00",
+  "extraction_sha_source_json": "see artifacts/extraction"
+ },
+ "generated_at_utc": "2026-11-06T08:36:36+00:00",
+ "generator": "tools/verify_certification.py",
+ "owner_semantics": {
+  "decision": "DEC-10 (Owner, team-trial phase) - the Appendix total at the applied SKU count is the adopted Certification quantity",
+  "main_table": "sample quantity required for ONE SKU -> retained as the rule of record and as audit evidence (ADOPTED_ABSOLUTE_TOTAL's audit pair)",
+  "main_derived_total": "main_table_per_sku_quantity x sku_count -> retained for audit and difference analysis, NOT counted in the project total (evidence_role DERIVED_MAIN_TABLE_AUDIT)",
+  "appendix": "resulting project total for that SKU count -> evidence_role ADOPTED_ABSOLUTE_TOTAL, read per Function x Phase x SKU (FVT and SIT each from their own row, never a global phase ratio)",
+  "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+  "relationship_holds_for": "33 of 40 cells - see summary",
+  "comparison_tolerance": 1e-09,
+  "appendix_counted_in_project_total_times": 1,
+  "main_derived_counted_in_project_total_times": 0,
+  "appendix_may_be_added_to_project_total": false,
+  "appendix_may_be_added_to_the_main_derived_total": false,
+  "appendix_may_form_a_band": false,
+  "appendix_may_override_the_main_table_rate_rule": false,
+  "superseded_interpretations": [
+   "Main Table and Appendix are competing models",
+   "Certification has two mutually exclusive rules",
+   "Appendix 8-10 is an independent capping model",
+   "the Certification range comes from Main vs Appendix competition",
+   "adopted_absolute must stay null because of model competition",
+   "the Main Table derived total is the adopted project number (superseded by DEC-10; it stays as audit evidence only)"
+  ]
+ },
+ "verification_grid": [
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "FVT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "EMC FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 27,
+    "appendix_row": 53,
+    "main_table_cells": "C327:H327",
+    "appendix_cells": "C353:H353"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "FVT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "EMC FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 27,
+    "appendix_row": 53,
+    "main_table_cells": "C427:H427",
+    "appendix_cells": "C453:H453"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "FVT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "EMC FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 27,
+    "appendix_row": 53,
+    "main_table_cells": "C527:H527",
+    "appendix_cells": "C553:H553"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "FVT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "EMC FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 27,
+    "appendix_row": 53,
+    "main_table_cells": "C627:H627",
+    "appendix_cells": "C653:H653"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "FVT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "EMC FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 27,
+    "appendix_row": 53,
+    "main_table_cells": "C727:H727",
+    "appendix_cells": "C753:H753"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "SIT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 1.0,
+   "derived_total": 2.0,
+   "appendix_label": "EMC SIT",
+   "appendix_total": 2.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 28,
+    "appendix_row": 54,
+    "main_table_cells": "C328:H328",
+    "appendix_cells": "C354:H354"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "SIT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 1.0,
+   "derived_total": 3.0,
+   "appendix_label": "EMC SIT",
+   "appendix_total": 3.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 28,
+    "appendix_row": 54,
+    "main_table_cells": "C428:H428",
+    "appendix_cells": "C454:H454"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "SIT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 1.0,
+   "derived_total": 4.0,
+   "appendix_label": "EMC SIT",
+   "appendix_total": 4.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 28,
+    "appendix_row": 54,
+    "main_table_cells": "C528:H528",
+    "appendix_cells": "C554:H554"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "SIT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 1.0,
+   "derived_total": 5.0,
+   "appendix_label": "EMC SIT",
+   "appendix_total": 5.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 28,
+    "appendix_row": 54,
+    "main_table_cells": "C628:H628",
+    "appendix_cells": "C654:H654"
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "SIT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 1.0,
+   "derived_total": 6.0,
+   "appendix_label": "EMC SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 28,
+    "appendix_row": 54,
+    "main_table_cells": "C728:H728",
+    "appendix_cells": "C754:H754"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "FVT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "Green FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 29,
+    "appendix_row": 55,
+    "main_table_cells": "C329:H329",
+    "appendix_cells": "C355:H355"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "FVT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "Green FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 29,
+    "appendix_row": 55,
+    "main_table_cells": "C429:H429",
+    "appendix_cells": "C455:H455"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "FVT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "Green FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 29,
+    "appendix_row": 55,
+    "main_table_cells": "C529:H529",
+    "appendix_cells": "C555:H555"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "FVT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "Green FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 29,
+    "appendix_row": 55,
+    "main_table_cells": "C629:H629",
+    "appendix_cells": "C655:H655"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "FVT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "Green FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 29,
+    "appendix_row": 55,
+    "main_table_cells": "C729:H729",
+    "appendix_cells": "C755:H755"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 3.0,
+   "derived_total": 6.0,
+   "appendix_label": "Green SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 30,
+    "appendix_row": 56,
+    "main_table_cells": "C330:H330",
+    "appendix_cells": "C356:H356"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 3.0,
+   "derived_total": 9.0,
+   "appendix_label": "Green SIT",
+   "appendix_total": 6.0,
+   "delta": -3.0,
+   "delta_direction": "APPENDIX_LOWER",
+   "verification_status": "MISMATCH",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 30,
+    "appendix_row": 56,
+    "main_table_cells": "C430:H430",
+    "appendix_cells": "C456:H456"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 1.5,
+   "derived_total": 6.0,
+   "appendix_label": "Green SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 30,
+    "appendix_row": 56,
+    "main_table_cells": "C530:H530",
+    "appendix_cells": "C556:H556"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 1.2,
+   "derived_total": 6.0,
+   "appendix_label": "Green SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 30,
+    "appendix_row": 56,
+    "main_table_cells": "C630:H630",
+    "appendix_cells": "C656:H656"
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 1.0,
+   "derived_total": 6.0,
+   "appendix_label": "Green SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 30,
+    "appendix_row": 56,
+    "main_table_cells": "C730:H730",
+    "appendix_cells": "C756:H756"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 5.0,
+   "derived_total": 10.0,
+   "appendix_label": "Safety FVT",
+   "appendix_total": 10.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 31,
+    "appendix_row": 57,
+    "main_table_cells": "C331:H331",
+    "appendix_cells": "C357:H357"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 3.0,
+   "derived_total": 9.0,
+   "appendix_label": "Safety FVT",
+   "appendix_total": 9.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 31,
+    "appendix_row": 57,
+    "main_table_cells": "C431:H431",
+    "appendix_cells": "C457:H457"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 2.5,
+   "derived_total": 10.0,
+   "appendix_label": "Safety FVT",
+   "appendix_total": 10.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 31,
+    "appendix_row": 57,
+    "main_table_cells": "C531:H531",
+    "appendix_cells": "C557:H557"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 2.0,
+   "derived_total": 10.0,
+   "appendix_label": "Safety FVT",
+   "appendix_total": 10.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 31,
+    "appendix_row": 57,
+    "main_table_cells": "C631:H631",
+    "appendix_cells": "C657:H657"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 1.6,
+   "derived_total": 9.6,
+   "appendix_label": "Safety FVT",
+   "appendix_total": 10.0,
+   "delta": 0.4,
+   "delta_direction": "APPENDIX_HIGHER",
+   "verification_status": "MISMATCH",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 31,
+    "appendix_row": 57,
+    "main_table_cells": "C731:H731",
+    "appendix_cells": "C757:H757"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "SIT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 3.0,
+   "derived_total": 6.0,
+   "appendix_label": "Safety SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 32,
+    "appendix_row": 58,
+    "main_table_cells": "C332:H332",
+    "appendix_cells": "C358:H358"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "SIT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 2.0,
+   "derived_total": 6.0,
+   "appendix_label": "Safety SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 32,
+    "appendix_row": 58,
+    "main_table_cells": "C432:H432",
+    "appendix_cells": "C458:H458"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "SIT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 1.5,
+   "derived_total": 6.0,
+   "appendix_label": "Safety SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 32,
+    "appendix_row": 58,
+    "main_table_cells": "C532:H532",
+    "appendix_cells": "C558:H558"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "SIT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 1.2,
+   "derived_total": 6.0,
+   "appendix_label": "Safety SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 32,
+    "appendix_row": 58,
+    "main_table_cells": "C632:H632",
+    "appendix_cells": "C658:H658"
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "SIT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 1.0,
+   "derived_total": 6.0,
+   "appendix_label": "Safety SIT",
+   "appendix_total": 6.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 32,
+    "appendix_row": 58,
+    "main_table_cells": "C732:H732",
+    "appendix_cells": "C758:H758"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "FVT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "RF Cert FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 33,
+    "appendix_row": 59,
+    "main_table_cells": "C333:H333",
+    "appendix_cells": "C359:H359"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "FVT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "RF Cert FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 33,
+    "appendix_row": 59,
+    "main_table_cells": "C433:H433",
+    "appendix_cells": "C459:H459"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "FVT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "RF Cert FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 33,
+    "appendix_row": 59,
+    "main_table_cells": "C533:H533",
+    "appendix_cells": "C559:H559"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "FVT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "RF Cert FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 33,
+    "appendix_row": 59,
+    "main_table_cells": "C633:H633",
+    "appendix_cells": "C659:H659"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "FVT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 0.0,
+   "derived_total": 0.0,
+   "appendix_label": "RF Cert FVT",
+   "appendix_total": 0.0,
+   "delta": 0.0,
+   "delta_direction": null,
+   "verification_status": "VERIFIED",
+   "main_table_rate_is_constant_across_sku": true,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 33,
+    "appendix_row": 59,
+    "main_table_cells": "C733:H733",
+    "appendix_cells": "C759:H759"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 2,
+   "main_table_per_sku_quantity": 7.5,
+   "derived_total": 15.0,
+   "appendix_label": "RF Cert SIT",
+   "appendix_total": 8.0,
+   "delta": -7.0,
+   "delta_direction": "APPENDIX_LOWER",
+   "verification_status": "MISMATCH",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 34,
+    "appendix_row": 60,
+    "main_table_cells": "C334:H334",
+    "appendix_cells": "C360:H360"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 3,
+   "main_table_per_sku_quantity": 5.0,
+   "derived_total": 15.0,
+   "appendix_label": "RF Cert SIT",
+   "appendix_total": 9.0,
+   "delta": -6.0,
+   "delta_direction": "APPENDIX_LOWER",
+   "verification_status": "MISMATCH",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 34,
+    "appendix_row": 60,
+    "main_table_cells": "C434:H434",
+    "appendix_cells": "C460:H460"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 4,
+   "main_table_per_sku_quantity": 3.75,
+   "derived_total": 15.0,
+   "appendix_label": "RF Cert SIT",
+   "appendix_total": 10.0,
+   "delta": -5.0,
+   "delta_direction": "APPENDIX_LOWER",
+   "verification_status": "MISMATCH",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 34,
+    "appendix_row": 60,
+    "main_table_cells": "C534:H534",
+    "appendix_cells": "C560:H560"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 5,
+   "main_table_per_sku_quantity": 3.0,
+   "derived_total": 15.0,
+   "appendix_label": "RF Cert SIT",
+   "appendix_total": 10.0,
+   "delta": -5.0,
+   "delta_direction": "APPENDIX_LOWER",
+   "verification_status": "MISMATCH",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 34,
+    "appendix_row": 60,
+    "main_table_cells": "C634:H634",
+    "appendix_cells": "C660:H660"
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 6,
+   "main_table_per_sku_quantity": 2.5,
+   "derived_total": 15.0,
+   "appendix_label": "RF Cert SIT",
+   "appendix_total": 10.0,
+   "delta": -5.0,
+   "delta_direction": "APPENDIX_LOWER",
+   "verification_status": "MISMATCH",
+   "main_table_rate_is_constant_across_sku": false,
+   "source_reference": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_table_row": 34,
+    "appendix_row": 60,
+    "main_table_cells": "C734:H734",
+    "appendix_cells": "C760:H760"
+   }
+  }
+ ],
+ "appendix_internal_consistency": [
+  {
+   "appendix_label": "TTL FVT",
+   "phase": "FVT",
+   "sku_count": 2,
+   "component_sum": 10.0,
+   "appendix_ttl": 10.0,
+   "status": "VERIFIED",
+   "appendix_row": 61
+  },
+  {
+   "appendix_label": "TTL FVT",
+   "phase": "FVT",
+   "sku_count": 3,
+   "component_sum": 9.0,
+   "appendix_ttl": 9.0,
+   "status": "VERIFIED",
+   "appendix_row": 61
+  },
+  {
+   "appendix_label": "TTL FVT",
+   "phase": "FVT",
+   "sku_count": 4,
+   "component_sum": 10.0,
+   "appendix_ttl": 10.0,
+   "status": "VERIFIED",
+   "appendix_row": 61
+  },
+  {
+   "appendix_label": "TTL FVT",
+   "phase": "FVT",
+   "sku_count": 5,
+   "component_sum": 10.0,
+   "appendix_ttl": 10.0,
+   "status": "VERIFIED",
+   "appendix_row": 61
+  },
+  {
+   "appendix_label": "TTL FVT",
+   "phase": "FVT",
+   "sku_count": 6,
+   "component_sum": 10.0,
+   "appendix_ttl": 10.0,
+   "status": "VERIFIED",
+   "appendix_row": 61
+  },
+  {
+   "appendix_label": "TTL SIT",
+   "phase": "SIT",
+   "sku_count": 2,
+   "component_sum": 22.0,
+   "appendix_ttl": 22.0,
+   "status": "VERIFIED",
+   "appendix_row": 62
+  },
+  {
+   "appendix_label": "TTL SIT",
+   "phase": "SIT",
+   "sku_count": 3,
+   "component_sum": 24.0,
+   "appendix_ttl": 24.0,
+   "status": "VERIFIED",
+   "appendix_row": 62
+  },
+  {
+   "appendix_label": "TTL SIT",
+   "phase": "SIT",
+   "sku_count": 4,
+   "component_sum": 26.0,
+   "appendix_ttl": 26.0,
+   "status": "VERIFIED",
+   "appendix_row": 62
+  },
+  {
+   "appendix_label": "TTL SIT",
+   "phase": "SIT",
+   "sku_count": 5,
+   "component_sum": 27.0,
+   "appendix_ttl": 27.0,
+   "status": "VERIFIED",
+   "appendix_row": 62
+  },
+  {
+   "appendix_label": "TTL SIT",
+   "phase": "SIT",
+   "sku_count": 6,
+   "component_sum": 28.0,
+   "appendix_ttl": 28.0,
+   "status": "VERIFIED",
+   "appendix_row": 62
+  }
+ ],
+ "appendix_internally_consistent": true,
+ "main_table_rate_shape": [
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "FVT",
+   "per_sku_rate": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "rate_shape": "TRUE_PER_SKU_RATE",
+   "main_table_row": 27
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "phase": "SIT",
+   "per_sku_rate": {
+    "SKU2": 1.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.0
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 5.0,
+    "SKU6": 6.0
+   },
+   "rate_shape": "TRUE_PER_SKU_RATE",
+   "main_table_row": 28
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "FVT",
+   "per_sku_rate": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "rate_shape": "TRUE_PER_SKU_RATE",
+   "main_table_row": 29
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "per_sku_rate": {
+    "SKU2": 3.0,
+    "SKU3": 3.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 6.0,
+    "SKU3": 9.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "rate_shape": "IRREGULAR",
+   "main_table_row": 30
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "per_sku_rate": {
+    "SKU2": 5.0,
+    "SKU3": 3.0,
+    "SKU4": 2.5,
+    "SKU5": 2.0,
+    "SKU6": 1.6
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 10.0,
+    "SKU3": 9.0,
+    "SKU4": 10.0,
+    "SKU5": 10.0,
+    "SKU6": 9.6
+   },
+   "rate_shape": "IRREGULAR",
+   "main_table_row": 31
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "SIT",
+   "per_sku_rate": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "rate_shape": "BACK_DERIVED_FROM_FLAT_TOTAL",
+   "main_table_row": 32
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "FVT",
+   "per_sku_rate": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "rate_shape": "TRUE_PER_SKU_RATE",
+   "main_table_row": 33
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "per_sku_rate": {
+    "SKU2": 7.5,
+    "SKU3": 5.0,
+    "SKU4": 3.75,
+    "SKU5": 3.0,
+    "SKU6": 2.5
+   },
+   "main_table_rate_x_sku": {
+    "SKU2": 15.0,
+    "SKU3": 15.0,
+    "SKU4": 15.0,
+    "SKU5": 15.0,
+    "SKU6": 15.0
+   },
+   "rate_shape": "BACK_DERIVED_FROM_FLAT_TOTAL",
+   "main_table_row": 34
+  }
+ ],
+ "summary": {
+  "cells_total": 40,
+  "verified": 33,
+  "mismatch": 7,
+  "not_evaluable": 0,
+  "mismatch_by_function": {
+   "Green": 1,
+   "Safety": 1,
+   "RF Certification": 5
+  },
+  "functions_fully_verified": [
+   "EMC"
+  ],
+  "functions_with_mismatch": [
+   "Green",
+   "RF Certification",
+   "Safety"
+  ],
+  "max_abs_delta": 7.0,
+  "total_abs_delta_at_each_sku": {
+   "SKU2": 7.0,
+   "SKU3": 9.0,
+   "SKU4": 5.0,
+   "SKU5": 5.0,
+   "SKU6": 5.4
+  }
+ },
+ "impact_on_project_total": [
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "sku_count": 3,
+   "main_derived_total_audit_only": 9.0,
+   "appendix_total_adopted": 6.0,
+   "change_of_adopted_value_vs_main_derived": -3.0,
+   "note": "DEC-10: the Appendix total is the adopted value and is what the project total carries. The Main Table derived total stays here for audit and difference analysis only - it is never counted alongside the Appendix."
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "sku_count": 6,
+   "main_derived_total_audit_only": 9.6,
+   "appendix_total_adopted": 10.0,
+   "change_of_adopted_value_vs_main_derived": 0.4,
+   "note": "DEC-10: the Appendix total is the adopted value and is what the project total carries. The Main Table derived total stays here for audit and difference analysis only - it is never counted alongside the Appendix."
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 2,
+   "main_derived_total_audit_only": 15.0,
+   "appendix_total_adopted": 8.0,
+   "change_of_adopted_value_vs_main_derived": -7.0,
+   "note": "DEC-10: the Appendix total is the adopted value and is what the project total carries. The Main Table derived total stays here for audit and difference analysis only - it is never counted alongside the Appendix."
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 3,
+   "main_derived_total_audit_only": 15.0,
+   "appendix_total_adopted": 9.0,
+   "change_of_adopted_value_vs_main_derived": -6.0,
+   "note": "DEC-10: the Appendix total is the adopted value and is what the project total carries. The Main Table derived total stays here for audit and difference analysis only - it is never counted alongside the Appendix."
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 4,
+   "main_derived_total_audit_only": 15.0,
+   "appendix_total_adopted": 10.0,
+   "change_of_adopted_value_vs_main_derived": -5.0,
+   "note": "DEC-10: the Appendix total is the adopted value and is what the project total carries. The Main Table derived total stays here for audit and difference analysis only - it is never counted alongside the Appendix."
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 5,
+   "main_derived_total_audit_only": 15.0,
+   "appendix_total_adopted": 10.0,
+   "change_of_adopted_value_vs_main_derived": -5.0,
+   "note": "DEC-10: the Appendix total is the adopted value and is what the project total carries. The Main Table derived total stays here for audit and difference analysis only - it is never counted alongside the Appendix."
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku_count": 6,
+   "main_derived_total_audit_only": 15.0,
+   "appendix_total_adopted": 10.0,
+   "change_of_adopted_value_vs_main_derived": -5.0,
+   "note": "DEC-10: the Appendix total is the adopted value and is what the project total carries. The Main Table derived total stays here for audit and difference analysis only - it is never counted alongside the Appendix."
+  }
+ ],
+ "j33_investigation": {
+  "candidate_role": "CERTIFICATION_BREAKDOWN_EVIDENCE",
+  "cell": "J33",
+  "attached_to": {
+   "function_id": "F_RF_CERTIFICATION",
+   "phase": "FVT+SIT (merged J33:J34)",
+   "merged_range": "J33:J34"
+  },
+  "raw_text": "this data for 2 antenna source +2 wlan source refrence:\n1.SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；\n2.CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；\n3.FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;\n4.印尼* 2  .\n5.Mexico *1.\n6.资安*2（欧盟网络安全）",
+  "declared_reference_scenario": {
+   "antenna_source_count": 2,
+   "wlan_card_count": 2
+  },
+  "declared_scope_words": "this data for 2 antenna source +2 wlan source refrence",
+  "parsed_line_items": [
+   {
+    "item_no": 1,
+    "raw": "SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；",
+    "stated_unit_count": 2.0
+   },
+   {
+    "item_no": 2,
+    "raw": "CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；",
+    "stated_unit_count": 4.0
+   },
+   {
+    "item_no": 3,
+    "raw": "FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;",
+    "stated_unit_count": 4.0
+   },
+   {
+    "item_no": 4,
+    "raw": "印尼* 2 .",
+    "stated_unit_count": 2.0
+   },
+   {
+    "item_no": 5,
+    "raw": "Mexico *1.",
+    "stated_unit_count": 1.0
+   },
+   {
+    "item_no": 6,
+    "raw": "资安*2（欧盟网络安全）",
+    "stated_unit_count": 2.0
+   }
+  ],
+  "reference_total_under_readings": {
+   "CERTIFICATION_SUBSET": {
+    "total": 11.0,
+    "parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    },
+    "assumption": "FCC whole machines not required where the C1PC/module route applies, per the wording inside J33 itself"
+   },
+   "FULL": {
+    "total": 27.0,
+    "parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    },
+    "assumption": "every numbered line item needs its own whole machines, FCC = intel_wlan x antenna x 4"
+   }
+  },
+  "quantitative_reconciliation": [
+   {
+    "sku_count": 2,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 8.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 2,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 8.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 3,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 9.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 3,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 9.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 4,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 4,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 5,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 5,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   },
+   {
+    "sku_count": 6,
+    "phase": "SIT",
+    "reading": "CERTIFICATION_SUBSET",
+    "reading_note": "FCC covered by module route",
+    "j33_reference_total": 11.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 0.0
+    }
+   },
+   {
+    "sku_count": 6,
+    "phase": "SIT",
+    "reading": "FULL",
+    "reading_note": "every line item needs a whole machine",
+    "j33_reference_total": 27.0,
+    "main_table_derived_total": 15.0,
+    "appendix_total": 10.0,
+    "explains_main_table": false,
+    "explains_appendix": false,
+    "breakdown_parts": {
+     "item1": 2.0,
+     "item2": 4.0,
+     "item4": 2.0,
+     "item5": 1.0,
+     "item6": 2.0,
+     "item3_FCC": 16.0
+    }
+   }
+  ],
+  "bracket": {
+   "min_no_whole_machine_fcc": 11.0,
+   "max_full_fcc": 27.0,
+   "main_table_derived_15_inside_bracket": true,
+   "appendix_totals_8_to_10_inside_bracket": false,
+   "appendix_sits_below_the_no_fcc_floor": true,
+   "reading": "15 is inside the bracket: consistent with a mix where some WLAN cards take the C1PC/module route (no whole machine) and others do not. The Appendix 8-10 sits BELOW the floor of a 2-antenna / 2-WLAN-card project, so the Appendix cannot be the same reference scenario as J33. Neither value is reproducible from J33 alone."
+  },
+  "findings": {
+   "explains_main_table_quantity": false,
+   "explains_appendix_total": false,
+   "applies_to": [
+    "F_RF_CERTIFICATION only"
+   ],
+   "applies_to_specific_source_combination": true,
+   "antenna_and_wlan_are": "BUSINESS_COMPOSITION_DESCRIPTION - the note explains why RF certification consumes machines (antenna source x WLAN card matrix). It is not an executable calculation variable in the workbook: no cell formula consumes it.",
+   "already_inside_main_table_rate": "CANNOT_BE_PROVEN_FROM_THE_WORKBOOK",
+   "double_count_risk_if_added": "HIGH - the Main Table per-SKU rate for RF certification is already the whole-machine count for that SKU; adding the J33 line items on top would count the same machines twice"
+  },
+  "disposition": "DECLARED_NOT_GENERALIZED",
+  "additive_to_main_table_result": false,
+  "mvp_requires_antenna_wlan_input_now": false,
+  "rule_package_role": "EXPLANATORY_EVIDENCE_NOT_A_RULE"
+ },
+ "ori_02_status": "PARTIALLY_RESOLVED",
+ "legacy_competing_model_audit": {
+  "files_scanned": [
+   "rules_v3.py",
+   "core.js",
+   "quantity_model_v3.json"
+  ],
+  "forbidden_phrases": [
+   "'kind': 'COMPETING_CERTIFICATION_MODELS'",
+   "\"kind\": \"COMPETING_CERTIFICATION_MODELS\"",
+   "'kind': 'CERTIFICATION_MODEL_UNRESOLVED'",
+   "\"kind\": \"CERTIFICATION_MODEL_UNRESOLVED\"",
+   "competing_candidates",
+   "unresolved_certification",
+   "certification_unresolved",
+   "three competing Certification models"
+  ],
+  "hits": []
+ }
+}

@@ -1,0 +1,1991 @@
+{
+ "baseline_id": "BASELINE-CS-ODM-001",
+ "baseline_version": "v1.0-draft",
+ "derived_from": {
+  "file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+  "sha256": "48a360ff2ffd086e41d6b90a916f64fe52d9bc13efba07b8377b2945c846ab5a",
+  "sheet": "CS ODM sample ",
+  "sheet_dimensions": "A1:L95",
+  "workbook_creator": "William HC",
+  "workbook_last_modified_by": "Lingyu LY3 Rong",
+  "workbook_modified": "2026-10-30T08:51:32+00:00",
+  "extraction_sha_source_json": "see artifacts/extraction"
+ },
+ "status": "DRAFT_UNCONFIRMED_BY_OWNER",
+ "generated_at_utc": "2026-11-06T08:36:35+00:00",
+ "generator": "tools/build_baseline_dataset.py",
+ "taxonomy": {
+  "FVT": "First validation/prototyping phase",
+  "SIT": "System integration test phase",
+  "categories": {
+   "RD": "Research & Development functions",
+   "PA": "Process/Production Assurance",
+   "CERT": "Certification",
+   "VENDOR": "3rd Party Vendor",
+   "MFG": "Manufacturing"
+  }
+ },
+ "functions": [
+  {
+   "function_id": "F_HW",
+   "category": "RD",
+   "name": "HW",
+   "source_rows": {
+    "fvt": 3,
+    "sit": 4
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 6.0,
+     "SKU3": 4.3,
+     "SKU4": 3.5,
+     "SKU5": 3.0,
+     "SKU6": 2.7
+    },
+    "SIT": {
+     "SKU2": 6.0,
+     "SKU3": 4.3,
+     "SKU4": 3.5,
+     "SKU5": 3.0,
+     "SKU6": 2.7
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 12.0,
+     "SKU3": 12.9,
+     "SKU4": 14.0,
+     "SKU5": 15.0,
+     "SKU6": 16.2
+    },
+    "SIT": {
+     "SKU2": 12.0,
+     "SKU3": 12.9,
+     "SKU4": 14.0,
+     "SKU5": 15.0,
+     "SKU6": 16.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.9,
+     "SKU4": 1.1,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 0.9,
+     "SKU4": 1.1,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": "OK",
+   "purpose_text": "Power测试*1/phase; (HQ:EE noise 是Power RD 自己测试，1unit/sku,)\nEE breakdown+issue debug*1by sku, 最高配sku*2unit,\nHDMI认证*3/phase (FVT 开始送测，如果FVT PASS(一般都能pass),SIT 无需再送测, base QS GPU）（HQ 是放在认证RD）\nTBT*2/Phase，FVT 测EV +SIT 测试FV.(HQ FV 是在sw team 做)\nBattery life  1 unit/ sku, Compal 是 3 units/phase.\nOption:\nBattery team 1*vendor*sku*phase for Q test for new source；\nFor old source，Compal/HQ不需要样机。(LCFC SIT 1source *1units)\nCPU OC *2 &GPU OC ：\n    LCFC:   CPU OC *2 &GPU OC *2  /phase .\nCompal:  CPU OC *2 &GPU OC *2  /phase .\n        HQ: Leverage EE unit.",
+   "remark_text": "HDMI 样机是根据connector source定的.\n一般是3家source. Compal 样机是2unit/phase.\nremark option 的部分，还没加到样机data里面。\nPCIE*1 PCBA\nUSB3/2*1 PCBA\nCrystal*1 PCBA\naudio*1 PCBA\nHW EE debug *4 PCBA\nHW EA team test *1 PCBA\nITE KB debug *1 PCBA\nVRAM tuning*7",
+   "spec_aliases": [
+    "HW",
+    "EE",
+    "Power",
+    "HDMI",
+    "TBT",
+    "Battery life",
+    "OC"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_ME",
+   "category": "RD",
+   "name": "ME",
+   "source_rows": {
+    "fvt": 5,
+    "sit": 6
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    },
+    "SIT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "for debug*1 or 0台 to common with ME PA.",
+   "remark_text": null,
+   "spec_aliases": [
+    "ME"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_THM",
+   "category": "RD",
+   "name": "THM",
+   "source_rows": {
+    "fvt": 7,
+    "sit": 8
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 3.5,
+     "SKU3": 2.3,
+     "SKU4": 1.8,
+     "SKU5": 1.4,
+     "SKU6": 1.2
+    },
+    "SIT": {
+     "SKU2": 3.5,
+     "SKU3": 2.3,
+     "SKU4": 1.8,
+     "SKU5": 1.4,
+     "SKU6": 1.2
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 7.0,
+     "SKU3": 6.9,
+     "SKU4": 7.2,
+     "SKU5": 7.0,
+     "SKU6": 7.2
+    },
+    "SIT": {
+     "SKU2": 7.0,
+     "SKU3": 6.9,
+     "SKU4": 7.2,
+     "SKU5": 7.0,
+     "SKU6": 7.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.3,
+     "SKU5": -0.2,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.3,
+     "SKU5": -0.2,
+     "SKU6": 0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": "ok",
+   "purpose_text": "LCFC:component  *1；skin*1；Acountic 1unit,thm capacity test*1\nthm module vendor debug*1.Fan vendor*1\nDust shipment*1（L/T 1wk,can leverage vendor unit）\nCompal total 6unit for 1unit test in Acoustic team.\nHQ: total 6unit.",
+   "remark_text": "其他配置给PCBA",
+   "spec_aliases": [
+    "THM",
+    "Acoustic",
+    "Fan",
+    "skin"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_AUDIO",
+   "category": "RD",
+   "name": "Audio",
+   "source_rows": {
+    "fvt": 9,
+    "sit": 10
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 2.0,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.8,
+     "SKU6": 0.6
+    },
+    "SIT": {
+     "SKU2": 2.0,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.8,
+     "SKU6": 0.6
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 4.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 4.0,
+     "SKU6": 3.6
+    },
+    "SIT": {
+     "SKU2": 4.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 4.0,
+     "SKU6": 3.6
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.0,
+     "SKU6": -0.4
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": -1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.0,
+     "SKU6": -0.4
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "MIC effect tuning*  1 \n Audio Nahimic *1\nScenic tuning* 1 \nResonance Test  /Sound Quality Test * 1-->2\nfianl : LCFC/HQ/Compal 都可按照4-5unit/phase.\nOption：\nSmart AMP: add 1 unit",
+   "remark_text": "跟着platform 走，leading的样机相对多，\n其后项目适当减少,common driver.",
+   "spec_aliases": [
+    "Audio",
+    "MIC",
+    "Nahimic"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_RF_TEST",
+   "category": "RD",
+   "name": "RF Test",
+   "source_rows": {
+    "fvt": 11,
+    "sit": 12
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 2.5,
+     "SKU3": 1.7,
+     "SKU4": 1.3,
+     "SKU5": 1.0,
+     "SKU6": 0.8
+    },
+    "SIT": {
+     "SKU2": 2.5,
+     "SKU3": 1.7,
+     "SKU4": 1.3,
+     "SKU5": 1.0,
+     "SKU6": 0.8
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 5.0,
+     "SKU3": 5.1,
+     "SKU4": 5.2,
+     "SKU5": 5.0,
+     "SKU6": 4.8
+    },
+    "SIT": {
+     "SKU2": 5.0,
+     "SKU3": 5.1,
+     "SKU4": 5.2,
+     "SKU5": 5.0,
+     "SKU6": 4.8
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.1,
+     "SKU4": 0.1,
+     "SKU5": -0.2,
+     "SKU6": -0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 0.1,
+     "SKU4": 0.1,
+     "SKU5": -0.2,
+     "SKU6": -0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "天线调试+RD 自测+TDMS issue*1\nnoise测试，conductive*1（RD 和3nd 实验室common）\nnoise测试，air tput*1（RD 和3nd 实验室common）\nPre-SAR/RSE(x1)*1\nfianl : LCFC/HQ/Compal 都可按照4-5unit/phase.",
+   "remark_text": null,
+   "spec_aliases": [
+    "RF"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "category": "RD",
+   "name": "EMC Test",
+   "source_rows": {
+    "fvt": 13,
+    "sit": 14
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 3.0,
+     "SKU3": 2.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    },
+    "SIT": {
+     "SKU2": 3.0,
+     "SKU3": 2.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    },
+    "SIT": {
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": "待LCFC update",
+   "purpose_text": "Compal ：EMI/ESD/EMS測試機台6台，for 6 sku, 1unit/sku.\nHQ: 1 unit/sku;\nshengfei suggest: 1unit/sku, Add 2 additional backup units,and for leading,2-3 unit/sku.",
+   "remark_text": "一台EMI,一台EMS.一台backup. 加PCBA*SKU*1PCS？",
+   "spec_aliases": [
+    "EMC test",
+    "EMI",
+    "ESD",
+    "EMS"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_SED",
+   "category": "RD",
+   "name": "SED",
+   "source_rows": {
+    "fvt": 15,
+    "sit": 16
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 2.0,
+     "SKU3": 1.7,
+     "SKU4": 1.5,
+     "SKU5": 1.4,
+     "SKU6": 1.3
+    },
+    "SIT": {
+     "SKU2": 2.0,
+     "SKU3": 1.7,
+     "SKU4": 1.5,
+     "SKU5": 1.4,
+     "SKU6": 1.3
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 4.0,
+     "SKU3": 5.1,
+     "SKU4": 6.0,
+     "SKU5": 7.0,
+     "SKU6": 7.8
+    },
+    "SIT": {
+     "SKU2": 4.0,
+     "SKU3": 5.1,
+     "SKU4": 6.0,
+     "SKU5": 7.0,
+     "SKU6": 7.8
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 1.1,
+     "SKU4": 0.9,
+     "SKU5": 1.0,
+     "SKU6": 0.8
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 1.1,
+     "SKU4": 0.9,
+     "SKU5": 1.0,
+     "SKU6": 0.8
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "base sku 搭配不同的panel.\nx-rite FVT *source,normal 1 /sku\nHDR cer.SIT*source,normal 1 /sku, \nPanel debug*2/phase （common with camera debug）\nOption:\nCamera win Hello cer. unit(for IR feature)\nOEM exception: 需要送测MS,  source *2-3 /FVT phase。(normal only FVT) vendor*1/FVT.此范畴适用于leading的项目，第一个送测的.\nPQL:大部分属于此范畴，只需要提供报告，无需送样机给MS, vendor*1 units/FVT phase.\nDolby vision FVT *Cable 线，follow design（一般OLED 和IPS Cable不同，SDC和EDO OLED cable不同）,remove from G12.\nPanel related  new feature tuning: case by case.\nESI test: LCFC need for source leading project need 2 unit.\nTP FW Tuning*3/ FVT. SIT no need.(for new source,MP source no need);\nX-rite-HDR 校色to 印度： source *1 unit/FVT Phase.sit no need.",
+   "remark_text": "具体到Win Hello cer.跟着camera走，如果已经有其他项目送样了，可以不用再次送样。\n现在都是Panel HDR的.Dolby vision 是否一定需要了?跟team 去check? If no, 那么Dolby FVT 可以减少。--PM confirm delete it from G12.",
+   "spec_aliases": [
+    "SED",
+    "Panel",
+    "X-rite",
+    "HDR",
+    "TP FW"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_SS",
+   "category": "RD",
+   "name": "SS",
+   "source_rows": {
+    "fvt": 17,
+    "sit": 18
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 9.0,
+     "SKU3": 7.0,
+     "SKU4": 5.5,
+     "SKU5": 5.0,
+     "SKU6": 4.4
+    },
+    "SIT": {
+     "SKU2": 9.0,
+     "SKU3": 7.0,
+     "SKU4": 5.5,
+     "SKU5": 5.0,
+     "SKU6": 4.4
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 18.0,
+     "SKU3": 21.0,
+     "SKU4": 22.0,
+     "SKU5": 25.0,
+     "SKU6": 26.4
+    },
+    "SIT": {
+     "SKU2": 18.0,
+     "SKU3": 21.0,
+     "SKU4": 22.0,
+     "SKU5": 25.0,
+     "SKU6": 26.4
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 3.0,
+     "SKU4": 1.0,
+     "SKU5": 3.0,
+     "SKU6": 1.4
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 3.0,
+     "SKU4": 1.0,
+     "SKU5": 3.0,
+     "SKU6": 1.4
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": "LCFC BIOS and SA 建议根据复杂度，4-6unit /phase.\nHQ 数量偏少",
+   "purpose_text": "BIOS*4/phase\nEC*1-- 2/Phase\nSA HLK*1/SKU\nSA *5/phase \ndebug*2(compal 无此team和需求,but MS*4 &jump start*2 in SIT PHASE)\nPreload*1/SKU\nOS*1/phase",
+   "remark_text": "各家ODM 数据gap挺大的，跟TPM gap也有，需要重点沟通。\nPre-load  BIOS Driver \n都跟KP 强相关，理论上会要求sku*1.\n可以根据平台成熟度协商.或者是否可以rework方式节省样机?\nODM BIOS *10 \n           driver *10\n        OS*2\n         EC*5",
+   "spec_aliases": [
+    "SS",
+    "BIOS",
+    "EC",
+    "SA",
+    "HLK",
+    "Preload",
+    "OS"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_PD",
+   "category": "RD",
+   "name": "PD",
+   "source_rows": {
+    "fvt": 19,
+    "sit": 20
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    },
+    "SIT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "1unit for debug",
+   "remark_text": "LNV+ODM PD total 1 unit",
+   "spec_aliases": [
+    "PD"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_SWPA",
+   "category": "PA",
+   "name": "SWPA",
+   "source_rows": {
+    "fvt": 21,
+    "sit": 22
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 28.0,
+     "SKU3": 24.0,
+     "SKU4": 20.0,
+     "SKU5": 18.0,
+     "SKU6": 17.0
+    },
+    "SIT": {
+     "SKU2": 28.0,
+     "SKU3": 24.0,
+     "SKU4": 20.0,
+     "SKU5": 18.0,
+     "SKU6": 17.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 56.0,
+     "SKU3": 72.0,
+     "SKU4": 80.0,
+     "SKU5": 90.0,
+     "SKU6": 102.0
+    },
+    "SIT": {
+     "SKU2": 56.0,
+     "SKU3": 72.0,
+     "SKU4": 80.0,
+     "SKU5": 90.0,
+     "SKU6": 102.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 16.0,
+     "SKU4": 8.0,
+     "SKU5": 10.0,
+     "SKU6": 12.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 16.0,
+     "SKU4": 8.0,
+     "SKU5": 10.0,
+     "SKU6": 12.0
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "follow PPA sample standard 1.0.\nSW PA 样机数量包含了HLK*1/sku +EE noise test*1/sku.\n比如HQ EE noise是pwr RD 测试,Compal HLK是pre-load 测试，需要对应的function做相应的扣除和添加。",
+   "remark_text": null,
+   "spec_aliases": [
+    "SWPA",
+    "SW PA"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_MEPA",
+   "category": "PA",
+   "name": "MEPA",
+   "source_rows": {
+    "fvt": 23,
+    "sit": 24
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 16.0,
+     "SKU3": 12.0,
+     "SKU4": 9.0,
+     "SKU5": 7.2,
+     "SKU6": 6.0
+    },
+    "SIT": {
+     "SKU2": 16.0,
+     "SKU3": 12.0,
+     "SKU4": 9.0,
+     "SKU5": 7.2,
+     "SKU6": 6.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 32.0,
+     "SKU3": 36.0,
+     "SKU4": 36.0,
+     "SKU5": 36.0,
+     "SKU6": 36.0
+    },
+    "SIT": {
+     "SKU2": 32.0,
+     "SKU3": 36.0,
+     "SKU4": 36.0,
+     "SKU5": 36.0,
+     "SKU6": 36.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 4.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 4.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": "LCFC:Confirmed ok as left data. \nHQ /Compal :to be clarify.",
+   "purpose_text": null,
+   "remark_text": "CS: 1 phase 36 units\nPCB refresh: 1 phase 12-16units.",
+   "spec_aliases": [
+    "MEPA",
+    "ME PA"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_HW_PA",
+   "category": "PA",
+   "name": "HW PA",
+   "source_rows": {
+    "fvt": 25,
+    "sit": 26
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 1.0,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.8,
+     "SKU6": 0.7
+    },
+    "SIT": {
+     "SKU2": 1.0,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.8,
+     "SKU6": 0.7
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 2.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 4.0,
+     "SKU6": 4.2
+    },
+    "SIT": {
+     "SKU2": 2.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 4.0,
+     "SKU6": 4.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": "HQ gap比较大",
+   "purpose_text": null,
+   "remark_text": "TTL3- 4unit one phase\ntest EE/THM",
+   "spec_aliases": [
+    "HW PA"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_EMC",
+   "category": "CERT",
+   "name": "EMC",
+   "source_rows": {
+    "fvt": 27,
+    "sit": 28
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": 1.0,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": 2.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 5.0,
+     "SKU6": 6.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 1.0,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.0
+    }
+   },
+   "phase_symmetry": "ASYMMETRIC",
+   "status_text": null,
+   "purpose_text": "认证*1/sku+全套的KP(只要SIT)",
+   "remark_text": null,
+   "spec_aliases": [
+    "EMC cert"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_GREEN",
+   "category": "CERT",
+   "name": "Green",
+   "source_rows": {
+    "fvt": 29,
+    "sit": 30
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": 3.0,
+     "SKU3": 3.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": 6.0,
+     "SKU3": 9.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 3.0,
+     "SKU4": -3.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    }
+   },
+   "phase_symmetry": "ASYMMETRIC",
+   "status_text": null,
+   "purpose_text": "越南DN1 + 韩国DN 1台+ CEL*CPU value(EEcofirm)*2 + BCS 2台\nOption:\nEPEAT: 5unit. （主要做跌落测试，L/T2-3WK,HQ LOQ 是share 其他function 样机）\n Gaming pro系列项目不符合EPEAT2025的要求,还未做过。\nE-Star9.0 *1；\nUL golden*1 (Gaming performance and comfort)跟GPU5080以上\neyesafe/LBL/HGPD Golden* N台 ,如果Panel数量为N，则样机数量为N",
+   "remark_text": "FVT for RD 内测,leverage safety.",
+   "spec_aliases": [
+    "Green",
+    "EPEAT",
+    "E-Star",
+    "CEL",
+    "BCS",
+    "UL golden"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_SAFETY",
+   "category": "CERT",
+   "name": "Safety",
+   "source_rows": {
+    "fvt": 31,
+    "sit": 32
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 5.0,
+     "SKU3": 3.0,
+     "SKU4": 2.5,
+     "SKU5": 2.0,
+     "SKU6": 1.6
+    },
+    "SIT": {
+     "SKU2": 3.0,
+     "SKU3": 2.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 10.0,
+     "SKU3": 9.0,
+     "SKU4": 10.0,
+     "SKU5": 10.0,
+     "SKU6": 9.6
+    },
+    "SIT": {
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -1.0,
+     "SKU4": 1.0,
+     "SKU5": 0.0,
+     "SKU6": -0.4
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    }
+   },
+   "phase_symmetry": "ASYMMETRIC",
+   "status_text": null,
+   "purpose_text": "FVT:CB 5台(battery source +1 自测)，UL4200A（纽扣电池） 1台-->0 (现在基本内置Batt)， BIS 1 台.\nCommon charge 2 台，\nSIT:CCC 2 (1+CPU 核心数*1pcs)+ 韩国 1 + 内测 1\nNOM 1  + EAC 1(哈萨克斯坦1pcs maybe)",
+   "remark_text": "BIS: India catelog name *1pcs/SIT PHASE/BATTERY SPEC/ADP SPEC.\nadapter rating label* battery rating label.",
+   "spec_aliases": [
+    "Safety",
+    "CCC",
+    "BIS",
+    "UL4200A",
+    "CB ",
+    "NOM",
+    "EAC"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "category": "CERT",
+   "name": "RF Certification",
+   "source_rows": {
+    "fvt": 33,
+    "sit": 34
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": 7.5,
+     "SKU3": 5.0,
+     "SKU4": 3.75,
+     "SKU5": 3.0,
+     "SKU6": 2.5
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": 15.0,
+     "SKU3": 15.0,
+     "SKU4": 15.0,
+     "SKU5": 15.0,
+     "SKU6": 15.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    }
+   },
+   "phase_symmetry": "ASYMMETRIC",
+   "status_text": null,
+   "purpose_text": "this data for 2 antenna source +2 wlan source refrence:\n1.SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；\n2.CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；\n3.FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;\n4.印尼* 2  .\n5.Mexico *1.\n6.资安*2（欧盟网络安全）",
+   "remark_text": null,
+   "spec_aliases": [
+    "SRRC",
+    "FCC",
+    "CE",
+    "印尼",
+    "Mexico",
+    "资安"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_BIOS",
+   "category": "VENDOR",
+   "name": "BIOS",
+   "source_rows": {
+    "fvt": 35,
+    "sit": 36
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    },
+    "SIT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": null,
+   "remark_text": "the data is for leading CS project. \nOthers less than this, case by case.",
+   "spec_aliases": [
+    "3rd BIOS"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_ITE",
+   "category": "VENDOR",
+   "name": "ITE",
+   "source_rows": {
+    "fvt": 37,
+    "sit": 38
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    },
+    "SIT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "Total one phase on unit",
+   "remark_text": "if no lighting feature,no need",
+   "spec_aliases": [
+    "ITE"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_NV",
+   "category": "VENDOR",
+   "name": "NV",
+   "source_rows": {
+    "fvt": 39,
+    "sit": 40
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 3.0,
+     "SKU3": 2.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    },
+    "SIT": {
+     "SKU2": 3.0,
+     "SKU3": 2.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    },
+    "SIT": {
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "台北，印度，美国各2台  TTL 6pcs",
+   "remark_text": "the data is for leading CS project. \nOthers less than this, case by case.",
+   "spec_aliases": [
+    "NV",
+    "NVIDIA"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_INTEL",
+   "category": "VENDOR",
+   "name": "INTEL",
+   "source_rows": {
+    "fvt": 41,
+    "sit": 42
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 3.0,
+     "SKU3": 2.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    },
+    "SIT": {
+     "SKU2": 3.0,
+     "SKU3": 2.0,
+     "SKU4": 1.5,
+     "SKU5": 1.2,
+     "SKU6": 1.0
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    },
+    "SIT": {
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "6PCS",
+   "remark_text": null,
+   "spec_aliases": [
+    "INTEL"
+   ],
+   "all_zero": false
+  },
+  {
+   "function_id": "F_MFG",
+   "category": "MFG",
+   "name": "MFG",
+   "source_rows": {
+    "fvt": 43,
+    "sit": 44
+   },
+   "per_sku_rate": {
+    "FVT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": 0.5,
+     "SKU3": 0.3,
+     "SKU4": 0.25,
+     "SKU5": 0.2,
+     "SKU6": 0.2
+    }
+   },
+   "ttl_per_phase": {
+    "FVT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    },
+    "SIT": {
+     "SKU2": 1.0,
+     "SKU3": 0.9,
+     "SKU4": 1.0,
+     "SKU5": 1.0,
+     "SKU6": 1.2
+    }
+   },
+   "marginal_ttl": {
+    "FVT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    },
+    "SIT": {
+     "SKU2": null,
+     "SKU3": -0.1,
+     "SKU4": 0.1,
+     "SKU5": 0.0,
+     "SKU6": 0.2
+    }
+   },
+   "phase_symmetry": "SYMMETRIC",
+   "status_text": null,
+   "purpose_text": "红丹test",
+   "remark_text": "Total one phase on unit",
+   "spec_aliases": [
+    "MFG",
+    "红丹"
+   ],
+   "all_zero": false
+  }
+ ],
+ "totals": {
+  "FVT": {
+   "label": "SUM/sku FVT",
+   "row": 45,
+   "SKU2": 86.5,
+   "SKU3": 65.49999999999999,
+   "SKU4": 52.85,
+   "SKU5": 45.20000000000002,
+   "SKU6": 40.30000000000001
+  },
+  "SIT": {
+   "label": "SUM/sku SIT",
+   "row": 46,
+   "SKU2": 96.0,
+   "SKU3": 73.49999999999999,
+   "SKU4": 58.1,
+   "SKU5": 49.60000000000002,
+   "SKU6": 44.20000000000001
+  }
+ },
+ "totals_ttl": {
+  "FVT": {
+   "label": "TTL SUM/phase FVT",
+   "row": 48,
+   "SKU2": 173.0,
+   "SKU3": 196.49999999999994,
+   "SKU4": 211.4,
+   "SKU5": 226.00000000000009,
+   "SKU6": 241.80000000000007
+  },
+  "SIT": {
+   "label": "TTL SUM/phase SIT",
+   "row": 49,
+   "SKU2": 192.0,
+   "SKU3": 220.49999999999994,
+   "SKU4": 232.4,
+   "SKU5": 248.0000000000001,
+   "SKU6": 265.20000000000005
+  }
+ },
+ "sku_quantity_anchor_row": 47,
+ "sku_definition": {
+  "SKU2": {
+   "row": 79,
+   "raw_text": "2SKU: 1-2*CPU +1*GPU+ 1-2*Panel +SSD SPEC*1 +Mem spec *1     VRAM match MB1 1-2 Source/X9/X11.                                                  N1x/Y9 source少，Volume 少",
+   "cpu": [
+    1,
+    2
+   ],
+   "gpu": [
+    1,
+    1
+   ],
+   "panel": [
+    1,
+    2
+   ],
+   "ssd": [
+    1,
+    1
+   ],
+   "mem": [
+    1,
+    1
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "VRAM match MB1 1-2 Source/X9/X11. | N1x/Y9 source少，Volume 少"
+  },
+  "SKU3": {
+   "row": 80,
+   "raw_text": "3SKU:2-3*CPU +2*GPU+ 1*Panel spec  +SSD SPEC*1 +Mem spec *1(or SSD/Mem spec *2, arrange  2nd wave)                                             Y7  DIS",
+   "cpu": [
+    2,
+    3
+   ],
+   "gpu": [
+    2,
+    2
+   ],
+   "panel": [
+    1,
+    1
+   ],
+   "ssd": [
+    1,
+    1
+   ],
+   "mem": [
+    1,
+    1
+   ],
+   "second_wave_clause": "em spec *1(or SSD/Mem spec *2, arrange  2nd wave)",
+   "has_second_wave_option": true,
+   "context_note": "(or SSD/Mem spec *2, arrange | 2nd wave) | Y7 | DIS"
+  },
+  "SKU4": {
+   "row": 81,
+   "raw_text": "4SKU:2-4*CPU +2-3*GPU+ 2*Panel spec  +SSD SPEC*2 +Mem spec *2                                                                                                                Pro/LOQ /Y5",
+   "cpu": [
+    2,
+    4
+   ],
+   "gpu": [
+    2,
+    3
+   ],
+   "panel": [
+    2,
+    2
+   ],
+   "ssd": [
+    2,
+    2
+   ],
+   "mem": [
+    2,
+    2
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "Pro/LOQ /Y5"
+  },
+  "SKU5": {
+   "row": 82,
+   "raw_text": "5SKU :3-4*CPU +3*GPU+ 2*Panel spec  +SSD SPEC*2 +Mem spec *2                                                                                                                   Pro/LOQ /Y5",
+   "cpu": [
+    3,
+    4
+   ],
+   "gpu": [
+    3,
+    3
+   ],
+   "panel": [
+    2,
+    2
+   ],
+   "ssd": [
+    2,
+    2
+   ],
+   "mem": [
+    2,
+    2
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "Pro/LOQ /Y5"
+  },
+  "SKU6": {
+   "row": 83,
+   "raw_text": "6SKU::4-5*CPU +3*GPU+ 2-3*Panel spec  +SSD SPEC*2 +Mem spec *2-3                                                                                                            ID./ME*2 ，Pro上",
+   "cpu": [
+    4,
+    5
+   ],
+   "gpu": [
+    3,
+    3
+   ],
+   "panel": [
+    2,
+    3
+   ],
+   "ssd": [
+    2,
+    2
+   ],
+   "mem": [
+    2,
+    3
+   ],
+   "second_wave_clause": null,
+   "has_second_wave_option": false,
+   "context_note": "ID./ME*2 ，Pro上"
+  }
+ },
+ "sku_definition_header_comments": {
+  "2": {
+   "cell": "D2",
+   "panel": 2,
+   "cpu": 1,
+   "gpu": 1,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "2*panel+1*CPU+1*GPU"
+  },
+  "3": {
+   "cell": "E2",
+   "panel": 3,
+   "cpu": 2,
+   "gpu": 2,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "3*panel+2*CPU+2*GPU"
+  },
+  "4": {
+   "cell": "F2",
+   "panel": 4,
+   "cpu": 2,
+   "gpu": 2,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "4*panel+2*CPU+2*GPU"
+  },
+  "5": {
+   "cell": "G2",
+   "panel": 5,
+   "cpu": 3,
+   "gpu": 3,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "5*panel+3*CPU+3*GPU"
+  },
+  "6": {
+   "cell": "H2",
+   "panel": 6,
+   "cpu": 3,
+   "gpu": 3,
+   "dated": "2026-06-24",
+   "author": "Lingyu LY3 Rong",
+   "raw": "6*panel+3*CPU+3*GPU"
+  }
+ },
+ "secondary_tables": {
+  "certification_block2": {
+   "note": "Rows 51-62: second, independent Certification model (absolute units/phase, not per-SKU rate)",
+   "rows": [
+    {
+     "label": "EMC FVT",
+     "row": 53,
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    {
+     "label": "EMC SIT",
+     "row": 54,
+     "SKU2": 2.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 5.0,
+     "SKU6": 6.0
+    },
+    {
+     "label": "Green FVT",
+     "row": 55,
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    {
+     "label": "Green SIT",
+     "row": 56,
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    },
+    {
+     "label": "Safety FVT",
+     "row": 57,
+     "SKU2": 10.0,
+     "SKU3": 9.0,
+     "SKU4": 10.0,
+     "SKU5": 10.0,
+     "SKU6": 10.0
+    },
+    {
+     "label": "Safety SIT",
+     "row": 58,
+     "SKU2": 6.0,
+     "SKU3": 6.0,
+     "SKU4": 6.0,
+     "SKU5": 6.0,
+     "SKU6": 6.0
+    },
+    {
+     "label": "RF Cert FVT",
+     "row": 59,
+     "SKU2": 0.0,
+     "SKU3": 0.0,
+     "SKU4": 0.0,
+     "SKU5": 0.0,
+     "SKU6": 0.0
+    },
+    {
+     "label": "RF Cert SIT",
+     "row": 60,
+     "SKU2": 8.0,
+     "SKU3": 9.0,
+     "SKU4": 10.0,
+     "SKU5": 10.0,
+     "SKU6": 10.0
+    },
+    {
+     "label": "TTL FVT",
+     "row": 61,
+     "SKU2": 10.0,
+     "SKU3": 9.0,
+     "SKU4": 10.0,
+     "SKU5": 10.0,
+     "SKU6": 10.0
+    },
+    {
+     "label": "TTL SIT",
+     "row": 62,
+     "SKU2": 22.0,
+     "SKU3": 24.0,
+     "SKU4": 26.0,
+     "SKU5": 27.0,
+     "SKU6": 28.0
+    }
+   ],
+   "explanation_text": "Flicker Free，TUV EyeSafe，Low Blue Light  can leverage sample unit,1panel*1 unit;\nHigh gaming performance*1panel*1 unit. \nrefer to G10 G12 LCFC data: WW certification including promition: range 34--36 units.\n Certification 每个场景下的样机不一样，主要差异在EMC, 因为EMC 的样机是by sku的，需要cover所有KP.\nFor PRC only project: need xx units for CCC. X units For SRRC."
+  },
+  "pa_block2": {
+   "note": "Rows 66-75: PA restated as absolute units/phase",
+   "rows": [
+    {
+     "label": "SWPA FVT",
+     "row": 68,
+     "SKU2": 56.0,
+     "SKU3": 72.0,
+     "SKU4": 80.0,
+     "SKU5": 90.0,
+     "SKU6": 102.0
+    },
+    {
+     "label": "SWPA SIT",
+     "row": 69,
+     "SKU2": 56.0,
+     "SKU3": 72.0,
+     "SKU4": 80.0,
+     "SKU5": 90.0,
+     "SKU6": 102.0
+    },
+    {
+     "label": "MEPA FVT",
+     "row": 70,
+     "SKU2": 36.0,
+     "SKU3": 36.0,
+     "SKU4": 36.0,
+     "SKU5": 36.0,
+     "SKU6": 36.0
+    },
+    {
+     "label": "MEPA SIT",
+     "row": 71,
+     "SKU2": 36.0,
+     "SKU3": 36.0,
+     "SKU4": 36.0,
+     "SKU5": 36.0,
+     "SKU6": 36.0
+    },
+    {
+     "label": "HW PA FVT",
+     "row": 72,
+     "SKU2": 2.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 4.0,
+     "SKU6": 4.0
+    },
+    {
+     "label": "HW PA SIT",
+     "row": 73,
+     "SKU2": 2.0,
+     "SKU3": 3.0,
+     "SKU4": 4.0,
+     "SKU5": 4.0,
+     "SKU6": 4.0
+    },
+    {
+     "label": "TTL FVT",
+     "row": 74,
+     "SKU2": 94.0,
+     "SKU3": 111.0,
+     "SKU4": 120.0,
+     "SKU5": 130.0,
+     "SKU6": 142.0
+    },
+    {
+     "label": "TTL SIT",
+     "row": 75,
+     "SKU2": 94.0,
+     "SKU3": 111.0,
+     "SKU4": 120.0,
+     "SKU5": 130.0,
+     "SKU6": 142.0
+    }
+   ]
+  }
+ },
+ "grand_total_by_sku": {
+  "SKU2": 365.0,
+  "SKU3": 417.0,
+  "SKU4": 443.8,
+  "SKU5": 474.0,
+  "SKU6": 507.0
+ },
+ "conflicts": [
+  {
+   "block1_function": "Green",
+   "phase": "SIT",
+   "sku": 3,
+   "block1_rate_x_qty": 9.0,
+   "block2_absolute": 6.0,
+   "delta": -3.0,
+   "severity": "MAJOR"
+  },
+  {
+   "block1_function": "Safety",
+   "phase": "FVT",
+   "sku": 6,
+   "block1_rate_x_qty": 9.6,
+   "block2_absolute": 10.0,
+   "delta": 0.4,
+   "severity": "MINOR"
+  },
+  {
+   "block1_function": "RF Certification",
+   "phase": "SIT",
+   "sku": 2,
+   "block1_rate_x_qty": 15.0,
+   "block2_absolute": 8.0,
+   "delta": -7.0,
+   "severity": "MAJOR"
+  },
+  {
+   "block1_function": "RF Certification",
+   "phase": "SIT",
+   "sku": 3,
+   "block1_rate_x_qty": 15.0,
+   "block2_absolute": 9.0,
+   "delta": -6.0,
+   "severity": "MAJOR"
+  },
+  {
+   "block1_function": "RF Certification",
+   "phase": "SIT",
+   "sku": 4,
+   "block1_rate_x_qty": 15.0,
+   "block2_absolute": 10.0,
+   "delta": -5.0,
+   "severity": "MAJOR"
+  },
+  {
+   "block1_function": "RF Certification",
+   "phase": "SIT",
+   "sku": 5,
+   "block1_rate_x_qty": 15.0,
+   "block2_absolute": 10.0,
+   "delta": -5.0,
+   "severity": "MAJOR"
+  },
+  {
+   "block1_function": "RF Certification",
+   "phase": "SIT",
+   "sku": 6,
+   "block1_rate_x_qty": 15.0,
+   "block2_absolute": 10.0,
+   "delta": -5.0,
+   "severity": "MAJOR"
+  },
+  {
+   "block1_function": "MEPA",
+   "phase": "FVT",
+   "sku": 2,
+   "block1_rate_x_qty": 32.0,
+   "block2_absolute": 36.0,
+   "delta": 4.0,
+   "severity": "MAJOR"
+  },
+  {
+   "block1_function": "HW PA",
+   "phase": "FVT",
+   "sku": 6,
+   "block1_rate_x_qty": 4.2,
+   "block2_absolute": 4.0,
+   "delta": -0.2,
+   "severity": "MINOR"
+  },
+  {
+   "type": "SKU_DEFINITION_VS_HEADER_COMMENT",
+   "sku": "SKU3",
+   "sku_definition_panel": [
+    1,
+    1
+   ],
+   "header_comment_panel": 3,
+   "severity": "MAJOR",
+   "detail": "SKU3: SKU Definition row 80 says Panel spec [1, 1], but header comment on E2 says 3*panel"
+  },
+  {
+   "type": "SKU_DEFINITION_VS_HEADER_COMMENT",
+   "sku": "SKU4",
+   "sku_definition_panel": [
+    2,
+    2
+   ],
+   "header_comment_panel": 4,
+   "severity": "MAJOR",
+   "detail": "SKU4: SKU Definition row 81 says Panel spec [2, 2], but header comment on F2 says 4*panel"
+  },
+  {
+   "type": "SKU_DEFINITION_VS_HEADER_COMMENT",
+   "sku": "SKU5",
+   "sku_definition_panel": [
+    2,
+    2
+   ],
+   "header_comment_panel": 5,
+   "severity": "MAJOR",
+   "detail": "SKU5: SKU Definition row 82 says Panel spec [2, 2], but header comment on G2 says 5*panel"
+  },
+  {
+   "type": "SKU_DEFINITION_VS_HEADER_COMMENT",
+   "sku": "SKU6",
+   "sku_definition_panel": [
+    2,
+    3
+   ],
+   "header_comment_panel": 6,
+   "severity": "MAJOR",
+   "detail": "SKU6: SKU Definition row 83 says Panel spec [2, 3], but header comment on H2 says 6*panel"
+  },
+  {
+   "type": "UNRESOLVED_STATUS",
+   "function": "EMC Test",
+   "status_text": "待LCFC update",
+   "severity": "OPEN"
+  },
+  {
+   "type": "UNRESOLVED_STATUS",
+   "function": "MEPA",
+   "status_text": "LCFC:Confirmed ok as left data. \nHQ /Compal :to be clarify.",
+   "severity": "OPEN"
+  },
+  {
+   "type": "UNRESOLVED_STATUS",
+   "function": "HW PA",
+   "status_text": "HQ gap比较大",
+   "severity": "OPEN"
+  }
+ ]
+}

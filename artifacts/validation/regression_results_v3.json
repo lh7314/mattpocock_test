@@ -1,0 +1,1037 @@
+{
+  "summary": {
+    "generated_at_utc": "2026-11-04T08:02:29+00:00",
+    "core": "prototype/rules_v3.py",
+    "engine": "rules_v3/3.0",
+    "quantity_model": "QMODEL-V3",
+    "baseline": "BASELINE-CS-ODM-001",
+    "certification_verification": "33 verified / 7 mismatch / 0 not evaluable",
+    "ori_02_status": "PARTIALLY_RESOLVED",
+    "total": 100,
+    "probes_holding": 99,
+    "probes_failing": [
+      "SR-09"
+    ],
+    "expected_failures": [
+      "SR-09"
+    ],
+    "approved_expected_failures": [
+      "SR-09"
+    ],
+    "unapproved_expected_failures": [],
+    "regressions": [],
+    "status": "CLEAN"
+  },
+  "results": [
+    {
+      "id": "RT-01",
+      "group": "RT",
+      "title": "workbook grand totals still reproduce from the raw Main Table cells",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "raw Main Table read - proves extraction -> baseline -> quantity model is intact and nothing was hand-edited",
+      "metric": "{\"SKU2\": 365.0, \"SKU3\": 417.0, \"SKU4\": 443.8, \"SKU5\": 474.0, \"SKU6\": 507.0}"
+    },
+    {
+      "id": "RT-02",
+      "group": "RT",
+      "title": "the corrected engine publishes ONE total per SKU band, not a band",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "Certification no longer drags every total into a band; the only remaining difference from the workbook is the MEPA / HW PA PER_PHASE_FIXED model (ORI-10)",
+      "metric": "{\"SKU2\": 373.0, \"SKU3\": 417.0, \"SKU4\": 443.8, \"SKU5\": 474.0, \"SKU6\": 506.6}"
+    },
+    {
+      "id": "QM-01",
+      "group": "QM",
+      "title": "MEPA and HW PA are still PER_PHASE_FIXED candidates, not pseudo rates",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "QM-02",
+      "group": "QM",
+      "title": "the engine performs no divide-by-SKU-then-multiply-back anywhere",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "rules_v3 reads adopted_absolute straight out of the Quantity Model table",
+      "metric": "no per_sku_rate / ttl_per_phase reference in rules_v3.py"
+    },
+    {
+      "id": "QM-03",
+      "group": "QM",
+      "title": "MEPA absolute stays 36.0 at every SKU (Main Table said 32.0 at SKU2)",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "adopted 36.0 / main 32.0 at SKU2"
+    },
+    {
+      "id": "QM-04",
+      "group": "QM",
+      "title": "HW PA absolute at 6 SKU is 4.0, the pseudo-rate 4.2 is kept as evidence",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "D-01: 4.2 is not rounded away, it is reported as the competing Main Table value",
+      "metric": ""
+    },
+    {
+      "id": "QM-05",
+      "group": "QM",
+      "title": "a flat derived total is still NOT promoted to PER_PHASE_FIXED on shape alone",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "EMC Test / NV / INTEL stay PER_SKU_RATE and are raised as model questions instead of being silently re-modelled (task section 18)",
+      "metric": "6 model questions"
+    },
+    {
+      "id": "QM-06",
+      "group": "QM",
+      "title": "every demand line states which Quantity Model produced it",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "QM-07",
+      "group": "QM",
+      "title": "MEPA / HW PA are surfaced as temporary models pending business confirmation",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 18: the front end must show 临时采用，待业务确认",
+      "metric": ""
+    },
+    {
+      "id": "QM-08",
+      "group": "QM",
+      "title": "PER_PROJECT_FIXED and FORMULA_DRIVEN are still supported by the contract",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "no cell uses UNRESOLVED or FORMULA_DRIVEN any more; the enum stays so the contract does not narrow, and J33 is registered as BREAKDOWN_EVIDENCE instead",
+      "metric": ""
+    },
+    {
+      "id": "QM-09",
+      "group": "QM",
+      "title": "DERIVED_TOTAL_VALIDATION exists but is NOT a Quantity Model",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 18: the Appendix role is an evidence role, never a stackable Quantity Model",
+      "metric": "evidence roles = ('PRIMARY_QUANTITY_MODEL', 'DERIVED_TOTAL_VALIDATION', 'BREAKDOWN_EVIDENCE', 'ABSOLUTE_RESTATEMENT', 'UNRESOLVED_COMMENT')"
+    },
+    {
+      "id": "CT-V2-01",
+      "group": "CT-V2",
+      "title": "every Appendix Certification cell equals the Main Table per-SKU quantity times the SKU count, cell by cell",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "each cell is checked on its own, never a Certification total alone; the seven cells that do not satisfy the relationship are reported as MISMATCH with their original values intact rather than corrected",
+      "metric": "40 cells | verified 33 | mismatch 7 | not_evaluable 0"
+    },
+    {
+      "id": "CT-V2-02",
+      "group": "CT-V2",
+      "title": "the Appendix is validation only and is not added to the total a second time",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the project total contains Certification exactly once; the Appendix numbers exist only in the verification block",
+      "metric": "total 443.8 = non-cert 402.8 + cert 41 (appendix sum 36 excluded)"
+    },
+    {
+      "id": "CT-V2-03",
+      "group": "CT-V2",
+      "title": "a single SKU produces a single Certification value, not a range",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "4 SKU certification 41 (fvt 10 / sit 31)"
+    },
+    {
+      "id": "CT-V2-04",
+      "group": "CT-V2",
+      "title": "a 4-5 SKU range produces Certification values coming from 4 SKU and 5 SKU separately",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "4 SKU cert 41 (fvt 10/sit 31) | 5 SKU cert 42 (fvt 10/sit 32)"
+    },
+    {
+      "id": "CT-V2-05",
+      "group": "CT-V2",
+      "title": "a Certification range is caused by SKU_NOT_ESTABLISHED, never by competing models",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the wording the UI must carry: the Certification rule is settled, the range exists only because the SKU band is not established between 4 and 5 SKU",
+      "metric": "ORI kinds = ['CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE', 'CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED', 'CERTIFICATION_SOURCE_VALIDATION_MISMATCH', 'SKU_TIE_NOT_RESOLVABLE', 'WAVE_ASSIGNMENT_NOT_PROVIDED']"
+    },
+    {
+      "id": "CT-V2-06",
+      "group": "CT-V2",
+      "title": "FVT and SIT each use their own source rate, never a shared number",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "FVT [10.0, 9.0, 10.0, 10.0, 9.6] vs SIT [29.0, 33.0, 31.0, 32.0, 33.0]"
+    },
+    {
+      "id": "CT-V2-07",
+      "group": "CT-V2",
+      "title": "no global FVT/SIT ratio exists anywhere in the engine",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the FVT share of the total moves with the SKU band, which is only possible if each row is read from its own cell",
+      "metric": "FVT share at 2 SKU 0.4763 at 4 SKU 0.4763"
+    },
+    {
+      "id": "CT-V2-08",
+      "group": "CT-V2",
+      "title": "J33 is never added on top of the Main Table result",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "if the J33 reference totals (11 or 27) were added the 4 SKU Certification demand would no longer equal Main x SKU",
+      "metric": "certification total 41 with J33 bracket 11..27 not added"
+    },
+    {
+      "id": "CT-V2-09",
+      "group": "CT-V2",
+      "title": "a verified Certification cell raises no competing-model item",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the two old labels appear in rules_v3.py only inside the DEC-09 docstring and the tuple that names them as prohibited; neither is ever emitted as an Owner Review Item kind",
+      "metric": "certification ORI kinds = ['CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE', 'CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED', 'CERTIFICATION_SOURCE_VALIDATION_MISMATCH']"
+    },
+    {
+      "id": "CT-V2-10",
+      "group": "CT-V2",
+      "title": "Certification is counted exactly once in the project total",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "4 SKU 443.8 = 402.8+41 | 5 SKU 474 = 432+42"
+    },
+    {
+      "id": "CT-V2-11",
+      "group": "CT-V2",
+      "title": "any inconsistent Appendix cell raises SOURCE_VALIDATION_MISMATCH with the original values preserved",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the workbook is never edited to remove the difference; the mismatch is routed to the Owner Review Register (ORI-02 PARTIALLY_RESOLVED)",
+      "metric": "3 function/phase pairs mismatch somewhere; 1 at 4 SKU -> 1 Register entries"
+    },
+    {
+      "id": "CT-V2-12",
+      "group": "CT-V2",
+      "title": "display precision never changes the underlying Certification result",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "Safety FVT at 6 SKU is 1.6 x 6 = 9.599999999999999 in raw float; it is stored as the table value 1.6 x 6 and reported as 9.6 without being rounded into shape",
+      "metric": "9.6"
+    },
+    {
+      "id": "JG-01",
+      "group": "JG",
+      "title": "J33 is registered as breakdown evidence, not as a competing model",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "disposition = DECLARED_NOT_GENERALIZED"
+    },
+    {
+      "id": "JG-02",
+      "group": "JG",
+      "title": "J33 is not reproduced as an executable formula and does not force new inputs",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the MVP does not collect antenna / WLAN card counts; J33's declared combination stays a stated assumption recorded in the Register",
+      "metric": ""
+    },
+    {
+      "id": "JG-03",
+      "group": "JG",
+      "title": "J33 is scoped to RF Certification and to its own declared source combination",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "both bounds are derived from wording inside J33 itself; the Appendix 8-10 lies below the floor of a 2-antenna/2-WLAN project, so it cannot be the same scenario",
+      "metric": "bracket 11..27 | main 15 inside = True | appendix 8-10 below floor = True"
+    },
+    {
+      "id": "JG-04",
+      "group": "JG",
+      "title": "only the RF Certification cell carries breakdown evidence",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "2 cells (FVT + SIT of RF Certification)"
+    },
+    {
+      "id": "JG-05",
+      "group": "JG",
+      "title": "J33 raises an Advisory Register entry, never an execution blocker",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PL-01",
+      "group": "PL",
+      "title": "Panel is matched as Panel Spec Count taken from the SKU Definition rows",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PL-02",
+      "group": "PL",
+      "title": "D2:H2 'N*panel' comments are retained as evidence but excluded from calculation",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "comment panel = [2,3,4,5,6] vs definition [1-2] [1] [2] [2] [2-3]"
+    },
+    {
+      "id": "PL-03",
+      "group": "PL",
+      "title": "Panel Spec Count stays an independent input dimension (not deleted)",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PL-04",
+      "group": "PL",
+      "title": "proof by counter-example: panel=1 still yields 3 SKU, which the E2 comment forbids",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "if the E2 comment (3*panel) were in the matching path, panel=1 could not be 3 SKU",
+      "metric": ""
+    },
+    {
+      "id": "PL-05",
+      "group": "PL",
+      "title": "the excluded Panel annotation evidence travels with every exported result",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SR-01",
+      "group": "SR",
+      "title": "4 SKU and 5 SKU co-match returns a RANGE, not a forced single SKU",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "tie=[4, 5]"
+    },
+    {
+      "id": "SR-02",
+      "group": "SR",
+      "title": "recommended_sku is null and preferred_sku is NOT_ESTABLISHED on a range",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SR-03",
+      "group": "SR",
+      "title": "a RANGE prices every candidate SKU - 4 SKU and 5 SKU are both calculated",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "4 SKU total 443.8 | 5 SKU total 474"
+    },
+    {
+      "id": "SR-04",
+      "group": "SR",
+      "title": "the priced candidate list is never padded beyond the tie set",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SR-05",
+      "group": "SR",
+      "title": "a genuine SINGLE is still returned where the evidence separates the tiers",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SR-06",
+      "group": "SR",
+      "title": "partial evidence never produces a fake SINGLE",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SR-07",
+      "group": "SR",
+      "title": "empty input -> UNDETERMINED, nothing recommended, nothing priced",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SR-08",
+      "group": "SR",
+      "title": "out-of-domain input is refused and routed to ORI-13, never extrapolated",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SR-09",
+      "group": "SR",
+      "title": "every SKU definition is reachable as a unique recommendation",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "verdict": "OK",
+      "note": "UNRESOLVED DESIGN GAP -> ORI-04. The 5 SKU definition is a strict subset of the 4 SKU definition, so 5 SKU can never win alone and only ever appears as the range 4-5 SKU. Closing this needs real 4-SKU and 5-SKU project samples plus an official boundary rule from the Owner. This probe is EXPECTED TO FAIL and must not be weakened, deleted or turned green by re-weighting.",
+      "metric": "SKU5 unique winners = 0 over 405 realistic combinations"
+    },
+    {
+      "id": "SR-10",
+      "group": "SR",
+      "title": "no weighting trick is used to break a tie (weights unchanged since phase 1)",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "ORI-08: these weights are agent-set, not Owner-confirmed. They rank candidates but DEC-01 forbids using them to manufacture a single answer.",
+      "metric": ""
+    },
+    {
+      "id": "WV-01",
+      "group": "WV",
+      "title": "explicit LATER_WAVE specs are excluded from CURRENT_WAVE only",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "WV-02",
+      "group": "WV",
+      "title": "CURRENT_WAVE and FULL_PROJECT can recommend different SKU counts",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "current -> 3 SKU | full -> 4 SKU"
+    },
+    {
+      "id": "WV-03",
+      "group": "WV",
+      "title": "wave assignment never changes the base rates",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the same SKU-3 column is read whether or not waves were declared",
+      "metric": ""
+    },
+    {
+      "id": "WV-04",
+      "group": "WV",
+      "title": "a declared wave is never a fixed quantity or a ratio deduction",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "there is no per-wave percentage and no per-wave unit constant in the engine",
+      "metric": "same 4 SKU total 443.8 either way"
+    },
+    {
+      "id": "WV-05",
+      "group": "WV",
+      "title": "the existence of a second spec is never treated as a second wave",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "untagged second specs stay in the current wave by default; the Agent does not guess a second wave",
+      "metric": ""
+    },
+    {
+      "id": "WV-06",
+      "group": "WV",
+      "title": "an explicitly UNKNOWN wave yields a range of scenarios plus a Register entry",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "4 current-wave scenarios"
+    },
+    {
+      "id": "WV-07",
+      "group": "WV",
+      "title": "wave source is recorded per spec: user-tagged, implicit single, not provided",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "WV-08",
+      "group": "WV",
+      "title": "FULL_PROJECT never silently drops a spec because a wave was declared",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "WV-09",
+      "group": "WV",
+      "title": "with no LATER_WAVE spec, CURRENT_WAVE is flagged identical to FULL_PROJECT",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "WV-10",
+      "group": "WV",
+      "title": "a declared second wave does change the SKU answer, so the wave is load-bearing",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "WV-11",
+      "group": "WV",
+      "title": "wave_basis distinguishes 'nobody declared' from 'declared' from 'unknown'",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the UI needs this to explain why CURRENT_WAVE equals FULL_PROJECT",
+      "metric": ""
+    },
+    {
+      "id": "WV-12",
+      "group": "WV",
+      "title": "the UI wording 未特别指定 maps to NO_EXPLICIT_ASSIGNMENT and never to UNKNOWN",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 12: 未特别指定 must not be shown or treated as UNKNOWN; it means 'counted in the current wave, nobody said otherwise'",
+      "metric": ""
+    },
+    {
+      "id": "WV-13",
+      "group": "WV",
+      "title": "the excluded specs are named so the result page can explain the difference",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "RS-01",
+      "group": "RS",
+      "title": "ALREADY_EMBEDDED_IN_BASELINE is never deducted (double-count guard)",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "443.8 == base 443.8"
+    },
+    {
+      "id": "RS-02",
+      "group": "RS",
+      "title": "ADDITIONAL_CONFIRMED_REUSE with proof is deducted once",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "438.8 vs base 443.8"
+    },
+    {
+      "id": "RS-03",
+      "group": "RS",
+      "title": "ADDITIONAL_CONFIRMED_REUSE without proof is not deducted and raises an entry",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "RS-04",
+      "group": "RS",
+      "title": "POTENTIAL_REUSE stays display only and never reduces demand",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "RS-05",
+      "group": "RS",
+      "title": "UNKNOWN_OVERLAP is never deducted when double deduction cannot be excluded",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "RS-06",
+      "group": "RS",
+      "title": "a mixed reuse ledger applies only the proven item and audits every decision",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "applied -4 of claimed 14.0"
+    },
+    {
+      "id": "RS-07",
+      "group": "RS",
+      "title": "flat-total Functions are flagged so reuse needs extra proof",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "15 flagged"
+    },
+    {
+      "id": "RS-08",
+      "group": "RS",
+      "title": "a PCBA reuse claim can never reduce unit demand",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "RS-09",
+      "group": "RS",
+      "title": "the ledger states requested, adopted and rejected amounts separately",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 19 output contract",
+      "metric": ""
+    },
+    {
+      "id": "RS-10",
+      "group": "RS",
+      "title": "a negative reuse quantity is rejected rather than used to inflate demand",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "D01-01",
+      "group": "D01",
+      "title": "the 4 SKU total stays 443.8, never 444",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "D01-02",
+      "group": "D01",
+      "title": "fractional risk reserve is kept to full precision",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "22.19"
+    },
+    {
+      "id": "D01-03",
+      "group": "D01",
+      "title": "the engine reports rounding = NONE",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "D01-04",
+      "group": "D01",
+      "title": "comparison uses an explicit tolerance, business values stay untouched",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "D01-05",
+      "group": "D01",
+      "title": "PCBA extra demand is listed but never summed into unit totals",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "unit total unchanged at 443.8"
+    },
+    {
+      "id": "D01-06",
+      "group": "D01",
+      "title": "control: extra UNIT demand does enter the total",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "D01-07",
+      "group": "D01",
+      "title": "risk reserve is charged on baseline demand, never on user-added extra demand",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "D01-08",
+      "group": "D01",
+      "title": "65.49999999999999 style float tails are never written back as 65.5",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the workbook SUM/sku FVT at 3 SKU is 65.49999999999999. The engine may display 65.5 but stores and exports the untouched value (task section 20)",
+      "metric": "3 SKU SUM/sku FVT = 196.5"
+    },
+    {
+      "id": "D01-09",
+      "group": "D01",
+      "title": "the export declares that display precision does not modify values",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PR-01",
+      "group": "PR",
+      "title": "no product series name is ever used as a judgement basis",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PR-02",
+      "group": "PR",
+      "title": "every demand line carries rule_id, source file, sheet and row",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PR-03",
+      "group": "PR",
+      "title": "missing key factors stay null and are listed as 请补充, never defaulted",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PR-04",
+      "group": "PR",
+      "title": "user value overrides the file-read value while the file value is retained",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PR-05",
+      "group": "PR",
+      "title": "an unedited factor keeps the file value as the effective value",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "PR-05b",
+      "group": "PR",
+      "title": "every exported Certification cell keeps system value, user value and source",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 13: a temporary user override must remain distinguishable from the system value and must not be promoted to a rule",
+      "metric": ""
+    },
+    {
+      "id": "OR-01",
+      "group": "OR",
+      "title": "an Owner Review Item never blocks the whole analysis",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 25 test 22: pages must still produce a result while ORI items are open",
+      "metric": ""
+    },
+    {
+      "id": "OR-02",
+      "group": "OR",
+      "title": "BLOCKS_FORMALIZATION items do not block the manual MVP",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 25 test 23",
+      "metric": ""
+    },
+    {
+      "id": "OR-03",
+      "group": "OR",
+      "title": "a BLOCKS_EXECUTION condition stops the affected calculation with an explanation",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "task section 25 test 24",
+      "metric": ""
+    },
+    {
+      "id": "OR-04",
+      "group": "OR",
+      "title": "Register entries carry the fields the Register template requires",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "OR-05",
+      "group": "OR",
+      "title": "the same question repeated across scenarios is folded into one entry",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "one question per (function, phase), not one per scenario x SKU",
+      "metric": ""
+    },
+    {
+      "id": "SC-01",
+      "group": "SC",
+      "title": "engine output validates against schema/output.schema.json",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SC-02",
+      "group": "SC",
+      "title": "a full manual-entry document validates against schema/input.schema.json",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SC-03",
+      "group": "SC",
+      "title": "input schema refuses a text sentinel in place of a missing factor",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "file_value is number|null, so 'N/A' cannot be smuggled in; the UI must leave it null and show 请补充",
+      "metric": ""
+    },
+    {
+      "id": "SC-04",
+      "group": "SC",
+      "title": "input schema refuses an unknown reuse status and an unknown wave",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SC-05",
+      "group": "SC",
+      "title": "output schema refuses an Appendix that is counted in the project total",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "appendix_counted_in_project_total_times is const 0, so the schema itself forbids the double count that DEC-09 prohibits (task section 29)",
+      "metric": ""
+    },
+    {
+      "id": "SC-06",
+      "group": "SC",
+      "title": "AnalysisInput.from_document() honours the input contract exactly",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SC-07",
+      "group": "SC",
+      "title": "a declared LATER_WAVE spec reaches the wave engine through the contract",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SC-08",
+      "group": "SC",
+      "title": "an overridden Certification cell validates and keeps provenance",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "SC-09",
+      "group": "SC",
+      "title": "output schema refuses a single_value result with a null total",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "a front end cannot publish 'single value' and leave the number out, which is how a hidden default would sneak back in",
+      "metric": ""
+    },
+    {
+      "id": "SC-10",
+      "group": "SC",
+      "title": "output schema refuses the Appendix being re-labelled as a quantity model",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "DERIVED_TOTAL_VALIDATION is an enum member of evidence_role only, never of quantity_model (task section 18)",
+      "metric": ""
+    },
+    {
+      "id": "LG-01",
+      "group": "LG",
+      "title": "the Phase 2 competing-Certification behaviour cannot return from rules_v3",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "the competing-model machinery is gone from the live core; UNRESOLVED remains supported as a Quantity Model but no Certification cell uses it",
+      "metric": "forbidden phrases found = none"
+    },
+    {
+      "id": "LG-02",
+      "group": "LG",
+      "title": "QMODEL v3 carries no competing_candidates field and no UNRESOLVED cell",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": "{\"PER_SKU_RATE\": 38, \"PER_PHASE_FIXED\": 4}"
+    },
+    {
+      "id": "LG-03",
+      "group": "LG",
+      "title": "no Quantity Model value may be the Appendix evidence role",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "LG-04",
+      "group": "LG",
+      "title": "the appendix may never be added, banded, overriding or treated as a cap",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "",
+      "metric": ""
+    },
+    {
+      "id": "EF-01",
+      "group": "EF",
+      "title": "the Expected Failure set is exactly the approved ['SR-09']",
+      "expected": "PASS",
+      "actual": "PASS",
+      "verdict": "OK",
+      "note": "an unexpected green SR-09 or a new Expected Failure is a regression (task sections 24 and 29)",
+      "metric": "expected_fail = ['SR-09']"
+    }
+  ]
+}

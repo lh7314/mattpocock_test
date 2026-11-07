@@ -1,0 +1,517 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gaming-nre-agent/local/schema/input.schema.json",
+  "title": "Sample Requirement Analysis - Manual Input (v4, Certification adopted from the Appendix)",
+  "description": "Manual-input MVP contract. The user never enters a SKU quantity. Owner decisions encoded: DEC-01 SKU range allowed; DEC-02 Panel = Panel Spec Count (D2:H2 comments excluded); DEC-04 explicit Wave Assignment with the UI wording 未特别指定 = NO_EXPLICIT_ASSIGNMENT; DEC-05 Quantity Model; DEC-06 Reuse protection; DEC-09 Certification is one model, the Appendix only validates it, J33 is breakdown evidence; D-01 decimal only, no business rounding.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "key_factors"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "4.0"
+    },
+    "analysis_id": {
+      "type": "string"
+    },
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Optional. Shown on the home page list."
+    },
+    "project_label": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Deprecated alias of project_name, kept for Phase 2 documents."
+    },
+    "project_type": {
+      "enum": [
+        "CLEAN_SHEET",
+        "EXISTING_PLAN",
+        "OTHER"
+      ],
+      "default": "CLEAN_SHEET"
+    },
+    "phase_scope": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "FVT",
+          "SIT"
+        ]
+      },
+      "default": [
+        "FVT",
+        "SIT"
+      ]
+    },
+    "odm": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Recorded, never applied: the source workbook has no ODM -> quantity mapping (ORI-05)."
+    },
+    "key_factors": {
+      "type": "object",
+      "required": [
+        "cpu",
+        "gpu",
+        "panel",
+        "ssd",
+        "mem"
+      ],
+      "additionalProperties": false,
+      "description": "The only inputs the MVP asks for. SKU quantity is deliberately absent - it is derived, never typed.",
+      "properties": {
+        "cpu": {
+          "$ref": "#/$defs/keyFactor"
+        },
+        "gpu": {
+          "$ref": "#/$defs/keyFactor"
+        },
+        "panel": {
+          "$ref": "#/$defs/keyFactor",
+          "description": "Panel SPEC COUNT (DEC-02). The D2:H2 'N*panel' comments mean something else and are kept as UNRESOLVED_COMMENT, excluded from every calculation."
+        },
+        "ssd": {
+          "$ref": "#/$defs/keyFactor"
+        },
+        "mem": {
+          "$ref": "#/$defs/keyFactor"
+        }
+      }
+    },
+    "spec_labels": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "description": "Optional display names for SSD / Memory specs. Never used in any calculation.",
+      "properties": {
+        "ssd": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "mem": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "wave_assignment": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "DEC-04. Wave may only come from a formal requirement-sheet marking or an explicit user choice. The Agent must never infer a later wave from the mere existence of a second SSD / Memory spec. NO_EXPLICIT_ASSIGNMENT is the UI option 未特别指定: the spec stays in the current wave and is NOT treated as UNKNOWN.",
+      "additionalProperties": false,
+      "properties": {
+        "declared_by": {
+          "anyOf": [
+            {
+              "enum": [
+                "FORMAL_REQUIREMENT_SHEET",
+                "USER_SELECTED",
+                "NOT_PROVIDED"
+              ]
+            },
+            {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "FORMAL_REQUIREMENT_SHEET",
+                  "USER_SELECTED",
+                  "NOT_PROVIDED",
+                  "IMPLICIT_SINGLE_SPEC",
+                  "UNKNOWN"
+                ]
+              }
+            }
+          ],
+          "description": "Who declared the waves. The UI sends one value; the Input Snapshot carries the sorted set of all sources actually present."
+        },
+        "specs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/specWave"
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "certification_input": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "DEC-10. The engine computes Certification from the Appendix total for the applied SKU count, so this block exists only so the user can enter a project-specific value for one cell for this analysis. An override applies to this Analysis only, is never written back to the rule pack, and is always shown next to the adopted value and the Main Table audit value. SYSTEM_MAIN_TABLE is accepted only so stored v3 snapshots still load.",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "SYSTEM_APPENDIX_ADOPTED",
+            "USER_OVERRIDE_FOR_MISMATCH_CELLS",
+            "SYSTEM_MAIN_TABLE"
+          ],
+          "default": "SYSTEM_APPENDIX_ADOPTED",
+          "description": "SYSTEM_MAIN_TABLE is a legacy v3 value retained for backwards reading only; the engine never recomputes Certification from the Main Table."
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "function_id",
+              "phase",
+              "qty",
+              "reason"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "function_id": {
+                "enum": [
+                  "F_EMC",
+                  "F_GREEN",
+                  "F_SAFETY",
+                  "F_RF_CERTIFICATION"
+                ]
+              },
+              "phase": {
+                "enum": [
+                  "FVT",
+                  "SIT"
+                ]
+              },
+              "qty": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Absolute total applied to this cell for this analysis. Stored as user_input_total; the system value is kept beside it."
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "entered_by": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "override_scope": {
+          "const": "THIS_ANALYSIS_ONLY",
+          "description": "Always this Analysis only. Nothing in this block reaches the rule pack."
+        }
+      }
+    },
+    "additional_demand": {
+      "type": "array",
+      "description": "User-entered extra demand. Only user-confirmed rows exist here, so they are added as a conditional increment and never earn a risk reserve.",
+      "items": {
+        "type": "object",
+        "required": [
+          "qty"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "qty": {
+            "type": "number",
+            "minimum": 0
+          },
+          "unit": {
+            "enum": [
+              "UNIT",
+              "PCBA"
+            ],
+            "default": "UNIT"
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "basis": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "reuse_items": {
+      "type": "array",
+      "description": "DEC-06 four-state reuse. Only a proven, unit-denominated ADDITIONAL_CONFIRMED_REUSE that is confirmed outside the baseline may deduct. Anything else is displayed with the reason it was not adopted.",
+      "items": {
+        "type": "object",
+        "required": [
+          "qty"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "qty": {
+            "type": "number",
+            "minimum": 0
+          },
+          "reuse_status": {
+            "enum": [
+              "ALREADY_EMBEDDED_IN_BASELINE",
+              "ADDITIONAL_CONFIRMED_REUSE",
+              "POTENTIAL_REUSE",
+              "UNKNOWN_OVERLAP"
+            ],
+            "default": "UNKNOWN_OVERLAP"
+          },
+          "unit": {
+            "enum": [
+              "UNIT",
+              "PCBA"
+            ],
+            "default": "UNIT"
+          },
+          "function_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "basis": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Evidence note. Free text, kept in the ledger as evidence_note."
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "proven_not_in_baseline": {
+            "type": "boolean",
+            "default": false,
+            "description": "Explicit assertion that this reuse is not already inside the baseline rate. Without it, nothing is deducted."
+          }
+        }
+      }
+    },
+    "potential_reuse_display_only": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "risk_reserve": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "ORI-07: no percentage is confirmed by the Owner, so the default is 0 and nothing is added silently.",
+      "additionalProperties": false,
+      "properties": {
+        "percent": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "file_provenance": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sheet": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "read_mode": {
+          "enum": [
+            "MANUAL_INPUT",
+            "FILE_READ",
+            null
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "panel_annotation_d2_h2": {
+      "const": "UNRESOLVED_COMMENT_EXCLUDED",
+      "description": "DEC-02 marker carried by the Input Snapshot. The D2:H2 comments are never an input to SKU matching or arithmetic."
+    }
+  },
+  "$defs": {
+    "keyFactor": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "description": "file_value = what a requirement sheet said (null in the manual MVP). user_value = what the user typed. user_edited decides which one is effective. An unanswered factor stays null and the UI shows 请补充 - never 0, never 'N/A'.",
+      "properties": {
+        "name": {
+          "enum": [
+            "cpu",
+            "gpu",
+            "panel",
+            "ssd",
+            "mem"
+          ]
+        },
+        "file_value": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "user_value": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "user_edited": {
+          "type": "boolean",
+          "default": false
+        },
+        "effective": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Derived: the value the engine actually matched with (user value when user_edited, otherwise file value)."
+        },
+        "status_user": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value_source": {
+          "enum": [
+            "USER",
+            "FILE",
+            "UNKNOWN"
+          ],
+          "description": "Derived field of the Input Snapshot: whose value the engine matched with."
+        },
+        "user_status": {
+          "type": "string",
+          "description": "Derived field of the Input Snapshot - the user-facing wording (\"\" when the value is present, 请补充 when it is missing). Presentation only, never a rule."
+        }
+      }
+    },
+    "specWave": {
+      "type": "object",
+      "required": [
+        "factor",
+        "spec_index",
+        "wave"
+      ],
+      "additionalProperties": false,
+      "description": "Wave lives on one spec, never on a whole dimension. Only LATER_WAVE excludes a spec from the current wave.",
+      "properties": {
+        "factor": {
+          "enum": [
+            "cpu",
+            "gpu",
+            "panel",
+            "ssd",
+            "mem"
+          ]
+        },
+        "spec_index": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "spec_label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "wave": {
+          "enum": [
+            "CURRENT_WAVE",
+            "LATER_WAVE",
+            "UNKNOWN",
+            "NO_EXPLICIT_ASSIGNMENT"
+          ]
+        },
+        "wave_source": {
+          "enum": [
+            "FORMAL_REQUIREMENT_SHEET",
+            "USER_SELECTED",
+            "IMPLICIT_SINGLE_SPEC",
+            "NOT_PROVIDED"
+          ]
+        }
+      }
+    }
+  }
+}

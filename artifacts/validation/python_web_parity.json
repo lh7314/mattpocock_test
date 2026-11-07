@@ -1,0 +1,311 @@
+{
+ "summary": {
+  "generated_at_utc": "2026-11-06T08:36:48+00:00",
+  "python_core": "prototype/rules_v3.py",
+  "web_core": "web/assets/core.js",
+  "python_engine": "rules_v3/4.0",
+  "web_engine": "rules_v3_web/4.0",
+  "rule_pack": "RP-V4.0",
+  "browser": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "network": "disabled (--host-resolver-rules=MAP * ~NOTFOUND)",
+  "tolerance": 1e-09,
+  "cases": 40,
+  "matching": 40,
+  "divergent": [],
+  "exports_compared": [
+   "json_document",
+   "review_csv",
+   "feedback_csv"
+  ],
+  "certification_mismatch_cells_covered": {
+   "Green/SIT@3": [
+    "W-08",
+    "W-26"
+   ],
+   "Safety/FVT@6": [
+    "W-09",
+    "W-27"
+   ],
+   "RF/SIT@2": [
+    "W-01",
+    "W-08",
+    "W-11",
+    "W-30",
+    "W-31",
+    "W-37",
+    "W-38"
+   ],
+   "RF/SIT@3": [
+    "W-08",
+    "W-11",
+    "W-26",
+    "W-30",
+    "W-31",
+    "W-38"
+   ],
+   "RF/SIT@4": [
+    "W-02",
+    "W-10",
+    "W-28",
+    "W-33",
+    "W-36"
+   ],
+   "RF/SIT@5": [
+    "W-02",
+    "W-10",
+    "W-28",
+    "W-33",
+    "W-36"
+   ],
+   "RF/SIT@6": [
+    "W-09",
+    "W-27"
+   ]
+  },
+  "status": "MATCH",
+  "note": "the whole structured payload is compared, including nulls, enums, the adopted Certification value, the retained Main Table audit value, the reuse ledger and the review items, plus the JSON and both CSV exports"
+ },
+ "rows": [
+  {
+   "id": "W-01",
+   "note": "2 SKU single answer; RF/SIT mismatch at SKU2",
+   "result": "MATCH",
+   "fields": 105592
+  },
+  {
+   "id": "W-02",
+   "note": "4-5 SKU tie -> RANGE, both priced (RF/SIT@4 and @5)",
+   "result": "MATCH",
+   "fields": 197733
+  },
+  {
+   "id": "W-03",
+   "note": "missing key factor (panel unanswered)",
+   "result": "MATCH",
+   "fields": 197739
+  },
+  {
+   "id": "W-04",
+   "note": "no wave declared anywhere",
+   "result": "MATCH",
+   "fields": 106148
+  },
+  {
+   "id": "W-05",
+   "note": "explicit LATER_WAVE specs excluded from the current wave",
+   "result": "MATCH",
+   "fields": 107471
+  },
+  {
+   "id": "W-06",
+   "note": "current wave identical to full project",
+   "result": "MATCH",
+   "fields": 105592
+  },
+  {
+   "id": "W-07",
+   "note": "current wave differs from full project",
+   "result": "MATCH",
+   "fields": 153460
+  },
+  {
+   "id": "W-08",
+   "note": "3 SKU single answer: Green/SIT and RF/SIT mismatches at 3 SKU",
+   "result": "MATCH",
+   "fields": 107848
+  },
+  {
+   "id": "W-09",
+   "note": "6 SKU: Safety/FVT 9.6 vs adopted 10, RF/SIT 15 vs adopted 10",
+   "result": "MATCH",
+   "fields": 107968
+  },
+  {
+   "id": "W-10",
+   "note": "certification range comes only from the SKU range",
+   "result": "MATCH",
+   "fields": 197733
+  },
+  {
+   "id": "W-11",
+   "note": "override equal to the adopted Appendix value",
+   "result": "MATCH",
+   "fields": 108174
+  },
+  {
+   "id": "W-12",
+   "note": "J33 never added on top of the adopted value",
+   "result": "MATCH",
+   "fields": 105994
+  },
+  {
+   "id": "W-13",
+   "note": "MEPA / HW PA read as fixed per-phase amounts at 2 SKU",
+   "result": "MATCH",
+   "fields": 108018
+  },
+  {
+   "id": "W-14",
+   "note": "reuse deduction is allowed",
+   "result": "MATCH",
+   "fields": 106586
+  },
+  {
+   "id": "W-15",
+   "note": "reuse without proof is not deducted",
+   "result": "MATCH",
+   "fields": 107233
+  },
+  {
+   "id": "W-16",
+   "note": "single_value=false has no priced result at all (undetermined input)",
+   "result": "MATCH",
+   "fields": 12868
+  },
+  {
+   "id": "W-17",
+   "note": "out-of-domain input stops that scenario only",
+   "result": "MATCH",
+   "fields": 13972
+  },
+  {
+   "id": "W-18",
+   "note": "risk reserve charged on baseline demand",
+   "result": "MATCH",
+   "fields": 106010
+  },
+  {
+   "id": "W-19",
+   "note": "PCBA extra demand is never summed with units",
+   "result": "MATCH",
+   "fields": 106070
+  },
+  {
+   "id": "W-20",
+   "note": "FVT only phase scope",
+   "result": "MATCH",
+   "fields": 62694
+  },
+  {
+   "id": "W-21",
+   "note": "explicitly UNKNOWN wave fans the current wave out",
+   "result": "MATCH",
+   "fields": 156685
+  },
+  {
+   "id": "W-22",
+   "note": "NO_EXPLICIT_ASSIGNMENT (UI: 未特别指定) is not UNKNOWN",
+   "result": "MATCH",
+   "fields": 106148
+  },
+  {
+   "id": "W-23",
+   "note": "override plus reuse plus risk together",
+   "result": "MATCH",
+   "fields": 199593
+  },
+  {
+   "id": "W-24",
+   "note": "mixed reuse states in one ledger",
+   "result": "MATCH",
+   "fields": 108844
+  },
+  {
+   "id": "W-25",
+   "note": "4 SKU single answer: the Appendix total is counted exactly once",
+   "result": "MATCH",
+   "fields": 105992
+  },
+  {
+   "id": "W-26",
+   "note": "3 SKU: Green/SIT adopts 6.0 while the Main Table 9.0 stays as audit",
+   "result": "MATCH",
+   "fields": 67110
+  },
+  {
+   "id": "W-27",
+   "note": "6 SKU: Safety/FVT adopts 10.0; the 9.6 audit value keeps its decimal",
+   "result": "MATCH",
+   "fields": 65219
+  },
+  {
+   "id": "W-28",
+   "note": "4-5 RANGE prices Certification separately for both candidates",
+   "result": "MATCH",
+   "fields": 290731
+  },
+  {
+   "id": "W-29",
+   "note": "override on a cell whose Main Table already agrees with the Appendix",
+   "result": "MATCH",
+   "fields": 108088
+  },
+  {
+   "id": "W-30",
+   "note": "override that does not match the adopted value is flagged, not hidden",
+   "result": "MATCH",
+   "fields": 108235
+  },
+  {
+   "id": "W-31",
+   "note": "override never escapes into the rule pack: snapshot keeps THIS_ANALYSIS_ONLY",
+   "result": "MATCH",
+   "fields": 108220
+  },
+  {
+   "id": "W-32",
+   "note": "underlying decimals survive risk and export (D-01)",
+   "result": "MATCH",
+   "fields": 107864
+  },
+  {
+   "id": "W-33",
+   "note": "Current Wave versus Full Project with a real later wave and a SKU range",
+   "result": "MATCH",
+   "fields": 153532
+  },
+  {
+   "id": "W-34",
+   "note": "2 SKU: J33 evidence plus MEPA / HW PA fixed amounts together",
+   "result": "MATCH",
+   "fields": 64798
+  },
+  {
+   "id": "W-35",
+   "note": "integration: reuse + PCBA + extra demand + risk in one analysis",
+   "result": "MATCH",
+   "fields": 108037
+  },
+  {
+   "id": "W-36",
+   "note": "SIT only phase scope (FVT excluded, no global phase ratio)",
+   "result": "MATCH",
+   "fields": 116148
+  },
+  {
+   "id": "W-37",
+   "note": "2 SKU: RF/SIT override to exactly the adopted value plus a risk reserve",
+   "result": "MATCH",
+   "fields": 105922
+  },
+  {
+   "id": "W-38",
+   "note": "UNKNOWN wave at 3 SKU with Certification mismatches",
+   "result": "MATCH",
+   "fields": 107831
+  },
+  {
+   "id": "W-39",
+   "note": "6 SKU with a reuse deduction and a risk reserve (decimal chain)",
+   "result": "MATCH",
+   "fields": 108630
+  },
+  {
+   "id": "W-40",
+   "note": "out-of-domain in the current wave only, full project still priced",
+   "result": "MATCH",
+   "fields": 14101
+  }
+ ],
+ "failures": []
+}

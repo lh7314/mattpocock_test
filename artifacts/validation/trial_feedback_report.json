@@ -1,0 +1,2036 @@
+{
+ "generated_at_utc": "2026-11-06T08:37:01+00:00",
+ "current_rule_pack": "RP-V4.0",
+ "canonical_certification_cells": [
+  "Green / SIT",
+  "RF Certification / SIT",
+  "Safety / FVT"
+ ],
+ "canonical_owner_review_items": [
+  "ORI-01",
+  "ORI-02",
+  "ORI-02a",
+  "ORI-02b",
+  "ORI-03",
+  "ORI-04",
+  "ORI-05",
+  "ORI-06",
+  "ORI-07",
+  "ORI-08",
+  "ORI-09",
+  "ORI-10",
+  "ORI-11",
+  "ORI-12",
+  "ORI-13",
+  "ORI-14",
+  "ORI-15",
+  "ORI-16",
+  "ORI-17"
+ ],
+ "files": [
+  {
+   "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "project": "TRIAL-C1-SKU2",
+   "analysis_id": "AMW4JRAUF",
+   "reviewer": "lingyu",
+   "review_date": "2026-11-05",
+   "rule_pack": "RP-V4.0",
+   "engine": "rules_v3_web/4.0",
+   "stale_rule_pack": false,
+   "format": "submission",
+   "case": "C1",
+   "priced_skus": [
+    2
+   ],
+   "missing_fields": [],
+   "gate_findings": [],
+   "warnings": []
+  },
+  {
+   "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "project": "TRIAL-C2-SKU3",
+   "analysis_id": "AMW4K83XG",
+   "reviewer": "lingyu",
+   "review_date": "2026-11-05",
+   "rule_pack": "RP-V4.0",
+   "engine": "rules_v3_web/4.0",
+   "stale_rule_pack": false,
+   "format": "submission",
+   "case": "C2",
+   "priced_skus": [
+    3
+   ],
+   "missing_fields": [],
+   "gate_findings": [],
+   "warnings": []
+  }
+ ],
+ "trial_cases": [
+  {
+   "case": "C1",
+   "project": "TRIAL-C1-SKU2",
+   "profile": "简单配置（低配项目）",
+   "goal": "最低门槛项目：检查 SKU 判定、总量、界面字段是否够用",
+   "expected_cells": [
+    "RF Certification / SIT @ SKU2"
+   ],
+   "status": "RETURNED",
+   "feedback_files": [
+    "trial-submission-TRIAL-C1-SKU2-20261106-1353.json"
+   ],
+   "analysis_json": [
+    "trial-submission-TRIAL-C1-SKU2-20261106-1353.json"
+   ],
+   "missing_json": false
+  },
+  {
+   "case": "C2",
+   "project": "TRIAL-C2-SKU3",
+   "profile": "Green / SIT 差异取证（必须 3 SKU）",
+   "goal": "唯一能看到 Green / SIT 的 SKU 数（附表 6.0 vs 主表推算 9.0）",
+   "expected_cells": [
+    "Green / SIT @ SKU3",
+    "RF Certification / SIT @ SKU3"
+   ],
+   "status": "RETURNED",
+   "feedback_files": [
+    "trial-submission-TRIAL-C2-SKU3-20261106-1359.json"
+   ],
+   "analysis_json": [
+    "trial-submission-TRIAL-C2-SKU3-20261106-1359.json"
+   ],
+   "missing_json": false
+  },
+  {
+   "case": "C3",
+   "project": "TRIAL-C3-SKU4",
+   "profile": "中等配置（4 SKU 单值）",
+   "goal": "落在 4 SKU 定义内的项目，检查是否给出单值而不是范围",
+   "expected_cells": [
+    "RF Certification / SIT @ SKU4"
+   ],
+   "status": "NOT_RETURNED",
+   "feedback_files": [],
+   "analysis_json": [],
+   "missing_json": false
+  },
+  {
+   "case": "C4",
+   "project": "TRIAL-C4-RANGE45",
+   "profile": "4-5 SKU 范围项目（SR-09 现场）",
+   "goal": "工具会给出 RANGE 4-5 并登记 SKU_TIE_NOT_RESOLVABLE；试用者要回答「这个范围在真实项目里能不能接受」，这是 Q-02 / SR-09 的直接证据",
+   "expected_cells": [
+    "RF Certification / SIT @ SKU4",
+    "RF Certification / SIT @ SKU5"
+   ],
+   "status": "NOT_RETURNED",
+   "feedback_files": [],
+   "analysis_json": [],
+   "missing_json": false
+  },
+  {
+   "case": "C5",
+   "project": "TRIAL-C5-SKU6-WAVE",
+   "profile": "复杂配置 + LATER_WAVE（必须 6 SKU）",
+   "goal": "唯一能看到 Safety / FVT 的 SKU 数（附表 10.0 vs 主表推算 9.6）；同时把 cpu 第 5 条与 panel 第 3 条标为后续波次，检查 Current Wave 与 Full Project 是否真的分开。该波次声明只是本案例的试用假设：波次到底按什么条件分，正是 ORI-03 要问试用者的问题",
+   "expected_cells": [
+    "RF Certification / SIT @ SKU4",
+    "RF Certification / SIT @ SKU5",
+    "RF Certification / SIT @ SKU6",
+    "Safety / FVT @ SKU6"
+   ],
+   "status": "NOT_RETURNED",
+   "feedback_files": [],
+   "analysis_json": [],
+   "missing_json": false
+  }
+ ],
+ "mismatch_cell_coverage": [
+  {
+   "cell": "Green / SIT @ SKU3",
+   "group": "Green / SIT",
+   "sku": 3,
+   "adopted": 6.0,
+   "main_derived": 9.0,
+   "delta": -3.0,
+   "group_verdict": true,
+   "answered_by": [
+    "TRIAL-C2-SKU3（AGREE）"
+   ],
+   "exercised_by": [
+    "TRIAL-C2-SKU3"
+   ],
+   "state": "EVIDENCED"
+  },
+  {
+   "cell": "RF Certification / SIT @ SKU2",
+   "group": "RF Certification / SIT",
+   "sku": 2,
+   "adopted": 8.0,
+   "main_derived": 15.0,
+   "delta": -7.0,
+   "group_verdict": true,
+   "answered_by": [
+    "TRIAL-C1-SKU2（DISAGREE）"
+   ],
+   "exercised_by": [
+    "TRIAL-C1-SKU2"
+   ],
+   "state": "EVIDENCED"
+  },
+  {
+   "cell": "RF Certification / SIT @ SKU3",
+   "group": "RF Certification / SIT",
+   "sku": 3,
+   "adopted": 9.0,
+   "main_derived": 15.0,
+   "delta": -6.0,
+   "group_verdict": true,
+   "answered_by": [
+    "TRIAL-C2-SKU3（DISAGREE）"
+   ],
+   "exercised_by": [
+    "TRIAL-C2-SKU3"
+   ],
+   "state": "EVIDENCED"
+  },
+  {
+   "cell": "RF Certification / SIT @ SKU4",
+   "group": "RF Certification / SIT",
+   "sku": 4,
+   "adopted": 10.0,
+   "main_derived": 15.0,
+   "delta": -5.0,
+   "group_verdict": true,
+   "answered_by": [],
+   "exercised_by": [],
+   "state": "ANSWERED_NOT_EXERCISED"
+  },
+  {
+   "cell": "RF Certification / SIT @ SKU5",
+   "group": "RF Certification / SIT",
+   "sku": 5,
+   "adopted": 10.0,
+   "main_derived": 15.0,
+   "delta": -5.0,
+   "group_verdict": true,
+   "answered_by": [],
+   "exercised_by": [],
+   "state": "ANSWERED_NOT_EXERCISED"
+  },
+  {
+   "cell": "RF Certification / SIT @ SKU6",
+   "group": "RF Certification / SIT",
+   "sku": 6,
+   "adopted": 10.0,
+   "main_derived": 15.0,
+   "delta": -5.0,
+   "group_verdict": true,
+   "answered_by": [],
+   "exercised_by": [],
+   "state": "ANSWERED_NOT_EXERCISED"
+  },
+  {
+   "cell": "Safety / FVT @ SKU6",
+   "group": "Safety / FVT",
+   "sku": 6,
+   "adopted": 10.0,
+   "main_derived": 9.6,
+   "delta": 0.4,
+   "group_verdict": false,
+   "answered_by": [],
+   "exercised_by": [],
+   "state": "NOT_COVERED"
+  }
+ ],
+ "mismatch_cell_exercise_known": true,
+ "analysis_json": [
+  {
+   "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "project": "TRIAL-C1-SKU2",
+   "analysis_id": "AMW4JRAUF",
+   "rule_pack": "RP-V4.0",
+   "priced_skus": [
+    2
+   ],
+   "scenarios": [
+    {
+     "scope": "FULL_PROJECT",
+     "state": "SINGLE",
+     "recommended_sku": 2,
+     "sku_range": "2-2",
+     "candidates_priced": [
+      2
+     ]
+    },
+    {
+     "scope": "CURRENT_WAVE",
+     "state": "SINGLE",
+     "recommended_sku": 2,
+     "sku_range": "2-2",
+     "candidates_priced": [
+      2
+     ]
+    }
+   ],
+   "error": "",
+   "from_submission": true
+  },
+  {
+   "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "project": "TRIAL-C2-SKU3",
+   "analysis_id": "AMW4K83XG",
+   "rule_pack": "RP-V4.0",
+   "priced_skus": [
+    3
+   ],
+   "scenarios": [
+    {
+     "scope": "FULL_PROJECT",
+     "state": "SINGLE",
+     "recommended_sku": 3,
+     "sku_range": "3-3",
+     "candidates_priced": [
+      3
+     ]
+    },
+    {
+     "scope": "CURRENT_WAVE",
+     "state": "SINGLE",
+     "recommended_sku": 3,
+     "sku_range": "3-3",
+     "candidates_priced": [
+      3
+     ]
+    }
+   ],
+   "error": "",
+   "from_submission": true
+  }
+ ],
+ "roster_rule_pack": "RP-V4.0",
+ "certification_cell_ledger": [
+  {
+   "cell": "Green / SIT",
+   "seen_in": 1,
+   "AGREE": 1,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": true,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "附表数据正确，主表数据记录失误，应该是6，Green 是固定数值，不跟SKU数强相关"
+    }
+   ]
+  },
+  {
+   "cell": "RF Certification / SIT",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 2,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": true,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "DISAGREE",
+     "answer": "不同意",
+     "comment": "以主表为主，根据主表更正附表内容，RF Certification 数量固定，不以SKU数量强相关"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "DISAGREE",
+     "answer": "不同意",
+     "comment": "RF Certification 是15"
+    }
+   ]
+  },
+  {
+   "cell": "Safety / FVT",
+   "seen_in": 0,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": []
+  }
+ ],
+ "owner_review_item_ledger": [
+  {
+   "id": "ORI-01",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-02",
+   "seen_in": 5,
+   "AGREE": 3,
+   "DISAGREE": 2,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": true,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "RF Certification / SIT @ SKU2：本工具采用附表 8.0，主表推算为 15.0（差 -7.0）。在你的项目里，哪个才是业务上正确的数量？",
+     "sub_decision": "RF_CERTIFICATION_SIT",
+     "verdict": "DISAGREE",
+     "answer": "不同意",
+     "comment": "以主表为主，根据主表更正附表内容，RF Certification 数量固定，不以SKU数量强相关"
+    },
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "可以看懂，保留提示"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "Green / SIT @ SKU3：本工具采用附表 6.0，主表推算为 9.0（差 -3.0）。在你的项目里，哪个才是业务上正确的数量？",
+     "sub_decision": "GREEN_SIT",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "附表数据正确，主表数据记录失误，应该是6，Green 是固定数值，不跟SKU数强相关"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "RF Certification / SIT @ SKU3：本工具采用附表 9.0，主表推算为 15.0（差 -6.0）。在你的项目里，哪个才是业务上正确的数量？",
+     "sub_decision": "RF_CERTIFICATION_SIT",
+     "verdict": "DISAGREE",
+     "answer": "不同意",
+     "comment": "RF Certification 是15"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": ""
+    }
+   ],
+   "sub_decisions": [
+    {
+     "sub_decision": "GREEN_SIT",
+     "label": "Green / SIT",
+     "AGREE": 1,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 1,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "AGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": "附表数据正确，主表数据记录失误，应该是6，Green 是固定数值，不跟SKU数强相关"
+      }
+     ]
+    },
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 2,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 2,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "AGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+       "project": "TRIAL-C1-SKU2",
+       "case": "C1",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": "可以看懂，保留提示"
+      },
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": ""
+      }
+     ]
+    },
+    {
+     "sub_decision": "RF_CERTIFICATION_SIT",
+     "label": "RF Certification / SIT",
+     "AGREE": 0,
+     "DISAGREE": 2,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 2,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "DISAGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+       "project": "TRIAL-C1-SKU2",
+       "case": "C1",
+       "reviewer": "lingyu",
+       "verdict": "DISAGREE",
+       "answer": "不同意",
+       "comment": "以主表为主，根据主表更正附表内容，RF Certification 数量固定，不以SKU数量强相关"
+      },
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "DISAGREE",
+       "answer": "不同意",
+       "comment": "RF Certification 是15"
+      }
+     ]
+    }
+   ],
+   "function_specific": true,
+   "conclusion": "FUNCTION_SPECIFIC_DECISION_REQUIRED"
+  },
+  {
+   "id": "ORI-02a",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-02b",
+   "seen_in": 4,
+   "AGREE": 2,
+   "DISAGREE": 2,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": true,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "RF Certification / SIT @ SKU2：本工具采用附表 8.0，主表推算为 15.0（差 -7.0）。在你的项目里，哪个才是业务上正确的数量？",
+     "sub_decision": "RF_CERTIFICATION_SIT",
+     "verdict": "DISAGREE",
+     "answer": "不同意",
+     "comment": "以主表为主，根据主表更正附表内容，RF Certification 数量固定，不以SKU数量强相关"
+    },
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "可以看懂，保留提示"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "RF Certification / SIT @ SKU3：本工具采用附表 9.0，主表推算为 15.0（差 -6.0）。在你的项目里，哪个才是业务上正确的数量？",
+     "sub_decision": "RF_CERTIFICATION_SIT",
+     "verdict": "DISAGREE",
+     "answer": "不同意",
+     "comment": "RF Certification 是15"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "本次 Certification 给出了「与主表不一致 / 附表校验未全部通过 / J33 只适用特定组合」的提示。这些提示你看得懂吗？会影响你使用这个结果吗？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": ""
+    }
+   ],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 2,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 2,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "AGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+       "project": "TRIAL-C1-SKU2",
+       "case": "C1",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": "可以看懂，保留提示"
+      },
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": ""
+      }
+     ]
+    },
+    {
+     "sub_decision": "RF_CERTIFICATION_SIT",
+     "label": "RF Certification / SIT",
+     "AGREE": 0,
+     "DISAGREE": 2,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 2,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "DISAGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+       "project": "TRIAL-C1-SKU2",
+       "case": "C1",
+       "reviewer": "lingyu",
+       "verdict": "DISAGREE",
+       "answer": "不同意",
+       "comment": "以主表为主，根据主表更正附表内容，RF Certification 数量固定，不以SKU数量强相关"
+      },
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "DISAGREE",
+       "answer": "不同意",
+       "comment": "RF Certification 是15"
+      }
+     ]
+    }
+   ],
+   "function_specific": true,
+   "conclusion": "FUNCTION_SPECIFIC_DECISION_REQUIRED"
+  },
+  {
+   "id": "ORI-03",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 2,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "你们项目里「当前波次 / 后续波次」实际按什么条件划分？（本工具只认「Spec 被明确标为后续波次」这一条判据）",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "OPEN",
+     "answer": "待确认，指出你发现的具体位置",
+     "comment": ""
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "你们项目里「当前波次 / 后续波次」实际按什么条件划分？（本工具只认「Spec 被明确标为后续波次」这一条判据）",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "OPEN",
+     "answer": "待确认",
+     "comment": ""
+    }
+   ],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 2,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+       "project": "TRIAL-C1-SKU2",
+       "case": "C1",
+       "reviewer": "lingyu",
+       "verdict": "OPEN",
+       "answer": "待确认，指出你发现的具体位置",
+       "comment": ""
+      },
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "OPEN",
+       "answer": "待确认",
+       "comment": ""
+      }
+     ]
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-04",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-05",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-06",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-07",
+   "seen_in": 2,
+   "AGREE": 2,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": true,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "本工具默认 Risk Reserve = 0%（源表没有已确认比例）。你的项目实际会另加预留吗？比例按什么算？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "目前保持Risk Reserve = 0%"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "本工具默认 Risk Reserve = 0%（源表没有已确认比例）。你的项目实际会另加预留吗？比例按什么算？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": ""
+    }
+   ],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 2,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 2,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "AGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+       "project": "TRIAL-C1-SKU2",
+       "case": "C1",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": "目前保持Risk Reserve = 0%"
+      },
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": ""
+      }
+     ]
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-08",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-09",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-10",
+   "seen_in": 2,
+   "AGREE": 2,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 0,
+   "has_verdict": true,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+     "project": "TRIAL-C1-SKU2",
+     "case": "C1",
+     "reviewer": "lingyu",
+     "question": "结果里的 MEPA 每 Phase 恒为 36、HW PA 恒为 4：在你的真实项目里成立吗？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "但是这目前只是LCFC这一家ODM的数据"
+    },
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "结果里的 MEPA 每 Phase 恒为 36、HW PA 恒为 4：在你的真实项目里成立吗？",
+     "sub_decision": "PACK_LEVEL",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "LCFC的数据"
+    }
+   ],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 2,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 2,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "AGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+       "project": "TRIAL-C1-SKU2",
+       "case": "C1",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": "但是这目前只是LCFC这一家ODM的数据"
+      },
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": "LCFC的数据"
+      }
+     ]
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-11",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-12",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-13",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-14",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-15",
+   "seen_in": 2,
+   "AGREE": 1,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 1,
+   "has_verdict": true,
+   "conflict": false,
+   "evidence": [
+    {
+     "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+     "project": "TRIAL-C2-SKU3",
+     "case": "C2",
+     "reviewer": "lingyu",
+     "question": "Green / SIT @ SKU3：本工具采用附表 6.0，主表推算为 9.0（差 -3.0）。在你的项目里，哪个才是业务上正确的数量？",
+     "sub_decision": "GREEN_SIT",
+     "verdict": "AGREE",
+     "answer": "同意",
+     "comment": "附表数据正确，主表数据记录失误，应该是6，Green 是固定数值，不跟SKU数强相关"
+    }
+   ],
+   "sub_decisions": [
+    {
+     "sub_decision": "GREEN_SIT",
+     "label": "Green / SIT",
+     "AGREE": 1,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 0,
+     "seen_in": 1,
+     "has_verdict": true,
+     "conflict": false,
+     "verdict": "AGREE",
+     "answers": [
+      {
+       "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+       "project": "TRIAL-C2-SKU3",
+       "case": "C2",
+       "reviewer": "lingyu",
+       "verdict": "AGREE",
+       "answer": "同意",
+       "comment": "附表数据正确，主表数据记录失误，应该是6，Green 是固定数值，不跟SKU数强相关"
+      }
+     ]
+    },
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 1,
+     "seen_in": 1,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-16",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  },
+  {
+   "id": "ORI-17",
+   "seen_in": 2,
+   "AGREE": 0,
+   "DISAGREE": 0,
+   "OPEN": 0,
+   "OTHER": 0,
+   "UNANSWERED": 2,
+   "has_verdict": false,
+   "conflict": false,
+   "evidence": [],
+   "sub_decisions": [
+    {
+     "sub_decision": "PACK_LEVEL",
+     "label": "整条问题（不针对具体 Function）",
+     "AGREE": 0,
+     "DISAGREE": 0,
+     "OPEN": 0,
+     "OTHER": 0,
+     "UNANSWERED": 2,
+     "seen_in": 2,
+     "has_verdict": false,
+     "conflict": false,
+     "verdict": "NO_VERDICT",
+     "answers": []
+    }
+   ],
+   "function_specific": false,
+   "conclusion": ""
+  }
+ ],
+ "analysis_registered_items": [
+  {
+   "kind": "WAVE_ASSIGNMENT_NOT_PROVIDED",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "OPEN",
+   "answer": "待确认，指出你发现的具体位置",
+   "comment": "",
+   "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "project": "TRIAL-C1-SKU2",
+   "case": "C1",
+   "reviewer": "lingyu"
+  },
+  {
+   "kind": "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "AGREE",
+   "answer": "同意",
+   "comment": "可以看懂，保留提示",
+   "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "project": "TRIAL-C1-SKU2",
+   "case": "C1",
+   "reviewer": "lingyu"
+  },
+  {
+   "kind": "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "AGREE",
+   "answer": "同意",
+   "comment": "可以看懂，保留提示",
+   "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "project": "TRIAL-C1-SKU2",
+   "case": "C1",
+   "reviewer": "lingyu"
+  },
+  {
+   "kind": "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "AGREE",
+   "answer": "同意",
+   "comment": "可以看懂，保留提示",
+   "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "project": "TRIAL-C1-SKU2",
+   "case": "C1",
+   "reviewer": "lingyu"
+  },
+  {
+   "kind": "WAVE_ASSIGNMENT_NOT_PROVIDED",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "OPEN",
+   "answer": "待确认",
+   "comment": "",
+   "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "project": "TRIAL-C2-SKU3",
+   "case": "C2",
+   "reviewer": "lingyu"
+  },
+  {
+   "kind": "CERTIFICATION_SOURCE_VALIDATION_MISMATCH",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "AGREE",
+   "answer": "同意",
+   "comment": "",
+   "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "project": "TRIAL-C2-SKU3",
+   "case": "C2",
+   "reviewer": "lingyu"
+  },
+  {
+   "kind": "CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "AGREE",
+   "answer": "同意",
+   "comment": "",
+   "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "project": "TRIAL-C2-SKU3",
+   "case": "C2",
+   "reviewer": "lingyu"
+  },
+  {
+   "kind": "CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED",
+   "level": "AFFECTS_ACCURACY",
+   "blocks_mvp": "NO",
+   "verdict": "AGREE",
+   "answer": "同意",
+   "comment": "",
+   "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "project": "TRIAL-C2-SKU3",
+   "case": "C2",
+   "reviewer": "lingyu"
+  }
+ ],
+ "ui_feedback": [
+  {
+   "topic": "UI-USE",
+   "verdict": "DISAGREE",
+   "answer": "不同意",
+   "comment": "应该显示主表全部function数据",
+   "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+   "project": "TRIAL-C1-SKU2",
+   "case": "C1",
+   "reviewer": "lingyu"
+  },
+  {
+   "topic": "UI-USE",
+   "verdict": "AGREE",
+   "answer": "同意",
+   "comment": "",
+   "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+   "project": "TRIAL-C2-SKU3",
+   "case": "C2",
+   "reviewer": "lingyu"
+  }
+ ],
+ "coverage": {
+  "feedback_files": 2,
+  "submissions": 2,
+  "legacy_feedback_files": 0,
+  "superseded_legacy_files": [],
+  "submission_gate_findings": [],
+  "submission_missing_fields": [],
+  "certification_cells_total": 3,
+  "certification_cells_with_verdict": 2,
+  "underlying_mismatch_cells_total": 7,
+  "underlying_mismatch_cells_evidenced": 3,
+  "trial_cases_total": 5,
+  "trial_cases_returned": 2,
+  "trial_cases_missing": [
+   "C3",
+   "C4",
+   "C5"
+  ],
+  "analysis_json_read_ok": 2,
+  "analysis_json_invalid": [],
+  "analysis_json_stale_rule_pack": [],
+  "owner_items_total": 19,
+  "owner_items_with_verdict": 5,
+  "disagreements": [
+   "RF Certification / SIT",
+   "ORI-02",
+   "ORI-02b"
+  ],
+  "conflicting": [],
+  "function_specific_owner_items": [
+   "ORI-02",
+   "ORI-02b"
+  ],
+  "stale_rule_pack_files": [],
+  "unattributed_files": [],
+  "duplicate_analysis_ids": [],
+  "analysis_json_without_feedback": []
+ },
+ "ori_sub_decisions": {
+  "ORI-01": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-02": [
+   {
+    "sub_decision": "GREEN_SIT",
+    "label": "Green / SIT",
+    "AGREE": 1,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 1,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "AGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": "附表数据正确，主表数据记录失误，应该是6，Green 是固定数值，不跟SKU数强相关"
+     }
+    ]
+   },
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 2,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 2,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "AGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+      "project": "TRIAL-C1-SKU2",
+      "case": "C1",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": "可以看懂，保留提示"
+     },
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": ""
+     }
+    ]
+   },
+   {
+    "sub_decision": "RF_CERTIFICATION_SIT",
+    "label": "RF Certification / SIT",
+    "AGREE": 0,
+    "DISAGREE": 2,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 2,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "DISAGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+      "project": "TRIAL-C1-SKU2",
+      "case": "C1",
+      "reviewer": "lingyu",
+      "verdict": "DISAGREE",
+      "answer": "不同意",
+      "comment": "以主表为主，根据主表更正附表内容，RF Certification 数量固定，不以SKU数量强相关"
+     },
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "DISAGREE",
+      "answer": "不同意",
+      "comment": "RF Certification 是15"
+     }
+    ]
+   }
+  ],
+  "ORI-02a": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-02b": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 2,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 2,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "AGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+      "project": "TRIAL-C1-SKU2",
+      "case": "C1",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": "可以看懂，保留提示"
+     },
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": ""
+     }
+    ]
+   },
+   {
+    "sub_decision": "RF_CERTIFICATION_SIT",
+    "label": "RF Certification / SIT",
+    "AGREE": 0,
+    "DISAGREE": 2,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 2,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "DISAGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+      "project": "TRIAL-C1-SKU2",
+      "case": "C1",
+      "reviewer": "lingyu",
+      "verdict": "DISAGREE",
+      "answer": "不同意",
+      "comment": "以主表为主，根据主表更正附表内容，RF Certification 数量固定，不以SKU数量强相关"
+     },
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "DISAGREE",
+      "answer": "不同意",
+      "comment": "RF Certification 是15"
+     }
+    ]
+   }
+  ],
+  "ORI-03": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 2,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+      "project": "TRIAL-C1-SKU2",
+      "case": "C1",
+      "reviewer": "lingyu",
+      "verdict": "OPEN",
+      "answer": "待确认，指出你发现的具体位置",
+      "comment": ""
+     },
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "OPEN",
+      "answer": "待确认",
+      "comment": ""
+     }
+    ]
+   }
+  ],
+  "ORI-04": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-05": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-06": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-07": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 2,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 2,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "AGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+      "project": "TRIAL-C1-SKU2",
+      "case": "C1",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": "目前保持Risk Reserve = 0%"
+     },
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": ""
+     }
+    ]
+   }
+  ],
+  "ORI-08": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-09": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-10": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 2,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 2,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "AGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+      "project": "TRIAL-C1-SKU2",
+      "case": "C1",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": "但是这目前只是LCFC这一家ODM的数据"
+     },
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": "LCFC的数据"
+     }
+    ]
+   }
+  ],
+  "ORI-11": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-12": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-13": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-14": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-15": [
+   {
+    "sub_decision": "GREEN_SIT",
+    "label": "Green / SIT",
+    "AGREE": 1,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 0,
+    "seen_in": 1,
+    "has_verdict": true,
+    "conflict": false,
+    "verdict": "AGREE",
+    "answers": [
+     {
+      "file": "trial-submission-TRIAL-C2-SKU3-20261106-1359.json",
+      "project": "TRIAL-C2-SKU3",
+      "case": "C2",
+      "reviewer": "lingyu",
+      "verdict": "AGREE",
+      "answer": "同意",
+      "comment": "附表数据正确，主表数据记录失误，应该是6，Green 是固定数值，不跟SKU数强相关"
+     }
+    ]
+   },
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 1,
+    "seen_in": 1,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-16": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ],
+  "ORI-17": [
+   {
+    "sub_decision": "PACK_LEVEL",
+    "label": "整条问题（不针对具体 Function）",
+    "AGREE": 0,
+    "DISAGREE": 0,
+    "OPEN": 0,
+    "OTHER": 0,
+    "UNANSWERED": 2,
+    "seen_in": 2,
+    "has_verdict": false,
+    "conflict": false,
+    "verdict": "NO_VERDICT",
+    "answers": []
+   }
+  ]
+ },
+ "verdict": "EVIDENCE_INCOMPLETE",
+ "next_actions": [
+  "仍有 1 个主表/附表差异格没有明确结论（Q-01）：Safety / FVT",
+  "仍有 14 条 Owner 问题没有任何明确回答：ORI-01、ORI-02a、ORI-03、ORI-04、ORI-05、ORI-06、ORI-08、ORI-09、ORI-11、ORI-12、ORI-13、ORI-14、ORI-16、ORI-17",
+  "清单里已发卷但没回收反馈的案例：C3、C4、C5（未回收的案例不能算已试用）",
+  "7 个底层差异格中还没有「既被回答、又被真实跑到」的共 4 格：RF Certification / SIT @ SKU4、RF Certification / SIT @ SKU5、RF Certification / SIT @ SKU6、Safety / FVT @ SKU6",
+  "这些 Owner 问题在不同 Function 上得到了不同结论，需要按 Function 分别裁决（不同 Function 结论不同不算矛盾）：ORI-02、ORI-02b",
+  "被登记但只回答成「待确认 / 其它」的条目：ORI-01、ORI-02a、ORI-03、ORI-04、ORI-05、ORI-06、ORI-08、ORI-09、ORI-11、ORI-12、ORI-13、ORI-14、ORI-16、ORI-17"
+ ],
+ "inbox": "D:\\GAMING_NRE_AGENT\\feedback_inbox",
+ "submission_files": [
+  "trial-submission-TRIAL-C1-SKU2-20261106-1353.json",
+  "trial-submission-TRIAL-C2-SKU3-20261106-1359.json"
+ ],
+ "analysis_json_files": []
+}

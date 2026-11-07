@@ -1,0 +1,497 @@
+{
+ "status": "CLEAN",
+ "passed": 98,
+ "total": 98,
+ "results": [
+  {
+   "id": "UI-18 localStorage available",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-18 history saved",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-18 recent lists saved records",
+   "pass": true,
+   "detail": "UIWAVE,UIOOD,UISINGLE,UITIE"
+  },
+  {
+   "id": "UI-20 history copy creates a new independent record",
+   "pass": true,
+   "detail": "UITIE（副本）"
+  },
+  {
+   "id": "UI-18 history delete",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-19 home lists recent analyses with project names",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-19 home shows SKU result and demand",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-02 range page says 4–5 SKU",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-02 page states the range is not a gap and no candidate was chosen",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-10 range reason is SKU_NOT_ESTABLISHED, not competing certification models",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-04 result page shows both 4 SKU and 5 SKU priced",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-08 certification states the adopted source and the once-only count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-09 the adopted value is counted once and the Main Table derivation zero times",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-25 adopted Appendix values are visible without expanding anything",
+   "pass": true,
+   "detail": "SKU|FVT|SIT|Certification|非 Certification|Reuse 采用|风险预留|合计|结果形态|Function|Phase|SKU|采用值（附表）|状态|SKU|FVT|SIT|Certification|非 Certification|Reuse 采用|风险预留|合计|结果形态|Function|Phase|SKU|采用值（附表）|状态|待确认事项|级别|条目|内部标识"
+  },
+  {
+   "id": "UI-26 Main Table value and delta are only in the expandable details",
+   "pass": true,
+   "detail": "Function|Phase|Quantity Model|建议值|状态|主要原因|Function|Phase|SKU|采用值（附表）|主表 /SKU|主表 × SKU（审计）|差值|用户输入|来源行|Function|Phase|Quantity Model|建议值|状态|主要原因|Function|Phase|SKU|采用值（附表）|主表 /SKU|主表 × SKU（审计）|差值|用户输入|来源行"
+  },
+  {
+   "id": "UI-12 J33 shown as non-additive evidence",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-21 open review items are collected and counted",
+   "pass": true,
+   "detail": "open=5"
+  },
+  {
+   "id": "UI-22 review items do not block the result page",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-16 no hidden single value: a range keeps both endpoints",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-29 review CSV publishes adopted and audit columns with the counted-times flags",
+   "pass": true,
+   "detail": "section 4 present"
+  },
+  {
+   "id": "UI-30 JSON export keeps the adopted value, the audit value and the difference",
+   "pass": true,
+   "detail": "cells=32"
+  },
+  {
+   "id": "UI-28 trial feedback export lists the mismatched cells and the open ORIs",
+   "pass": true,
+   "detail": "ori rows=19"
+  },
+  {
+   "id": "UI-21 export payload keeps RANGE with null recommended sku",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-01 single SKU page",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-13 MEPA and HW PA shown as temporary",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-06 with no LATER_WAVE the page says Current Wave equals Full Project",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-06 both scopes are still shown side by side",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-07 current wave differs from full project and the reason is explained",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-15 wave does not change base_demand at the same SKU band",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-24 out-of-domain stops the affected scenario with an explanation",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-24 other scenario is still produced",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-27 the user is never asked to choose between Main Table and Appendix",
+   "pass": true,
+   "detail": "pickers=0"
+  },
+  {
+   "id": "UI-11a per-cell override stays analysis-only and is optional",
+   "pass": true,
+   "detail": "override inputs=8"
+  },
+  {
+   "id": "UI-12b new page does not ask for a SKU count",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-12c wave options are the three Chinese labels, not UNKNOWN",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-02 live preview reports the 4-5 SKU range before running",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-18 pressing 运行分析 saves the analysis and opens the result",
+   "pass": true,
+   "detail": "nav=true storeBefore=4 storeAfter=5 href=result.html?id=AMW4Q0R6I err="
+  },
+  {
+   "id": "UI-02 run-through reproduces the range",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-16 display precision never invents an integer",
+   "pass": true,
+   "detail": "438.8,438.8"
+  },
+  {
+   "id": "UI-17 JSON export carries full precision, not the display value",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-17 export declares display precision does not modify values",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-17 export refuses to collapse a range",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-23 BLOCKS_FORMALIZATION items exist and the run still produced totals",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-22 no item claims it blocks the manual MVP",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-40 trial mode offers exactly the five issued controlled cases",
+   "pass": true,
+   "detail": "5"
+  },
+  {
+   "id": "UI-40 each case states on screen what it exists to prove",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-41 the page takes its cases from the generated roster, not its own copy",
+   "pass": true,
+   "detail": "RP-V4.0 7"
+  },
+  {
+   "id": "UI-41 C1-C5 together still cover 7/7 disagreeing cells",
+   "pass": true,
+   "detail": "RF Certification / SIT @ SKU2,Green / SIT @ SKU3,RF Certification / SIT @ SKU3,RF Certification / SIT @ SKU4,RF Certification / SIT @ SKU5,RF Certification / SIT @ SKU6,Safety / FVT @ SKU6"
+  },
+  {
+   "id": "UI-42 the home page has a 参加团队试用 entry",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-43 picking a case auto-fills the project name",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-43 the case config is locked, not editable",
+   "pass": true,
+   "detail": "no free input for key factors on the trial page"
+  },
+  {
+   "id": "UI-43 C5's LATER_WAVE preset is shown, not left to the reviewer",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-44 running the case produced a result on the same page",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-44 C5 result really reaches 6 SKU and the Safety / FVT cell",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-44 the feedback panel asks only about what this case produced",
+   "pass": true,
+   "detail": "asked: @ SKU4,@ SKU4,@ SKU5,@ SKU5,@ SKU6,@ SKU6,@ SKU6,@ SKU6,@ SKU4,@ SKU5,@ SKU6,@ SKU6,@ SKU4,@ SKU5,@ SKU6,@ SKU6,@ SKU4,@ SKU5,@ SKU6,@ SKU6"
+  },
+  {
+   "id": "UI-44 C5 is not asked to answer all 19 Owner questions as mandatory",
+   "pass": true,
+   "detail": "11 required / 10 optional"
+  },
+  {
+   "id": "UI-45 export is blocked before anything is filled",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-45 name + date alone still does not unlock the export",
+   "pass": true,
+   "detail": "必答问题已全部作答（0/11）"
+  },
+  {
+   "id": "UI-51 typing an answer everywhere else does not answer a v4.1 cell question",
+   "pass": true,
+   "detail": "本案例的必答问题已全部作答（7/11） | 仍未作答：RF Certification / SIT @ SKU4；RF Certification / "
+  },
+  {
+   "id": "UI-51 a value the dropdown does not offer is refused, never half-stored",
+   "pass": true,
+   "detail": "NOT_A_TEXT_CONTROL value=[]"
+  },
+  {
+   "id": "UI-51 choosing an option without writing the reason keeps the export locked",
+   "pass": true,
+   "detail": "本案例的必答问题已全部作答（11/11） | 缺理由：RF Certification / SIT @ SKU4；RF Certification / S"
+  },
+  {
+   "id": "UI-45 every gate passes once the required answers are in",
+   "pass": true,
+   "detail": "✅试用者姓名已填写演练员✅评审日期已填写2026-11-05✅本案例已实际运行TRIAL-C5-SKU6-WAVE / AMW4Q0RFY✅规则包版本正确RP-V4.0（当前规则包 RP-V4.0，案例发卷时是 RP-V4.0）✅本案例的必答问题已全部作答（11/11）✅需要理由的问题都写了理由（4/4）✅案例目标差异格已实际跑到（4/4）RF Certification / SIT @ SKU4"
+  },
+  {
+   "id": "UI-46 one submission file, named as the collector expects",
+   "pass": true,
+   "detail": "trial-submission-TRIAL-C5-SKU6-WAVE-20261106-1636.json"
+  },
+  {
+   "id": "UI-46 submission carries case, project, reviewer and the rule pack it was run on",
+   "pass": true,
+   "detail": "RP-V4.0"
+  },
+  {
+   "id": "UI-46 submission carries both the locked input and the full analysis",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-46 submission names the cells this case covered and proves it exercised them",
+   "pass": true,
+   "detail": "[\"RF Certification / SIT @ SKU4\",\"RF Certification / SIT @ SKU5\",\"RF Certification / SIT @ SKU6\",\"Safety / FVT @ SKU6\"]"
+  },
+  {
+   "id": "UI-46 every answer the page asked for is in the file, plus the optional ORIs",
+   "pass": true,
+   "detail": "11/10 checks=7"
+  },
+  {
+   "id": "UI-50 v4.1: every mismatch cell is a four-way choice with a mandatory reason",
+   "pass": true,
+   "detail": "4 cell question(s)"
+  },
+  {
+   "id": "UI-50 the returned submission says which form version it answers",
+   "pass": true,
+   "detail": "4.1"
+  },
+  {
+   "id": "UI-50 the submission records the form version and the reason gate passed",
+   "pass": true,
+   "detail": "4.1"
+  },
+  {
+   "id": "UI-47 a stale rule pack fails the re-check even with everything else filled",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-47 a case that never reached its target cells fails the re-check",
+   "pass": true,
+   "detail": "本次没有产出：RF Certification / SIT @ SKU4；RF Certification / SIT @ SKU5；RF Certification / SIT @ SKU6；Safety / FVT @ SKU6"
+  },
+  {
+   "id": "UI-47 a blank required answer is not treated as agreement",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-47 a missing name or date blocks the submission",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-47 a case that was never run cannot produce evidence",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-48 a properly run case with its own cells passes all six checks",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "id": "UI-48 the locked config records that no override was used",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "id": "UI-49 C1 loads and runs in one click, and asks about exactly its own cells",
+   "pass": true,
+   "detail": "missing  | foreign "
+  },
+  {
+   "id": "UI-49 C1 can pass all six checks when its own case is run",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "id": "UI-49 C2 loads and runs in one click, and asks about exactly its own cells",
+   "pass": true,
+   "detail": "missing  | foreign "
+  },
+  {
+   "id": "UI-49 C2 can pass all six checks when its own case is run",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "id": "UI-49 C3 loads and runs in one click, and asks about exactly its own cells",
+   "pass": true,
+   "detail": "missing  | foreign "
+  },
+  {
+   "id": "UI-49 C3 can pass all six checks when its own case is run",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "id": "UI-49 C4 loads and runs in one click, and asks about exactly its own cells",
+   "pass": true,
+   "detail": "missing  | foreign "
+  },
+  {
+   "id": "UI-49 C4 can pass all six checks when its own case is run",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "id": "UI-49 C5 loads and runs in one click, and asks about exactly its own cells",
+   "pass": true,
+   "detail": "missing  | foreign "
+  },
+  {
+   "id": "UI-49 C5 can pass all six checks when its own case is run",
+   "pass": true,
+   "detail": "[]"
+  },
+  {
+   "id": "UI-51 the reason stays mandatory: emptying one locks the export and names it",
+   "pass": true,
+   "detail": "缺理由：RF Certification / SIT @ SKU4"
+  },
+  {
+   "id": "UI-54 C3, C4 and C5 each hand back one submission with all seven checks green",
+   "pass": true,
+   "detail": "[\"C3=trial-submission-TRIAL-C3-SKU4-20261106-1636.json checks7\",\"C4=trial-submission-TRIAL-C4-RANGE45-20261106-1637.json checks7\",\"C5=trial-submission-TRIAL-C5-SKU6-WAVE-20261106-1637.json checks7\"]"
+  },
+  {
+   "id": "UI-55 the draft a v4.1 review leaves behind says which form it was written on",
+   "pass": true,
+   "detail": "{\"v\":\"4.1\",\"ran\":true,\"sent\":true}"
+  },
+  {
+   "id": "UI-56 a refresh restores the chosen option and its reason, not a blank form",
+   "pass": true,
+   "detail": "11/11"
+  },
+  {
+   "id": "UI-57 a v4.0 draft is never read as a v4.1 choice: the dropdown comes up empty",
+   "pass": true,
+   "detail": "4/4 blank | 仍未作答：RF Certification / SIT @ SKU4；RF Certif"
+  },
+  {
+   "id": "UI-57 and the reason it left behind no longer satisfies the reason gate",
+   "pass": true,
+   "detail": "缺理由：RF Certification / SIT @ SKU4；RF Certification / S"
+  },
+  {
+   "id": "UI-57 the reviewer is told, and the old wording is kept rather than dropped",
+   "pass": true,
+   "detail": "{\"needs\":4,\"kept\":4}"
+  },
+  {
+   "id": "UI-58 a case that does not exist is reported as missing, not as empty",
+   "pass": true,
+   "detail": "byId(C9)=null"
+  },
+  {
+   "id": "UI-58 an answer filed under a question this case never asked is not an answer",
+   "pass": true,
+   "detail": "本案例的必答问题已全部作答（0/11） | 缺理由：RF Certification / SIT @ SKU4；RF Certifi"
+  },
+  {
+   "id": "UI-59 C5 states under its wave table that the wave is an assumption, not a fact",
+   "pass": true,
+   "detail": "波次为案例预设的试用假设，未经 Owner 确认；需求表没有波次列（ORI-03），本案不据此下业务结论"
+  },
+  {
+   "id": "UI-59 a case that presets no wave shows no wave table and no such warning",
+   "pass": true,
+   "detail": "C3 case box mentions wave=false"
+  }
+ ]
+}

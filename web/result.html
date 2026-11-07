@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>分析结果 · 样机需求分析工具</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="result">
+<header class="top">
+  <span class="logo">样机需求分析工具</span>
+  <nav><a href="index.html">首页</a><a href="new.html">新建分析</a></nav>
+  <span style="flex:1"></span>
+  <button class="small" id="r-reopen">以此次输入新建</button>
+  <button class="small" id="r-json">导出 JSON</button>
+  <button class="small" id="r-csv">导出团队 Review 报告 (CSV)</button>
+        <button class="small" id="r-feedback">导出试用反馈表 (CSV)</button>
+</header>
+
+<main>
+  <div class="card">
+    <div class="row spread">
+      <h2 style="margin:0;font-size:19px" id="r-name">—</h2>
+      <span id="r-meta" class="small muted"></span>
+    </div>
+    <div class="status-line">
+      <span class="chip warn"><b id="r-open-count">0</b> 项需要 Owner 确认</span>
+      <span class="chip info">数值未做业务取整（D-01）</span>
+      <span class="chip">区间不会被折叠成单一数字</span>
+    </div>
+  </div>
+
+  <div id="r-main"></div>
+
+  <div class="card">
+    <h2>需要确认的问题</h2>
+    <p class="hint" style="margin-top:-4px">这些问题只是提示，不会阻止你继续使用该工具；
+      其中「BLOCKS_FORMALIZATION」只表示规则包还不能定版，「BLOCKS_EXECUTION」才会停止受影响的计算。</p>
+    <div id="r-open"></div>
+    <details><summary>完整技术条目（Owner Review Register 输入）</summary>
+      <pre class="mono small" id="r-open-full" style="max-height:360px;overflow:auto"></pre>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>导出内容</h2>
+    <p class="small muted" style="margin-top:0">
+      JSON：输入快照、文件读取值与用户确认值、SKU 结果或范围、Current Wave / Full Project、
+      样机需求值或范围、FVT/SIT 拆分、Function 明细、Quantity Model、Certification 采用值（附表）与主表审计值及差值、
+      逐格采用与差异状态、J33 证据状态、Reuse 账本、Review Items、被排除的 Panel 批注、
+      引擎版本、规则包版本、Schema 版本、生成时间，以及全部底层精度数值。<br>
+      CSV（可直接用 Excel 打开）：面向团队 Review 的七个区块摘要。</p>
+  </div>
+</main>
+<footer class="foot">当前为 MVP：不含 Build Plan 差异比较、不含真实需求表自动解析、
+  不含跨项目样机复用优化。</footer>
+<script src="assets/rulepack.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

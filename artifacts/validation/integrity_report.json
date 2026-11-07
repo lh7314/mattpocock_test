@@ -1,0 +1,120 @@
+{
+ "generated_at_utc": "2026-11-06T08:37:02+00:00",
+ "checks": 240,
+ "failures": [],
+ "result": "PASS",
+ "owner_decision": "DEC-10",
+ "adopted_value_source": "APPENDIX_TABLE_TOTAL",
+ "original_documents": {
+  "Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx": "48a360ff2ffd086e41d6b90a916f64fe52d9bc13efba07b8377b2945c846ab5a"
+ },
+ "buckets": {
+  "SOURCE (read-only, Owner)": 1,
+  "DELIVERABLE (review target)": 52,
+  "EVIDENCE (reproducible)": 42,
+  "TOOL / PROTOTYPE": 31,
+  "WEB MVP": 14,
+  "INCOMING (team trial feedback)": 4,
+  "TRIAL KIT (issued cases, blank forms)": 9,
+  "UNEXPECTED": 0
+ },
+ "regression": {
+  "total": 120,
+  "holding": 119,
+  "expected_failures": [
+   "SR-09"
+  ],
+  "regressions": [],
+  "status": "CLEAN",
+  "ledger": {
+   "previous_suite": "tools/validate_rules_v3.py",
+   "previous_total": 101,
+   "retired_in_this_task": 2,
+   "retired_ids": [
+    "CT-V2-02",
+    "SC-05"
+   ],
+   "adapted_in_this_task": 16,
+   "adapted_ids": [
+    "RT-02",
+    "CT-V2-04",
+    "CT-V2-06",
+    "CT-V2-08",
+    "CT-V2-09",
+    "CT-V2-11",
+    "D01-01",
+    "D01-02",
+    "D01-04",
+    "PR-05b",
+    "SC-02",
+    "SC-06",
+    "SC-08",
+    "LG-02",
+    "LG-03",
+    "LG-04"
+   ],
+   "carried_unchanged": 83,
+   "added_in_this_task": 21,
+   "added_ids": [
+    "DA-01",
+    "DA-02",
+    "DA-03",
+    "DA-04",
+    "DA-05",
+    "DA-06",
+    "DA-07",
+    "DA-08",
+    "DA-09",
+    "DA-10",
+    "DA-11",
+    "DA-12",
+    "EX-01",
+    "EX-02",
+    "EX-03",
+    "EX-04",
+    "EX-05",
+    "EX-06",
+    "ST-01",
+    "ST-02",
+    "ST-03"
+   ],
+   "current_total": 120,
+   "closure_previous": true,
+   "closure_current": true,
+   "unexpected_retirements": [],
+   "undocumented_additions": []
+  }
+ },
+ "owner_review_items": {
+  "unique": 19,
+  "impact_tags": {
+   "ADVISORY": 4,
+   "AFFECTS_ACCURACY": 9,
+   "BLOCKS_FORMALIZATION": 6
+  }
+ },
+ "trial_feedback": {
+  "verdict": "EVIDENCE_INCOMPLETE",
+  "feedback_files": 2,
+  "owner_items_with_verdict": 5,
+  "certification_cells_with_verdict": 2,
+  "underlying_cells_evidenced": "3/7",
+  "cases_returned": "2/5",
+  "roster_rule_pack": "RP-V4.0",
+  "submissions": 2,
+  "legacy_forms": 0,
+  "submissions_rejected_on_recheck": 0,
+  "ori_asked_as_required": 10,
+  "ori_total": 19
+ },
+ "ori_02_status": "PARTIALLY_RESOLVED",
+ "adopted_totals": {
+  "SKU2": 366.0,
+  "SKU3": 408.0,
+  "SKU4": 438.8,
+  "SKU5": 469.0,
+  "SKU6": 502.0
+ },
+ "web_parity": "MATCH",
+ "web_ui": "CLEAN"
+}

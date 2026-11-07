@@ -1,0 +1,266 @@
+{
+ "artifact": "model_delta",
+ "artifact_version": "4.0",
+ "generated_at_utc": "2026-11-06T08:36:38+00:00",
+ "generator": "tools/export_model_delta_v4.py",
+ "owner_decision": {
+  "id": "DEC-10",
+  "decision": "for the MVP and the team-trial phase the Certification quantity is the Appendix total for the corresponding Function, Phase and SKU count",
+  "adopted_value_source": "APPENDIX_TABLE_TOTAL",
+  "audit_only_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+  "appendix_counted_in_project_total_times": 1,
+  "main_derived_counted_in_project_total_times": 0,
+  "j33_counted_in_project_total_times": 0,
+  "phase_ratio_used": null,
+  "fvt_and_sit_each_read_their_own_appendix_row": true,
+  "user_override_scope": "this Analysis only - never written back to the rule pack",
+  "scope": "MVP + team trial. It does not close ORI-02: the 7 cells where the two columns disagree are still registered and still block finalising the rule pack."
+ },
+ "method": "every total is the sum of the 42 cell adopted values for that SKU band; no historical total is adjusted by hand",
+ "rows": [
+  {
+   "sku_count": 2,
+   "workbook_total": 365.0,
+   "phase3a_total_main_table_adopted": 373.0,
+   "current_total_appendix_adopted": 366.0,
+   "fvt_total": 177.0,
+   "sit_total": 189.0,
+   "certification_total": 32.0,
+   "certification_total_audit_main_derived": 39.0,
+   "non_certification_total": 334.0,
+   "delta_vs_workbook": 1.0,
+   "delta_vs_phase3a": -7.0,
+   "attributed_to_certification_adoption": -7.0,
+   "attributed_to_mepa_hw_pa_temporary_model": 8.0,
+   "attribution_residual": 0.0
+  },
+  {
+   "sku_count": 3,
+   "workbook_total": 417.0,
+   "phase3a_total_main_table_adopted": 417.0,
+   "current_total_appendix_adopted": 408.0,
+   "fvt_total": 196.5,
+   "sit_total": 211.5,
+   "certification_total": 33.0,
+   "certification_total_audit_main_derived": 42.0,
+   "non_certification_total": 375.0,
+   "delta_vs_workbook": -9.0,
+   "delta_vs_phase3a": -9.0,
+   "attributed_to_certification_adoption": -9.0,
+   "attributed_to_mepa_hw_pa_temporary_model": 0.0,
+   "attribution_residual": 0.0
+  },
+  {
+   "sku_count": 4,
+   "workbook_total": 443.8,
+   "phase3a_total_main_table_adopted": 443.8,
+   "current_total_appendix_adopted": 438.8,
+   "fvt_total": 211.4,
+   "sit_total": 227.4,
+   "certification_total": 36.0,
+   "certification_total_audit_main_derived": 41.0,
+   "non_certification_total": 402.8,
+   "delta_vs_workbook": -5.0,
+   "delta_vs_phase3a": -5.0,
+   "attributed_to_certification_adoption": -5.0,
+   "attributed_to_mepa_hw_pa_temporary_model": 0.0,
+   "attribution_residual": 0.0
+  },
+  {
+   "sku_count": 5,
+   "workbook_total": 474.0,
+   "phase3a_total_main_table_adopted": 474.0,
+   "current_total_appendix_adopted": 469.0,
+   "fvt_total": 226.0,
+   "sit_total": 243.0,
+   "certification_total": 37.0,
+   "certification_total_audit_main_derived": 42.0,
+   "non_certification_total": 432.0,
+   "delta_vs_workbook": -5.0,
+   "delta_vs_phase3a": -5.0,
+   "attributed_to_certification_adoption": -5.0,
+   "attributed_to_mepa_hw_pa_temporary_model": 0.0,
+   "attribution_residual": 0.0
+  },
+  {
+   "sku_count": 6,
+   "workbook_total": 507.0,
+   "phase3a_total_main_table_adopted": 506.6,
+   "current_total_appendix_adopted": 502.0,
+   "fvt_total": 242.0,
+   "sit_total": 260.0,
+   "certification_total": 38.0,
+   "certification_total_audit_main_derived": 42.6,
+   "non_certification_total": 464.0,
+   "delta_vs_workbook": -5.0,
+   "delta_vs_phase3a": -4.6,
+   "attributed_to_certification_adoption": -4.6,
+   "attributed_to_mepa_hw_pa_temporary_model": -0.4,
+   "attribution_residual": 0.0
+  }
+ ],
+ "changed_cells": [
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku": "SKU2",
+   "phase3a_adopted": 15.0,
+   "current_adopted": 8.0,
+   "change": -7.0,
+   "caused_by": "DEC-10 certification adopted from the Appendix",
+   "appendix_total": 8.0,
+   "main_table_derived": 15.0
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "phase": "SIT",
+   "sku": "SKU3",
+   "phase3a_adopted": 9.0,
+   "current_adopted": 6.0,
+   "change": -3.0,
+   "caused_by": "DEC-10 certification adopted from the Appendix",
+   "appendix_total": 6.0,
+   "main_table_derived": 9.0
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku": "SKU3",
+   "phase3a_adopted": 15.0,
+   "current_adopted": 9.0,
+   "change": -6.0,
+   "caused_by": "DEC-10 certification adopted from the Appendix",
+   "appendix_total": 9.0,
+   "main_table_derived": 15.0
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku": "SKU4",
+   "phase3a_adopted": 15.0,
+   "current_adopted": 10.0,
+   "change": -5.0,
+   "caused_by": "DEC-10 certification adopted from the Appendix",
+   "appendix_total": 10.0,
+   "main_table_derived": 15.0
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku": "SKU5",
+   "phase3a_adopted": 15.0,
+   "current_adopted": 10.0,
+   "change": -5.0,
+   "caused_by": "DEC-10 certification adopted from the Appendix",
+   "appendix_total": 10.0,
+   "main_table_derived": 15.0
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "phase": "FVT",
+   "sku": "SKU6",
+   "phase3a_adopted": 9.6,
+   "current_adopted": 10.0,
+   "change": 0.4,
+   "caused_by": "DEC-10 certification adopted from the Appendix",
+   "appendix_total": 10.0,
+   "main_table_derived": 9.6
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "phase": "SIT",
+   "sku": "SKU6",
+   "phase3a_adopted": 15.0,
+   "current_adopted": 10.0,
+   "change": -5.0,
+   "caused_by": "DEC-10 certification adopted from the Appendix",
+   "appendix_total": 10.0,
+   "main_table_derived": 15.0
+  }
+ ],
+ "attribution": {
+  "sources": [
+   "DEC-10 Certification adopted from the Appendix total",
+   "MEPA / HW PA PER_PHASE_FIXED temporary model (ORI-10, unchanged)"
+  ],
+  "residual_per_sku": {
+   "2": 0.0,
+   "3": 0.0,
+   "4": 0.0,
+   "5": 0.0,
+   "6": 0.0
+  },
+  "attribution_closes": true
+ },
+ "unchanged_semantics": {
+  "sku_range_4_5": "still RANGE with both candidates priced (see sku_range below)",
+  "panel": "Panel Spec Count; D2:H2 comments excluded (DEC-02)",
+  "wave": "explicit assignment only; never a quantity or a ratio (DEC-04)",
+  "reuse": "only a proven ADDITIONAL_CONFIRMED_REUSE deducts (DEC-06)",
+  "rounding": "NONE (D-01) - underlying decimals are preserved",
+  "j33": "BREAKDOWN_EVIDENCE, counted 0 times"
+ },
+ "sku_range": {
+  "state": "RANGE",
+  "tie_set": [
+   4,
+   5
+  ],
+  "reason": "SKU_NOT_ESTABLISHED",
+  "totals": {
+   "4": 438.8,
+   "5": 469.0
+  },
+  "certification": {
+   "4": 36.0,
+   "5": 37.0
+  },
+  "spread": 30.2
+ },
+ "sku6_review": {
+  "bottom_up_sum_equals_published": true,
+  "current_total_appendix_adopted": 502.0,
+  "fvt_total": 242.0,
+  "sit_total": 260.0,
+  "certification_total": 38.0,
+  "certification_total_audit_main_derived": 42.6,
+  "delta_vs_workbook": -5.0,
+  "delta_vs_phase3a": -4.6,
+  "attributed_to_certification_adoption": -4.6,
+  "attributed_to_mepa_hw_pa_temporary_model": -0.4,
+  "disagreeing_cells_at_6_sku": [
+   {
+    "function_id": "F_SAFETY",
+    "function_name": "Safety",
+    "phase": "FVT",
+    "sku": "SKU6",
+    "phase3a_adopted": 9.6,
+    "current_adopted": 10.0,
+    "change": 0.4,
+    "caused_by": "DEC-10 certification adopted from the Appendix",
+    "appendix_total": 10.0,
+    "main_table_derived": 9.6
+   },
+   {
+    "function_id": "F_RF_CERTIFICATION",
+    "function_name": "RF Certification",
+    "phase": "SIT",
+    "sku": "SKU6",
+    "phase3a_adopted": 15.0,
+    "current_adopted": 10.0,
+    "change": -5.0,
+    "caused_by": "DEC-10 certification adopted from the Appendix",
+    "appendix_total": 10.0,
+    "main_table_derived": 15.0
+   }
+  ],
+  "note": "6 SKU is recomputed from the 42-cell detail. The Main Table decimal 9.6 stays 9.6 in the audit column (D-01); nothing is rounded and nothing is added twice."
+ }
+}

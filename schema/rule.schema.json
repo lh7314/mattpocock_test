@@ -1,0 +1,857 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gaming-nre-agent/local/schema/rule.schema.json",
+  "title": "Rule pack, evidence and Owner Review Items (v4, Certification adopted from the Appendix)",
+  "description": "Storage contract for the rule baseline. Every rule carries evidence and a state; conflicting evidence is stored as separate rows and never merged. v4 encodes DEC-10: the Appendix total is the adopted Certification value (ADOPTED_ABSOLUTE_TOTAL, counted once) and the Main Table derivation is retained as DERIVED_MAIN_TABLE_AUDIT (counted zero times). J33 remains BREAKDOWN_EVIDENCE and is never additive. The pack stays DRAFT until the Owner closes the open review items.",
+  "type": "object",
+  "required": [
+    "rule_pack"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "rule_pack": {
+      "$ref": "#/$defs/rulePack"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    },
+    "quantity_models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/quantityModel"
+      }
+    },
+    "sku_definitions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/skuDefinition"
+      }
+    },
+    "owner_review_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ownerReviewItem"
+      }
+    },
+    "certification_verification": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/certificationCellVerification"
+      }
+    },
+    "j33_investigation": {
+      "$ref": "#/$defs/j33Investigation"
+    },
+    "ori_02_status": {
+      "$ref": "#/$defs/ori_02Status"
+    },
+    "certification_adoption": {
+      "$ref": "#/$defs/certificationAdoption"
+    }
+  },
+  "$defs": {
+    "rulePack": {
+      "type": "object",
+      "required": [
+        "pack_id",
+        "version",
+        "status",
+        "sources"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pack_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "DRAFT_UNCONFIRMED_BY_OWNER",
+            "CONFIRMED",
+            "SUPERSEDED"
+          ]
+        },
+        "generated_at_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "file",
+              "sha256"
+            ],
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "bytes": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "role": {
+                "enum": [
+                  "BASELINE",
+                  "REQUIREMENT_SHEET",
+                  "BUILD_PLAN",
+                  "STANDARD"
+                ]
+              }
+            }
+          }
+        },
+        "blocking_open_ori": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A pack cannot become CONFIRMED while this list is non-empty."
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "evidence_id",
+        "kind",
+        "source_file",
+        "sheet"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "CELL",
+            "FORMULA",
+            "COMMENT",
+            "THREADED_COMMENT",
+            "MERGED_RANGE",
+            "DEFINED_NAME",
+            "METADATA",
+            "OWNER_DECISION",
+            "FREE_TEXT"
+          ]
+        },
+        "source_file": {
+          "type": "string"
+        },
+        "source_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sheet": {
+          "type": "string"
+        },
+        "cell": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "raw_value": {},
+        "formula": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cached_value": {},
+        "author": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "comment_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normative_weight": {
+          "enum": [
+            "NORMATIVE_CANDIDATE",
+            "UNRESOLVED_COMMENT",
+            "NOT_A_RULE",
+            "HISTORICAL_REFERENCE"
+          ],
+          "description": "DEC-02: the D2:H2 'N*panel' comments are UNRESOLVED_COMMENT. 'case by case', 'Option', product names and agent inference are NOT_A_RULE."
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "required": [
+        "rule_id",
+        "kind",
+        "status",
+        "evidence_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "FUNCTION_PHASE_VALUE",
+            "QUANTITY_MODEL",
+            "SKU_DEFINITION",
+            "RECOMMENDATION",
+            "WAVE_ASSIGNMENT",
+            "REUSE_POLICY",
+            "CERTIFICATION",
+            "RISK_RESERVE",
+            "ODM_MODIFIER"
+          ]
+        },
+        "status": {
+          "enum": [
+            "CONFIRMED",
+            "DRAFT",
+            "CONFLICTED",
+            "DISABLED",
+            "NON_NORMATIVE",
+            "HISTORICAL_REFERENCE",
+            "NOT_A_RULE"
+          ]
+        },
+        "applies_to": {
+          "type": "object",
+          "properties": {
+            "function_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "phase": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sku_qty": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "odm": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "payload": {
+          "type": "object"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "conflicts_with": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Sibling rule ids holding competing evidence. Both rows stay; neither is overwritten."
+        },
+        "owner_review_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "superseded_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "quantityModel": {
+      "type": "object",
+      "required": [
+        "function_id",
+        "phase",
+        "quantity_model",
+        "adopted_source",
+        "values"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "function_id": {
+          "type": "string"
+        },
+        "phase": {
+          "enum": [
+            "FVT",
+            "SIT"
+          ]
+        },
+        "quantity_model": {
+          "enum": [
+            "PER_SKU_RATE",
+            "PER_PHASE_FIXED",
+            "PER_PROJECT_FIXED",
+            "FORMULA_DRIVEN",
+            "UNRESOLVED"
+          ]
+        },
+        "scaling_shape": {
+          "enum": [
+            "CONSTANT",
+            "NEAR_FLAT",
+            "NEAR_FLAT_WITH_DIP",
+            "RAMP",
+            "IRREGULAR",
+            "INSUFFICIENT"
+          ]
+        },
+        "adopted_source": {
+          "enum": [
+            "MAIN_TABLE",
+            "SECONDARY_ABSOLUTE_TABLE",
+            "APPENDIX_TABLE_TOTAL",
+            "NONE_UNRESOLVED"
+          ]
+        },
+        "values": {
+          "type": "object",
+          "description": "Absolute units per phase keyed by SKU2..SKU6. null when UNRESOLVED. Decimal, never rounded (D-01).",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "competing_sources": {
+          "type": "object"
+        },
+        "value_access": {
+          "enum": [
+            "ABSOLUTE_TABLE_READ",
+            "APPENDIX_TABLE_READ",
+            "MAIN_TABLE_DERIVED"
+          ],
+          "description": "DEC-05: values are read straight out of the table. No divide-by-SKU-then-multiply-back anywhere, in either direction."
+        },
+        "formula": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "declared_in": {
+              "type": "string"
+            },
+            "required_inputs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "status": {
+              "enum": [
+                "EVALUABLE",
+                "INPUTS_UNAVAILABLE_IN_MVP"
+              ]
+            }
+          }
+        },
+        "owner_review_required": {
+          "type": "boolean"
+        },
+        "embedded_sharing_signal": {
+          "enum": [
+            "NONE",
+            "SUSPECTED"
+          ]
+        },
+        "evidenceRole": {
+          "$ref": "#/$defs/evidenceRole"
+        },
+        "mainTablePerSkuQuantity": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "The Main Table quantity for one SKU, keyed SKU2..SKU6."
+        },
+        "adopted_value_evidence_role": {
+          "$ref": "#/$defs/evidenceRole"
+        },
+        "audit": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Certification cells: the retained Main Table check against the adopted Appendix total. Counted 0 times, never added."
+        }
+      }
+    },
+    "skuDefinition": {
+      "type": "object",
+      "required": [
+        "sku_qty",
+        "ranges",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sku_qty": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 99
+        },
+        "ranges": {
+          "type": "object",
+          "required": [
+            "cpu",
+            "gpu",
+            "panel",
+            "ssd",
+            "mem"
+          ],
+          "properties": {
+            "cpu": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "integer"
+              }
+            },
+            "gpu": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "integer"
+              }
+            },
+            "panel": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "integer"
+              },
+              "description": "Panel SPEC COUNT (DEC-02), not the D2:H2 comment meaning."
+            },
+            "ssd": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "integer"
+              }
+            },
+            "mem": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "raw_text": {
+          "type": "string"
+        },
+        "source_row": {
+          "type": "integer"
+        },
+        "second_wave_clause": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "is_subset_of": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Other SKU tiers whose ranges fully contain this one. SKU5 is a subset of SKU4 today - that is ORI-04."
+        },
+        "reachable_as_single": {
+          "type": "boolean",
+          "description": "False for SKU5 under the current definition. Must not be hidden by tuning weights."
+        },
+        "status": {
+          "enum": [
+            "CONFIRMED",
+            "DRAFT",
+            "CONFLICTED"
+          ]
+        }
+      }
+    },
+    "ownerReviewItem": {
+      "type": "object",
+      "required": [
+        "ori_id",
+        "title",
+        "status",
+        "blocking"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ori_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "OPEN",
+            "INTERIM_TREATMENT_ADOPTED",
+            "ANSWERED_AWAITING_SAMPLE",
+            "CLOSED",
+            "WAIVED"
+          ]
+        },
+        "blocking": {
+          "type": "boolean",
+          "description": "A blocking ORI stops the rule pack reaching CONFIRMED, but not every one of them stops the manual-input MVP."
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "CONFIRMED_RULE_PACK",
+              "AUTO_FILE_READING",
+              "BUILD_PLAN_COMPARISON",
+              "AUTO_SKU_SINGLE_ANSWER",
+              "CERTIFICATION_TOTALS",
+              "MVP_MANUAL_INPUT"
+            ]
+          }
+        },
+        "interim_treatment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "decision_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "DEC-nn that set the interim treatment."
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "question_to_owner": {
+          "type": "string"
+        },
+        "answer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "answered_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "answered_at_utc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "review_item_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blocking_level": {
+          "enum": [
+            "BLOCKS_EXECUTION",
+            "BLOCKS_FORMALIZATION",
+            "AFFECTS_ACCURACY",
+            "ADVISORY"
+          ]
+        },
+        "decision_status": {
+          "enum": [
+            "OPEN",
+            "ANSWERED_AWAITING_SAMPLE",
+            "PARTIALLY_RESOLVED",
+            "RESOLVED",
+            "CLOSED",
+            "DECLARED_NOT_GENERALIZED"
+          ]
+        }
+      }
+    },
+    "evidenceRole": {
+      "enum": [
+        "PRIMARY_QUANTITY_MODEL",
+        "ADOPTED_ABSOLUTE_TOTAL",
+        "DERIVED_MAIN_TABLE_AUDIT",
+        "DERIVED_TOTAL_VALIDATION",
+        "BREAKDOWN_EVIDENCE",
+        "ABSOLUTE_RESTATEMENT",
+        "UNRESOLVED_COMMENT"
+      ],
+      "description": "PRIMARY_QUANTITY_MODEL produces the demand from the Main Table. ADOPTED_ABSOLUTE_TOTAL is the value the Owner adopted for the MVP and team trial (DEC-10): the Appendix total, counted exactly once. DERIVED_MAIN_TABLE_AUDIT is the retained Main Table per-SKU quantity x SKU count: audit and difference analysis only, counted zero times and never added to the adopted value. DERIVED_TOTAL_VALIDATION is the Phase 3a wording kept for historic records. BREAKDOWN_EVIDENCE (J33) explains a composition and is never additive. ABSOLUTE_RESTATEMENT is a secondary table absolute value adopted as the model (MEPA / HW PA). UNRESOLVED_COMMENT is excluded from every calculation (D2:H2 Panel annotations)."
+    },
+    "certificationCellVerification": {
+      "type": "object",
+      "required": [
+        "function_id",
+        "phase",
+        "sku_count",
+        "main_table_per_sku_quantity",
+        "derived_total",
+        "appendix_total",
+        "delta",
+        "verification_status",
+        "source_reference"
+      ],
+      "additionalProperties": false,
+      "description": "One cell of the Certification grid. Every cell is reported on its own; a total alone is never treated as verification. Since DEC-10 the appendix_total is the adopted value and derived_total is the audit counterpart; the workbook is never edited to remove a difference.",
+      "properties": {
+        "function_id": {
+          "type": "string"
+        },
+        "function_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phase": {
+          "enum": [
+            "FVT",
+            "SIT"
+          ]
+        },
+        "sku_count": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 6
+        },
+        "main_table_per_sku_quantity": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "derived_total": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "main_table_per_sku_quantity x sku_count"
+        },
+        "appendix_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "delta": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "appendix_total - derived_total, kept as-is. The workbook is never edited to remove a difference."
+        },
+        "delta_direction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verification_status": {
+          "enum": [
+            "VERIFIED",
+            "MISMATCH",
+            "NOT_EVALUABLE"
+          ]
+        },
+        "comparison_tolerance": {
+          "type": "number"
+        },
+        "source_reference": {
+          "type": "object",
+          "required": [
+            "source_file",
+            "sheet",
+            "main_table_row"
+          ],
+          "additionalProperties": true
+        },
+        "adopted_value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "adopted_value_source": {
+          "enum": [
+            "APPENDIX_TABLE_TOTAL",
+            "USER_MANUAL_OVERRIDE"
+          ]
+        },
+        "audit_counted_in_project_total": {
+          "const": false
+        }
+      }
+    },
+    "j33Investigation": {
+      "type": "object",
+      "required": [
+        "source_cell",
+        "evidence_role",
+        "disposition",
+        "additive_to_main_table_result"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "source_cell": {
+          "const": "J33"
+        },
+        "evidence_role": {
+          "const": "BREAKDOWN_EVIDENCE"
+        },
+        "disposition": {
+          "enum": [
+            "CERTIFICATION_BREAKDOWN_EVIDENCE",
+            "DECLARED_NOT_GENERALIZED"
+          ]
+        },
+        "declared_reference_scenario": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "reference_total_under_readings": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "bracket": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        },
+        "additive_to_main_table_result": {
+          "const": false
+        },
+        "mvp_requires_antenna_wlan_input_now": {
+          "type": "boolean"
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "ori_02Status": {
+      "enum": [
+        "OPEN",
+        "OWNER_REVIEW_REQUIRED",
+        "PARTIALLY_RESOLVED",
+        "RESOLVED",
+        "CLOSED_BY_DECISION"
+      ],
+      "description": "PARTIALLY_RESOLVED means part of the Certification grid satisfies main x SKU = appendix and part does not; the remaining differences stay in the Register."
+    },
+    "certificationAdoption": {
+      "type": "object",
+      "required": [
+        "decision",
+        "adopted_value_source",
+        "appendix_counted_in_project_total_times",
+        "main_derived_counted_in_project_total_times",
+        "j33_counted_in_project_total_times",
+        "phase_ratio_used"
+      ],
+      "additionalProperties": true,
+      "description": "DEC-10 as data: what is adopted, what is audit-only and how often each is counted. The pack itself stays DRAFT until the Owner closes ORI-02.",
+      "properties": {
+        "decision": {
+          "const": "DEC-10"
+        },
+        "adopted_value_source": {
+          "const": "APPENDIX_TABLE_TOTAL"
+        },
+        "audit_only_source": {
+          "const": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU"
+        },
+        "appendix_counted_in_project_total_times": {
+          "const": 1
+        },
+        "main_derived_counted_in_project_total_times": {
+          "const": 0
+        },
+        "j33_counted_in_project_total_times": {
+          "const": 0
+        },
+        "phase_ratio_used": {
+          "type": "null"
+        },
+        "fvt_and_sit_each_read_their_own_appendix_row": {
+          "const": true
+        },
+        "user_override_scope": {
+          "const": "THIS_ANALYSIS_ONLY"
+        }
+      }
+    }
+  }
+}

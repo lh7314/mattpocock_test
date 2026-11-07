@@ -1,0 +1,3612 @@
+{
+ "model_id": "QMODEL-V3",
+ "model_version": "3.0",
+ "supersedes": "QMODEL-CS-ODM-002/v2.0-draft",
+ "derived_from_baseline": "BASELINE-CS-ODM-001",
+ "derived_from": {
+  "file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+  "sha256": "48a360ff2ffd086e41d6b90a916f64fe52d9bc13efba07b8377b2945c846ab5a",
+  "sheet": "CS ODM sample ",
+  "sheet_dimensions": "A1:L95",
+  "workbook_creator": "William HC",
+  "workbook_last_modified_by": "Lingyu LY3 Rong",
+  "workbook_modified": "2026-10-30T08:51:32+00:00",
+  "extraction_sha_source_json": "see artifacts/extraction"
+ },
+ "status": "DRAFT_PENDING_OWNER",
+ "generated_at_utc": "2026-11-06T08:36:36+00:00",
+ "generator": "tools/build_quantity_model_v3.py",
+ "quantity_model_enum": [
+  "PER_SKU_RATE",
+  "PER_PHASE_FIXED",
+  "PER_PROJECT_FIXED",
+  "FORMULA_DRIVEN",
+  "UNRESOLVED"
+ ],
+ "evidence_role_enum": [
+  "PRIMARY_QUANTITY_MODEL",
+  "DERIVED_TOTAL_VALIDATION",
+  "BREAKDOWN_EVIDENCE",
+  "ABSOLUTE_RESTATEMENT",
+  "UNRESOLVED_COMMENT"
+ ],
+ "policy": {
+  "rounding": "NONE (D-01) - every underlying value keeps its original decimal",
+  "comparison_tolerance": 1e-09,
+  "display_precision_never_modifies_values": true,
+  "pseudo_rate_models": "PROHIBITED (no divide-by-SKU-then-multiply-back)",
+  "flat_shape_alone_is_not_evidence_for_PER_PHASE_FIXED": true,
+  "certification_model": "PER_SKU_RATE from the Main Table",
+  "certification_relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+  "certification_appendix_role": "DERIVED_TOTAL_VALIDATION - validation only",
+  "certification_appendix_may_be_added_to_total": false,
+  "certification_appendix_may_form_a_band": false,
+  "certification_appendix_may_override_main_table": false,
+  "certification_appendix_is_a_capping_model": false,
+  "certification_j33_role": "BREAKDOWN_EVIDENCE - explanatory, never additive",
+  "certification_global_phase_ratio": "PROHIBITED - FVT and SIT read their own row",
+  "certification_band_origin_after_correction": "SKU_NOT_ESTABLISHED only",
+  "superseded_certification_interpretations": [
+   "Main Table and Appendix are competing models",
+   "Certification has two mutually exclusive rules",
+   "Appendix 8-10 is an independent capping model",
+   "the Certification range comes from Main vs Appendix competition",
+   "adopted_absolute must stay null because of model competition",
+   "the Main Table derived total is the adopted project number (superseded by DEC-10; it stays as audit evidence only)"
+  ],
+  "panel_annotation_d2_h2": "UNRESOLVED_COMMENT - excluded from calculation (DEC-02)",
+  "wave": "explicit per-spec assignment only; never a fixed quantity or ratio (DEC-04)",
+  "reuse": "only a proven ADDITIONAL_CONFIRMED_REUSE deducts (DEC-06)",
+  "mepa_hw_pa": "PER_PHASE_FIXED candidate model retained from Phase 2, shown as temporary pending business confirmation (ORI-10)"
+ },
+ "cells": [
+  {
+   "function_id": "F_HW",
+   "function_name": "HW",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_HW:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 3,
+    "secondary_row": null,
+    "status_text": "OK",
+    "remark_text": "HDMI 样机是根据connector source定的.\n一般是3家source. Compal 样机是2unit/phase.\nremark option 的部分，还没加到样机data里面。\nPCIE*1 PCBA\nUSB3/2*1 PCBA\nCrystal*1 PCBA\naudio*1 PCBA\nHW EE debug *4 PCBA\nHW EA team test *1 PCBA\nITE KB debug *1 PCBA\nVRAM tuning*7"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 6.0,
+    "SKU3": 4.3,
+    "SKU4": 3.5,
+    "SKU5": 3.0,
+    "SKU6": 2.7
+   }
+  },
+  {
+   "function_id": "F_HW",
+   "function_name": "HW",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 12.0,
+    "SKU3": 12.9,
+    "SKU4": 14.0,
+    "SKU5": 15.0,
+    "SKU6": 16.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_HW:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 4,
+    "secondary_row": null,
+    "status_text": "OK",
+    "remark_text": "HDMI 样机是根据connector source定的.\n一般是3家source. Compal 样机是2unit/phase.\nremark option 的部分，还没加到样机data里面。\nPCIE*1 PCBA\nUSB3/2*1 PCBA\nCrystal*1 PCBA\naudio*1 PCBA\nHW EE debug *4 PCBA\nHW EA team test *1 PCBA\nITE KB debug *1 PCBA\nVRAM tuning*7"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 6.0,
+    "SKU3": 4.3,
+    "SKU4": 3.5,
+    "SKU5": 3.0,
+    "SKU6": 2.7
+   }
+  },
+  {
+   "function_id": "F_ME",
+   "function_name": "ME",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_ME:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 5,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_ME",
+   "function_name": "ME",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_ME:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 6,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_THM",
+   "function_name": "THM",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_THM:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 7,
+    "secondary_row": null,
+    "status_text": "ok",
+    "remark_text": "其他配置给PCBA"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.5,
+    "SKU3": 2.3,
+    "SKU4": 1.8,
+    "SKU5": 1.4,
+    "SKU6": 1.2
+   }
+  },
+  {
+   "function_id": "F_THM",
+   "function_name": "THM",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 7.0,
+    "SKU3": 6.9,
+    "SKU4": 7.2,
+    "SKU5": 7.0,
+    "SKU6": 7.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_THM:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 8,
+    "secondary_row": null,
+    "status_text": "ok",
+    "remark_text": "其他配置给PCBA"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.5,
+    "SKU3": 2.3,
+    "SKU4": 1.8,
+    "SKU5": 1.4,
+    "SKU6": 1.2
+   }
+  },
+  {
+   "function_id": "F_AUDIO",
+   "function_name": "Audio",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_AUDIO:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 9,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "跟着platform 走，leading的样机相对多，\n其后项目适当减少,common driver."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.6
+   }
+  },
+  {
+   "function_id": "F_AUDIO",
+   "function_name": "Audio",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 3.6
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_AUDIO:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 10,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "跟着platform 走，leading的样机相对多，\n其后项目适当减少,common driver."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.6
+   }
+  },
+  {
+   "function_id": "F_RF_TEST",
+   "function_name": "RF Test",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_RF_TEST:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 11,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.5,
+    "SKU3": 1.7,
+    "SKU4": 1.3,
+    "SKU5": 1.0,
+    "SKU6": 0.8
+   }
+  },
+  {
+   "function_id": "F_RF_TEST",
+   "function_name": "RF Test",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 5.0,
+    "SKU3": 5.1,
+    "SKU4": 5.2,
+    "SKU5": 5.0,
+    "SKU6": 4.8
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_RF_TEST:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 12,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.5,
+    "SKU3": 1.7,
+    "SKU4": 1.3,
+    "SKU5": 1.0,
+    "SKU6": 0.8
+   }
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "CONSTANT",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_EMC_TEST:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 13,
+    "secondary_row": null,
+    "status_text": "待LCFC update",
+    "remark_text": "一台EMI,一台EMS.一台backup. 加PCBA*SKU*1PCS？"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   }
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "CONSTANT",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_EMC_TEST:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 14,
+    "secondary_row": null,
+    "status_text": "待LCFC update",
+    "remark_text": "一台EMI,一台EMS.一台backup. 加PCBA*SKU*1PCS？"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   }
+  },
+  {
+   "function_id": "F_SED",
+   "function_name": "SED",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SED:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 15,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "具体到Win Hello cer.跟着camera走，如果已经有其他项目送样了，可以不用再次送样。\n现在都是Panel HDR的.Dolby vision 是否一定需要了?跟team 去check? If no, 那么Dolby FVT 可以减少。--PM confirm delete it from G12."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.7,
+    "SKU4": 1.5,
+    "SKU5": 1.4,
+    "SKU6": 1.3
+   }
+  },
+  {
+   "function_id": "F_SED",
+   "function_name": "SED",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 4.0,
+    "SKU3": 5.1,
+    "SKU4": 6.0,
+    "SKU5": 7.0,
+    "SKU6": 7.8
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SED:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 16,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "具体到Win Hello cer.跟着camera走，如果已经有其他项目送样了，可以不用再次送样。\n现在都是Panel HDR的.Dolby vision 是否一定需要了?跟team 去check? If no, 那么Dolby FVT 可以减少。--PM confirm delete it from G12."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 2.0,
+    "SKU3": 1.7,
+    "SKU4": 1.5,
+    "SKU5": 1.4,
+    "SKU6": 1.3
+   }
+  },
+  {
+   "function_id": "F_SS",
+   "function_name": "SS",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SS:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 17,
+    "secondary_row": null,
+    "status_text": "LCFC BIOS and SA 建议根据复杂度，4-6unit /phase.\nHQ 数量偏少",
+    "remark_text": "各家ODM 数据gap挺大的，跟TPM gap也有，需要重点沟通。\nPre-load  BIOS Driver \n都跟KP 强相关，理论上会要求sku*1.\n可以根据平台成熟度协商.或者是否可以rework方式节省样机?\nODM BIOS *10 \n           driver *10\n        OS*2\n         EC*5"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 9.0,
+    "SKU3": 7.0,
+    "SKU4": 5.5,
+    "SKU5": 5.0,
+    "SKU6": 4.4
+   }
+  },
+  {
+   "function_id": "F_SS",
+   "function_name": "SS",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 18.0,
+    "SKU3": 21.0,
+    "SKU4": 22.0,
+    "SKU5": 25.0,
+    "SKU6": 26.4
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SS:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 18,
+    "secondary_row": null,
+    "status_text": "LCFC BIOS and SA 建议根据复杂度，4-6unit /phase.\nHQ 数量偏少",
+    "remark_text": "各家ODM 数据gap挺大的，跟TPM gap也有，需要重点沟通。\nPre-load  BIOS Driver \n都跟KP 强相关，理论上会要求sku*1.\n可以根据平台成熟度协商.或者是否可以rework方式节省样机?\nODM BIOS *10 \n           driver *10\n        OS*2\n         EC*5"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 9.0,
+    "SKU3": 7.0,
+    "SKU4": 5.5,
+    "SKU5": 5.0,
+    "SKU6": 4.4
+   }
+  },
+  {
+   "function_id": "F_PD",
+   "function_name": "PD",
+   "category": "RD",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_PD:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 19,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "LNV+ODM PD total 1 unit"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_PD",
+   "function_name": "PD",
+   "category": "RD",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_PD:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 20,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "LNV+ODM PD total 1 unit"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_SWPA",
+   "function_name": "SWPA",
+   "category": "PA",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SWPA:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 21,
+    "secondary_row": 68,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 28.0,
+    "SKU3": 24.0,
+    "SKU4": 20.0,
+    "SKU5": 18.0,
+    "SKU6": 17.0
+   }
+  },
+  {
+   "function_id": "F_SWPA",
+   "function_name": "SWPA",
+   "category": "PA",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "RAMP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 56.0,
+    "SKU3": 72.0,
+    "SKU4": 80.0,
+    "SKU5": 90.0,
+    "SKU6": 102.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SWPA:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 22,
+    "secondary_row": 69,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 28.0,
+    "SKU3": 24.0,
+    "SKU4": 20.0,
+    "SKU5": 18.0,
+    "SKU6": 17.0
+   }
+  },
+  {
+   "function_id": "F_MEPA",
+   "function_name": "MEPA",
+   "category": "PA",
+   "phase": "FVT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "scaling_shape": "RAMP",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 36.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "main_table_absolute": {
+    "SKU2": 32.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 36.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 4.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [
+    "SKU2"
+   ],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": true,
+   "evidence_basis": [
+    "absolute restatement row 70 is the same for SKU2-6 -> allocation is per phase, not per SKU"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_MEPA:FVT",
+   "status": "DRAFT_PENDING_OWNER",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 23,
+    "secondary_row": 70,
+    "status_text": "LCFC:Confirmed ok as left data. \nHQ /Compal :to be clarify.",
+    "remark_text": "CS: 1 phase 36 units\nPCB refresh: 1 phase 12-16units."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 16.0,
+    "SKU3": 12.0,
+    "SKU4": 9.0,
+    "SKU5": 7.2,
+    "SKU6": 6.0
+   }
+  },
+  {
+   "function_id": "F_MEPA",
+   "function_name": "MEPA",
+   "category": "PA",
+   "phase": "SIT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "scaling_shape": "RAMP",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 36.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "main_table_absolute": {
+    "SKU2": 32.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 36.0,
+    "SKU3": 36.0,
+    "SKU4": 36.0,
+    "SKU5": 36.0,
+    "SKU6": 36.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 4.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [
+    "SKU2"
+   ],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": true,
+   "evidence_basis": [
+    "absolute restatement row 71 is the same for SKU2-6 -> allocation is per phase, not per SKU"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_MEPA:SIT",
+   "status": "DRAFT_PENDING_OWNER",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 24,
+    "secondary_row": 71,
+    "status_text": "LCFC:Confirmed ok as left data. \nHQ /Compal :to be clarify.",
+    "remark_text": "CS: 1 phase 36 units\nPCB refresh: 1 phase 12-16units."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 16.0,
+    "SKU3": 12.0,
+    "SKU4": 9.0,
+    "SKU5": 7.2,
+    "SKU6": 6.0
+   }
+  },
+  {
+   "function_id": "F_HW_PA",
+   "function_name": "HW PA",
+   "category": "PA",
+   "phase": "FVT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "scaling_shape": "RAMP",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.0
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "main_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.2
+   },
+   "secondary_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": -0.2
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [
+    "SKU6"
+   ],
+   "owner_review_required": true,
+   "evidence_basis": [
+    "absolute restatement row 72 is integer-valued and disagrees with rate x SKU -> the main-table value is a derived pseudo-rate (divide by SKU, multiply back)"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_HW_PA:FVT",
+   "status": "DRAFT_PENDING_OWNER",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 25,
+    "secondary_row": 72,
+    "status_text": "HQ gap比较大",
+    "remark_text": "TTL3- 4unit one phase\ntest EE/THM"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 1.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.7
+   }
+  },
+  {
+   "function_id": "F_HW_PA",
+   "function_name": "HW PA",
+   "category": "PA",
+   "phase": "SIT",
+   "quantity_model": "PER_PHASE_FIXED",
+   "scaling_shape": "RAMP",
+   "value_access": "ABSOLUTE_TABLE_READ",
+   "adopted_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.0
+   },
+   "adopted_source": "SECONDARY_ABSOLUTE_TABLE",
+   "main_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.2
+   },
+   "secondary_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 4.0,
+    "SKU6": 4.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": -0.2
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [
+    "SKU6"
+   ],
+   "owner_review_required": true,
+   "evidence_basis": [
+    "absolute restatement row 73 is integer-valued and disagrees with rate x SKU -> the main-table value is a derived pseudo-rate (divide by SKU, multiply back)"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_HW_PA:SIT",
+   "status": "DRAFT_PENDING_OWNER",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 26,
+    "secondary_row": 73,
+    "status_text": "HQ gap比较大",
+    "remark_text": "TTL3- 4unit one phase\ntest EE/THM"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 1.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 0.8,
+    "SKU6": 0.7
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "TRUE_PER_SKU_RATE",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_EMC:FVT",
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 27,
+    "secondary_row": 53,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 53,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "EMC FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 53,
+      "main_table_row": 27
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE"
+    ],
+    "formula_candidate_retired": false,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_EMC",
+   "function_name": "EMC",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "TRUE_PER_SKU_RATE",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 5.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 5.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 2.0,
+    "SKU3": 3.0,
+    "SKU4": 4.0,
+    "SKU5": 5.0,
+    "SKU6": 6.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_EMC:SIT",
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 28,
+    "secondary_row": 54,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 54,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 2.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 2.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 3.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 3.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 4.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 4.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 5.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 5.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 6.0,
+      "appendix_label": "EMC SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 54,
+      "main_table_row": 28
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 1.0,
+    "SKU3": 1.0,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.0
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE"
+    ],
+    "formula_candidate_retired": false,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "TRUE_PER_SKU_RATE",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_GREEN:FVT",
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 29,
+    "secondary_row": 55,
+    "status_text": null,
+    "remark_text": "FVT for RD 内测,leverage safety."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 55,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "Green FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 55,
+      "main_table_row": 29
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE"
+    ],
+    "formula_candidate_retired": false,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_GREEN",
+   "function_name": "Green",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "IRREGULAR",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 9.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 9.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": -3.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [
+    "SKU3"
+   ],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": true,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_GREEN:SIT",
+   "status": "DRAFT_PENDING_OWNER",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 30,
+    "secondary_row": 56,
+    "status_text": null,
+    "remark_text": "FVT for RD 内测,leverage safety."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 56,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 9.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": -3.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 1.5,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 1.2,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 6.0,
+      "appendix_label": "Green SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 56,
+      "main_table_row": 30
+     }
+    },
+    "statuses": [
+     "MISMATCH",
+     "VERIFIED"
+    ],
+    "fully_verified": false,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 3.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE"
+    ],
+    "formula_candidate_retired": false,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "IRREGULAR",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 10.0,
+    "SKU3": 9.0,
+    "SKU4": 10.0,
+    "SKU5": 10.0,
+    "SKU6": 9.6
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 10.0,
+    "SKU3": 9.0,
+    "SKU4": 10.0,
+    "SKU5": 10.0,
+    "SKU6": 9.6
+   },
+   "secondary_table_absolute": {
+    "SKU2": 10.0,
+    "SKU3": 9.0,
+    "SKU4": 10.0,
+    "SKU5": 10.0,
+    "SKU6": 10.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.4
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [
+    "SKU6"
+   ],
+   "owner_review_required": true,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SAFETY:FVT",
+   "status": "DRAFT_PENDING_OWNER",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 31,
+    "secondary_row": 57,
+    "status_text": null,
+    "remark_text": "BIS: India catelog name *1pcs/SIT PHASE/BATTERY SPEC/ADP SPEC.\nadapter rating label* battery rating label."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 57,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 5.0,
+      "derived_total": 10.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 9.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 9.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 2.5,
+      "derived_total": 10.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 2.0,
+      "derived_total": 10.0,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 57,
+      "main_table_row": 31
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.6,
+      "derived_total": 9.6,
+      "appendix_label": "Safety FVT",
+      "appendix_total": 10.0,
+      "delta": 0.4,
+      "verification_status": "MISMATCH",
+      "appendix_row": 57,
+      "main_table_row": 31
+     }
+    },
+    "statuses": [
+     "MISMATCH",
+     "VERIFIED"
+    ],
+    "fully_verified": false,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 5.0,
+    "SKU3": 3.0,
+    "SKU4": 2.5,
+    "SKU5": 2.0,
+    "SKU6": 1.6
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE"
+    ],
+    "formula_candidate_retired": false,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_SAFETY",
+   "function_name": "Safety",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "BACK_DERIVED_FROM_FLAT_TOTAL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_SAFETY:SIT",
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 32,
+    "secondary_row": 58,
+    "status_text": null,
+    "remark_text": "BIS: India catelog name *1pcs/SIT PHASE/BATTERY SPEC/ADP SPEC.\nadapter rating label* battery rating label."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 58,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 2.0,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 1.5,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 1.2,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 1.0,
+      "derived_total": 6.0,
+      "appendix_label": "Safety SIT",
+      "appendix_total": 6.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 58,
+      "main_table_row": 32
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE"
+    ],
+    "formula_candidate_retired": false,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "category": "CERT",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "TRUE_PER_SKU_RATE",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_RF_CERTIFICATION:FVT",
+   "status": "CONFIRMED_BY_SOURCE_VALIDATION",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 33,
+    "secondary_row": 59,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 59,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 0.0,
+      "derived_total": 0.0,
+      "appendix_label": "RF Cert FVT",
+      "appendix_total": 0.0,
+      "delta": 0.0,
+      "verification_status": "VERIFIED",
+      "appendix_row": 59,
+      "main_table_row": 33
+     }
+    },
+    "statuses": [
+     "VERIFIED"
+    ],
+    "fully_verified": true,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": {
+    "evidence_role": "BREAKDOWN_EVIDENCE",
+    "source_cell": "J33",
+    "disposition": "DECLARED_NOT_GENERALIZED",
+    "additive_to_main_table_result": false,
+    "explains_main_table_quantity": false,
+    "explains_appendix_total": false,
+    "declared_reference_scenario": {
+     "antenna_source_count": 2,
+     "wlan_card_count": 2
+    },
+    "bracket": {
+     "min_no_whole_machine_fcc": 11.0,
+     "max_full_fcc": 27.0,
+     "main_table_derived_15_inside_bracket": true,
+     "appendix_totals_8_to_10_inside_bracket": false,
+     "appendix_sits_below_the_no_fcc_floor": true,
+     "reading": "15 is inside the bracket: consistent with a mix where some WLAN cards take the C1PC/module route (no whole machine) and others do not. The Appendix 8-10 sits BELOW the floor of a 2-antenna / 2-WLAN-card project, so the Appendix cannot be the same reference scenario as J33. Neither value is reproducible from J33 alone."
+    },
+    "antenna_wlan_are": "BUSINESS_COMPOSITION_DESCRIPTION - the note explains why RF certification consumes machines (antenna source x WLAN card matrix). It is not an executable calculation variable in the workbook: no cell formula consumes it.",
+    "already_inside_main_table_rate": "CANNOT_BE_PROVEN_FROM_THE_WORKBOOK",
+    "double_count_risk_if_added": "HIGH - the Main Table per-SKU rate for RF certification is already the whole-machine count for that SKU; adding the J33 line items on top would count the same machines twice",
+    "mvp_requires_antenna_wlan_input_now": false,
+    "raw_text": "this data for 2 antenna source +2 wlan source refrence:\n1.SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；\n2.CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；\n3.FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;\n4.印尼* 2  .\n5.Mexico *1.\n6.资安*2（欧盟网络安全）",
+    "reference_total_under_readings": {
+     "CERTIFICATION_SUBSET": {
+      "total": 11.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 0.0
+      },
+      "assumption": "FCC whole machines not required where the C1PC/module route applies, per the wording inside J33 itself"
+     },
+     "FULL": {
+      "total": 27.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 16.0
+      },
+      "assumption": "every numbered line item needs its own whole machines, FCC = intel_wlan x antenna x 4"
+     }
+    }
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.0,
+    "SKU3": 0.0,
+    "SKU4": 0.0,
+    "SKU5": 0.0,
+    "SKU6": 0.0
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE"
+    ],
+    "formula_candidate_retired": false,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_RF_CERTIFICATION",
+   "function_name": "RF Certification",
+   "category": "CERT",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "BACK_DERIVED_FROM_FLAT_TOTAL",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 15.0,
+    "SKU3": 15.0,
+    "SKU4": 15.0,
+    "SKU5": 15.0,
+    "SKU6": 15.0
+   },
+   "adopted_source": "MAIN_TABLE_PER_SKU_RATE_TIMES_SKU",
+   "main_table_absolute": {
+    "SKU2": 15.0,
+    "SKU3": 15.0,
+    "SKU4": 15.0,
+    "SKU5": 15.0,
+    "SKU6": 15.0
+   },
+   "secondary_table_absolute": {
+    "SKU2": 8.0,
+    "SKU3": 9.0,
+    "SKU4": 10.0,
+    "SKU5": 10.0,
+    "SKU6": 10.0
+   },
+   "delta_secondary_minus_main": {
+    "SKU2": -7.0,
+    "SKU3": -6.0,
+    "SKU4": -5.0,
+    "SKU5": -5.0,
+    "SKU6": -5.0
+   },
+   "conflicting_skus": [
+    "SKU2",
+    "SKU3",
+    "SKU4",
+    "SKU5",
+    "SKU6"
+   ],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": true,
+   "evidence_basis": [
+    "Owner semantics: the Main Table states the quantity needed for ONE SKU; the Appendix states the resulting total for that SKU count",
+    "Appendix is validation evidence only (DERIVED_TOTAL_VALIDATION): never a second model, never merged, never re-added to the total"
+   ],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_RF_CERTIFICATION:SIT",
+   "status": "DRAFT_PENDING_OWNER",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 34,
+    "secondary_row": 60,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": {
+    "evidence_role": "DERIVED_TOTAL_VALIDATION",
+    "block": "certification_block2",
+    "appendix_row": 60,
+    "relationship": "appendix_total == main_table_per_sku_quantity x sku_count",
+    "comparison_tolerance": 1e-09,
+    "per_sku": {
+     "SKU2": {
+      "main_table_per_sku_quantity": 7.5,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 8.0,
+      "delta": -7.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU3": {
+      "main_table_per_sku_quantity": 5.0,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 9.0,
+      "delta": -6.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU4": {
+      "main_table_per_sku_quantity": 3.75,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 10.0,
+      "delta": -5.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU5": {
+      "main_table_per_sku_quantity": 3.0,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 10.0,
+      "delta": -5.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     },
+     "SKU6": {
+      "main_table_per_sku_quantity": 2.5,
+      "derived_total": 15.0,
+      "appendix_label": "RF Cert SIT",
+      "appendix_total": 10.0,
+      "delta": -5.0,
+      "verification_status": "MISMATCH",
+      "appendix_row": 60,
+      "main_table_row": 34
+     }
+    },
+    "statuses": [
+     "MISMATCH"
+    ],
+    "fully_verified": false,
+    "counted_in_project_total": false,
+    "may_form_a_band": false
+   },
+   "breakdown_evidence": {
+    "evidence_role": "BREAKDOWN_EVIDENCE",
+    "source_cell": "J33",
+    "disposition": "DECLARED_NOT_GENERALIZED",
+    "additive_to_main_table_result": false,
+    "explains_main_table_quantity": false,
+    "explains_appendix_total": false,
+    "declared_reference_scenario": {
+     "antenna_source_count": 2,
+     "wlan_card_count": 2
+    },
+    "bracket": {
+     "min_no_whole_machine_fcc": 11.0,
+     "max_full_fcc": 27.0,
+     "main_table_derived_15_inside_bracket": true,
+     "appendix_totals_8_to_10_inside_bracket": false,
+     "appendix_sits_below_the_no_fcc_floor": true,
+     "reading": "15 is inside the bracket: consistent with a mix where some WLAN cards take the C1PC/module route (no whole machine) and others do not. The Appendix 8-10 sits BELOW the floor of a 2-antenna / 2-WLAN-card project, so the Appendix cannot be the same reference scenario as J33. Neither value is reproducible from J33 alone."
+    },
+    "antenna_wlan_are": "BUSINESS_COMPOSITION_DESCRIPTION - the note explains why RF certification consumes machines (antenna source x WLAN card matrix). It is not an executable calculation variable in the workbook: no cell formula consumes it.",
+    "already_inside_main_table_rate": "CANNOT_BE_PROVEN_FROM_THE_WORKBOOK",
+    "double_count_risk_if_added": "HIGH - the Main Table per-SKU rate for RF certification is already the whole-machine count for that SKU; adding the J33 line items on top would count the same machines twice",
+    "mvp_requires_antenna_wlan_input_now": false,
+    "raw_text": "this data for 2 antenna source +2 wlan source refrence:\n1.SRRC *2(PRC 型号核准);如果网卡数量大于天线数量，整机需求基于WLAN卡型号数量；\n2.CE *4 =antenna *wlan（欧盟）,如果网卡数量大于天线数量，需额外提供网卡单体送测；\n3.FCC(intel WLAN 数量*天线数量)*4（如果是C1PC ,就不需要整机）,其他wlan source(Non-intel) combine with CE.;\n4.印尼* 2  .\n5.Mexico *1.\n6.资安*2（欧盟网络安全）",
+    "reference_total_under_readings": {
+     "CERTIFICATION_SUBSET": {
+      "total": 11.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 0.0
+      },
+      "assumption": "FCC whole machines not required where the C1PC/module route applies, per the wording inside J33 itself"
+     },
+     "FULL": {
+      "total": 27.0,
+      "parts": {
+       "item1": 2.0,
+       "item2": 4.0,
+       "item4": 2.0,
+       "item5": 1.0,
+       "item6": 2.0,
+       "item3_FCC": 16.0
+      },
+      "assumption": "every numbered line item needs its own whole machines, FCC = intel_wlan x antenna x 4"
+     }
+    }
+   },
+   "main_table_per_sku_quantity": {
+    "SKU2": 7.5,
+    "SKU3": 5.0,
+    "SKU4": 3.75,
+    "SKU5": 3.0,
+    "SKU6": 2.5
+   },
+   "phase2_superseded": {
+    "quantity_model": "UNRESOLVED",
+    "adopted_source": "NONE_UNRESOLVED",
+    "competing_sources": [
+     "MAIN_TABLE",
+     "SECONDARY_TABLE",
+     "J33_FORMULA"
+    ],
+    "formula_candidate_retired": true,
+    "reason": "Phase 2 treated the Main Table, the Appendix and J33 as three competing models and left the cell UNRESOLVED. The Owner has since stated they are one model plus its own validation."
+   }
+  },
+  {
+   "function_id": "F_BIOS",
+   "function_name": "BIOS",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_BIOS:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 35,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_BIOS",
+   "function_name": "BIOS",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_BIOS:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 36,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_ITE",
+   "function_name": "ITE",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_ITE:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 37,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "if no lighting feature,no need"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_ITE",
+   "function_name": "ITE",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_ITE:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 38,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "if no lighting feature,no need"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "CONSTANT",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_NV:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 39,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   }
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "CONSTANT",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_NV:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 40,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "the data is for leading CS project. \nOthers less than this, case by case."
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   }
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "category": "VENDOR",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "CONSTANT",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_INTEL:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 41,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   }
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "category": "VENDOR",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "CONSTANT",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 6.0,
+    "SKU3": 6.0,
+    "SKU4": 6.0,
+    "SKU5": 6.0,
+    "SKU6": 6.0
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_INTEL:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 42,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": null
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 3.0,
+    "SKU3": 2.0,
+    "SKU4": 1.5,
+    "SKU5": 1.2,
+    "SKU6": 1.0
+   }
+  },
+  {
+   "function_id": "F_MFG",
+   "function_name": "MFG",
+   "category": "MFG",
+   "phase": "FVT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_MFG:FVT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 43,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "Total one phase on unit"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  },
+  {
+   "function_id": "F_MFG",
+   "function_name": "MFG",
+   "category": "MFG",
+   "phase": "SIT",
+   "quantity_model": "PER_SKU_RATE",
+   "scaling_shape": "NEAR_FLAT_WITH_DIP",
+   "value_access": "MAIN_TABLE_DERIVED",
+   "adopted_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "adopted_source": "MAIN_TABLE",
+   "main_table_absolute": {
+    "SKU2": 1.0,
+    "SKU3": 0.9,
+    "SKU4": 1.0,
+    "SKU5": 1.0,
+    "SKU6": 1.2
+   },
+   "secondary_table_absolute": null,
+   "delta_secondary_minus_main": {},
+   "conflicting_skus": [],
+   "integer_restatement_adopted_for": [],
+   "owner_review_required": false,
+   "evidence_basis": [],
+   "formula_candidate": null,
+   "rule_id": "QM3:F_MFG:SIT",
+   "status": "DERIVED_CONSISTENT",
+   "evidence": {
+    "source_file": "original_documents\\Sample_Requirement_SKU_and_Demand_Baseline_CleanSheet_20261030_V01_FORMAL.xlsx",
+    "sheet": "CS ODM sample ",
+    "main_row": 44,
+    "secondary_row": null,
+    "status_text": null,
+    "remark_text": "Total one phase on unit"
+   },
+   "evidence_role": "PRIMARY_QUANTITY_MODEL",
+   "validation": null,
+   "breakdown_evidence": null,
+   "main_table_per_sku_quantity": {
+    "SKU2": 0.5,
+    "SKU3": 0.3,
+    "SKU4": 0.25,
+    "SKU5": 0.2,
+    "SKU6": 0.2
+   }
+  }
+ ],
+ "contested_cells": [
+  "QM3:F_MEPA:FVT",
+  "QM3:F_MEPA:SIT",
+  "QM3:F_GREEN:SIT",
+  "QM3:F_RF_CERTIFICATION:SIT"
+ ],
+ "model_questions": [
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "phase": "FVT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_EMC_TEST",
+   "function_name": "EMC Test",
+   "phase": "SIT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "phase": "FVT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_NV",
+   "function_name": "NV",
+   "phase": "SIT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "phase": "FVT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  },
+  {
+   "function_id": "F_INTEL",
+   "function_name": "INTEL",
+   "phase": "SIT",
+   "issue": "derived total is constant across SKU2-6, but there is no independent evidence that the allocation is fixed per phase",
+   "candidate_models": [
+    "PER_SKU_RATE",
+    "PER_PHASE_FIXED"
+   ],
+   "note": "NOT promoted to PER_PHASE_FIXED on shape alone; also feeds the DEC-06 embedded-reuse signal"
+  }
+ ],
+ "baseline_embedded_sharing": {
+  "F_HW": {
+   "function_name": "HW",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 4.2,
+     "growth": 4.2
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 4.2,
+     "growth": 4.2
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_ME": {
+   "function_name": "ME",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_THM": {
+   "function_name": "THM",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_AUDIO": {
+   "function_name": "Audio",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 1.0,
+     "growth": -0.4
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 1.0,
+     "growth": -0.4
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_RF_TEST": {
+   "function_name": "RF Test",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.4,
+     "growth": -0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.4,
+     "growth": -0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_EMC_TEST": {
+   "function_name": "EMC Test",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_SED": {
+   "function_name": "SED",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 3.8,
+     "growth": 3.8
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 3.8,
+     "growth": 3.8
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_SS": {
+   "function_name": "SS",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 8.4,
+     "growth": 8.4
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 8.4,
+     "growth": 8.4
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_PD": {
+   "function_name": "PD",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_SWPA": {
+   "function_name": "SWPA",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 46.0,
+     "growth": 46.0
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 46.0,
+     "growth": 46.0
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_MEPA": {
+   "function_name": "MEPA",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 4.0,
+     "growth": 4.0
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 4.0,
+     "growth": 4.0
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_HW_PA": {
+   "function_name": "HW PA",
+   "overall": "NONE",
+   "phases": {
+    "FVT": {
+     "signal": "NONE",
+     "spread": 2.2,
+     "growth": 2.2
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 2.2,
+     "growth": 2.2
+    }
+   },
+   "reuse_policy": "PERMIT_WHEN_CONFIRMED",
+   "reason": "baseline total grows with SKU count"
+  },
+  "F_EMC": {
+   "function_name": "EMC",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "NONE",
+     "spread": 4.0,
+     "growth": 4.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_GREEN": {
+   "function_name": "Green",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 3.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_SAFETY": {
+   "function_name": "Safety",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 1.0,
+     "growth": -0.4
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_RF_CERTIFICATION": {
+   "function_name": "RF Certification",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_BIOS": {
+   "function_name": "BIOS",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_ITE": {
+   "function_name": "ITE",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_NV": {
+   "function_name": "NV",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_INTEL": {
+   "function_name": "INTEL",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.0,
+     "growth": 0.0
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  },
+  "F_MFG": {
+   "function_name": "MFG",
+   "overall": "SUSPECTED",
+   "phases": {
+    "FVT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    },
+    "SIT": {
+     "signal": "SUSPECTED",
+     "spread": 0.3,
+     "growth": 0.2
+    }
+   },
+   "reuse_policy": "BLOCK_UNLESS_PROVEN",
+   "reason": "baseline total does not grow with SKU count -> sharing or scale effect is probably already inside the number"
+  }
+ },
+ "certification_verification_ref": "artifacts/model/certification_verification.json",
+ "summary": {
+  "cells_total": 42,
+  "by_quantity_model": {
+   "PER_SKU_RATE": 38,
+   "PER_PHASE_FIXED": 4
+  },
+  "by_value_access": {
+   "MAIN_TABLE_DERIVED": 38,
+   "ABSOLUTE_TABLE_READ": 4
+  },
+  "by_evidence_role": {
+   "PRIMARY_QUANTITY_MODEL": 42
+  },
+  "owner_review_cells": 7,
+  "certification_cells": 8,
+  "certification_fully_verified_cells": 5,
+  "certification_cells_with_mismatch": 3,
+  "model_questions": 6,
+  "embedded_sharing_suspected_functions": [
+   "Audio",
+   "BIOS",
+   "EMC",
+   "EMC Test",
+   "Green",
+   "INTEL",
+   "ITE",
+   "ME",
+   "MFG",
+   "NV",
+   "PD",
+   "RF Certification",
+   "RF Test",
+   "Safety",
+   "THM"
+  ],
+  "ori_02_status": "PARTIALLY_RESOLVED",
+  "temporary_model_cells": 4
+ }
+}

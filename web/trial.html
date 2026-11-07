@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>参加团队试用 · 样机需求分析工具</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="trial">
+<header class="top">
+  <span class="logo">样机需求分析工具</span>
+  <nav><a href="index.html">首页</a><a href="new.html">新建分析</a>
+    <a href="trial.html" class="on">参加团队试用</a></nav>
+  <span style="flex:1"></span>
+  <span class="small muted">规则包 <b id="roster-pack">—</b> · 本页 <b id="live-pack">—</b></span>
+</header>
+
+<main>
+  <div class="card">
+    <h2>试用怎么做（四步）</h2>
+    <ol class="small" style="margin:0 0 8px 18px;line-height:1.9">
+      <li>在下面选一个案例，点「载入并运行」——项目名、Key Factors、Wave 会自动填好并<b>锁定</b>，
+        不需要你手输，也不会输错。</li>
+      <li>看结果（想看更多细节可以点「打开完整结果页」）。</li>
+      <li>只回答<b>这个案例实际涉及</b>的问题：本页不会要求你回答全部 19 条 Owner 问题，
+        案例没跑到的东西一律不问。</li>
+      <li>填好姓名与日期后导出<b>一个</b> <code>trial-submission-*.json</code>，
+        把它放进 <code>feedback_inbox\</code>。</li>
+    </ol>
+    <div class="status-line">
+      <span class="chip">案例 <b id="case-count">—</b></span>
+      <span class="chip">覆盖差异格 <b id="cell-count">—</b></span>
+      <span class="chip">本试用必答的 Owner 问题 <b id="ori-count">—</b></span>
+      <span class="chip info">空白不算同意</span>
+      <span class="chip warn">没有姓名与日期的提交不能当证据</span>
+    </div>
+    <p class="hint">你手上的真实项目更像某个案例时，请把真实项目名写在 Comment 里，
+      案例本身不要改：这五个案例是按「哪个 SKU 数才会暴露主表/附表差异」排出来的，
+      换了配置就可能什么差异都看不到，这一格就永远拿不到证据。
+      分析全部在本机浏览器内完成，不上传任何数据。</p>
+  </div>
+
+  <div class="card">
+    <h2>1. 选一个案例</h2>
+    <div id="case-pick"></div>
+  </div>
+
+  <div class="card" id="case-run" hidden>
+    <div id="case-input"></div>
+    <div class="row" style="margin-top:12px">
+      <button class="primary" id="run-btn">运行分析</button>
+      <span class="small muted">用当前规则包重新计算一次，结果与发卷时的预期应当完全一致。</span>
+    </div>
+  </div>
+
+  <div class="card" id="result-box" hidden></div>
+
+  <div class="card" id="feedback" hidden>
+    <h2>2. 你的回答（只有本案例涉及的问题）</h2>
+    <div class="grid g2" style="margin-bottom:10px">
+      <div><label>试用者姓名（必填，用于归因）</label>
+        <input type="text" id="fb-name" placeholder="例如：张三"></div>
+      <div><label>评审日期（必填，YYYY-MM-DD）</label>
+        <input type="text" id="fb-date" placeholder="2026-11-05"></div>
+    </div>
+    <div class="note small" style="margin-bottom:6px">
+      回答请写明确：「同意」/「不同意 + 原因」/「待确认 + 缺什么证据」。
+      写别的话也可以，系统会原样保留，不会替你推断成「同意」。
+    </div>
+    <div id="fb-questions"></div>
+
+    <details>
+      <summary>与本案例取证目标无直接关系的 Owner 问题（可空，知道就答）</summary>
+      <div id="fb-optional-list"></div>
+    </details>
+
+    <div style="margin-top:10px">
+      <label>总体 Comment（真实项目名、源文件、界面缺什么字段…）</label>
+      <textarea id="fb-comment" rows="3" placeholder="可空"></textarea>
+    </div>
+
+    <h3>提交前检查</h3>
+    <div id="checks"></div>
+    <div class="row" style="margin-top:10px">
+      <button class="primary" id="submit-btn" disabled>导出试用提交件（JSON）</button>
+    </div>
+    <p class="hint" id="submit-note"></p>
+  </div>
+
+  <div class="card">
+    <h2>这个页面不做的事</h2>
+    <ul class="small muted" style="margin:0;padding-left:18px;line-height:1.8">
+      <li>不改案例：项目名、Key Factors、Wave 与 Risk Reserve 由 <code>tools\issue_trial_forms.py</code>
+        发卷时固定，页面上只读。</li>
+      <li>不算第二套数：所有数值来自 <code>assets/core.js</code>（<code>prototype/rules_v3.py</code>
+        的等价移植），两者由 <code>tools/check_python_web_parity.py</code> 逐字段比对。</li>
+      <li>不替你回答：空白、含糊其词都按「没有回答」处理，不会被折算成同意。</li>
+      <li>不保存账号、不上传：提交件就是本机导出的一个 JSON 文件，
+        <code>tools/collect_trial_feedback.py</code> 会重新验一遍再采信，页面上的自检结论只是提示。</li>
+    </ul>
+  </div>
+</main>
+<footer class="foot">案例清单与每个案例该问什么问题，来自 <code>web/assets/trialkit.js</code>
+  （由 <code>tools/issue_trial_forms.py</code> 生成）。本页不自行保管任何案例数据或业务数字。</footer>
+<script src="assets/rulepack.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/trialkit.js"></script>
+<script src="assets/trial.js"></script>
+</body>
+</html>

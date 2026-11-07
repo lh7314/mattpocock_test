@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>新建分析 · 样机需求分析工具</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="new">
+<header class="top">
+  <span class="logo">样机需求分析工具</span>
+  <nav><a href="index.html">首页</a><a href="new.html" class="on">新建分析</a></nav>
+</header>
+
+<main>
+  <div class="note" id="from-note" hidden>
+    本页已带入一条历史分析的输入。修改后运行会另存为新的分析，原记录不变。
+  </div>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <div class="grid g4">
+      <div><label>Project Name（可选）</label><input type="text" id="project_name"
+        placeholder="留空会自动命名"></div>
+      <div><label>Project Type</label><select id="project_type">
+        <option value="CLEAN_SHEET">Clean Sheet</option>
+        <option value="EXISTING_PLAN">Existing Plan</option>
+        <option value="OTHER">Other</option></select></div>
+      <div><label>ODM（可选，仅记录）</label><input type="text" id="odm"
+        placeholder="LCFC / HQ / Compal / …"></div>
+      <div><label>Phase Scope</label>
+        <div class="row small" style="gap:14px">
+          <label style="margin:0"><input type="checkbox" data-phase="FVT" checked> FVT</label>
+          <label style="margin:0"><input type="checkbox" data-phase="SIT" checked> SIT</label>
+        </div>
+        <div class="hint">FVT 与 SIT 各自读自己的源行，不使用全局比例。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>SKU Key Factors</h2>
+    <p class="hint" style="margin-top:-4px">SKU 数量由这些配置推导，不需要（也不能）直接输入。
+      Panel 填的是 <b>Panel Spec 数量</b>；源表 D2:H2 的“N*panel”批注含义未确认，已作为证据保留但不参与计算。</p>
+    <div class="grid g3">
+      <div><label>CPU Count</label><input type="number" id="cpu" min="0" step="1"
+          placeholder="请补充"></div>
+      <div><label>GPU Count</label><input type="number" id="gpu" min="0" step="1"
+          placeholder="请补充"></div>
+      <div><label>Panel Spec Count</label><input type="number" id="panel" min="0" step="1"
+          placeholder="请补充"></div>
+    </div>
+    <div class="grid g2" style="margin-top:12px">
+      <div>
+        <label>SSD Spec 数量</label><input type="number" id="ssd-count" min="0" max="8" step="1" value="1">
+        <div id="ssd-specs" style="margin-top:8px"></div>
+      </div>
+      <div>
+        <label>Memory Spec 数量</label><input type="number" id="mem-count" min="0" max="8" step="1" value="1">
+        <div id="mem-specs" style="margin-top:8px"></div>
+      </div>
+    </div>
+    <div class="hint">Wave Assignment 三选一：<b>当前波次</b> / <b>后续波次</b> / <b>未特别指定</b>。
+      只有「后续波次」会把该 Spec 从 Current Wave 排除；「未特别指定」表示计入当前波次、没有人做过安排，
+      它不等于“未知”，也不会被系统猜成第二波。</div>
+  </div>
+
+  <div class="card">
+    <div class="row spread"><h2 style="margin:0">当前判断</h2><span id="pv-missing"></span></div>
+    <div class="row" style="margin-top:8px">
+      <div class="kpi"><div class="lab">SKU 结果</div>
+        <div class="mid"><span id="pv-sku">—</span> <span id="pv-chip"></span></div></div>
+      <div class="small muted" id="pv-why" style="max-width:640px"></div>
+    </div>
+  </div>
+
+  <details class="adv"><summary>高级选项 · Certification 补充信息</summary><div class="body">
+    <div id="cert-preview"><p class="muted small">填写关键配置后显示系统采用值。</p></div>
+    <div style="margin-top:8px"><label>本次采用值的说明（只作用于本次分析）</label>
+      <input type="text" id="ovr_reason" placeholder="例如：本项目 RF 只用一个 source"></div>
+  </div></details>
+
+  <details class="adv"><summary>高级选项 · Additional Requirement</summary><div class="body">
+    <p class="hint" style="margin-top:-2px">用户额外提出的需求。UNIT 会计入合计；PCBA 永不与台数相加，
+      也不会产生风险预留。</p>
+    <div id="extra-rows"></div>
+    <button class="small" id="add-extra" style="margin-top:6px">+ 增加一行</button>
+  </div></details>
+
+  <details class="adv"><summary>高级选项 · Reuse 信息</summary><div class="body">
+    <p class="hint" style="margin-top:-2px">四种状态：已含在基准内 / 额外且已确认 / 潜在 / 重叠未知。
+      只有「额外且已确认」并且已证明不在基准内含共享中的 UNIT 数量才会扣减，其余一律只展示。</p>
+    <div id="reuse-rows"></div>
+    <button class="small" id="add-reuse" style="margin-top:6px">+ 增加一行</button>
+  </div></details>
+
+  <div class="card">
+    <div class="grid g4">
+      <div><label>Risk Reserve %（默认 0，需业务确认）</label>
+        <input type="number" id="risk" min="0" max="100" step="0.1" placeholder="0"></div>
+      <div style="align-self:end"><button class="primary" id="run">运行分析</button></div>
+    </div>
+    <p class="hint">源表没有任何已确认的风险预留比例（ORI-07），因此默认 0，不会自动加数。</p>
+  </div>
+</main>
+<footer class="foot">计算内核是 prototype/rules_v3.py 的等价移植，
+  两者由 tools/check_python_web_parity.py 逐字段比对。</footer>
+<script src="assets/rulepack.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

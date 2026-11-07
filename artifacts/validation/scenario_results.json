@@ -1,0 +1,525 @@
+{
+ "scenarios": {
+  "T-01 positive / clean 4-SKU profile": {
+   "top_score": 1.0,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 5,
+     "normalized": 0.85,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 6,
+     "normalized": 0.75625,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE",
+   "recommended": 4,
+   "range": [
+    4,
+    4
+   ],
+   "basis": [
+    "cpu=3 vs [2, 4] -> MATCH",
+    "gpu=2 vs [2, 3] -> MATCH",
+    "panel=2 vs [2, 2] -> MATCH",
+    "ssd=2 vs [2, 2] -> MATCH",
+    "mem=2 vs [2, 2] -> MATCH"
+   ],
+   "score": 1.0
+  },
+  "T-02 positive / small project 2-SKU profile": {
+   "top_score": 1.0,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 3,
+     "normalized": 0.75625,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 4,
+     "normalized": 0.4,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE",
+   "recommended": 2,
+   "range": [
+    2,
+    2
+   ],
+   "basis": [
+    "cpu=1 vs [1, 2] -> MATCH",
+    "gpu=1 vs [1, 1] -> MATCH",
+    "panel=1 vs [1, 2] -> MATCH",
+    "ssd=1 vs [1, 1] -> MATCH",
+    "mem=1 vs [1, 1] -> MATCH"
+   ],
+   "score": 1.0
+  },
+  "T-03 positive / mid 3-SKU profile": {
+   "top_score": 1.0,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 2,
+     "normalized": 0.85,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 4,
+     "normalized": 0.64375,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE",
+   "recommended": 3,
+   "range": [
+    3,
+    3
+   ],
+   "basis": [
+    "cpu=2 vs [2, 3] -> MATCH",
+    "gpu=2 vs [2, 2] -> MATCH",
+    "panel=1 vs [1, 1] -> MATCH",
+    "ssd=1 vs [1, 1] -> MATCH",
+    "mem=1 vs [1, 1] -> MATCH"
+   ],
+   "score": 1.0
+  },
+  "T-04 positive / large 6-SKU profile": {
+   "top_score": 1.0,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 4,
+     "normalized": 0.68125,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 5,
+     "normalized": 0.68125,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE",
+   "recommended": 6,
+   "range": [
+    6,
+    6
+   ],
+   "basis": [
+    "cpu=5 vs [4, 5] -> MATCH",
+    "gpu=3 vs [3, 3] -> MATCH",
+    "panel=3 vs [2, 3] -> MATCH",
+    "ssd=2 vs [2, 2] -> MATCH",
+    "mem=3 vs [2, 3] -> MATCH"
+   ],
+   "score": 1.0
+  },
+  "T-05 boundary / CPU at 4-SKU upper bound": {
+   "top_score": 1.0,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 5,
+     "normalized": 0.85,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 6,
+     "normalized": 0.85,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE",
+   "recommended": 4,
+   "range": [
+    4,
+    4
+   ],
+   "basis": [
+    "cpu=4 vs [2, 4] -> MATCH",
+    "gpu=2 vs [2, 3] -> MATCH",
+    "panel=2 vs [2, 2] -> MATCH",
+    "ssd=2 vs [2, 2] -> MATCH",
+    "mem=2 vs [2, 2] -> MATCH"
+   ],
+   "score": 1.0
+  },
+  "T-06 boundary / GPU=1 but 4 spec dims high": {
+   "top_score": 0.85,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 5,
+     "normalized": 0.75,
+     "why_not": "hard mismatch on gpu"
+    },
+    {
+     "sku": 6,
+     "normalized": 0.75,
+     "why_not": "hard mismatch on gpu"
+    }
+   ],
+   "state": "SINGLE_WITH_RESERVATION",
+   "recommended": 4,
+   "range": [
+    4,
+    4
+   ],
+   "basis": [
+    "cpu=4 vs [2, 4] -> MATCH",
+    "gpu=1 vs [2, 3] -> PARTIAL_MATCH",
+    "panel=2 vs [2, 2] -> MATCH",
+    "ssd=2 vs [2, 2] -> MATCH",
+    "mem=2 vs [2, 2] -> MATCH"
+   ],
+   "score": 0.85
+  },
+  "T-07 boundary / Panel=2 blocks the 3-SKU path": {
+   "top_score": 0.90625,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 2,
+     "normalized": 0.85,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 4,
+     "normalized": 0.7375,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE_WITH_RESERVATION",
+   "recommended": 3,
+   "range": [
+    3,
+    3
+   ],
+   "basis": [
+    "cpu=2 vs [2, 3] -> MATCH",
+    "gpu=2 vs [2, 2] -> MATCH",
+    "panel=2 vs [1, 1] -> PARTIAL_MATCH",
+    "ssd=1 vs [1, 1] -> MATCH",
+    "mem=1 vs [1, 1] -> MATCH"
+   ],
+   "score": 0.90625
+  },
+  "T-08 boundary / everything maxed": {
+   "top_score": 0.2125,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 2,
+     "normalized": 0.0,
+     "why_not": "hard mismatch on cpu/gpu/panel/ssd/mem"
+    },
+    {
+     "sku": 3,
+     "normalized": 0.0,
+     "why_not": "hard mismatch on cpu/gpu/panel/ssd/mem"
+    }
+   ],
+   "state": "SINGLE_WITH_RESERVATION",
+   "recommended": 6,
+   "range": [
+    6,
+    6
+   ],
+   "basis": [
+    "cpu=6 vs [4, 5] -> PARTIAL_MATCH",
+    "gpu=5 vs [3, 3] -> MISMATCH",
+    "panel=4 vs [2, 3] -> PARTIAL_MATCH",
+    "ssd=4 vs [2, 2] -> MISMATCH",
+    "mem=4 vs [2, 3] -> PARTIAL_MATCH"
+   ],
+   "score": 0.2125
+  },
+  "T-09 boundary / everything min-flagged": {
+   "top_score": 0.86875,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 3,
+     "normalized": 0.625,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 4,
+     "normalized": 0.53125,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE_WITH_RESERVATION",
+   "recommended": 2,
+   "range": [
+    2,
+    2
+   ],
+   "basis": [
+    "cpu=1 vs [1, 2] -> MATCH",
+    "gpu=1 vs [1, 1] -> MATCH",
+    "panel=1 vs [1, 2] -> MATCH",
+    "ssd=1 vs [1, 1] -> MATCH",
+    "mem=2 vs [1, 1] -> PARTIAL_MATCH"
+   ],
+   "score": 0.86875
+  },
+  "T-10 missing / Panel not provided": {
+   "top_score": 1.0,
+   "missing_key_factors": [
+    "panel"
+   ],
+   "runner_up_excluded": [
+    {
+     "sku": 5,
+     "normalized": 0.822222,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 6,
+     "normalized": 0.711111,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE_WITH_RESERVATION",
+   "recommended": 4,
+   "range": [
+    4,
+    4
+   ],
+   "basis": [
+    "cpu=3 vs [2, 4] -> MATCH",
+    "gpu=2 vs [2, 3] -> MATCH",
+    "panel:UNKNOWN(请补充)",
+    "ssd=2 vs [2, 2] -> MATCH",
+    "mem=2 vs [2, 2] -> MATCH"
+   ],
+   "score": 1.0
+  },
+  "T-11 missing / only CPU known": {
+   "top_score": 1.0,
+   "missing_key_factors": [
+    "gpu",
+    "panel",
+    "ssd",
+    "mem"
+   ],
+   "runner_up_excluded": [
+    {
+     "sku": 2,
+     "normalized": 0.4,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 6,
+     "normalized": 0.4,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "RANGE",
+   "recommended": null,
+   "range": [
+    3,
+    5
+   ],
+   "tie": [
+    3,
+    4,
+    5
+   ],
+   "basis": [
+    "tie at normalized=1.00 among [3, 4, 5]"
+   ],
+   "score": 1.0
+  },
+  "T-12 missing / nothing known": {
+   "state": "UNDETERMINED",
+   "reason": "no key factor supplied",
+   "recommended": null,
+   "range": null
+  },
+  "T-13 conflict / SSD-Mem=2 but GPU=1": {
+   "top_score": 0.75625,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 2,
+     "normalized": 0.7375,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 3,
+     "normalized": 0.5875,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE_WITH_RESERVATION",
+   "recommended": 4,
+   "range": [
+    4,
+    4
+   ],
+   "basis": [
+    "cpu=2 vs [2, 4] -> MATCH",
+    "gpu=1 vs [2, 3] -> PARTIAL_MATCH",
+    "panel=1 vs [2, 2] -> PARTIAL_MATCH",
+    "ssd=2 vs [2, 2] -> MATCH",
+    "mem=2 vs [2, 2] -> MATCH"
+   ],
+   "score": 0.75625
+  },
+  "T-14 conflict / 2nd-wave SSD/Mem on 3-SKU base": {
+   "top_score": 0.90625,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 3,
+     "normalized": 0.7375,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 5,
+     "normalized": 0.6625,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE_WITH_RESERVATION",
+   "recommended": 4,
+   "range": [
+    4,
+    4
+   ],
+   "basis": [
+    "cpu=2 vs [2, 4] -> MATCH",
+    "gpu=2 vs [2, 3] -> MATCH",
+    "panel=1 vs [2, 2] -> PARTIAL_MATCH",
+    "ssd=2 vs [2, 2] -> MATCH",
+    "mem=2 vs [2, 2] -> MATCH"
+   ],
+   "score": 0.90625
+  },
+  "T-15 conflict / CPU=2 fits 2,3 and 4-SKU": {
+   "top_score": 1.0,
+   "missing_key_factors": [],
+   "runner_up_excluded": [
+    {
+     "sku": 2,
+     "normalized": 0.85,
+     "why_not": "lower weighted match"
+    },
+    {
+     "sku": 4,
+     "normalized": 0.64375,
+     "why_not": "lower weighted match"
+    }
+   ],
+   "state": "SINGLE",
+   "recommended": 3,
+   "range": [
+    3,
+    3
+   ],
+   "basis": [
+    "cpu=2 vs [2, 3] -> MATCH",
+    "gpu=2 vs [2, 2] -> MATCH",
+    "panel=1 vs [1, 1] -> MATCH",
+    "ssd=1 vs [1, 1] -> MATCH",
+    "mem=1 vs [1, 1] -> MATCH"
+   ],
+   "score": 1.0
+  }
+ },
+ "ambiguity_scan": {
+  "SINGLE": 17,
+  "SINGLE_WITH_RESERVATION": 2398,
+  "RANGE": 385
+ },
+ "invariants": [
+  {
+   "check": "workbook grand totals reproduce (SKU2..6)",
+   "pass": true,
+   "detail": "{'SKU2': 365.0, 'SKU3': 417.0, 'SKU4': 443.8, 'SKU5': 474.0, 'SKU6': 507.0}"
+  },
+  {
+   "check": "recommended total grows with SKU count",
+   "pass": true,
+   "detail": "365.0 -> 507.0"
+  },
+  {
+   "check": "D-01: decimals preserved, never rounded to int",
+   "pass": true,
+   "detail": "SKU4 base=443.8 (not 444), SKU5 base=474.0"
+  },
+  {
+   "check": "D-01: fractional risk reserve not rounded",
+   "pass": true,
+   "detail": "reserve=22.19"
+  },
+  {
+   "check": "missing field never defaults to 0/1",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "user value overrides file value",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "file value retained alongside user value",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "potential reuse does not reduce demand",
+   "pass": true,
+   "detail": "base=443.8 rec=443.8"
+  },
+  {
+   "check": "confirmed reuse does reduce demand",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "empty input -> UNDETERMINED (no pseudo-precision)",
+   "pass": true,
+   "detail": "no key factor supplied"
+  },
+  {
+   "check": "tie -> RANGE, not a fake single number",
+   "pass": true,
+   "detail": "[3, 5] tie=[3, 4, 5]"
+  },
+  {
+   "check": "second wave splits into two SKU views",
+   "pass": true,
+   "detail": "current=3 full=4"
+  },
+  {
+   "check": "second wave does not change base rates (only the SKU count fed in)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "PCBA rules are excluded from UNIT totals",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "no product series token in judgement",
+   "pass": true,
+   "detail": "basis carries ranges only"
+  },
+  {
+   "check": "every SKU definition is reachable as a unique recommendation",
+   "pass": false,
+   "detail": "UNRESOLVED DESIGN GAP -> see Owner Review Item ORI-04"
+  }
+ ]
+}

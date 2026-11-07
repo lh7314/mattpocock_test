@@ -1,0 +1,1210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gaming-nre-agent/local/schema/output.schema.json",
+  "title": "Sample Requirement Analysis - Output (v4, Certification adopted from the Appendix)",
+  "description": "One analysis = one or more scenarios (CURRENT_WAVE and FULL_PROJECT), each with one priced result per SKU candidate. DEC-10: the adopted Certification quantity is the Appendix total at the applied SKU count, counted exactly once; the Main Table per-SKU quantity and its derived total are retained as audit evidence (DERIVED_MAIN_TABLE_AUDIT) and are counted zero times and never added to the adopted value. J33 stays BREAKDOWN_EVIDENCE and is never added. A Certification range may still only come from a SKU range and is then labelled SKU_NOT_ESTABLISHED.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "baseline_id",
+    "status",
+    "scenarios",
+    "owner_review_items",
+    "policy"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "4.0"
+    },
+    "analysis_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "baseline_id": {
+      "type": "string"
+    },
+    "rule_pack_version": {
+      "type": "string"
+    },
+    "quantity_model_version": {
+      "type": "string"
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "rounding",
+        "comparison_tolerance",
+        "certification_model",
+        "certification_adopted_value_source",
+        "certification_main_table_role",
+        "certification_main_derived_added_to_total",
+        "certification_range_reason_allowed"
+      ],
+      "additionalProperties": true
+    },
+    "unresolved_comments_excluded": {
+      "type": "object",
+      "description": "DEC-02: the D2:H2 'N*panel' comments travel with the result as evidence and never enter a calculation."
+    },
+    "j33_evidence": {
+      "$ref": "#/$defs/j33"
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/scenario"
+      }
+    },
+    "owner_review_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "why"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "owner_review_summary": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "export": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "owner_decision": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "The Owner decision currently encoded (DEC-10): what is adopted, what is audit-only and how many times each is counted."
+    }
+  },
+  "$defs": {
+    "scenario": {
+      "type": "object",
+      "required": [
+        "scenario_id",
+        "scope",
+        "wave_basis",
+        "counts",
+        "match",
+        "candidates_priced",
+        "results",
+        "wave_report"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scenario_id": {
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "FULL_PROJECT",
+            "CURRENT_WAVE"
+          ]
+        },
+        "wave_basis": {
+          "enum": [
+            "ALL_SPECS",
+            "EXPLICIT_ASSIGNMENT",
+            "NO_EXPLICIT_ASSIGNMENT",
+            "UNKNOWN_FANOUT"
+          ]
+        },
+        "unknown_factors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "untagged_factors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded_specs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "description": "The specs taken out of the current wave, so the page can name them instead of showing an unexplained difference."
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "identical_to_full_project": {
+          "type": "boolean"
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "wave_report": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/waveReport"
+          }
+        },
+        "match": {
+          "$ref": "#/$defs/match"
+        },
+        "candidates_priced": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 6
+          }
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/result"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "scope": {
+                "const": "CURRENT_WAVE"
+              }
+            },
+            "required": [
+              "scope"
+            ]
+          },
+          "then": {
+            "properties": {
+              "wave_basis": {
+                "enum": [
+                  "EXPLICIT_ASSIGNMENT",
+                  "NO_EXPLICIT_ASSIGNMENT",
+                  "UNKNOWN_FANOUT"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "waveReport": {
+      "type": "object",
+      "required": [
+        "factor",
+        "count",
+        "wave_state",
+        "sources"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "factor": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "current": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "later": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "untagged": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wave_state": {
+          "enum": [
+            "NOT_APPLICABLE",
+            "UNKNOWN",
+            "ASSIGNED",
+            "NOT_PROVIDED",
+            "ALL_CURRENT"
+          ]
+        },
+        "excluded_from_current_wave": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "FORMAL_REQUIREMENT_SHEET",
+              "USER_SELECTED",
+              "IMPLICIT_SINGLE_SPEC",
+              "NOT_PROVIDED"
+            ]
+          }
+        }
+      }
+    },
+    "match": {
+      "type": "object",
+      "required": [
+        "state",
+        "recommended_sku",
+        "preferred_sku"
+      ],
+      "additionalProperties": false,
+      "description": "DEC-01: on a tie state=RANGE, recommended_sku is null and preferred_sku is NOT_ESTABLISHED. No weighting may be used to manufacture a single answer.",
+      "properties": {
+        "state": {
+          "enum": [
+            "SINGLE",
+            "SINGLE_WITH_RESERVATION",
+            "RANGE",
+            "UNDETERMINED",
+            "OUT_OF_DOMAIN"
+          ]
+        },
+        "recommended_sku": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "preferred_sku": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ]
+        },
+        "sku_range": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "integer"
+          }
+        },
+        "tie_set": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "scores": {
+          "type": "object"
+        },
+        "dimension_detail": {
+          "type": "object"
+        },
+        "neighbour_scores": {
+          "type": "object"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "out_of_domain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "RANGE"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "recommended_sku": {
+                "type": "null"
+              },
+              "preferred_sku": {
+                "const": "NOT_ESTABLISHED"
+              },
+              "tie_set": {
+                "type": "array",
+                "minItems": 2
+              }
+            },
+            "description": "a range never names a winner"
+          }
+        }
+      ]
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "sku_qty",
+        "single_value",
+        "recommended_total_band",
+        "certification",
+        "totals_by_model",
+        "reuse_ledger",
+        "rows",
+        "rounding"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sku_qty": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 6
+        },
+        "single_value": {
+          "type": "boolean"
+        },
+        "base_demand": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "fvt_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sit_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "certification_demand": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "non_certification_demand": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "certification": {
+          "$ref": "#/$defs/certification"
+        },
+        "risk_reserve": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "recommended_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "recommended_total_band": {
+          "type": "object",
+          "required": [
+            "min",
+            "max",
+            "exact"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "exact": {
+              "type": "boolean"
+            }
+          }
+        },
+        "conditional_increment": {
+          "type": "number"
+        },
+        "confirmed_reuse_adjustment": {
+          "type": "number"
+        },
+        "reuse_summary": {
+          "$ref": "#/$defs/reuseSummary"
+        },
+        "potential_reuse_display_only": {
+          "type": "number"
+        },
+        "totals_by_model": {
+          "$ref": "#/$defs/totalsByModel"
+        },
+        "by_category": {
+          "type": "object"
+        },
+        "by_function": {
+          "type": "object"
+        },
+        "unresolved_functions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reuse_ledger": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "pcba_lines_not_summed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "rounding": {
+          "const": "NONE (D-01)"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/row"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "single_value": {
+                "const": true
+              }
+            },
+            "required": [
+              "single_value"
+            ]
+          },
+          "then": {
+            "required": [
+              "base_demand",
+              "fvt_total",
+              "sit_total",
+              "recommended_total"
+            ],
+            "properties": {
+              "base_demand": {
+                "type": "number"
+              },
+              "fvt_total": {
+                "type": "number"
+              },
+              "sit_total": {
+                "type": "number"
+              },
+              "recommended_total": {
+                "type": "number"
+              },
+              "recommended_total_band": {
+                "properties": {
+                  "exact": {
+                    "const": true
+                  }
+                }
+              }
+            },
+            "description": "a single value must actually carry its numbers"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "single_value": {
+                "const": false
+              }
+            },
+            "required": [
+              "single_value"
+            ]
+          },
+          "then": {
+            "properties": {
+              "base_demand": {
+                "type": "null"
+              },
+              "fvt_total": {
+                "type": "null"
+              },
+              "sit_total": {
+                "type": "null"
+              },
+              "risk_reserve": {
+                "type": "null"
+              },
+              "recommended_total": {
+                "type": "null"
+              }
+            },
+            "description": "when the answer is not a single value, every single-value field must be null so no front end can publish a hidden default"
+          }
+        }
+      ]
+    },
+    "certification": {
+      "type": "object",
+      "required": [
+        "present",
+        "single_value",
+        "adopted_value_role",
+        "adopted_value_source",
+        "main_table_role",
+        "main_derived_counted_in_project_total_times",
+        "counted_in_project_total_times",
+        "j33_added_to_result",
+        "main_table_audit",
+        "cells",
+        "range_reason"
+      ],
+      "additionalProperties": false,
+      "description": "DEC-09 + DEC-10. One adopted number per Function and Phase: the Appendix total at the applied SKU count, FVT and SIT from their own rows, no global phase ratio, counted once. The Main Table per-SKU quantity x SKU count is audit evidence with a count of zero and is never added to the adopted value. J33 explains and is never added. A range may only come from the SKU answer.",
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "model": {
+          "const": "APPENDIX_ADOPTED_TOTAL"
+        },
+        "formula": {
+          "type": "string"
+        },
+        "applied_sku_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "fvt_certification_demand": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sit_certification_demand": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "certification_demand_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "single_value": {
+          "type": "boolean"
+        },
+        "phase_ratio_used": {
+          "type": "null"
+        },
+        "counted_in_project_total_times": {
+          "const": 1
+        },
+        "j33_role": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "BREAKDOWN_EVIDENCE",
+            null
+          ]
+        },
+        "j33_disposition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "j33_added_to_result": {
+          "const": false
+        },
+        "j33_reference_scenario": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        },
+        "user_override_used": {
+          "type": "boolean"
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Alias of main_table_audit kept for readers of the v3 shape."
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/certCell"
+          }
+        },
+        "mismatched_cells": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/certCell"
+          }
+        },
+        "range_reason": {
+          "type": "null"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "decision": {
+          "const": "DEC-10"
+        },
+        "adopted_value_role": {
+          "const": "ADOPTED_ABSOLUTE_TOTAL"
+        },
+        "adopted_value_source": {
+          "enum": [
+            "APPENDIX_TABLE_TOTAL",
+            "USER_MANUAL_OVERRIDE"
+          ]
+        },
+        "main_table_role": {
+          "const": "DERIVED_MAIN_TABLE_AUDIT"
+        },
+        "main_derived_counted_in_project_total_times": {
+          "const": 0
+        },
+        "main_table_and_appendix_added_together": {
+          "const": false
+        },
+        "j33_counted_in_project_total_times": {
+          "const": 0
+        },
+        "user_override_scope": {
+          "enum": [
+            "THIS_ANALYSIS_ONLY",
+            "null",
+            null
+          ]
+        },
+        "recounted_from_detail": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "The Certification cells re-added from the bottom of the detail; it must equal the published FVT / SIT figures (no hand arithmetic on totals).",
+          "properties": {
+            "FVT": {
+              "type": "number"
+            },
+            "SIT": {
+              "type": "number"
+            }
+          }
+        },
+        "main_table_audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cells_total": {
+              "type": "integer"
+            },
+            "verified": {
+              "type": "integer"
+            },
+            "mismatch": {
+              "type": "integer"
+            },
+            "not_evaluable": {
+              "type": "integer"
+            },
+            "status": {
+              "enum": [
+                "ALL_MATCHING",
+                "PARTIALLY_MATCHING",
+                "NOT_MATCHING"
+              ]
+            },
+            "comparison_tolerance": {
+              "type": "number"
+            },
+            "counted_in_project_total_times": {
+              "const": 0
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "cells_total",
+            "verified",
+            "mismatch",
+            "not_evaluable",
+            "status"
+          ],
+          "description": "Main Table per-SKU quantity x SKU count versus the adopted Appendix total, per cell. Audit and difference analysis only: counted 0 times."
+        }
+      }
+    },
+    "certCell": {
+      "type": "object",
+      "required": [
+        "function_id",
+        "phase",
+        "sku_count",
+        "adopted_total",
+        "adopted_value_source",
+        "value_source",
+        "appendix_total",
+        "main_table_derived_total",
+        "main_derived_counted_in_project_total",
+        "verification_status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "function_id": {
+          "type": "string"
+        },
+        "function_name": {
+          "type": "string"
+        },
+        "phase": {
+          "enum": [
+            "FVT",
+            "SIT"
+          ]
+        },
+        "sku_count": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 6
+        },
+        "main_table_per_sku_quantity": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "applied_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "user_input_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "value_source": {
+          "enum": [
+            "APPENDIX_TABLE_TOTAL",
+            "USER_MANUAL_OVERRIDE"
+          ]
+        },
+        "appendix_total": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "verification_status": {
+          "enum": [
+            "VERIFIED",
+            "MISMATCH",
+            "NOT_EVALUABLE",
+            null
+          ]
+        },
+        "main_table_row": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "appendix_row": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "adopted_total": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "The number the engine uses: the Appendix total for this cell at this SKU count."
+        },
+        "adopted_value_source": {
+          "enum": [
+            "APPENDIX_TABLE_TOTAL",
+            "USER_MANUAL_OVERRIDE"
+          ]
+        },
+        "main_table_derived_total": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "main_table_per_sku_quantity x sku_count, retained for audit and difference analysis. Counted 0 times, never added to adopted_total."
+        },
+        "main_derived_counted_in_project_total": {
+          "const": false
+        },
+        "delta": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "appendix_total - main_table_derived_total"
+        },
+        "delta_appendix_minus_main_derived": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "user_override_vs_adopted_value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "override_scope": {
+          "enum": [
+            "THIS_ANALYSIS_ONLY",
+            "null",
+            null
+          ]
+        }
+      }
+    },
+    "totalsByModel": {
+      "type": "object",
+      "required": [
+        "variants",
+        "band"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "confirmed_only": {
+          "type": "object"
+        },
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "model_source",
+              "TOTAL"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "variants_not_evaluable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "band": {
+          "type": "object",
+          "required": [
+            "total_min",
+            "total_max",
+            "spread"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "total_min": {
+              "type": "number"
+            },
+            "total_max": {
+              "type": "number"
+            },
+            "spread": {
+              "type": "number"
+            }
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "reuseSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Task section 19 output contract: requested, adopted and rejected amounts stated separately, each with its reason.",
+      "properties": {
+        "requested_reuse_quantity": {
+          "type": "number"
+        },
+        "adopted_reuse_quantity": {
+          "type": "number"
+        },
+        "rejected_or_deferred_quantity": {
+          "type": "number"
+        },
+        "adoption_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "non_adoption_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "row": {
+      "type": "object",
+      "required": [
+        "function_id",
+        "phase",
+        "sku_qty",
+        "quantity_model",
+        "evidence_role",
+        "base_demand",
+        "value_source",
+        "unit",
+        "rule_id",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "function_id": {
+          "type": "string"
+        },
+        "function_name": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "phase": {
+          "enum": [
+            "FVT",
+            "SIT"
+          ]
+        },
+        "sku_qty": {
+          "type": "integer"
+        },
+        "quantity_model": {
+          "enum": [
+            "PER_SKU_RATE",
+            "PER_PHASE_FIXED",
+            "PER_PROJECT_FIXED",
+            "FORMULA_DRIVEN",
+            "UNRESOLVED"
+          ]
+        },
+        "evidence_role": {
+          "enum": [
+            "PRIMARY_QUANTITY_MODEL",
+            "ABSOLUTE_RESTATEMENT",
+            "ADOPTED_ABSOLUTE_TOTAL",
+            "BREAKDOWN_EVIDENCE",
+            "DERIVED_MAIN_TABLE_AUDIT",
+            "DERIVED_TOTAL_VALIDATION",
+            "UNRESOLVED_COMMENT"
+          ],
+          "description": "The role of the value that is actually carried by this row. ADOPTED_ABSOLUTE_TOTAL is the DEC-10 adopted Appendix total; DERIVED_MAIN_TABLE_AUDIT never carries a counted quantity."
+        },
+        "base_demand": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "system_computed_value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "user_input_value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "value_source": {
+          "type": "string"
+        },
+        "main_table_per_sku_quantity": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "candidate_values": {
+          "type": "object"
+        },
+        "models_not_evaluable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unit": {
+          "enum": [
+            "UNIT",
+            "PCBA"
+          ]
+        },
+        "owner_review_required": {
+          "type": "boolean"
+        },
+        "breakdown_evidence_role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "is_temporary_model": {
+          "type": "boolean"
+        },
+        "rule_id": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "object",
+          "required": [
+            "source_file",
+            "sheet",
+            "row"
+          ],
+          "additionalProperties": true
+        },
+        "main_table_derived_total": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Audit only, Certification rows: per-SKU quantity x SKU. Never summed into a total."
+        },
+        "override_scope": {
+          "enum": [
+            "THIS_ANALYSIS_ONLY",
+            "null",
+            null
+          ]
+        },
+        "main_table_audit": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        }
+      }
+    },
+    "j33": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "source_cell",
+        "evidence_role",
+        "disposition",
+        "added_to_certification_result"
+      ],
+      "additionalProperties": true,
+      "description": "J33 explains what the RF Certification machines are for. It is never a quantity model, never additive and never a reason for a band.",
+      "properties": {
+        "source_cell": {
+          "const": "J33"
+        },
+        "evidence_role": {
+          "const": "BREAKDOWN_EVIDENCE"
+        },
+        "disposition": {
+          "enum": [
+            "CERTIFICATION_BREAKDOWN_EVIDENCE",
+            "DECLARED_NOT_GENERALIZED"
+          ]
+        },
+        "attached_to_function": {
+          "type": "string"
+        },
+        "added_to_certification_result": {
+          "const": false
+        },
+        "mvp_requires_antenna_wlan_input_now": {
+          "type": "boolean"
+        },
+        "declared_reference_scenario": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "reference_total_under_readings": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "bracket": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

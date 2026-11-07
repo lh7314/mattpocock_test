@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>样机需求分析工具 · Sample Requirement Agent</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="home">
+<header class="top">
+  <span class="logo">样机需求分析工具</span>
+  <nav><a href="index.html" class="on">首页</a><a href="new.html">新建分析</a>
+    <a href="trial.html">参加团队试用</a></nav>
+  <span style="flex:1"></span>
+  <span class="small muted" id="pack"></span>
+</header>
+
+<main>
+  <div class="card">
+    <h2 style="font-size:19px">样机需求分析工具 · Sample Requirement Agent</h2>
+    <p class="tagline">按 CPU / GPU / Panel / SSD / Memory 关键配置推导 SKU 档位，并算出 FVT 与 SIT
+      各阶段的样机需求量。<b>你不需要输入 SKU 数量。</b></p>
+    <div class="row">
+      <a href="new.html"><button class="primary">新建分析</button></a>
+      <span class="small muted">分析在本机浏览器内完成，不上传任何数据。</span>
+    </div>
+    <div class="note warn small" id="store-warn" hidden>
+      本机浏览器存储不可用，历史记录无法保存；分析结果仍然可以计算并导出 JSON / CSV。
+    </div>
+  </div>
+
+  <div class="card" id="trial-card">
+    <div class="row spread">
+      <h2 style="margin:0">参加团队试用（S1 受控试用）</h2>
+      <span class="small muted" id="trial-meta"></span>
+    </div>
+    <p class="tagline" style="margin:6px 0 10px">不用自己编配置：选一个案例，项目名、Key Factors
+      与 Wave 自动填好并锁定；跑完只看这个案例真正涉及的问题，最后导出<b>一个</b>
+      <code>trial-submission-*.json</code>，放进 <code>feedback_inbox\</code>。</p>
+    <div class="row">
+      <a href="trial.html"><button class="primary">参加团队试用</button></a>
+      <span class="small muted">五个案例按「哪个 SKU 数才会暴露主表/附表差异」排定，
+        合起来覆盖 7 个仍然不一致的 Certification 单元格。</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row spread">
+      <h2 style="margin:0">最近分析 <span class="chip" id="count">无</span></h2>
+      <span class="small muted">打开＝查看已保存结果；复制＝带原输入新建；删除＝仅删除本机记录</span>
+    </div>
+    <div id="recent" style="margin-top:10px"></div>
+  </div>
+
+  <div class="card">
+    <h2>这个工具不会做的事</h2>
+    <ul class="small muted" style="margin:0;padding-left:18px;line-height:1.8">
+      <li>不会替你选一个 SKU 档位。4 SKU 与 5 SKU 无法区分时，两档都会完整计算并并列显示。</li>
+      <li>不会把主表值和附表值加在一起：Certification 采用附表在本次 SKU 档位上的总量，并且只计入一次；主表单 SKU 数量与主表派生总量继续保留，只用于审计与差异分析。</li>
+      <li>不会因为存在第二个 SSD / Memory Spec 就推断有第二波次；只有明确标为后续波次的 Spec 才被排除。</li>
+      <li>不会做业务取整；443.8 就是 443.8。显示精度不会改动底层数值。</li>
+      <li>不会在没有证据时扣减复用样机；只有已证明的额外确认复用才会扣减。</li>
+    </ul>
+  </div>
+</main>
+<footer class="foot">
+  规则包与业务数值来自仓库内已验证的产物，前端不保存任何业务数字。
+  本工具为 MVP：无账号、无团队、无权限、无审批流。
+</footer>
+<script src="assets/rulepack.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/trialkit.js"></script>
+<script>document.getElementById("pack").textContent =
+  "规则包 " + RULEPACK.pack_version + " · 数量模型 " + RULEPACK.quantity_model_version;
+addEventListener("DOMContentLoaded", function(){
+  // home() lives in app.js; app.js is loaded after so the boot listener registers first
+});</script>
+<script src="assets/app.js"></script>
+</body>
+</html>

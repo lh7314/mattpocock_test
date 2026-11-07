@@ -1,0 +1,57 @@
+﻿样机需求分析 - 团队试用反馈表 / Trial feedback
+Project,TRIAL-C3-SKU4
+Analysis ID,TRIAL-C3-SKU4
+Rule pack,RP-V4.0
+Engine,rules_v3/4.0
+Reviewer name,
+Review date,
+
+1. 请对本次结果逐项回答（同意 / 不同意 / 待确认）+ 说明
+Item,What the tool produced,Your answer,Comment
+SKU result (FULL_PROJECT),SINGLE; recommended=4; preferred=4; range=4-4,,
+"Totals (FULL_PROJECT, 4 SKU)",FVT=211.4; SIT=227.4; Certification=36; recommended=438.8,,
+SKU result (CURRENT_WAVE),SINGLE; recommended=4; preferred=4; range=4-4,,
+"Totals (CURRENT_WAVE, 4 SKU)",FVT=211.4; SIT=227.4; Certification=36; recommended=438.8,,
+Certification adopted value,"Appendix total for that Function, Phase and SKU count (DEC-10); counted once",,
+Certification audit value,"Main table per-SKU quantity x SKU count, kept for difference analysis; counted 0 times",,
+J33,explanatory evidence only - never added,,
+
+2. 主表 / 附表仍然不一致的格子（请在真实项目里核对哪一个是业务上正确的数量）
+Function,Phase,Adopted (Appendix),Main derived (audit),Delta,Is the adopted value correct?,Comment
+RF Certification,SIT,10,15,-5,,
+
+3. 本次分析登记的待确认问题
+Kind,Blocking level,Blocks manual MVP,Your answer,Comment
+WAVE_ASSIGNMENT_NOT_PROVIDED,AFFECTS_ACCURACY,NO,,
+CERTIFICATION_SOURCE_VALIDATION_MISMATCH,BLOCKS_FORMALIZATION,NO,,
+CERTIFICATION_APPENDIX_VALIDATION_INCOMPLETE,BLOCKS_FORMALIZATION,NO,,
+CERTIFICATION_BREAKDOWN_EVIDENCE_NOT_GENERALIZED,ADVISORY,NO,,
+
+4. 规则包中仍然开放的 Owner 问题（唯一条目，不是影响标签）
+ORI,Impact tag,Question,Your answer,Comment
+ORI-01,BLOCKS_FORMALIZATION,Panel 批注 N*panel 的正式业务含义,,
+ORI-02,BLOCKS_FORMALIZATION,Certification 主表派生值与附表的 7 处差异原因,,
+ORI-02a,ADVISORY,「源费率已验证」的口径（DEC-10 后已不再是阻塞项）,,
+ORI-02b,AFFECTS_ACCURACY,J33 是否已被采用值包含；主表/附表是否描述不同 Source 组合,,
+ORI-03,AFFECTS_ACCURACY,波次判据缺失；需求表波次标记列,,
+ORI-04,BLOCKS_FORMALIZATION,4 SKU 与 5 SKU 的真实分界条件,,
+ORI-05,BLOCKS_FORMALIZATION,ODM 无结构化规则 + 3 处 Status 未关闭,,
+ORI-06,AFFECTS_ACCURACY,Option 项是否启用 / PCBA 单位口径,,
+ORI-07,AFFECTS_ACCURACY,Risk Reserve 比例与适用范围无来源,,
+ORI-08,BLOCKS_FORMALIZATION,匹配权重 / 阈值属 Agent 设定,,
+ORI-09,ADVISORY,自动读取需求表所需的真实样本（已与 MVP 解耦）,,
+ORI-10,BLOCKS_FORMALIZATION,MEPA 是否恒为每 Phase 36；HW PA 何时饱和于 4,,
+ORI-11,ADVISORY,Build Plan 与 PPA sample standard 1.0（已与 MVP 解耦）,,
+ORI-12,AFFECTS_ACCURACY,6 条 model questions（EMC Test / NV / INTEL 平坦费率）,,
+ORI-13,AFFECTS_ACCURACY,定义域空洞：超出 2–6 SKU 无规则（BLOCKS_EXECUTION 只停该情景）,,
+ORI-14,ADVISORY,缩写与 Green FVT 自相矛盾,,
+ORI-15,AFFECTS_ACCURACY,Green/SIT/SKU3 主表值与 1/N 规律不符,,
+ORI-16,AFFECTS_ACCURACY,Safety/FVT/SKU6 = 1.6 与附表 10 不一致（DEC-10 后已采用 10）,,
+ORI-17,AFFECTS_ACCURACY,主表「每 SKU」列实为总量的 1/N 回推,,
+
+5. 界面与流程反馈
+Topic,Your answer,Comment
+字段是否够用,,
+结果是否看得懂,,
+导出文件是否够用,,
+其它问题,,
