@@ -1,2 +1,19 @@
+# Complete installed environment snapshot: Python 3.12.4, Windows x86-64.
+# Python itself is recorded in .python-version; install it before creating .venv.
+# Browser checks additionally require a locally installed Edge or Chrome.
+# Refresh all pins together from the project .venv after validating an upgrade.
+
+# Environment tooling
+pip==24.0
+
+# Direct application dependencies
 openpyxl==3.1.2
 jsonschema==4.19.2
+
+# Transitive dependencies (pinned to the installed, verified environment)
+attrs==26.1.0
+et_xmlfile==2.0.0
+jsonschema-specifications==2025.9.1
+referencing==0.37.0
+rpds-py==2026.9.1
+typing_extensions==4.16.0

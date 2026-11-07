@@ -709,7 +709,7 @@ for p in sorted(ROOT.rglob("*")):
     elif rel.startswith("web/"):
         b = "WEB MVP"
     elif (
-            rel in {"AGENTS.md", ".gitignore", "CHANGES.md", "requirements.txt"}
+            rel in {"AGENTS.md", ".gitignore", ".python-version", "CHANGES.md", "requirements.txt"}
             or rel.startswith(("docs/", "schema/"))
         ):
         b = "DELIVERABLE (review target)"

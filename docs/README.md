@@ -10,13 +10,26 @@
 ## Python 环境
 
 以下命令在项目根目录（包含 `tools/`、`prototype/` 和 `web/` 的目录）执行。
-当前本地虚拟环境使用 Python 3.12.4，依赖版本记录在 `requirements.txt`。
+完整环境记录如下：
+
+| 项目 | 当前验证环境 |
+|---|---|
+| 操作系统 | Windows，x86-64 |
+| Python | 3.12.4，版本记录在 `.python-version` |
+| 包管理器 | pip 24.0 |
+| Python 依赖 | `requirements.txt` 固定全部 9 个已安装包的版本，包含 pip、2 个直接依赖及 6 个传递依赖 |
+| 浏览器 | Python/Web 一致性及页面检查需要本机安装 Chromium 系 Edge 或 Chrome |
+
+`requirements.txt` 安装 Python 包；Python 解释器和浏览器需要单独安装。
+`.python-version` 记录目标版本，`python -m venv` 本身不会根据它自动切换解释器。
 
 首次配置，或移动项目后重新创建环境：
 
 ```powershell
+python --version  # 应为 Python 3.12.4；否则先选择对应解释器
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip check
 ```
 
 日常运行可直接使用虚拟环境解释器，无需激活或修改 PowerShell 执行策略：
@@ -33,6 +46,10 @@ python -m venv .venv
 `.venv/` 是本机生成的环境目录，不提交到 Git；共享项目时提交
 `requirements.txt`，由接收者重新创建环境。Web 页面仍可直接离线打开；
 Python/Web 一致性和界面检查另外需要本机安装 Edge 或 Chrome。
+
+安装后可执行 `.\.venv\Scripts\python.exe -m pip freeze --all` 核对全部包的版本。
+以后升级依赖时，验证通过后一起更新 `requirements.txt` 中的直接和传递依赖版本，
+避免只修改其中一个版本导致环境不一致。
 
 ## 本轮（DEC-10）先看这四篇
 

@@ -65,7 +65,7 @@ def sha(p: Path) -> str:
 def phase_of(rel: str) -> str:
     name = Path(rel).name
 
-    if rel in {"AGENTS.md", ".gitignore", "requirements.txt"}:
+    if rel in {"AGENTS.md", ".gitignore", ".python-version", "requirements.txt"}:
         return "current task (project instructions and tooling)"
 
     if rel.startswith("original_documents/"):
