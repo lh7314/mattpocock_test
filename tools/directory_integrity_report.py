@@ -64,6 +64,12 @@ def sha(p: Path) -> str:
 
 def phase_of(rel: str) -> str:
     name = Path(rel).name
+
+    if rel in {"AGENTS.md", ".gitignore", "requirements.txt"}:
+        return "current task (project instructions and tooling)"
+
+    if rel.startswith("original_documents/"):
+        return "SOURCE (Owner, read-only)"
     if rel.startswith("original_documents/"):
         return "SOURCE (Owner, read-only)"
     if rel.startswith("web/"):
@@ -111,21 +117,41 @@ def phase_of(rel: str) -> str:
 
 
 rows, unexpected = [], []
+
 for p in sorted(ROOT.rglob("*")):
+    # 跳过项目根目录中的 Git、编辑器元数据和本地虚拟环境
+    if p.relative_to(ROOT).parts[0] in {".git", ".idea", ".venv"}:
+        continue
+
     if not p.is_file():
         continue
+
     if "__pycache__" in p.parts or p.suffix == ".pyc":
-        continue                      # interpreter cache, not project content
+        continue
+
     rel = p.relative_to(ROOT).as_posix()
     ph = phase_of(rel)
-    rows.append({"path": rel, "phase": ph, "bytes": p.stat().st_size})
+
+    rows.append({
+        "path": rel,
+        "phase": ph,
+        "bytes": p.stat().st_size,
+    })
+
     if ph == "UNKNOWN":
         unexpected.append(rel)
 
-present = {p.name: sha(p) for p in sorted(SRC.rglob("*")) if p.is_file()}
+# 原有源文件哈希校验
+present = {
+    p.name: sha(p)
+    for p in sorted(SRC.rglob("*"))
+    if p.is_file()
+}
 sha_ok = list(present.values()) == [EXPECTED_SHA] and len(present) == 1
 
+# 原有分类数量统计
 by_phase: dict[str, int] = {}
+
 for r in rows:
     by_phase[r["phase"]] = by_phase.get(r["phase"], 0) + 1
 

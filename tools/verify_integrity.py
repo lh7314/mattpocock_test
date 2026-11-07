@@ -696,6 +696,9 @@ BUCKETS = {"SOURCE (read-only, Owner)": [], "DELIVERABLE (review target)": [],
            "INCOMING (team trial feedback)": [], "TRIAL KIT (issued cases, blank forms)": [],
            "UNEXPECTED": []}
 for p in sorted(ROOT.rglob("*")):
+    if p.relative_to(ROOT).parts[0] in {".git", ".idea", ".venv"}:
+        continue
+
     if not p.is_file():
         continue
     if "__pycache__" in p.parts or p.suffix == ".pyc":
@@ -705,7 +708,10 @@ for p in sorted(ROOT.rglob("*")):
         b = "SOURCE (read-only, Owner)"
     elif rel.startswith("web/"):
         b = "WEB MVP"
-    elif rel.startswith(("docs/", "schema/", "CHANGES.md")):
+    elif (
+            rel in {"AGENTS.md", ".gitignore", "CHANGES.md", "requirements.txt"}
+            or rel.startswith(("docs/", "schema/"))
+        ):
         b = "DELIVERABLE (review target)"
     elif rel.startswith("feedback_inbox/"):
         b = "INCOMING (team trial feedback)"

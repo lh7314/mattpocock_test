@@ -7,6 +7,33 @@
 - 一键复现：`python tools\run_all.py`（加 `--history` 连带运行历史阶段测试套件）
 - Web MVP：双击 `web\index.html`（离线，无需服务器、账号或权限）
 
+## Python 环境
+
+以下命令在项目根目录（包含 `tools/`、`prototype/` 和 `web/` 的目录）执行。
+当前本地虚拟环境使用 Python 3.12.4，依赖版本记录在 `requirements.txt`。
+
+首次配置，或移动项目后重新创建环境：
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+日常运行可直接使用虚拟环境解释器，无需激活或修改 PowerShell 执行策略：
+
+```powershell
+.\.venv\Scripts\python.exe tools\lint_sources.py
+.\.venv\Scripts\python.exe tools\run_all.py
+```
+
+若需要激活，在当前 PowerShell 终端执行 `.\.venv\Scripts\Activate.ps1`，
+之后使用 `python`；结束时执行 `deactivate`。也可在 IDE 中选择
+`.venv\Scripts\python.exe` 作为项目解释器。
+
+`.venv/` 是本机生成的环境目录，不提交到 Git；共享项目时提交
+`requirements.txt`，由接收者重新创建环境。Web 页面仍可直接离线打开；
+Python/Web 一致性和界面检查另外需要本机安装 Edge 或 Chrome。
+
 ## 本轮（DEC-10）先看这四篇
 
 | 文档 | 内容 |
